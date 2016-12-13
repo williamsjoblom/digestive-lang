@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/dig.dir/main.cpp.o CMakeFiles/dig.dir/lexer/Lexer.cpp.o CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o  -o dig 
