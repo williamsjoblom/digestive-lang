@@ -123,6 +123,114 @@ dig/fast:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/build
 .PHONY : dig/fast
 
+ast/BlockStmt.o: ast/BlockStmt.cpp.o
+
+.PHONY : ast/BlockStmt.o
+
+# target to build an object file
+ast/BlockStmt.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BlockStmt.cpp.o
+.PHONY : ast/BlockStmt.cpp.o
+
+ast/BlockStmt.i: ast/BlockStmt.cpp.i
+
+.PHONY : ast/BlockStmt.i
+
+# target to preprocess a source file
+ast/BlockStmt.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BlockStmt.cpp.i
+.PHONY : ast/BlockStmt.cpp.i
+
+ast/BlockStmt.s: ast/BlockStmt.cpp.s
+
+.PHONY : ast/BlockStmt.s
+
+# target to generate assembly for a file
+ast/BlockStmt.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BlockStmt.cpp.s
+.PHONY : ast/BlockStmt.cpp.s
+
+ast/Decl.o: ast/Decl.cpp.o
+
+.PHONY : ast/Decl.o
+
+# target to build an object file
+ast/Decl.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Decl.cpp.o
+.PHONY : ast/Decl.cpp.o
+
+ast/Decl.i: ast/Decl.cpp.i
+
+.PHONY : ast/Decl.i
+
+# target to preprocess a source file
+ast/Decl.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Decl.cpp.i
+.PHONY : ast/Decl.cpp.i
+
+ast/Decl.s: ast/Decl.cpp.s
+
+.PHONY : ast/Decl.s
+
+# target to generate assembly for a file
+ast/Decl.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Decl.cpp.s
+.PHONY : ast/Decl.cpp.s
+
+ast/FunctionDecl.o: ast/FunctionDecl.cpp.o
+
+.PHONY : ast/FunctionDecl.o
+
+# target to build an object file
+ast/FunctionDecl.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
+.PHONY : ast/FunctionDecl.cpp.o
+
+ast/FunctionDecl.i: ast/FunctionDecl.cpp.i
+
+.PHONY : ast/FunctionDecl.i
+
+# target to preprocess a source file
+ast/FunctionDecl.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.i
+.PHONY : ast/FunctionDecl.cpp.i
+
+ast/FunctionDecl.s: ast/FunctionDecl.cpp.s
+
+.PHONY : ast/FunctionDecl.s
+
+# target to generate assembly for a file
+ast/FunctionDecl.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s
+.PHONY : ast/FunctionDecl.cpp.s
+
+ast/VariableDecl.o: ast/VariableDecl.cpp.o
+
+.PHONY : ast/VariableDecl.o
+
+# target to build an object file
+ast/VariableDecl.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
+.PHONY : ast/VariableDecl.cpp.o
+
+ast/VariableDecl.i: ast/VariableDecl.cpp.i
+
+.PHONY : ast/VariableDecl.i
+
+# target to preprocess a source file
+ast/VariableDecl.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableDecl.cpp.i
+.PHONY : ast/VariableDecl.cpp.i
+
+ast/VariableDecl.s: ast/VariableDecl.cpp.s
+
+.PHONY : ast/VariableDecl.s
+
+# target to generate assembly for a file
+ast/VariableDecl.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableDecl.cpp.s
+.PHONY : ast/VariableDecl.cpp.s
+
 lexer/Lexer.o: lexer/Lexer.cpp.o
 
 .PHONY : lexer/Lexer.o
@@ -204,6 +312,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+parse/ParseError.o: parse/ParseError.cpp.o
+
+.PHONY : parse/ParseError.o
+
+# target to build an object file
+parse/ParseError.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.o
+.PHONY : parse/ParseError.cpp.o
+
+parse/ParseError.i: parse/ParseError.cpp.i
+
+.PHONY : parse/ParseError.i
+
+# target to preprocess a source file
+parse/ParseError.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.i
+.PHONY : parse/ParseError.cpp.i
+
+parse/ParseError.s: parse/ParseError.cpp.s
+
+.PHONY : parse/ParseError.s
+
+# target to generate assembly for a file
+parse/ParseError.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.s
+.PHONY : parse/ParseError.cpp.s
+
+util/PrettyPrint.o: util/PrettyPrint.cpp.o
+
+.PHONY : util/PrettyPrint.o
+
+# target to build an object file
+util/PrettyPrint.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/util/PrettyPrint.cpp.o
+.PHONY : util/PrettyPrint.cpp.o
+
+util/PrettyPrint.i: util/PrettyPrint.cpp.i
+
+.PHONY : util/PrettyPrint.i
+
+# target to preprocess a source file
+util/PrettyPrint.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/util/PrettyPrint.cpp.i
+.PHONY : util/PrettyPrint.cpp.i
+
+util/PrettyPrint.s: util/PrettyPrint.cpp.s
+
+.PHONY : util/PrettyPrint.s
+
+# target to generate assembly for a file
+util/PrettyPrint.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/util/PrettyPrint.cpp.s
+.PHONY : util/PrettyPrint.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,6 +375,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... dig"
+	@echo "... ast/BlockStmt.o"
+	@echo "... ast/BlockStmt.i"
+	@echo "... ast/BlockStmt.s"
+	@echo "... ast/Decl.o"
+	@echo "... ast/Decl.i"
+	@echo "... ast/Decl.s"
+	@echo "... ast/FunctionDecl.o"
+	@echo "... ast/FunctionDecl.i"
+	@echo "... ast/FunctionDecl.s"
+	@echo "... ast/VariableDecl.o"
+	@echo "... ast/VariableDecl.i"
+	@echo "... ast/VariableDecl.s"
 	@echo "... lexer/Lexer.o"
 	@echo "... lexer/Lexer.i"
 	@echo "... lexer/Lexer.s"
@@ -222,6 +396,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... parse/ParseError.o"
+	@echo "... parse/ParseError.i"
+	@echo "... parse/ParseError.s"
+	@echo "... util/PrettyPrint.o"
+	@echo "... util/PrettyPrint.i"
+	@echo "... util/PrettyPrint.s"
 .PHONY : help
 
 

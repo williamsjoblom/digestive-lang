@@ -15,10 +15,16 @@ public:
     TokenQueue(std::vector<Token>*);
     ~TokenQueue();
     Token pop();
-    Token peek();
+    Token peek() const;
     void rewind(int distance);
+    Token top() const;
 
-    void dump();
+    Token expect(const TokenType type);
+    bool eat(const TokenType type);
+    bool eatIdentifier(const std::string value);
+    bool empty() const;
+
+    void dump() const;
 private:
     int index;
     std::vector<Token>* tokens;

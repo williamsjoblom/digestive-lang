@@ -129,11 +129,161 @@ CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o.provides: CMakeFiles/dig.dir/lexer/Tok
 CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o.provides.build: CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o
 
 
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.o: ../ast/BlockStmt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/dig.dir/ast/BlockStmt.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/BlockStmt.cpp.o -c /home/wax/workbench/dig/ast/BlockStmt.cpp
+
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/BlockStmt.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/BlockStmt.cpp > CMakeFiles/dig.dir/ast/BlockStmt.cpp.i
+
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/BlockStmt.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/BlockStmt.cpp -o CMakeFiles/dig.dir/ast/BlockStmt.cpp.s
+
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.provides: CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.provides.build: CMakeFiles/dig.dir/ast/BlockStmt.cpp.o
+
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: ../ast/FunctionDecl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o -c /home/wax/workbench/dig/ast/FunctionDecl.cpp
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/FunctionDecl.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/FunctionDecl.cpp > CMakeFiles/dig.dir/ast/FunctionDecl.cpp.i
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/FunctionDecl.cpp -o CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.provides: CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.provides.build: CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
+
+
+CMakeFiles/dig.dir/ast/Decl.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/Decl.cpp.o: ../ast/Decl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/dig.dir/ast/Decl.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/Decl.cpp.o -c /home/wax/workbench/dig/ast/Decl.cpp
+
+CMakeFiles/dig.dir/ast/Decl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/Decl.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/Decl.cpp > CMakeFiles/dig.dir/ast/Decl.cpp.i
+
+CMakeFiles/dig.dir/ast/Decl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/Decl.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/Decl.cpp -o CMakeFiles/dig.dir/ast/Decl.cpp.s
+
+CMakeFiles/dig.dir/ast/Decl.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/Decl.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/Decl.cpp.o.provides: CMakeFiles/dig.dir/ast/Decl.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Decl.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/Decl.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/Decl.cpp.o.provides.build: CMakeFiles/dig.dir/ast/Decl.cpp.o
+
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: ../ast/VariableDecl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/dig.dir/ast/VariableDecl.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/VariableDecl.cpp.o -c /home/wax/workbench/dig/ast/VariableDecl.cpp
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/VariableDecl.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/VariableDecl.cpp > CMakeFiles/dig.dir/ast/VariableDecl.cpp.i
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/VariableDecl.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/VariableDecl.cpp -o CMakeFiles/dig.dir/ast/VariableDecl.cpp.s
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.provides: CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.provides.build: CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
+
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.o: ../util/PrettyPrint.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/dig.dir/util/PrettyPrint.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/util/PrettyPrint.cpp.o -c /home/wax/workbench/dig/util/PrettyPrint.cpp
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/util/PrettyPrint.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/util/PrettyPrint.cpp > CMakeFiles/dig.dir/util/PrettyPrint.cpp.i
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/util/PrettyPrint.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/util/PrettyPrint.cpp -o CMakeFiles/dig.dir/util/PrettyPrint.cpp.s
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.requires
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.provides: CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.provides
+
+CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.provides.build: CMakeFiles/dig.dir/util/PrettyPrint.cpp.o
+
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/parse/ParseError.cpp.o: ../parse/ParseError.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/dig.dir/parse/ParseError.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/parse/ParseError.cpp.o -c /home/wax/workbench/dig/parse/ParseError.cpp
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/parse/ParseError.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/parse/ParseError.cpp > CMakeFiles/dig.dir/parse/ParseError.cpp.i
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/parse/ParseError.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/parse/ParseError.cpp -o CMakeFiles/dig.dir/parse/ParseError.cpp.s
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/parse/ParseError.cpp.o.requires
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.o.provides: CMakeFiles/dig.dir/parse/ParseError.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/parse/ParseError.cpp.o.provides
+
+CMakeFiles/dig.dir/parse/ParseError.cpp.o.provides.build: CMakeFiles/dig.dir/parse/ParseError.cpp.o
+
+
 # Object files for target dig
 dig_OBJECTS = \
 "CMakeFiles/dig.dir/main.cpp.o" \
 "CMakeFiles/dig.dir/lexer/Lexer.cpp.o" \
-"CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o"
+"CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o" \
+"CMakeFiles/dig.dir/ast/BlockStmt.cpp.o" \
+"CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o" \
+"CMakeFiles/dig.dir/ast/Decl.cpp.o" \
+"CMakeFiles/dig.dir/ast/VariableDecl.cpp.o" \
+"CMakeFiles/dig.dir/util/PrettyPrint.cpp.o" \
+"CMakeFiles/dig.dir/parse/ParseError.cpp.o"
 
 # External object files for target dig
 dig_EXTERNAL_OBJECTS =
@@ -141,9 +291,15 @@ dig_EXTERNAL_OBJECTS =
 dig: CMakeFiles/dig.dir/main.cpp.o
 dig: CMakeFiles/dig.dir/lexer/Lexer.cpp.o
 dig: CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o
+dig: CMakeFiles/dig.dir/ast/BlockStmt.cpp.o
+dig: CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
+dig: CMakeFiles/dig.dir/ast/Decl.cpp.o
+dig: CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
+dig: CMakeFiles/dig.dir/util/PrettyPrint.cpp.o
+dig: CMakeFiles/dig.dir/parse/ParseError.cpp.o
 dig: CMakeFiles/dig.dir/build.make
 dig: CMakeFiles/dig.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable dig"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable dig"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dig.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -154,6 +310,12 @@ CMakeFiles/dig.dir/build: dig
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/main.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/lexer/Lexer.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/BlockStmt.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/Decl.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/VariableDecl.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/util/PrettyPrint.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/ParseError.cpp.o.requires
 
 .PHONY : CMakeFiles/dig.dir/requires
 

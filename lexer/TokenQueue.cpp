@@ -3,7 +3,9 @@
 //
 
 #include <assert.h>
+
 #include "TokenQueue.h"
+#include "parse/ParseError.h"
 
 TokenQueue::TokenQueue(std::vector<Token>* content) {
     index = 0;
@@ -17,7 +19,7 @@ Token TokenQueue::pop() {
     return (*tokens)[index++];
 }
 
-Token TokenQueue::peek() {
+Token TokenQueue::peek() const {
     assert(index < tokens->size());
     return (*tokens)[index];
 }
@@ -27,7 +29,11 @@ void TokenQueue::rewind(int distance) {
     assert(index >= 0);
 }
 
-void TokenQueue::dump() {
+Token TokenQueue::top() const {
+    return (*tokens)[index];
+}
+
+void TokenQueue::dump() const {
     std::cout << "{";
 
     for (auto it = tokens->begin(); it != tokens->end(); it++) {
@@ -38,5 +44,40 @@ void TokenQueue::dump() {
 
     std::cout << "}" << std::endl;
 }
+
+Token TokenQueue::expect(const TokenType type) {
+    Token t = top();
+    if (t.type != type) unexpectedToken(t);
+
+    index++;
+    return t;
+}
+
+bool TokenQueue::eat(const TokenType type) {
+    if ((*tokens)[index].type == type) {
+        index++;
+        return true;
+    }
+
+    return false;
+}
+
+bool TokenQueue::eatIdentifier(const std::string value) {
+    Token t = (*tokens)[index];
+    if (t.type == IDENTIFIER && t.value == value) {
+        index++;
+        return true;
+    }
+
+    return false;
+}
+
+bool TokenQueue::empty() const {
+    return index >= tokens->size();
+}
+
+
+
+
 
 
