@@ -465,6 +465,150 @@ CMakeFiles/dig.dir/ast/Operator.cpp.o.provides: CMakeFiles/dig.dir/ast/Operator.
 CMakeFiles/dig.dir/ast/Operator.cpp.o.provides.build: CMakeFiles/dig.dir/ast/Operator.cpp.o
 
 
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: ../ast/ReturnStmt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o -c /home/wax/workbench/dig/ast/ReturnStmt.cpp
+
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/ReturnStmt.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/ReturnStmt.cpp > CMakeFiles/dig.dir/ast/ReturnStmt.cpp.i
+
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/ReturnStmt.cpp -o CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s
+
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.provides: CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.provides.build: CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
+
+
+CMakeFiles/dig.dir/parse/Return.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/parse/Return.cpp.o: ../parse/Return.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/dig.dir/parse/Return.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/parse/Return.cpp.o -c /home/wax/workbench/dig/parse/Return.cpp
+
+CMakeFiles/dig.dir/parse/Return.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/parse/Return.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/parse/Return.cpp > CMakeFiles/dig.dir/parse/Return.cpp.i
+
+CMakeFiles/dig.dir/parse/Return.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/parse/Return.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/parse/Return.cpp -o CMakeFiles/dig.dir/parse/Return.cpp.s
+
+CMakeFiles/dig.dir/parse/Return.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/parse/Return.cpp.o.requires
+
+CMakeFiles/dig.dir/parse/Return.cpp.o.provides: CMakeFiles/dig.dir/parse/Return.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Return.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/parse/Return.cpp.o.provides
+
+CMakeFiles/dig.dir/parse/Return.cpp.o.provides.build: CMakeFiles/dig.dir/parse/Return.cpp.o
+
+
+CMakeFiles/dig.dir/parse/Variable.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/parse/Variable.cpp.o: ../parse/Variable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/dig.dir/parse/Variable.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/parse/Variable.cpp.o -c /home/wax/workbench/dig/parse/Variable.cpp
+
+CMakeFiles/dig.dir/parse/Variable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/parse/Variable.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/parse/Variable.cpp > CMakeFiles/dig.dir/parse/Variable.cpp.i
+
+CMakeFiles/dig.dir/parse/Variable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/parse/Variable.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/parse/Variable.cpp -o CMakeFiles/dig.dir/parse/Variable.cpp.s
+
+CMakeFiles/dig.dir/parse/Variable.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/parse/Variable.cpp.o.requires
+
+CMakeFiles/dig.dir/parse/Variable.cpp.o.provides: CMakeFiles/dig.dir/parse/Variable.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Variable.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/parse/Variable.cpp.o.provides
+
+CMakeFiles/dig.dir/parse/Variable.cpp.o.provides.build: CMakeFiles/dig.dir/parse/Variable.cpp.o
+
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: ../ast/VariableExpr.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/dig.dir/ast/VariableExpr.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/VariableExpr.cpp.o -c /home/wax/workbench/dig/ast/VariableExpr.cpp
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/VariableExpr.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/VariableExpr.cpp > CMakeFiles/dig.dir/ast/VariableExpr.cpp.i
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/VariableExpr.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/VariableExpr.cpp -o CMakeFiles/dig.dir/ast/VariableExpr.cpp.s
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.provides: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.provides.build: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
+
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: ../ast/FunctionCall.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/dig.dir/ast/FunctionCall.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/FunctionCall.cpp.o -c /home/wax/workbench/dig/ast/FunctionCall.cpp
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/FunctionCall.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/FunctionCall.cpp > CMakeFiles/dig.dir/ast/FunctionCall.cpp.i
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/FunctionCall.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/FunctionCall.cpp -o CMakeFiles/dig.dir/ast/FunctionCall.cpp.s
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides.build: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
+
+
+CMakeFiles/dig.dir/ast/Scope.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/Scope.cpp.o: ../ast/Scope.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/dig.dir/ast/Scope.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/Scope.cpp.o -c /home/wax/workbench/dig/ast/Scope.cpp
+
+CMakeFiles/dig.dir/ast/Scope.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/Scope.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/Scope.cpp > CMakeFiles/dig.dir/ast/Scope.cpp.i
+
+CMakeFiles/dig.dir/ast/Scope.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/Scope.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/Scope.cpp -o CMakeFiles/dig.dir/ast/Scope.cpp.s
+
+CMakeFiles/dig.dir/ast/Scope.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/Scope.cpp.o.provides: CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/Scope.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/Scope.cpp.o.provides.build: CMakeFiles/dig.dir/ast/Scope.cpp.o
+
+
 # Object files for target dig
 dig_OBJECTS = \
 "CMakeFiles/dig.dir/main.cpp.o" \
@@ -483,7 +627,13 @@ dig_OBJECTS = \
 "CMakeFiles/dig.dir/parse/File.cpp.o" \
 "CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o" \
 "CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o" \
-"CMakeFiles/dig.dir/ast/Operator.cpp.o"
+"CMakeFiles/dig.dir/ast/Operator.cpp.o" \
+"CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o" \
+"CMakeFiles/dig.dir/parse/Return.cpp.o" \
+"CMakeFiles/dig.dir/parse/Variable.cpp.o" \
+"CMakeFiles/dig.dir/ast/VariableExpr.cpp.o" \
+"CMakeFiles/dig.dir/ast/FunctionCall.cpp.o" \
+"CMakeFiles/dig.dir/ast/Scope.cpp.o"
 
 # External object files for target dig
 dig_EXTERNAL_OBJECTS =
@@ -505,9 +655,15 @@ dig: CMakeFiles/dig.dir/parse/File.cpp.o
 dig: CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o
 dig: CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
 dig: CMakeFiles/dig.dir/ast/Operator.cpp.o
+dig: CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
+dig: CMakeFiles/dig.dir/parse/Return.cpp.o
+dig: CMakeFiles/dig.dir/parse/Variable.cpp.o
+dig: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
+dig: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
+dig: CMakeFiles/dig.dir/ast/Scope.cpp.o
 dig: CMakeFiles/dig.dir/build.make
 dig: CMakeFiles/dig.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable dig"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable dig"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dig.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -532,6 +688,12 @@ CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/File.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/Operator.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Return.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Variable.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
 
 .PHONY : CMakeFiles/dig.dir/requires
 

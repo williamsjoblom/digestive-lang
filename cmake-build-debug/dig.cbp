@@ -86,6 +86,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wax/workbench/dig/ast/Analyzable.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/BinaryExpr.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -110,6 +113,12 @@
 		<Unit filename="/home/wax/workbench/dig/ast/ExprStmt.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionCall.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionCall.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -131,6 +140,18 @@
 		<Unit filename="/home/wax/workbench/dig/ast/Operator.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Scope.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Scope.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/Stmt.h">
 			<Option target="dig"/>
 		</Unit>
@@ -138,6 +159,12 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/VariableDecl.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/VariableExpr.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/VariableExpr.h">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/lexer/Lexer.cpp">
@@ -179,7 +206,13 @@
 		<Unit filename="/home/wax/workbench/dig/parse/ParseError.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Return.cpp">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Statement.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Variable.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/util/PrettyPrint.cpp">

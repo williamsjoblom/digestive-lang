@@ -10,8 +10,7 @@ LiteralExpr::LiteralExpr(int value) {
 }
 
 void LiteralExpr::dump(size_t indent) {
-    printIndent(indent);
-    std::cout << value  << std::endl;
+    std::cout << value;
 }
 
 

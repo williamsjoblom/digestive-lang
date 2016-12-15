@@ -11,17 +11,37 @@
 #include <ast/LiteralExpr.h>
 #include <ast/BinaryExpr.h>
 #include <assert.h>
+#include <ast/VariableExpr.h>
+#include <ast/FunctionCall.h>
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
-Expr* rpnToExpr(std::vector<Token> tokens);
+Expr* rpnToExpr(TokenQueue& tokens);
 
 namespace Parse {
 
     Expr* expression(TokenQueue& tokens) {
         std::vector<Token> rpn = shuntingYard(tokens);
-        Expr* expr = rpnToExpr(rpn);
+        TokenQueue rpnQueue(&rpn);
+        Expr* expr = rpnToExpr(rpnQueue);
         return expr;
+    }
+
+    std::vector<Expr*>* argumentList(TokenQueue& tokens) {
+        std::vector<Expr*>* arguments = new std::vector<Expr*>();
+        if (!tokens.eat(LPAR)) return nullptr;
+
+        if (tokens.top().type != RPAR) {
+            bool hasArg = true;
+            while (hasArg) {
+                arguments->push_back(Parse::expression(tokens));
+                hasArg = tokens.eat(COMMA);
+            }
+        }
+
+        tokens.expect(RPAR);
+
+        return arguments;
     }
 
 }
@@ -34,13 +54,33 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
     std::vector<Token> output;
     std::stack<Token> stack;
 
+    int parDepth = 0;
+
     while (!tokens.empty()) {
-        Token token = tokens.pop();
+        Token token = tokens.top();
 
         if(token.type == SEMICOL) break;
+        if(token.type == COMMA) break;
+        if(token.type == RPAR && parDepth == 0) break;
+
+        tokens.pop();
 
         if (token.type == NUMBER) {
             output.push_back(token);
+        } else if(token.type == IDENTIFIER) {
+            if(tokens.top().type == LPAR) { // Function call
+                output.push_back(token);
+
+                int oldParDepth = parDepth;
+                do {
+                    if (tokens.top().type == LPAR) parDepth++;
+                    if (tokens.top().type == RPAR) parDepth--;
+                    output.push_back(tokens.pop());
+                } while (parDepth > oldParDepth);
+
+            } else { // Variable
+                output.push_back(token);
+            }
         } else if (Operator::isOperator(token.value)) {
             Operator o1(token.value);
 
@@ -58,8 +98,10 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
 
             stack.push(token);
         } else if (token.type == LPAR) {
+            parDepth++;
             stack.push(token);
         } else if (token.type == RPAR ) {
+            parDepth--;
             Token top;
             while (stack.top().type != LPAR) {
                 if (stack.size() <= 1)
@@ -86,14 +128,28 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
     return output;
 }
 
-Expr* rpnToExpr(std::vector<Token> tokens) {
+Expr* rpnToExpr(TokenQueue& tokens) {
     std::stack<Expr*> stack;
 
-    for (Token token : tokens) {
+    Token first = tokens.top();
+
+    while(!tokens.empty()) {
+        Token token = tokens.pop();
+
         if (token.type == NUMBER) {
             int number = std::stoi(token.value);
             stack.push(new LiteralExpr(number));
-        } else if(Operator::isOperator(token.value)) {
+        } else if (token.type == IDENTIFIER) {
+            std::vector<Expr*>* argList = Parse::argumentList(tokens);
+            if (argList != nullptr) {
+                stack.push(new FunctionCall(token.value, argList));
+            } else {
+                stack.push(new VariableExpr(token.value));
+            }
+        } else if (Operator::isOperator(token.value)) {
+            if (stack.size() < 2)
+                parseError(token, "Missing operand in expression");
+
             Expr* right = stack.top(); stack.pop();
             Expr* left = stack.top(); stack.pop();
             Operator* op = new Operator(token.value);
@@ -105,9 +161,9 @@ Expr* rpnToExpr(std::vector<Token> tokens) {
 
     // TODO: free memory if expression turns out invalid.
     if (stack.empty())
-        parseError(tokens.back(), "Missing operand in expression");
+        parseError(first, "Missing operand in expression");
     if (stack.size() > 1)
-        parseError(tokens.back(), "Missing operator in expression");
+        parseError(first, "Missing operator in expression");
 
     return stack.top();
 }

@@ -23,8 +23,7 @@ Operator::Operator(OperatorSymbol symbol) {
 }
 
 void Operator::dump(size_t indent) {
-    printIndent(indent);
-    std::cout << symbolToString(this->symbol) << std::endl;
+    std::cout << symbolToString(this->symbol);
 }
 
 const std::map<std::string, OperatorSymbol> stringToSymbol =

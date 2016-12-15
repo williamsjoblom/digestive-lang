@@ -5,6 +5,7 @@
 #ifndef DIG_EXPRSTMT_H
 #define DIG_EXPRSTMT_H
 
+#include <util/PrettyPrint.h>
 #include "Expr.h"
 #include "Stmt.h"
 
@@ -13,7 +14,7 @@ public:
     Expr* expression;
 
     ExprStmt(Expr* expression) { this->expression = expression; }
-    void dump(size_t indent) { expression->dump(indent); }
+    void dump(size_t indent) { printIndent(indent); expression->dump(indent); std::cout << std::endl; }
 };
 
 #endif //DIG_EXPRSTMT_H

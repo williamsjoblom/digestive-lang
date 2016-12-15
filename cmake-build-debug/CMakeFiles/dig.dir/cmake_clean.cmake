@@ -16,6 +16,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o"
   "CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o"
   "CMakeFiles/dig.dir/ast/Operator.cpp.o"
+  "CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o"
+  "CMakeFiles/dig.dir/parse/Return.cpp.o"
+  "CMakeFiles/dig.dir/parse/Variable.cpp.o"
+  "CMakeFiles/dig.dir/ast/VariableExpr.cpp.o"
+  "CMakeFiles/dig.dir/ast/FunctionCall.cpp.o"
+  "CMakeFiles/dig.dir/ast/Scope.cpp.o"
   "dig.pdb"
   "dig"
 )

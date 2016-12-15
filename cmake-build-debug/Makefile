@@ -204,6 +204,33 @@ ast/Decl.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Decl.cpp.s
 .PHONY : ast/Decl.cpp.s
 
+ast/FunctionCall.o: ast/FunctionCall.cpp.o
+
+.PHONY : ast/FunctionCall.o
+
+# target to build an object file
+ast/FunctionCall.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
+.PHONY : ast/FunctionCall.cpp.o
+
+ast/FunctionCall.i: ast/FunctionCall.cpp.i
+
+.PHONY : ast/FunctionCall.i
+
+# target to preprocess a source file
+ast/FunctionCall.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionCall.cpp.i
+.PHONY : ast/FunctionCall.cpp.i
+
+ast/FunctionCall.s: ast/FunctionCall.cpp.s
+
+.PHONY : ast/FunctionCall.s
+
+# target to generate assembly for a file
+ast/FunctionCall.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionCall.cpp.s
+.PHONY : ast/FunctionCall.cpp.s
+
 ast/FunctionDecl.o: ast/FunctionDecl.cpp.o
 
 .PHONY : ast/FunctionDecl.o
@@ -285,6 +312,60 @@ ast/Operator.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Operator.cpp.s
 .PHONY : ast/Operator.cpp.s
 
+ast/ReturnStmt.o: ast/ReturnStmt.cpp.o
+
+.PHONY : ast/ReturnStmt.o
+
+# target to build an object file
+ast/ReturnStmt.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
+.PHONY : ast/ReturnStmt.cpp.o
+
+ast/ReturnStmt.i: ast/ReturnStmt.cpp.i
+
+.PHONY : ast/ReturnStmt.i
+
+# target to preprocess a source file
+ast/ReturnStmt.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.i
+.PHONY : ast/ReturnStmt.cpp.i
+
+ast/ReturnStmt.s: ast/ReturnStmt.cpp.s
+
+.PHONY : ast/ReturnStmt.s
+
+# target to generate assembly for a file
+ast/ReturnStmt.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s
+.PHONY : ast/ReturnStmt.cpp.s
+
+ast/Scope.o: ast/Scope.cpp.o
+
+.PHONY : ast/Scope.o
+
+# target to build an object file
+ast/Scope.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.o
+.PHONY : ast/Scope.cpp.o
+
+ast/Scope.i: ast/Scope.cpp.i
+
+.PHONY : ast/Scope.i
+
+# target to preprocess a source file
+ast/Scope.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.i
+.PHONY : ast/Scope.cpp.i
+
+ast/Scope.s: ast/Scope.cpp.s
+
+.PHONY : ast/Scope.s
+
+# target to generate assembly for a file
+ast/Scope.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.s
+.PHONY : ast/Scope.cpp.s
+
 ast/VariableDecl.o: ast/VariableDecl.cpp.o
 
 .PHONY : ast/VariableDecl.o
@@ -311,6 +392,33 @@ ast/VariableDecl.s: ast/VariableDecl.cpp.s
 ast/VariableDecl.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableDecl.cpp.s
 .PHONY : ast/VariableDecl.cpp.s
+
+ast/VariableExpr.o: ast/VariableExpr.cpp.o
+
+.PHONY : ast/VariableExpr.o
+
+# target to build an object file
+ast/VariableExpr.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
+.PHONY : ast/VariableExpr.cpp.o
+
+ast/VariableExpr.i: ast/VariableExpr.cpp.i
+
+.PHONY : ast/VariableExpr.i
+
+# target to preprocess a source file
+ast/VariableExpr.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.i
+.PHONY : ast/VariableExpr.cpp.i
+
+ast/VariableExpr.s: ast/VariableExpr.cpp.s
+
+.PHONY : ast/VariableExpr.s
+
+# target to generate assembly for a file
+ast/VariableExpr.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.s
+.PHONY : ast/VariableExpr.cpp.s
 
 lexer/Lexer.o: lexer/Lexer.cpp.o
 
@@ -528,6 +636,33 @@ parse/ParseError.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.s
 .PHONY : parse/ParseError.cpp.s
 
+parse/Return.o: parse/Return.cpp.o
+
+.PHONY : parse/Return.o
+
+# target to build an object file
+parse/Return.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Return.cpp.o
+.PHONY : parse/Return.cpp.o
+
+parse/Return.i: parse/Return.cpp.i
+
+.PHONY : parse/Return.i
+
+# target to preprocess a source file
+parse/Return.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Return.cpp.i
+.PHONY : parse/Return.cpp.i
+
+parse/Return.s: parse/Return.cpp.s
+
+.PHONY : parse/Return.s
+
+# target to generate assembly for a file
+parse/Return.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Return.cpp.s
+.PHONY : parse/Return.cpp.s
+
 parse/Statement.o: parse/Statement.cpp.o
 
 .PHONY : parse/Statement.o
@@ -554,6 +689,33 @@ parse/Statement.s: parse/Statement.cpp.s
 parse/Statement.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.s
 .PHONY : parse/Statement.cpp.s
+
+parse/Variable.o: parse/Variable.cpp.o
+
+.PHONY : parse/Variable.o
+
+# target to build an object file
+parse/Variable.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Variable.cpp.o
+.PHONY : parse/Variable.cpp.o
+
+parse/Variable.i: parse/Variable.cpp.i
+
+.PHONY : parse/Variable.i
+
+# target to preprocess a source file
+parse/Variable.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Variable.cpp.i
+.PHONY : parse/Variable.cpp.i
+
+parse/Variable.s: parse/Variable.cpp.s
+
+.PHONY : parse/Variable.s
+
+# target to generate assembly for a file
+parse/Variable.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Variable.cpp.s
+.PHONY : parse/Variable.cpp.s
 
 util/PrettyPrint.o: util/PrettyPrint.cpp.o
 
@@ -600,6 +762,9 @@ help:
 	@echo "... ast/Decl.o"
 	@echo "... ast/Decl.i"
 	@echo "... ast/Decl.s"
+	@echo "... ast/FunctionCall.o"
+	@echo "... ast/FunctionCall.i"
+	@echo "... ast/FunctionCall.s"
 	@echo "... ast/FunctionDecl.o"
 	@echo "... ast/FunctionDecl.i"
 	@echo "... ast/FunctionDecl.s"
@@ -609,9 +774,18 @@ help:
 	@echo "... ast/Operator.o"
 	@echo "... ast/Operator.i"
 	@echo "... ast/Operator.s"
+	@echo "... ast/ReturnStmt.o"
+	@echo "... ast/ReturnStmt.i"
+	@echo "... ast/ReturnStmt.s"
+	@echo "... ast/Scope.o"
+	@echo "... ast/Scope.i"
+	@echo "... ast/Scope.s"
 	@echo "... ast/VariableDecl.o"
 	@echo "... ast/VariableDecl.i"
 	@echo "... ast/VariableDecl.s"
+	@echo "... ast/VariableExpr.o"
+	@echo "... ast/VariableExpr.i"
+	@echo "... ast/VariableExpr.s"
 	@echo "... lexer/Lexer.o"
 	@echo "... lexer/Lexer.i"
 	@echo "... lexer/Lexer.s"
@@ -636,9 +810,15 @@ help:
 	@echo "... parse/ParseError.o"
 	@echo "... parse/ParseError.i"
 	@echo "... parse/ParseError.s"
+	@echo "... parse/Return.o"
+	@echo "... parse/Return.i"
+	@echo "... parse/Return.s"
 	@echo "... parse/Statement.o"
 	@echo "... parse/Statement.i"
 	@echo "... parse/Statement.s"
+	@echo "... parse/Variable.o"
+	@echo "... parse/Variable.i"
+	@echo "... parse/Variable.s"
 	@echo "... util/PrettyPrint.o"
 	@echo "... util/PrettyPrint.i"
 	@echo "... util/PrettyPrint.s"

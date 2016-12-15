@@ -12,13 +12,13 @@ BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
 }
 
 void BinaryExpr::dump(size_t indent) {
-    printIndent(indent);
-    std::cout << "(" << std::endl;
+    std::cout << "(";
 
     left->dump(indent + 1);
+    std::cout << " ";
     op->dump(indent + 1);
+    std::cout << " ";
     right->dump(indent + 1);
 
-    printIndent(indent);
-    std::cout << ")" << std::endl;
+    std::cout << ")";
 }

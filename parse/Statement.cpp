@@ -5,8 +5,6 @@
 #include <ast/ExprStmt.h>
 #include "lexer/TokenQueue.h"
 
-#include "ast/Stmt.h"
-#include "ParseError.h"
 #include "Parse.h"
 
 namespace Parse {
@@ -15,6 +13,11 @@ namespace Parse {
 
         Stmt* stmt;
         if ((stmt = Parse::function(tokens)) != nullptr) return stmt;
-        else return new ExprStmt(Parse::expression(tokens));
+        else if((stmt = Parse::ret(tokens)) != nullptr) return stmt;
+        else if((stmt = Parse::variable(tokens)) != nullptr) return stmt;
+
+        Expr* expression = Parse::expression(tokens);
+        tokens.expect(SEMICOL);
+        return new ExprStmt(expression);
     }
 }

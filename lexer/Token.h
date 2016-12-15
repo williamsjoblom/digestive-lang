@@ -18,7 +18,10 @@ enum TokenType {
     MUL,
     DIV,
 
+    ASSIGN,
+
     SEMICOL,
+    COMMA,
     LBRACK,
     RBRACK,
     LPAR,
@@ -40,7 +43,10 @@ static std::map<std::string, TokenType> symbolToTokenType =
                 {"*", MUL},
                 {"/", DIV},
 
+                {"=", ASSIGN},
+
                 {";", SEMICOL},
+                {",", COMMA},
                 {"{", LBRACK},
                 {"}", RBRACK},
                 {"(", LPAR},
