@@ -123,6 +123,33 @@ dig/fast:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/build
 .PHONY : dig/fast
 
+ast/BinaryExpr.o: ast/BinaryExpr.cpp.o
+
+.PHONY : ast/BinaryExpr.o
+
+# target to build an object file
+ast/BinaryExpr.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o
+.PHONY : ast/BinaryExpr.cpp.o
+
+ast/BinaryExpr.i: ast/BinaryExpr.cpp.i
+
+.PHONY : ast/BinaryExpr.i
+
+# target to preprocess a source file
+ast/BinaryExpr.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BinaryExpr.cpp.i
+.PHONY : ast/BinaryExpr.cpp.i
+
+ast/BinaryExpr.s: ast/BinaryExpr.cpp.s
+
+.PHONY : ast/BinaryExpr.s
+
+# target to generate assembly for a file
+ast/BinaryExpr.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/BinaryExpr.cpp.s
+.PHONY : ast/BinaryExpr.cpp.s
+
 ast/BlockStmt.o: ast/BlockStmt.cpp.o
 
 .PHONY : ast/BlockStmt.o
@@ -203,6 +230,60 @@ ast/FunctionDecl.s: ast/FunctionDecl.cpp.s
 ast/FunctionDecl.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s
 .PHONY : ast/FunctionDecl.cpp.s
+
+ast/LiteralExpr.o: ast/LiteralExpr.cpp.o
+
+.PHONY : ast/LiteralExpr.o
+
+# target to build an object file
+ast/LiteralExpr.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
+.PHONY : ast/LiteralExpr.cpp.o
+
+ast/LiteralExpr.i: ast/LiteralExpr.cpp.i
+
+.PHONY : ast/LiteralExpr.i
+
+# target to preprocess a source file
+ast/LiteralExpr.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LiteralExpr.cpp.i
+.PHONY : ast/LiteralExpr.cpp.i
+
+ast/LiteralExpr.s: ast/LiteralExpr.cpp.s
+
+.PHONY : ast/LiteralExpr.s
+
+# target to generate assembly for a file
+ast/LiteralExpr.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LiteralExpr.cpp.s
+.PHONY : ast/LiteralExpr.cpp.s
+
+ast/Operator.o: ast/Operator.cpp.o
+
+.PHONY : ast/Operator.o
+
+# target to build an object file
+ast/Operator.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Operator.cpp.o
+.PHONY : ast/Operator.cpp.o
+
+ast/Operator.i: ast/Operator.cpp.i
+
+.PHONY : ast/Operator.i
+
+# target to preprocess a source file
+ast/Operator.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Operator.cpp.i
+.PHONY : ast/Operator.cpp.i
+
+ast/Operator.s: ast/Operator.cpp.s
+
+.PHONY : ast/Operator.s
+
+# target to generate assembly for a file
+ast/Operator.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Operator.cpp.s
+.PHONY : ast/Operator.cpp.s
 
 ast/VariableDecl.o: ast/VariableDecl.cpp.o
 
@@ -312,6 +393,114 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+parse/Block.o: parse/Block.cpp.o
+
+.PHONY : parse/Block.o
+
+# target to build an object file
+parse/Block.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Block.cpp.o
+.PHONY : parse/Block.cpp.o
+
+parse/Block.i: parse/Block.cpp.i
+
+.PHONY : parse/Block.i
+
+# target to preprocess a source file
+parse/Block.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Block.cpp.i
+.PHONY : parse/Block.cpp.i
+
+parse/Block.s: parse/Block.cpp.s
+
+.PHONY : parse/Block.s
+
+# target to generate assembly for a file
+parse/Block.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Block.cpp.s
+.PHONY : parse/Block.cpp.s
+
+parse/Expression.o: parse/Expression.cpp.o
+
+.PHONY : parse/Expression.o
+
+# target to build an object file
+parse/Expression.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Expression.cpp.o
+.PHONY : parse/Expression.cpp.o
+
+parse/Expression.i: parse/Expression.cpp.i
+
+.PHONY : parse/Expression.i
+
+# target to preprocess a source file
+parse/Expression.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Expression.cpp.i
+.PHONY : parse/Expression.cpp.i
+
+parse/Expression.s: parse/Expression.cpp.s
+
+.PHONY : parse/Expression.s
+
+# target to generate assembly for a file
+parse/Expression.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Expression.cpp.s
+.PHONY : parse/Expression.cpp.s
+
+parse/File.o: parse/File.cpp.o
+
+.PHONY : parse/File.o
+
+# target to build an object file
+parse/File.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/File.cpp.o
+.PHONY : parse/File.cpp.o
+
+parse/File.i: parse/File.cpp.i
+
+.PHONY : parse/File.i
+
+# target to preprocess a source file
+parse/File.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/File.cpp.i
+.PHONY : parse/File.cpp.i
+
+parse/File.s: parse/File.cpp.s
+
+.PHONY : parse/File.s
+
+# target to generate assembly for a file
+parse/File.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/File.cpp.s
+.PHONY : parse/File.cpp.s
+
+parse/Function.o: parse/Function.cpp.o
+
+.PHONY : parse/Function.o
+
+# target to build an object file
+parse/Function.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Function.cpp.o
+.PHONY : parse/Function.cpp.o
+
+parse/Function.i: parse/Function.cpp.i
+
+.PHONY : parse/Function.i
+
+# target to preprocess a source file
+parse/Function.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Function.cpp.i
+.PHONY : parse/Function.cpp.i
+
+parse/Function.s: parse/Function.cpp.s
+
+.PHONY : parse/Function.s
+
+# target to generate assembly for a file
+parse/Function.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Function.cpp.s
+.PHONY : parse/Function.cpp.s
+
 parse/ParseError.o: parse/ParseError.cpp.o
 
 .PHONY : parse/ParseError.o
@@ -338,6 +527,33 @@ parse/ParseError.s: parse/ParseError.cpp.s
 parse/ParseError.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.s
 .PHONY : parse/ParseError.cpp.s
+
+parse/Statement.o: parse/Statement.cpp.o
+
+.PHONY : parse/Statement.o
+
+# target to build an object file
+parse/Statement.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.o
+.PHONY : parse/Statement.cpp.o
+
+parse/Statement.i: parse/Statement.cpp.i
+
+.PHONY : parse/Statement.i
+
+# target to preprocess a source file
+parse/Statement.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.i
+.PHONY : parse/Statement.cpp.i
+
+parse/Statement.s: parse/Statement.cpp.s
+
+.PHONY : parse/Statement.s
+
+# target to generate assembly for a file
+parse/Statement.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.s
+.PHONY : parse/Statement.cpp.s
 
 util/PrettyPrint.o: util/PrettyPrint.cpp.o
 
@@ -375,6 +591,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... dig"
+	@echo "... ast/BinaryExpr.o"
+	@echo "... ast/BinaryExpr.i"
+	@echo "... ast/BinaryExpr.s"
 	@echo "... ast/BlockStmt.o"
 	@echo "... ast/BlockStmt.i"
 	@echo "... ast/BlockStmt.s"
@@ -384,6 +603,12 @@ help:
 	@echo "... ast/FunctionDecl.o"
 	@echo "... ast/FunctionDecl.i"
 	@echo "... ast/FunctionDecl.s"
+	@echo "... ast/LiteralExpr.o"
+	@echo "... ast/LiteralExpr.i"
+	@echo "... ast/LiteralExpr.s"
+	@echo "... ast/Operator.o"
+	@echo "... ast/Operator.i"
+	@echo "... ast/Operator.s"
 	@echo "... ast/VariableDecl.o"
 	@echo "... ast/VariableDecl.i"
 	@echo "... ast/VariableDecl.s"
@@ -396,9 +621,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... parse/Block.o"
+	@echo "... parse/Block.i"
+	@echo "... parse/Block.s"
+	@echo "... parse/Expression.o"
+	@echo "... parse/Expression.i"
+	@echo "... parse/Expression.s"
+	@echo "... parse/File.o"
+	@echo "... parse/File.i"
+	@echo "... parse/File.s"
+	@echo "... parse/Function.o"
+	@echo "... parse/Function.i"
+	@echo "... parse/Function.s"
 	@echo "... parse/ParseError.o"
 	@echo "... parse/ParseError.i"
 	@echo "... parse/ParseError.s"
+	@echo "... parse/Statement.o"
+	@echo "... parse/Statement.i"
+	@echo "... parse/Statement.s"
 	@echo "... util/PrettyPrint.o"
 	@echo "... util/PrettyPrint.i"
 	@echo "... util/PrettyPrint.s"

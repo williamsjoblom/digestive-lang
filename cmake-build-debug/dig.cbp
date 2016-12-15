@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wax/workbench/dig/ast/BinaryExpr.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/BinaryExpr.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/BlockStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -101,13 +107,28 @@
 		<Unit filename="/home/wax/workbench/dig/ast/Expr.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/ExprStmt.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/LiteralExpr.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/LiteralExpr.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/Node.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Operator.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Operator.h">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/Stmt.h">
@@ -137,10 +158,19 @@
 		<Unit filename="/home/wax/workbench/dig/main.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/dig/parse/BlockStmtParser.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Block.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/dig/parse/FunctionParser.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Expression.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/File.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Function.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Parse.h">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/ParseError.cpp">
@@ -149,10 +179,7 @@
 		<Unit filename="/home/wax/workbench/dig/parse/ParseError.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/dig/parse/Parser.h">
-			<Option target="dig"/>
-		</Unit>
-		<Unit filename="/home/wax/workbench/dig/parse/StmtParser.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Statement.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/util/PrettyPrint.cpp">

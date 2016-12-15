@@ -104,7 +104,7 @@ void Lexer::readSymbol(Token &token) {
     if (index == oldIndex) assert(false); // FIXME: will assert if unknown symbol is found. Replace with suitable error-code/exception.
 
     token.value = longest;
-    token.type = symbolToTokenType[token.value];
+    token.type = symbolToTokenType.at(token.value);
 }
 
 
