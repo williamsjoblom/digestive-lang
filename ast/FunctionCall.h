@@ -13,8 +13,11 @@ class FunctionCall : public Expr {
 public:
     std::string identifier;
     std::vector<Expr*>* arguments;
+    FunctionDecl* declaration;
 
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
+
+    void analyze(Scope* scope);
 
     void dump(size_t indent);
 };

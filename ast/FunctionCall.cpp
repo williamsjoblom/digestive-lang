@@ -21,3 +21,10 @@ void FunctionCall::dump(size_t indent) {
 
     std::cout << ")";
 }
+
+void FunctionCall::analyze(Scope* scope) {
+    declaration = scope->resolveFunction(identifier);
+
+    for (Expr* argument : *arguments)
+        argument->analyze(scope);
+}

@@ -7,8 +7,10 @@
 
 
 #include <map>
-#include "VariableDecl.h"
-#include "FunctionDecl.h"
+#include <set>
+
+class FunctionDecl;
+class VariableDecl;
 
 class Scope {
 public:
@@ -17,15 +19,27 @@ public:
     Scope();
     Scope(Scope* parent);
 
+    ~Scope();
+
     void declare(VariableDecl* variableDecl);
     void declare(FunctionDecl* functionDecl);
+
+    bool contains(std::string identifier);
+
+    void addChild(Scope* scope);
+    void removeChild(Scope* scope);
 
     VariableDecl* resolveVariable(std::string identifier);
     FunctionDecl* resolveFunction(std::string identifier);
 
+    void dump() { dump(0); }
+    void dump(size_t indent);
+
 private:
-    std::map<std::string, VariableDecl> variables;
-    std::map<std::string, FunctionDecl> functions;
+    std::set<Scope*> children;
+
+    std::map<std::string, VariableDecl*> variables;
+    std::map<std::string, FunctionDecl*> functions;
 };
 
 

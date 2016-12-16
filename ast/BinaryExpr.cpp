@@ -11,6 +11,11 @@ BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
     this->right = right;
 }
 
+void BinaryExpr::analyze(Scope *scope) {
+    left->analyze(scope);
+    right->analyze(scope);
+}
+
 void BinaryExpr::dump(size_t indent) {
     std::cout << "(";
 

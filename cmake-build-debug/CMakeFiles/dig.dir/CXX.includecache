@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+.././ast/Analyzable.h
+semantic/Scope.h
+.././ast/semantic/Scope.h
+
 .././ast/BinaryExpr.h
 Expr.h
 .././ast/Expr.h
@@ -23,6 +27,8 @@ string
 -
 Stmt.h
 .././ast/Stmt.h
+Analyzable.h
+.././ast/Analyzable.h
 
 .././ast/Expr.h
 Node.h
@@ -43,6 +49,8 @@ Expr.h
 .././ast/Expr.h
 
 .././ast/FunctionDecl.h
+semantic/Scope.h
+-
 Decl.h
 .././ast/Decl.h
 BlockStmt.h
@@ -57,6 +65,8 @@ Expr.h
 .././ast/Node.h
 iostream
 -
+Analyzable.h
+.././ast/Analyzable.h
 
 .././ast/Operator.h
 string
@@ -73,6 +83,8 @@ Stmt.h
 .././ast/Stmt.h
 Node.h
 .././ast/Node.h
+Analyzable.h
+.././ast/Analyzable.h
 
 .././ast/VariableDecl.h
 Decl.h
@@ -100,9 +112,19 @@ Token.h
 lexer/Token.h
 -
 
+.././semantic/Scope.h
+map
+-
+set
+-
+
 .././util/PrettyPrint.h
 iostream
 -
+
+/home/wax/workbench/dig/ast/Analyzable.h
+semantic/Scope.h
+/home/wax/workbench/dig/ast/semantic/Scope.h
 
 /home/wax/workbench/dig/ast/BinaryExpr.cpp
 util/PrettyPrint.h
@@ -139,6 +161,8 @@ string
 -
 Stmt.h
 /home/wax/workbench/dig/ast/Stmt.h
+Analyzable.h
+/home/wax/workbench/dig/ast/Analyzable.h
 
 /home/wax/workbench/dig/ast/Expr.h
 Node.h
@@ -163,6 +187,8 @@ FunctionDecl.h
 /home/wax/workbench/dig/ast/FunctionDecl.h
 
 /home/wax/workbench/dig/ast/FunctionDecl.h
+semantic/Scope.h
+-
 Decl.h
 /home/wax/workbench/dig/ast/Decl.h
 BlockStmt.h
@@ -183,6 +209,8 @@ Expr.h
 /home/wax/workbench/dig/ast/Node.h
 iostream
 -
+Analyzable.h
+/home/wax/workbench/dig/ast/Analyzable.h
 
 /home/wax/workbench/dig/ast/Operator.cpp
 Operator.h
@@ -215,6 +243,8 @@ Stmt.h
 /home/wax/workbench/dig/ast/Stmt.h
 Node.h
 /home/wax/workbench/dig/ast/Node.h
+Analyzable.h
+/home/wax/workbench/dig/ast/Analyzable.h
 
 /home/wax/workbench/dig/ast/VariableDecl.cpp
 util/PrettyPrint.h
@@ -385,6 +415,34 @@ ast/VariableDecl.h
 /home/wax/workbench/dig/parse/ast/VariableDecl.h
 Parse.h
 /home/wax/workbench/dig/parse/Parse.h
+
+/home/wax/workbench/dig/semantic/Scope.cpp
+util/PrettyPrint.h
+-
+Scope.h
+/home/wax/workbench/dig/semantic/Scope.h
+SemanticError.h
+/home/wax/workbench/dig/semantic/SemanticError.h
+ast/FunctionDecl.h
+/home/wax/workbench/dig/semantic/ast/FunctionDecl.h
+ast/VariableDecl.h
+/home/wax/workbench/dig/semantic/ast/VariableDecl.h
+
+/home/wax/workbench/dig/semantic/Scope.h
+map
+-
+set
+-
+
+/home/wax/workbench/dig/semantic/SemanticError.cpp
+iostream
+-
+SemanticError.h
+/home/wax/workbench/dig/semantic/SemanticError.h
+
+/home/wax/workbench/dig/semantic/SemanticError.h
+string
+-
 
 /home/wax/workbench/dig/util/PrettyPrint.cpp
 iostream

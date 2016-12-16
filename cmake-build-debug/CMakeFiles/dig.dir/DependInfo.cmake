@@ -12,7 +12,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wax/workbench/dig/ast/LiteralExpr.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o"
   "/home/wax/workbench/dig/ast/Operator.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/Operator.cpp.o"
   "/home/wax/workbench/dig/ast/ReturnStmt.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o"
-  "/home/wax/workbench/dig/ast/Scope.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/Scope.cpp.o"
   "/home/wax/workbench/dig/ast/VariableDecl.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/VariableDecl.cpp.o"
   "/home/wax/workbench/dig/ast/VariableExpr.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/ast/VariableExpr.cpp.o"
   "/home/wax/workbench/dig/lexer/Lexer.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/lexer/Lexer.cpp.o"
@@ -26,6 +25,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wax/workbench/dig/parse/Return.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/parse/Return.cpp.o"
   "/home/wax/workbench/dig/parse/Statement.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/parse/Statement.cpp.o"
   "/home/wax/workbench/dig/parse/Variable.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/parse/Variable.cpp.o"
+  "/home/wax/workbench/dig/semantic/Scope.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/semantic/Scope.cpp.o"
+  "/home/wax/workbench/dig/semantic/SemanticError.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/semantic/SemanticError.cpp.o"
   "/home/wax/workbench/dig/util/PrettyPrint.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/util/PrettyPrint.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

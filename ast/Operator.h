@@ -24,7 +24,7 @@ public:
     Operator(OperatorSymbol symbol);
 
     static bool isOperator(std::string s);
-
+    void analyze(Scope* scope) { }
     void dump(size_t indent);
 };
 

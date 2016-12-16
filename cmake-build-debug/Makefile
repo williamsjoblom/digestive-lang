@@ -339,33 +339,6 @@ ast/ReturnStmt.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s
 .PHONY : ast/ReturnStmt.cpp.s
 
-ast/Scope.o: ast/Scope.cpp.o
-
-.PHONY : ast/Scope.o
-
-# target to build an object file
-ast/Scope.cpp.o:
-	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.o
-.PHONY : ast/Scope.cpp.o
-
-ast/Scope.i: ast/Scope.cpp.i
-
-.PHONY : ast/Scope.i
-
-# target to preprocess a source file
-ast/Scope.cpp.i:
-	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.i
-.PHONY : ast/Scope.cpp.i
-
-ast/Scope.s: ast/Scope.cpp.s
-
-.PHONY : ast/Scope.s
-
-# target to generate assembly for a file
-ast/Scope.cpp.s:
-	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.s
-.PHONY : ast/Scope.cpp.s
-
 ast/VariableDecl.o: ast/VariableDecl.cpp.o
 
 .PHONY : ast/VariableDecl.o
@@ -717,6 +690,60 @@ parse/Variable.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Variable.cpp.s
 .PHONY : parse/Variable.cpp.s
 
+semantic/Scope.o: semantic/Scope.cpp.o
+
+.PHONY : semantic/Scope.o
+
+# target to build an object file
+semantic/Scope.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/Scope.cpp.o
+.PHONY : semantic/Scope.cpp.o
+
+semantic/Scope.i: semantic/Scope.cpp.i
+
+.PHONY : semantic/Scope.i
+
+# target to preprocess a source file
+semantic/Scope.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/Scope.cpp.i
+.PHONY : semantic/Scope.cpp.i
+
+semantic/Scope.s: semantic/Scope.cpp.s
+
+.PHONY : semantic/Scope.s
+
+# target to generate assembly for a file
+semantic/Scope.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/Scope.cpp.s
+.PHONY : semantic/Scope.cpp.s
+
+semantic/SemanticError.o: semantic/SemanticError.cpp.o
+
+.PHONY : semantic/SemanticError.o
+
+# target to build an object file
+semantic/SemanticError.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/SemanticError.cpp.o
+.PHONY : semantic/SemanticError.cpp.o
+
+semantic/SemanticError.i: semantic/SemanticError.cpp.i
+
+.PHONY : semantic/SemanticError.i
+
+# target to preprocess a source file
+semantic/SemanticError.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/SemanticError.cpp.i
+.PHONY : semantic/SemanticError.cpp.i
+
+semantic/SemanticError.s: semantic/SemanticError.cpp.s
+
+.PHONY : semantic/SemanticError.s
+
+# target to generate assembly for a file
+semantic/SemanticError.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/SemanticError.cpp.s
+.PHONY : semantic/SemanticError.cpp.s
+
 util/PrettyPrint.o: util/PrettyPrint.cpp.o
 
 .PHONY : util/PrettyPrint.o
@@ -777,9 +804,6 @@ help:
 	@echo "... ast/ReturnStmt.o"
 	@echo "... ast/ReturnStmt.i"
 	@echo "... ast/ReturnStmt.s"
-	@echo "... ast/Scope.o"
-	@echo "... ast/Scope.i"
-	@echo "... ast/Scope.s"
 	@echo "... ast/VariableDecl.o"
 	@echo "... ast/VariableDecl.i"
 	@echo "... ast/VariableDecl.s"
@@ -819,6 +843,12 @@ help:
 	@echo "... parse/Variable.o"
 	@echo "... parse/Variable.i"
 	@echo "... parse/Variable.s"
+	@echo "... semantic/Scope.o"
+	@echo "... semantic/Scope.i"
+	@echo "... semantic/Scope.s"
+	@echo "... semantic/SemanticError.o"
+	@echo "... semantic/SemanticError.i"
+	@echo "... semantic/SemanticError.s"
 	@echo "... util/PrettyPrint.o"
 	@echo "... util/PrettyPrint.i"
 	@echo "... util/PrettyPrint.s"

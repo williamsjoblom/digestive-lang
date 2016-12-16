@@ -146,12 +146,6 @@
 		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/dig/ast/Scope.cpp">
-			<Option target="dig"/>
-		</Unit>
-		<Unit filename="/home/wax/workbench/dig/ast/Scope.h">
-			<Option target="dig"/>
-		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/Stmt.h">
 			<Option target="dig"/>
 		</Unit>
@@ -213,6 +207,18 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Variable.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/Scope.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/Scope.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/SemanticError.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/SemanticError.h">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/util/PrettyPrint.cpp">

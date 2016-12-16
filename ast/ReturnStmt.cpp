@@ -14,3 +14,5 @@ void ReturnStmt::dump(size_t indent) {
     std::cout << "return" << std::endl;
     expression->dump(indent + 1);
 }
+
+

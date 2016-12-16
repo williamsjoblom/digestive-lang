@@ -21,7 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dig.dir/parse/Variable.cpp.o"
   "CMakeFiles/dig.dir/ast/VariableExpr.cpp.o"
   "CMakeFiles/dig.dir/ast/FunctionCall.cpp.o"
-  "CMakeFiles/dig.dir/ast/Scope.cpp.o"
+  "CMakeFiles/dig.dir/semantic/Scope.cpp.o"
+  "CMakeFiles/dig.dir/semantic/SemanticError.cpp.o"
   "dig.pdb"
   "dig"
 )

@@ -585,28 +585,52 @@ CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides: CMakeFiles/dig.dir/ast/Funct
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.provides.build: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
 
 
-CMakeFiles/dig.dir/ast/Scope.cpp.o: CMakeFiles/dig.dir/flags.make
-CMakeFiles/dig.dir/ast/Scope.cpp.o: ../ast/Scope.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/dig.dir/ast/Scope.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/Scope.cpp.o -c /home/wax/workbench/dig/ast/Scope.cpp
+CMakeFiles/dig.dir/semantic/Scope.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/semantic/Scope.cpp.o: ../semantic/Scope.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/dig.dir/semantic/Scope.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/semantic/Scope.cpp.o -c /home/wax/workbench/dig/semantic/Scope.cpp
 
-CMakeFiles/dig.dir/ast/Scope.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/Scope.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/Scope.cpp > CMakeFiles/dig.dir/ast/Scope.cpp.i
+CMakeFiles/dig.dir/semantic/Scope.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/semantic/Scope.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/semantic/Scope.cpp > CMakeFiles/dig.dir/semantic/Scope.cpp.i
 
-CMakeFiles/dig.dir/ast/Scope.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/Scope.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/Scope.cpp -o CMakeFiles/dig.dir/ast/Scope.cpp.s
+CMakeFiles/dig.dir/semantic/Scope.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/semantic/Scope.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/semantic/Scope.cpp -o CMakeFiles/dig.dir/semantic/Scope.cpp.s
 
-CMakeFiles/dig.dir/ast/Scope.cpp.o.requires:
+CMakeFiles/dig.dir/semantic/Scope.cpp.o.requires:
 
-.PHONY : CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
+.PHONY : CMakeFiles/dig.dir/semantic/Scope.cpp.o.requires
 
-CMakeFiles/dig.dir/ast/Scope.cpp.o.provides: CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
-	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Scope.cpp.o.provides.build
-.PHONY : CMakeFiles/dig.dir/ast/Scope.cpp.o.provides
+CMakeFiles/dig.dir/semantic/Scope.cpp.o.provides: CMakeFiles/dig.dir/semantic/Scope.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/Scope.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/semantic/Scope.cpp.o.provides
 
-CMakeFiles/dig.dir/ast/Scope.cpp.o.provides.build: CMakeFiles/dig.dir/ast/Scope.cpp.o
+CMakeFiles/dig.dir/semantic/Scope.cpp.o.provides.build: CMakeFiles/dig.dir/semantic/Scope.cpp.o
+
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.o: ../semantic/SemanticError.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/dig.dir/semantic/SemanticError.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/semantic/SemanticError.cpp.o -c /home/wax/workbench/dig/semantic/SemanticError.cpp
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/semantic/SemanticError.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/semantic/SemanticError.cpp > CMakeFiles/dig.dir/semantic/SemanticError.cpp.i
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/semantic/SemanticError.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/semantic/SemanticError.cpp -o CMakeFiles/dig.dir/semantic/SemanticError.cpp.s
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.requires
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.provides: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.provides
+
+CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.provides.build: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o
 
 
 # Object files for target dig
@@ -633,7 +657,8 @@ dig_OBJECTS = \
 "CMakeFiles/dig.dir/parse/Variable.cpp.o" \
 "CMakeFiles/dig.dir/ast/VariableExpr.cpp.o" \
 "CMakeFiles/dig.dir/ast/FunctionCall.cpp.o" \
-"CMakeFiles/dig.dir/ast/Scope.cpp.o"
+"CMakeFiles/dig.dir/semantic/Scope.cpp.o" \
+"CMakeFiles/dig.dir/semantic/SemanticError.cpp.o"
 
 # External object files for target dig
 dig_EXTERNAL_OBJECTS =
@@ -660,10 +685,11 @@ dig: CMakeFiles/dig.dir/parse/Return.cpp.o
 dig: CMakeFiles/dig.dir/parse/Variable.cpp.o
 dig: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
 dig: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
-dig: CMakeFiles/dig.dir/ast/Scope.cpp.o
+dig: CMakeFiles/dig.dir/semantic/Scope.cpp.o
+dig: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o
 dig: CMakeFiles/dig.dir/build.make
 dig: CMakeFiles/dig.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable dig"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Linking CXX executable dig"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dig.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -693,7 +719,8 @@ CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Return.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Variable.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/VariableExpr.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/FunctionCall.cpp.o.requires
-CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/Scope.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/semantic/Scope.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.requires
 
 .PHONY : CMakeFiles/dig.dir/requires
 

@@ -11,17 +11,22 @@ int main() {
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
 
-    /*
-    std::cout << "Source -> Tokens =>" << std::endl;
-    printIndent(1); tokens.dump();
-    */
 
-    std::cout << std::endl << "Tokens -> AST =>" << std::endl;
+    std::cout << "Source -> Tokens =>" << std::endl;
+    tokens.dump();
+
     try {
         Stmt* root = Parse::file(tokens);
-        root->dump(1);
+        std::cout << std::endl << "Tokens -> AST =>" << std::endl;
+        root->dump();
+
+        Scope* fileScope = new Scope();
+        root->analyze(fileScope);
+        std::cout << std::endl << "AST -> Scope =>" << std::endl;
+        fileScope->dump();
+
     } catch (int i) {
-        std::cout << "Syntax error " << i << std::endl;
+        std::cout << "error " << i << std::endl;
     }
 
     return 0;

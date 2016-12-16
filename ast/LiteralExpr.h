@@ -13,6 +13,7 @@ public:
     int value;
 
     LiteralExpr(int value);
+    void analyze(Scope* scope) { }
     virtual void dump(size_t indent);
 };
 

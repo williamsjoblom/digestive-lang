@@ -14,6 +14,7 @@ public:
     Expr* expression;
 
     ExprStmt(Expr* expression) { this->expression = expression; }
+    void analyze(Scope* scope) { }
     void dump(size_t indent) { printIndent(indent); expression->dump(indent); std::cout << std::endl; }
 };
 

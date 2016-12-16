@@ -14,6 +14,7 @@ public:
     Expr* expression;
     ReturnStmt(Expr* expression);
 
+    void analyze(Scope* scope) { }
     void dump(size_t indent);
 };
 

@@ -15,6 +15,8 @@ public:
     Operator* op;
     Expr* right;
 
+    void analyze(Scope* scope);
+
     BinaryExpr(Expr* left, Operator* op, Expr* right);
 
     void dump(size_t indent);

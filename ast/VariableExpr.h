@@ -11,8 +11,11 @@
 class VariableExpr : public Expr {
 public:
     std::string identifier;
+    VariableDecl* declaration;
 
     VariableExpr(std::string identifier);
+
+    void analyze(Scope* scope);
 
     void dump(size_t indent);
 
