@@ -6,7 +6,7 @@
 #include "parse/Parse.h"
 
 int main() {
-    std::string source = "var x = 1 + f(3 + 3, 44, x(11, 22), 11);";
+    std::string source = "var x = 11; pln x;";
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
