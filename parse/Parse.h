@@ -8,6 +8,7 @@
 #include <ast/ReturnStmt.h>
 #include <ast/VariableDecl.h>
 #include <ast/FunctionCall.h>
+#include <ast/PlnStmt.h>
 #include "ast/Expr.h"
 #include "ast/FunctionDecl.h"
 #include "lexer/TokenQueue.h"
@@ -24,6 +25,7 @@ namespace Parse {
     VariableDecl* variable(TokenQueue& tokens);
     std::vector<Expr*>* argumentList(TokenQueue& tokens);
     std::vector<VariableDecl*>* parameterList(TokenQueue& tokens);
+    PlnStmt* pln(TokenQueue& tokens);
 }
 
 #endif //DIG_PARSE_H

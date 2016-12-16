@@ -74,6 +74,12 @@ string
 Node.h
 .././ast/Node.h
 
+.././ast/PlnStmt.h
+Stmt.h
+.././ast/Stmt.h
+Expr.h
+.././ast/Expr.h
+
 .././ast/ReturnStmt.h
 Expr.h
 .././ast/Expr.h
@@ -228,6 +234,18 @@ string
 Node.h
 /home/wax/workbench/dig/ast/Node.h
 
+/home/wax/workbench/dig/ast/PlnStmt.cpp
+util/PrettyPrint.h
+/home/wax/workbench/dig/ast/util/PrettyPrint.h
+PlnStmt.h
+/home/wax/workbench/dig/ast/PlnStmt.h
+
+/home/wax/workbench/dig/ast/PlnStmt.h
+Stmt.h
+/home/wax/workbench/dig/ast/Stmt.h
+Expr.h
+/home/wax/workbench/dig/ast/Expr.h
+
 /home/wax/workbench/dig/ast/ReturnStmt.cpp
 util/PrettyPrint.h
 /home/wax/workbench/dig/ast/util/PrettyPrint.h
@@ -377,6 +395,8 @@ ast/VariableDecl.h
 -
 ast/FunctionCall.h
 -
+ast/PlnStmt.h
+-
 ast/Expr.h
 /home/wax/workbench/dig/parse/ast/Expr.h
 ast/FunctionDecl.h
@@ -391,6 +411,14 @@ ParseError.h
 /home/wax/workbench/dig/parse/ParseError.h
 lexer/Token.h
 -
+
+/home/wax/workbench/dig/parse/Pln.cpp
+ast/PlnStmt.h
+/home/wax/workbench/dig/parse/ast/PlnStmt.h
+lexer/TokenQueue.h
+/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+Parse.h
+/home/wax/workbench/dig/parse/Parse.h
 
 /home/wax/workbench/dig/parse/Return.cpp
 ast/ReturnStmt.h

@@ -60,6 +60,15 @@ CMakeFiles/dig.dir/ast/Operator.cpp.o: ../ast/Node.h
 CMakeFiles/dig.dir/ast/Operator.cpp.o: ../ast/Operator.cpp
 CMakeFiles/dig.dir/ast/Operator.cpp.o: ../ast/Operator.h
 
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././semantic/Scope.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././util/PrettyPrint.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/Analyzable.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/Expr.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/Node.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/PlnStmt.cpp
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/PlnStmt.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: ../ast/Stmt.h
+
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././util/PrettyPrint.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: ../ast/Analyzable.h
@@ -103,6 +112,7 @@ CMakeFiles/dig.dir/main.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/main.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableDecl.h
@@ -125,6 +135,7 @@ CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/VariableDecl.h
@@ -144,6 +155,7 @@ CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Operator.h
+CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/VariableDecl.h
@@ -162,6 +174,7 @@ CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/VariableDecl.h
@@ -178,6 +191,7 @@ CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/VariableDecl.h
@@ -192,6 +206,23 @@ CMakeFiles/dig.dir/parse/ParseError.cpp.o: .././lexer/Token.h
 CMakeFiles/dig.dir/parse/ParseError.cpp.o: ../parse/ParseError.cpp
 CMakeFiles/dig.dir/parse/ParseError.cpp.o: ../parse/ParseError.h
 
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Analyzable.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/BlockStmt.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Decl.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Expr.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/FunctionCall.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/PlnStmt.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/ReturnStmt.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/VariableDecl.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././lexer/Token.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././lexer/TokenQueue.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././semantic/Scope.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: ../parse/Parse.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: ../parse/Pln.cpp
+
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Analyzable.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/BlockStmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Decl.h
@@ -199,6 +230,7 @@ CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/VariableDecl.h
@@ -216,6 +248,7 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/ExprStmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/VariableDecl.h
@@ -233,6 +266,7 @@ CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/FunctionDecl.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/VariableDecl.h

@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dig.dir/ast/FunctionCall.cpp.o"
   "CMakeFiles/dig.dir/semantic/Scope.cpp.o"
   "CMakeFiles/dig.dir/semantic/SemanticError.cpp.o"
+  "CMakeFiles/dig.dir/ast/PlnStmt.cpp.o"
+  "CMakeFiles/dig.dir/parse/Pln.cpp.o"
   "dig.pdb"
   "dig"
 )

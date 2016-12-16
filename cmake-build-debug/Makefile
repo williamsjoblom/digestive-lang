@@ -312,6 +312,33 @@ ast/Operator.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Operator.cpp.s
 .PHONY : ast/Operator.cpp.s
 
+ast/PlnStmt.o: ast/PlnStmt.cpp.o
+
+.PHONY : ast/PlnStmt.o
+
+# target to build an object file
+ast/PlnStmt.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/PlnStmt.cpp.o
+.PHONY : ast/PlnStmt.cpp.o
+
+ast/PlnStmt.i: ast/PlnStmt.cpp.i
+
+.PHONY : ast/PlnStmt.i
+
+# target to preprocess a source file
+ast/PlnStmt.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/PlnStmt.cpp.i
+.PHONY : ast/PlnStmt.cpp.i
+
+ast/PlnStmt.s: ast/PlnStmt.cpp.s
+
+.PHONY : ast/PlnStmt.s
+
+# target to generate assembly for a file
+ast/PlnStmt.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/PlnStmt.cpp.s
+.PHONY : ast/PlnStmt.cpp.s
+
 ast/ReturnStmt.o: ast/ReturnStmt.cpp.o
 
 .PHONY : ast/ReturnStmt.o
@@ -609,6 +636,33 @@ parse/ParseError.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/ParseError.cpp.s
 .PHONY : parse/ParseError.cpp.s
 
+parse/Pln.o: parse/Pln.cpp.o
+
+.PHONY : parse/Pln.o
+
+# target to build an object file
+parse/Pln.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Pln.cpp.o
+.PHONY : parse/Pln.cpp.o
+
+parse/Pln.i: parse/Pln.cpp.i
+
+.PHONY : parse/Pln.i
+
+# target to preprocess a source file
+parse/Pln.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Pln.cpp.i
+.PHONY : parse/Pln.cpp.i
+
+parse/Pln.s: parse/Pln.cpp.s
+
+.PHONY : parse/Pln.s
+
+# target to generate assembly for a file
+parse/Pln.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Pln.cpp.s
+.PHONY : parse/Pln.cpp.s
+
 parse/Return.o: parse/Return.cpp.o
 
 .PHONY : parse/Return.o
@@ -801,6 +855,9 @@ help:
 	@echo "... ast/Operator.o"
 	@echo "... ast/Operator.i"
 	@echo "... ast/Operator.s"
+	@echo "... ast/PlnStmt.o"
+	@echo "... ast/PlnStmt.i"
+	@echo "... ast/PlnStmt.s"
 	@echo "... ast/ReturnStmt.o"
 	@echo "... ast/ReturnStmt.i"
 	@echo "... ast/ReturnStmt.s"
@@ -834,6 +891,9 @@ help:
 	@echo "... parse/ParseError.o"
 	@echo "... parse/ParseError.i"
 	@echo "... parse/ParseError.s"
+	@echo "... parse/Pln.o"
+	@echo "... parse/Pln.i"
+	@echo "... parse/Pln.s"
 	@echo "... parse/Return.o"
 	@echo "... parse/Return.i"
 	@echo "... parse/Return.s"

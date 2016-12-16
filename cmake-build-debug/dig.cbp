@@ -140,6 +140,12 @@
 		<Unit filename="/home/wax/workbench/dig/ast/Operator.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/PlnStmt.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/PlnStmt.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -198,6 +204,9 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/ParseError.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Pln.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Return.cpp">
