@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <asmjit/asmjit.h>
+#include <interactive/Interactive.h>
 
 #include "config.h"
 
@@ -9,6 +10,8 @@
 #include "parse/Parse.h"
 
 int main() {
+    Interactive::start();
+
     std::string source = "func f() { return 3; } return f();";
 
     Lexer lexer;
