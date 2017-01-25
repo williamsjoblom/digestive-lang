@@ -14,7 +14,9 @@ public:
     Expr* expression;
     ReturnStmt(Expr* expression);
 
-    void analyze(Scope* scope) { }
+    virtual void generate(X86Compiler &c);
+
+    void analyze(Scope* scope);
     void dump(size_t indent);
 };
 

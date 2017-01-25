@@ -13,6 +13,9 @@ public:
     int value;
 
     LiteralExpr(int value);
+
+    virtual X86GpVar* generate(X86Compiler &c);
+
     void analyze(Scope* scope) { }
     virtual void dump(size_t indent);
 };

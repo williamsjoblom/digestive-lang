@@ -2,6 +2,7 @@
 // Created by wax on 12/15/16.
 //
 
+#include "gen/Gen.h"
 #include "util/PrettyPrint.h"
 #include "VariableExpr.h"
 
@@ -18,4 +19,6 @@ void VariableExpr::dump(size_t indent) {
     std::cout << identifier << std::endl;
 }
 
-
+X86GpVar* VariableExpr::generate(X86Compiler &c) {
+    return Generate::expression(c, this);
+}

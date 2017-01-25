@@ -258,6 +258,33 @@ ast/FunctionDecl.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/FunctionDecl.cpp.s
 .PHONY : ast/FunctionDecl.cpp.s
 
+ast/IfStmt.o: ast/IfStmt.cpp.o
+
+.PHONY : ast/IfStmt.o
+
+# target to build an object file
+ast/IfStmt.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/IfStmt.cpp.o
+.PHONY : ast/IfStmt.cpp.o
+
+ast/IfStmt.i: ast/IfStmt.cpp.i
+
+.PHONY : ast/IfStmt.i
+
+# target to preprocess a source file
+ast/IfStmt.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/IfStmt.cpp.i
+.PHONY : ast/IfStmt.cpp.i
+
+ast/IfStmt.s: ast/IfStmt.cpp.s
+
+.PHONY : ast/IfStmt.s
+
+# target to generate assembly for a file
+ast/IfStmt.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/IfStmt.cpp.s
+.PHONY : ast/IfStmt.cpp.s
+
 ast/LiteralExpr.o: ast/LiteralExpr.cpp.o
 
 .PHONY : ast/LiteralExpr.o
@@ -366,6 +393,33 @@ ast/ReturnStmt.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/ReturnStmt.cpp.s
 .PHONY : ast/ReturnStmt.cpp.s
 
+ast/Unit.o: ast/Unit.cpp.o
+
+.PHONY : ast/Unit.o
+
+# target to build an object file
+ast/Unit.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Unit.cpp.o
+.PHONY : ast/Unit.cpp.o
+
+ast/Unit.i: ast/Unit.cpp.i
+
+.PHONY : ast/Unit.i
+
+# target to preprocess a source file
+ast/Unit.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Unit.cpp.i
+.PHONY : ast/Unit.cpp.i
+
+ast/Unit.s: ast/Unit.cpp.s
+
+.PHONY : ast/Unit.s
+
+# target to generate assembly for a file
+ast/Unit.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Unit.cpp.s
+.PHONY : ast/Unit.cpp.s
+
 ast/VariableDecl.o: ast/VariableDecl.cpp.o
 
 .PHONY : ast/VariableDecl.o
@@ -419,6 +473,789 @@ ast/VariableExpr.s: ast/VariableExpr.cpp.s
 ast/VariableExpr.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.s
 .PHONY : ast/VariableExpr.cpp.s
+
+gen/Declaration.o: gen/Declaration.cpp.o
+
+.PHONY : gen/Declaration.o
+
+# target to build an object file
+gen/Declaration.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Declaration.cpp.o
+.PHONY : gen/Declaration.cpp.o
+
+gen/Declaration.i: gen/Declaration.cpp.i
+
+.PHONY : gen/Declaration.i
+
+# target to preprocess a source file
+gen/Declaration.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Declaration.cpp.i
+.PHONY : gen/Declaration.cpp.i
+
+gen/Declaration.s: gen/Declaration.cpp.s
+
+.PHONY : gen/Declaration.s
+
+# target to generate assembly for a file
+gen/Declaration.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Declaration.cpp.s
+.PHONY : gen/Declaration.cpp.s
+
+gen/Expression.o: gen/Expression.cpp.o
+
+.PHONY : gen/Expression.o
+
+# target to build an object file
+gen/Expression.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Expression.cpp.o
+.PHONY : gen/Expression.cpp.o
+
+gen/Expression.i: gen/Expression.cpp.i
+
+.PHONY : gen/Expression.i
+
+# target to preprocess a source file
+gen/Expression.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Expression.cpp.i
+.PHONY : gen/Expression.cpp.i
+
+gen/Expression.s: gen/Expression.cpp.s
+
+.PHONY : gen/Expression.s
+
+# target to generate assembly for a file
+gen/Expression.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Expression.cpp.s
+.PHONY : gen/Expression.cpp.s
+
+gen/Function.o: gen/Function.cpp.o
+
+.PHONY : gen/Function.o
+
+# target to build an object file
+gen/Function.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.o
+.PHONY : gen/Function.cpp.o
+
+gen/Function.i: gen/Function.cpp.i
+
+.PHONY : gen/Function.i
+
+# target to preprocess a source file
+gen/Function.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.i
+.PHONY : gen/Function.cpp.i
+
+gen/Function.s: gen/Function.cpp.s
+
+.PHONY : gen/Function.s
+
+# target to generate assembly for a file
+gen/Function.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.s
+.PHONY : gen/Function.cpp.s
+
+gen/Program.o: gen/Program.cpp.o
+
+.PHONY : gen/Program.o
+
+# target to build an object file
+gen/Program.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Program.cpp.o
+.PHONY : gen/Program.cpp.o
+
+gen/Program.i: gen/Program.cpp.i
+
+.PHONY : gen/Program.i
+
+# target to preprocess a source file
+gen/Program.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Program.cpp.i
+.PHONY : gen/Program.cpp.i
+
+gen/Program.s: gen/Program.cpp.s
+
+.PHONY : gen/Program.s
+
+# target to generate assembly for a file
+gen/Program.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Program.cpp.s
+.PHONY : gen/Program.cpp.s
+
+gen/Return.o: gen/Return.cpp.o
+
+.PHONY : gen/Return.o
+
+# target to build an object file
+gen/Return.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Return.cpp.o
+.PHONY : gen/Return.cpp.o
+
+gen/Return.i: gen/Return.cpp.i
+
+.PHONY : gen/Return.i
+
+# target to preprocess a source file
+gen/Return.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Return.cpp.i
+.PHONY : gen/Return.cpp.i
+
+gen/Return.s: gen/Return.cpp.s
+
+.PHONY : gen/Return.s
+
+# target to generate assembly for a file
+gen/Return.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Return.cpp.s
+.PHONY : gen/Return.cpp.s
+
+gen/Unit.o: gen/Unit.cpp.o
+
+.PHONY : gen/Unit.o
+
+# target to build an object file
+gen/Unit.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Unit.cpp.o
+.PHONY : gen/Unit.cpp.o
+
+gen/Unit.i: gen/Unit.cpp.i
+
+.PHONY : gen/Unit.i
+
+# target to preprocess a source file
+gen/Unit.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Unit.cpp.i
+.PHONY : gen/Unit.cpp.i
+
+gen/Unit.s: gen/Unit.cpp.s
+
+.PHONY : gen/Unit.s
+
+# target to generate assembly for a file
+gen/Unit.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Unit.cpp.s
+.PHONY : gen/Unit.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/assembler.o: home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/assembler.i: home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/assembler.s: home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/compiler.o: home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/compiler.i: home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/compiler.s: home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.o: home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.i: home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.s: home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/constpool.o: home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/constpool.i: home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/constpool.s: home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/containers.o: home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/containers.i: home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/containers.s: home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.o: home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.i: home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.s: home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/globals.o: home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/globals.i: home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/globals.s: home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/hlstream.o: home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/hlstream.i: home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/hlstream.s: home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/logger.o: home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/logger.i: home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/logger.s: home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/operand.o: home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/operand.i: home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/operand.s: home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/podvector.o: home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/podvector.i: home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/podvector.s: home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/runtime.o: home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/runtime.i: home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/runtime.s: home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/utils.o: home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/utils.i: home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/utils.s: home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/vmem.o: home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/vmem.i: home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/vmem.s: home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/base/zone.o: home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/base/zone.i: home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/base/zone.s: home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.o: home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.i: home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.s: home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.o: home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.i: home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.s: home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.o: home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.i: home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.s: home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.o: home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.i: home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.s: home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.o: home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.i: home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.s: home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.o: home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.i: home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.s: home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.o: home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.o
+
+# target to build an object file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.i: home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.i
+
+# target to preprocess a source file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i
+
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.s: home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
+
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.s
+
+# target to generate assembly for a file
+home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
+.PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
+
+jit/JitContext.o: jit/JitContext.cpp.o
+
+.PHONY : jit/JitContext.o
+
+# target to build an object file
+jit/JitContext.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/JitContext.cpp.o
+.PHONY : jit/JitContext.cpp.o
+
+jit/JitContext.i: jit/JitContext.cpp.i
+
+.PHONY : jit/JitContext.i
+
+# target to preprocess a source file
+jit/JitContext.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/JitContext.cpp.i
+.PHONY : jit/JitContext.cpp.i
+
+jit/JitContext.s: jit/JitContext.cpp.s
+
+.PHONY : jit/JitContext.s
+
+# target to generate assembly for a file
+jit/JitContext.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/JitContext.cpp.s
+.PHONY : jit/JitContext.cpp.s
 
 lexer/Lexer.o: lexer/Lexer.cpp.o
 
@@ -609,6 +1446,33 @@ parse/Function.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Function.cpp.s
 .PHONY : parse/Function.cpp.s
 
+parse/If.o: parse/If.cpp.o
+
+.PHONY : parse/If.o
+
+# target to build an object file
+parse/If.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/If.cpp.o
+.PHONY : parse/If.cpp.o
+
+parse/If.i: parse/If.cpp.i
+
+.PHONY : parse/If.i
+
+# target to preprocess a source file
+parse/If.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/If.cpp.i
+.PHONY : parse/If.cpp.i
+
+parse/If.s: parse/If.cpp.s
+
+.PHONY : parse/If.s
+
+# target to generate assembly for a file
+parse/If.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/If.cpp.s
+.PHONY : parse/If.cpp.s
+
 parse/ParseError.o: parse/ParseError.cpp.o
 
 .PHONY : parse/ParseError.o
@@ -716,6 +1580,33 @@ parse/Statement.s: parse/Statement.cpp.s
 parse/Statement.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.s
 .PHONY : parse/Statement.cpp.s
+
+parse/Unit.o: parse/Unit.cpp.o
+
+.PHONY : parse/Unit.o
+
+# target to build an object file
+parse/Unit.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Unit.cpp.o
+.PHONY : parse/Unit.cpp.o
+
+parse/Unit.i: parse/Unit.cpp.i
+
+.PHONY : parse/Unit.i
+
+# target to preprocess a source file
+parse/Unit.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Unit.cpp.i
+.PHONY : parse/Unit.cpp.i
+
+parse/Unit.s: parse/Unit.cpp.s
+
+.PHONY : parse/Unit.s
+
+# target to generate assembly for a file
+parse/Unit.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Unit.cpp.s
+.PHONY : parse/Unit.cpp.s
 
 parse/Variable.o: parse/Variable.cpp.o
 
@@ -849,6 +1740,9 @@ help:
 	@echo "... ast/FunctionDecl.o"
 	@echo "... ast/FunctionDecl.i"
 	@echo "... ast/FunctionDecl.s"
+	@echo "... ast/IfStmt.o"
+	@echo "... ast/IfStmt.i"
+	@echo "... ast/IfStmt.s"
 	@echo "... ast/LiteralExpr.o"
 	@echo "... ast/LiteralExpr.i"
 	@echo "... ast/LiteralExpr.s"
@@ -861,12 +1755,102 @@ help:
 	@echo "... ast/ReturnStmt.o"
 	@echo "... ast/ReturnStmt.i"
 	@echo "... ast/ReturnStmt.s"
+	@echo "... ast/Unit.o"
+	@echo "... ast/Unit.i"
+	@echo "... ast/Unit.s"
 	@echo "... ast/VariableDecl.o"
 	@echo "... ast/VariableDecl.i"
 	@echo "... ast/VariableDecl.s"
 	@echo "... ast/VariableExpr.o"
 	@echo "... ast/VariableExpr.i"
 	@echo "... ast/VariableExpr.s"
+	@echo "... gen/Declaration.o"
+	@echo "... gen/Declaration.i"
+	@echo "... gen/Declaration.s"
+	@echo "... gen/Expression.o"
+	@echo "... gen/Expression.i"
+	@echo "... gen/Expression.s"
+	@echo "... gen/Function.o"
+	@echo "... gen/Function.i"
+	@echo "... gen/Function.s"
+	@echo "... gen/Program.o"
+	@echo "... gen/Program.i"
+	@echo "... gen/Program.s"
+	@echo "... gen/Return.o"
+	@echo "... gen/Return.i"
+	@echo "... gen/Return.s"
+	@echo "... gen/Unit.o"
+	@echo "... gen/Unit.i"
+	@echo "... gen/Unit.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/assembler.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/assembler.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/assembler.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compiler.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compiler.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compiler.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compilercontext.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compilercontext.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/compilercontext.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/constpool.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/constpool.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/constpool.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/containers.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/containers.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/containers.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/cpuinfo.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/cpuinfo.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/cpuinfo.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/globals.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/globals.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/globals.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/hlstream.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/hlstream.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/hlstream.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/logger.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/logger.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/logger.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/operand.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/operand.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/operand.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/podvector.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/podvector.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/podvector.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/runtime.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/runtime.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/runtime.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/utils.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/utils.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/utils.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/vmem.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/vmem.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/vmem.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/zone.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/zone.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/base/zone.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86assembler.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86assembler.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86assembler.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compiler.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compiler.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compiler.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86inst.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86inst.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86inst.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand.s"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.o"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.i"
+	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.s"
+	@echo "... jit/JitContext.o"
+	@echo "... jit/JitContext.i"
+	@echo "... jit/JitContext.s"
 	@echo "... lexer/Lexer.o"
 	@echo "... lexer/Lexer.i"
 	@echo "... lexer/Lexer.s"
@@ -888,6 +1872,9 @@ help:
 	@echo "... parse/Function.o"
 	@echo "... parse/Function.i"
 	@echo "... parse/Function.s"
+	@echo "... parse/If.o"
+	@echo "... parse/If.i"
+	@echo "... parse/If.s"
 	@echo "... parse/ParseError.o"
 	@echo "... parse/ParseError.i"
 	@echo "... parse/ParseError.s"
@@ -900,6 +1887,9 @@ help:
 	@echo "... parse/Statement.o"
 	@echo "... parse/Statement.i"
 	@echo "... parse/Statement.s"
+	@echo "... parse/Unit.o"
+	@echo "... parse/Unit.i"
+	@echo "... parse/Unit.s"
 	@echo "... parse/Variable.o"
 	@echo "... parse/Variable.i"
 	@echo "... parse/Variable.s"

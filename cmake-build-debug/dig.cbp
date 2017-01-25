@@ -5,7 +5,7 @@
 		<Option title="dig"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\lib\;CMake Files\..\..\lib\asmjit\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DASMJIT_STATIC"/>
 					<Add directory="/home/wax/workbench/dig/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
@@ -68,6 +69,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DASMJIT_STATIC"/>
 					<Add directory="/home/wax/workbench/dig/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
@@ -86,6 +88,165 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/apibegin.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/apiend.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/arm.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/asmjit.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/assembler.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/compiler.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/compilercontext_p.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/compilerfunc.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/constpool.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/containers.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/containers.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/globals.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/globals.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/hlstream.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/logger.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/logger.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/operand.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/operand.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/podvector.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/runtime.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/utils.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/utils.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/vectypes.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/vmem.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/zone.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/base/zone.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/build.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/host.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext_p.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86inst.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86operand.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/Analyzable.h">
 			<Option target="dig"/>
 		</Unit>
@@ -125,6 +286,12 @@
 		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/IfStmt.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/IfStmt.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/LiteralExpr.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -155,6 +322,12 @@
 		<Unit filename="/home/wax/workbench/dig/ast/Stmt.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Unit.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/ast/Unit.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/VariableDecl.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -165,6 +338,36 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/ast/VariableExpr.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/config.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Declaration.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Expression.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Function.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Gen.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Program.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Return.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/gen/Unit.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/jit/JitContext.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/jit/JitContext.h">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/lexer/Lexer.cpp">
@@ -197,6 +400,9 @@
 		<Unit filename="/home/wax/workbench/dig/parse/Function.cpp">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/If.cpp">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Parse.h">
 			<Option target="dig"/>
 		</Unit>
@@ -213,6 +419,9 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Statement.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/parse/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/parse/Variable.cpp">
@@ -238,6 +447,9 @@
 		</Unit>
 		<Unit filename="/home/wax/workbench/dig/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/../../lib/asmjit/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\lib\asmjit\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

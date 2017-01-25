@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_FLAGS = -g   -std=gnu++11
 
-CXX_DEFINES = 
+CXX_DEFINES = -DASMJIT_STATIC
 
 CXX_INCLUDES = -I/home/wax/workbench/dig/. 
 

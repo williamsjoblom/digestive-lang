@@ -34,7 +34,6 @@ public:
 
     void dump() { dump(0); }
     void dump(size_t indent);
-
 private:
     std::set<Scope*> children;
 

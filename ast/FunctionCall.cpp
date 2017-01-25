@@ -3,6 +3,7 @@
 //
 
 #include <util/PrettyPrint.h>
+#include <gen/Gen.h>
 #include "FunctionCall.h"
 
 FunctionCall::FunctionCall(std::string identifier, std::vector<Expr*>* arguments) {
@@ -27,4 +28,8 @@ void FunctionCall::analyze(Scope* scope) {
 
     for (Expr* argument : *arguments)
         argument->analyze(scope);
+}
+
+X86GpVar* FunctionCall::generate(X86Compiler &c) {
+    return Generate::expression(c, this);
 }

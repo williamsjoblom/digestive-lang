@@ -2,6 +2,7 @@
 // Created by wax on 12/15/16.
 //
 
+#include <gen/Gen.h>
 #include "util/PrettyPrint.h"
 #include "BinaryExpr.h"
 
@@ -26,4 +27,8 @@ void BinaryExpr::dump(size_t indent) {
     right->dump(indent + 1);
 
     std::cout << ")";
+}
+
+X86GpVar* BinaryExpr::generate(X86Compiler &c) {
+    return Generate::expression(c, this);
 }

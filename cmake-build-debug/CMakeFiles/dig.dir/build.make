@@ -681,6 +681,798 @@ CMakeFiles/dig.dir/parse/Pln.cpp.o.provides: CMakeFiles/dig.dir/parse/Pln.cpp.o.
 CMakeFiles/dig.dir/parse/Pln.cpp.o.provides.build: CMakeFiles/dig.dir/parse/Pln.cpp.o
 
 
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/IfStmt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/dig.dir/ast/IfStmt.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/IfStmt.cpp.o -c /home/wax/workbench/dig/ast/IfStmt.cpp
+
+CMakeFiles/dig.dir/ast/IfStmt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/IfStmt.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/IfStmt.cpp > CMakeFiles/dig.dir/ast/IfStmt.cpp.i
+
+CMakeFiles/dig.dir/ast/IfStmt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/IfStmt.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/IfStmt.cpp -o CMakeFiles/dig.dir/ast/IfStmt.cpp.s
+
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/IfStmt.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o.provides: CMakeFiles/dig.dir/ast/IfStmt.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/IfStmt.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/IfStmt.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o.provides.build: CMakeFiles/dig.dir/ast/IfStmt.cpp.o
+
+
+CMakeFiles/dig.dir/parse/If.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/parse/If.cpp.o: ../parse/If.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/dig.dir/parse/If.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/parse/If.cpp.o -c /home/wax/workbench/dig/parse/If.cpp
+
+CMakeFiles/dig.dir/parse/If.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/parse/If.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/parse/If.cpp > CMakeFiles/dig.dir/parse/If.cpp.i
+
+CMakeFiles/dig.dir/parse/If.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/parse/If.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/parse/If.cpp -o CMakeFiles/dig.dir/parse/If.cpp.s
+
+CMakeFiles/dig.dir/parse/If.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/parse/If.cpp.o.requires
+
+CMakeFiles/dig.dir/parse/If.cpp.o.provides: CMakeFiles/dig.dir/parse/If.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/If.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/parse/If.cpp.o.provides
+
+CMakeFiles/dig.dir/parse/If.cpp.o.provides.build: CMakeFiles/dig.dir/parse/If.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Program.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Program.cpp.o: ../gen/Program.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/dig.dir/gen/Program.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Program.cpp.o -c /home/wax/workbench/dig/gen/Program.cpp
+
+CMakeFiles/dig.dir/gen/Program.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Program.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Program.cpp > CMakeFiles/dig.dir/gen/Program.cpp.i
+
+CMakeFiles/dig.dir/gen/Program.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Program.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Program.cpp -o CMakeFiles/dig.dir/gen/Program.cpp.s
+
+CMakeFiles/dig.dir/gen/Program.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Program.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Program.cpp.o.provides: CMakeFiles/dig.dir/gen/Program.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Program.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Program.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Program.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Program.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Expression.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Expression.cpp.o: ../gen/Expression.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/dig.dir/gen/Expression.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Expression.cpp.o -c /home/wax/workbench/dig/gen/Expression.cpp
+
+CMakeFiles/dig.dir/gen/Expression.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Expression.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Expression.cpp > CMakeFiles/dig.dir/gen/Expression.cpp.i
+
+CMakeFiles/dig.dir/gen/Expression.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Expression.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Expression.cpp -o CMakeFiles/dig.dir/gen/Expression.cpp.s
+
+CMakeFiles/dig.dir/gen/Expression.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Expression.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Expression.cpp.o.provides: CMakeFiles/dig.dir/gen/Expression.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Expression.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Expression.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Expression.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Expression.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Return.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Return.cpp.o: ../gen/Return.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/dig.dir/gen/Return.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Return.cpp.o -c /home/wax/workbench/dig/gen/Return.cpp
+
+CMakeFiles/dig.dir/gen/Return.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Return.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Return.cpp > CMakeFiles/dig.dir/gen/Return.cpp.i
+
+CMakeFiles/dig.dir/gen/Return.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Return.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Return.cpp -o CMakeFiles/dig.dir/gen/Return.cpp.s
+
+CMakeFiles/dig.dir/gen/Return.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Return.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Return.cpp.o.provides: CMakeFiles/dig.dir/gen/Return.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Return.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Return.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Return.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Return.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Declaration.cpp.o: ../gen/Declaration.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/dig.dir/gen/Declaration.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Declaration.cpp.o -c /home/wax/workbench/dig/gen/Declaration.cpp
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Declaration.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Declaration.cpp > CMakeFiles/dig.dir/gen/Declaration.cpp.i
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Declaration.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Declaration.cpp -o CMakeFiles/dig.dir/gen/Declaration.cpp.s
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Declaration.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.o.provides: CMakeFiles/dig.dir/gen/Declaration.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Declaration.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Declaration.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Declaration.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Declaration.cpp.o
+
+
+CMakeFiles/dig.dir/ast/Unit.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/ast/Unit.cpp.o: ../ast/Unit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/dig.dir/ast/Unit.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/ast/Unit.cpp.o -c /home/wax/workbench/dig/ast/Unit.cpp
+
+CMakeFiles/dig.dir/ast/Unit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/ast/Unit.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/ast/Unit.cpp > CMakeFiles/dig.dir/ast/Unit.cpp.i
+
+CMakeFiles/dig.dir/ast/Unit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/ast/Unit.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/ast/Unit.cpp -o CMakeFiles/dig.dir/ast/Unit.cpp.s
+
+CMakeFiles/dig.dir/ast/Unit.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/ast/Unit.cpp.o.requires
+
+CMakeFiles/dig.dir/ast/Unit.cpp.o.provides: CMakeFiles/dig.dir/ast/Unit.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/Unit.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/ast/Unit.cpp.o.provides
+
+CMakeFiles/dig.dir/ast/Unit.cpp.o.provides.build: CMakeFiles/dig.dir/ast/Unit.cpp.o
+
+
+CMakeFiles/dig.dir/parse/Unit.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/parse/Unit.cpp.o: ../parse/Unit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/dig.dir/parse/Unit.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/parse/Unit.cpp.o -c /home/wax/workbench/dig/parse/Unit.cpp
+
+CMakeFiles/dig.dir/parse/Unit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/parse/Unit.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/parse/Unit.cpp > CMakeFiles/dig.dir/parse/Unit.cpp.i
+
+CMakeFiles/dig.dir/parse/Unit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/parse/Unit.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/parse/Unit.cpp -o CMakeFiles/dig.dir/parse/Unit.cpp.s
+
+CMakeFiles/dig.dir/parse/Unit.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/parse/Unit.cpp.o.requires
+
+CMakeFiles/dig.dir/parse/Unit.cpp.o.provides: CMakeFiles/dig.dir/parse/Unit.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Unit.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/parse/Unit.cpp.o.provides
+
+CMakeFiles/dig.dir/parse/Unit.cpp.o.provides.build: CMakeFiles/dig.dir/parse/Unit.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Unit.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Unit.cpp.o: ../gen/Unit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/dig.dir/gen/Unit.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Unit.cpp.o -c /home/wax/workbench/dig/gen/Unit.cpp
+
+CMakeFiles/dig.dir/gen/Unit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Unit.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Unit.cpp > CMakeFiles/dig.dir/gen/Unit.cpp.i
+
+CMakeFiles/dig.dir/gen/Unit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Unit.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Unit.cpp -o CMakeFiles/dig.dir/gen/Unit.cpp.s
+
+CMakeFiles/dig.dir/gen/Unit.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Unit.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Unit.cpp.o.provides: CMakeFiles/dig.dir/gen/Unit.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Unit.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Unit.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Unit.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Unit.cpp.o
+
+
+CMakeFiles/dig.dir/gen/Function.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/gen/Function.cpp.o: ../gen/Function.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/dig.dir/gen/Function.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/gen/Function.cpp.o -c /home/wax/workbench/dig/gen/Function.cpp
+
+CMakeFiles/dig.dir/gen/Function.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/gen/Function.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/gen/Function.cpp > CMakeFiles/dig.dir/gen/Function.cpp.i
+
+CMakeFiles/dig.dir/gen/Function.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/gen/Function.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/gen/Function.cpp -o CMakeFiles/dig.dir/gen/Function.cpp.s
+
+CMakeFiles/dig.dir/gen/Function.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/gen/Function.cpp.o.requires
+
+CMakeFiles/dig.dir/gen/Function.cpp.o.provides: CMakeFiles/dig.dir/gen/Function.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/gen/Function.cpp.o.provides
+
+CMakeFiles/dig.dir/gen/Function.cpp.o.provides.build: CMakeFiles/dig.dir/gen/Function.cpp.o
+
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/jit/JitContext.cpp.o: ../jit/JitContext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/dig.dir/jit/JitContext.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/jit/JitContext.cpp.o -c /home/wax/workbench/dig/jit/JitContext.cpp
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/jit/JitContext.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/workbench/dig/jit/JitContext.cpp > CMakeFiles/dig.dir/jit/JitContext.cpp.i
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/jit/JitContext.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/workbench/dig/jit/JitContext.cpp -o CMakeFiles/dig.dir/jit/JitContext.cpp.s
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/jit/JitContext.cpp.o.requires
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.o.provides: CMakeFiles/dig.dir/jit/JitContext.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/JitContext.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/jit/JitContext.cpp.o.provides
+
+CMakeFiles/dig.dir/jit/JitContext.cpp.o.provides.build: CMakeFiles/dig.dir/jit/JitContext.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/assembler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/assembler.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/assembler.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/assembler.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/compiler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/compiler.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/compiler.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/compiler.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/constpool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/constpool.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/constpool.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/constpool.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/containers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/containers.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/containers.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/containers.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/globals.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/globals.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/globals.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/globals.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/logger.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/logger.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/logger.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/operand.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/operand.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/operand.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/operand.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/podvector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/podvector.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/podvector.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/podvector.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/runtime.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/runtime.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/runtime.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/runtime.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/utils.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/utils.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/utils.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/vmem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/vmem.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/vmem.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/vmem.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o: /home/wax/lib/asmjit/src/asmjit/base/zone.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o -c /home/wax/lib/asmjit/src/asmjit/base/zone.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/base/zone.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/base/zone.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o
+
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o: CMakeFiles/dig.dir/flags.make
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o -c /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp > CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.i
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp -o CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.requires:
+
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.requires
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.provides: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.requires
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.provides.build
+.PHONY : CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.provides
+
+CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.provides.build: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
+
+
 # Object files for target dig
 dig_OBJECTS = \
 "CMakeFiles/dig.dir/main.cpp.o" \
@@ -708,7 +1500,40 @@ dig_OBJECTS = \
 "CMakeFiles/dig.dir/semantic/Scope.cpp.o" \
 "CMakeFiles/dig.dir/semantic/SemanticError.cpp.o" \
 "CMakeFiles/dig.dir/ast/PlnStmt.cpp.o" \
-"CMakeFiles/dig.dir/parse/Pln.cpp.o"
+"CMakeFiles/dig.dir/parse/Pln.cpp.o" \
+"CMakeFiles/dig.dir/ast/IfStmt.cpp.o" \
+"CMakeFiles/dig.dir/parse/If.cpp.o" \
+"CMakeFiles/dig.dir/gen/Program.cpp.o" \
+"CMakeFiles/dig.dir/gen/Expression.cpp.o" \
+"CMakeFiles/dig.dir/gen/Return.cpp.o" \
+"CMakeFiles/dig.dir/gen/Declaration.cpp.o" \
+"CMakeFiles/dig.dir/ast/Unit.cpp.o" \
+"CMakeFiles/dig.dir/parse/Unit.cpp.o" \
+"CMakeFiles/dig.dir/gen/Unit.cpp.o" \
+"CMakeFiles/dig.dir/gen/Function.cpp.o" \
+"CMakeFiles/dig.dir/jit/JitContext.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o" \
+"CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o"
 
 # External object files for target dig
 dig_EXTERNAL_OBJECTS =
@@ -739,9 +1564,42 @@ dig: CMakeFiles/dig.dir/semantic/Scope.cpp.o
 dig: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o
 dig: CMakeFiles/dig.dir/ast/PlnStmt.cpp.o
 dig: CMakeFiles/dig.dir/parse/Pln.cpp.o
+dig: CMakeFiles/dig.dir/ast/IfStmt.cpp.o
+dig: CMakeFiles/dig.dir/parse/If.cpp.o
+dig: CMakeFiles/dig.dir/gen/Program.cpp.o
+dig: CMakeFiles/dig.dir/gen/Expression.cpp.o
+dig: CMakeFiles/dig.dir/gen/Return.cpp.o
+dig: CMakeFiles/dig.dir/gen/Declaration.cpp.o
+dig: CMakeFiles/dig.dir/ast/Unit.cpp.o
+dig: CMakeFiles/dig.dir/parse/Unit.cpp.o
+dig: CMakeFiles/dig.dir/gen/Unit.cpp.o
+dig: CMakeFiles/dig.dir/gen/Function.cpp.o
+dig: CMakeFiles/dig.dir/jit/JitContext.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o
+dig: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
 dig: CMakeFiles/dig.dir/build.make
 dig: CMakeFiles/dig.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX executable dig"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wax/workbench/dig/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX executable dig"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dig.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -775,6 +1633,39 @@ CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/semantic/Scope.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/semantic/SemanticError.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/PlnStmt.cpp.o.requires
 CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Pln.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/IfStmt.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/If.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Program.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Expression.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Return.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Declaration.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/ast/Unit.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/parse/Unit.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Unit.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/gen/Function.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/jit/JitContext.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/constpool.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/containers.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/cpuinfo.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/globals.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/hlstream.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/logger.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/operand.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/podvector.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/runtime.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/utils.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/vmem.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/zone.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86assembler.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compiler.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilercontext.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86compilerfunc.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o.requires
+CMakeFiles/dig.dir/requires: CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o.requires
 
 .PHONY : CMakeFiles/dig.dir/requires
 

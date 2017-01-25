@@ -550,3 +550,18 @@ make[1]: Leaving directory '/home/wax/workbench/dig/cmake-build-debug/CMakeFiles
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Performing C++ SOURCE FILE Test ok succeeded with the following output:
+Change Dir: /home/wax/workbench/dig/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3c1ce/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3c1ce.dir/build.make CMakeFiles/cmTC_3c1ce.dir/build
+make[1]: Entering directory '/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3c1ce.dir/src.cxx.o
+/usr/bin/c++     -Dok   -std=c++14 -o CMakeFiles/cmTC_3c1ce.dir/src.cxx.o -c /home/wax/workbench/dig/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3c1ce
+/usr/share/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c1ce.dir/link.txt --verbose=1
+/usr/bin/c++    -Dok    CMakeFiles/cmTC_3c1ce.dir/src.cxx.o  -o cmTC_3c1ce -rdynamic 
+make[1]: Leaving directory '/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }

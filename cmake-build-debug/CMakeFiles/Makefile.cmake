@@ -7,12 +7,14 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+  "/home/wax/lib/asmjit/CMakeLists.txt"
   "../CMakeLists.txt"
   "CMakeFiles/3.6.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.6.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.6.2/CMakeSystem.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeCInformation.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeCXXInformation.cmake"
+  "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeFindCodeBlocks.cmake"
@@ -20,6 +22,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeLanguageInformation.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CheckCXXCompilerFlag.cmake"
+  "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/CheckCXXSourceCompiles.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/Compiler/GNU-C.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/clion/bin/cmake/share/cmake-3.6/Modules/Compiler/GNU.cmake"

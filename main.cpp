@@ -1,32 +1,44 @@
-#include <iostream>
 
-#include "util/PrettyPrint.h"
+#include <iostream>
+#include <asmjit/asmjit.h>
+
+#include "config.h"
+
+#include "gen/Gen.h"
 #include "lexer/Lexer.h"
-#include "ast/Stmt.h"
 #include "parse/Parse.h"
 
 int main() {
-    std::string source = "var x = 11; pln x;";
+    std::string source = "func f() { return 3; } return f();";
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
-
-
+#if DUMP_TOK
     std::cout << "Source -> Tokens =>" << std::endl;
     tokens.dump();
+#endif
 
     try {
-        Stmt* root = Parse::file(tokens);
+        Unit* root = Parse::unit(tokens);
+#if DUMP_AST
         std::cout << std::endl << "Tokens -> AST =>" << std::endl;
-        root->dump();
+        root->dump(0);
+#endif
 
         Scope* fileScope = new Scope();
         root->analyze(fileScope);
+#if DUMP_SYM
         std::cout << std::endl << "AST -> Scope =>" << std::endl;
         fileScope->dump();
+#endif
+
+        JitRuntime runtime;
+        ProgramType program = Generate::program(&runtime, root);
+        std::cout << std::endl << "Program exited with code " << program() << std::endl;
+        runtime.release((void*) program);
 
     } catch (int i) {
-        std::cout << "error " << i << std::endl;
+        std::cout << "compilation error " << i << std::endl;
     }
 
     return 0;

@@ -15,6 +15,8 @@ public:
 
     VariableExpr(std::string identifier);
 
+    virtual X86GpVar* generate(X86Compiler &c);
+
     void analyze(Scope* scope);
 
     void dump(size_t indent);
