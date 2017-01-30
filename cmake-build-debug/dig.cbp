@@ -364,6 +364,18 @@
 		<Unit filename="/home/wax/workbench/dig/gen/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/dig/interactive/IO.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/interactive/IO.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/interactive/Interactive.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/interactive/Interactive.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/dig/jit/JitContext.cpp">
 			<Option target="dig"/>
 		</Unit>

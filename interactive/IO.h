@@ -10,7 +10,6 @@
 
 namespace IO {
     extern std::ifstream in;
-    extern std::ofstream out;
 
     bool init();
 }

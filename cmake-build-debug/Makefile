@@ -1230,6 +1230,60 @@ home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
 .PHONY : home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.s
 
+interactive/IO.o: interactive/IO.cpp.o
+
+.PHONY : interactive/IO.o
+
+# target to build an object file
+interactive/IO.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/IO.cpp.o
+.PHONY : interactive/IO.cpp.o
+
+interactive/IO.i: interactive/IO.cpp.i
+
+.PHONY : interactive/IO.i
+
+# target to preprocess a source file
+interactive/IO.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/IO.cpp.i
+.PHONY : interactive/IO.cpp.i
+
+interactive/IO.s: interactive/IO.cpp.s
+
+.PHONY : interactive/IO.s
+
+# target to generate assembly for a file
+interactive/IO.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/IO.cpp.s
+.PHONY : interactive/IO.cpp.s
+
+interactive/Interactive.o: interactive/Interactive.cpp.o
+
+.PHONY : interactive/Interactive.o
+
+# target to build an object file
+interactive/Interactive.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/Interactive.cpp.o
+.PHONY : interactive/Interactive.cpp.o
+
+interactive/Interactive.i: interactive/Interactive.cpp.i
+
+.PHONY : interactive/Interactive.i
+
+# target to preprocess a source file
+interactive/Interactive.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/Interactive.cpp.i
+.PHONY : interactive/Interactive.cpp.i
+
+interactive/Interactive.s: interactive/Interactive.cpp.s
+
+.PHONY : interactive/Interactive.s
+
+# target to generate assembly for a file
+interactive/Interactive.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/Interactive.cpp.s
+.PHONY : interactive/Interactive.cpp.s
+
 jit/JitContext.o: jit/JitContext.cpp.o
 
 .PHONY : jit/JitContext.o
@@ -1848,6 +1902,12 @@ help:
 	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.o"
 	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.i"
 	@echo "... home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.s"
+	@echo "... interactive/IO.o"
+	@echo "... interactive/IO.i"
+	@echo "... interactive/IO.s"
+	@echo "... interactive/Interactive.o"
+	@echo "... interactive/Interactive.i"
+	@echo "... interactive/Interactive.s"
 	@echo "... jit/JitContext.o"
 	@echo "... jit/JitContext.i"
 	@echo "... jit/JitContext.s"

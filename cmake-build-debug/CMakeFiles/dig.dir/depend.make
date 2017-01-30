@@ -704,6 +704,13 @@ CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o: /ho
 CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o: /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp
 CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o: /home/wax/lib/asmjit/src/test/broken.h
 
+CMakeFiles/dig.dir/interactive/IO.cpp.o: ../interactive/IO.cpp
+CMakeFiles/dig.dir/interactive/IO.cpp.o: ../interactive/IO.h
+
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/IO.h
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/Interactive.cpp
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/Interactive.h
+
 CMakeFiles/dig.dir/jit/JitContext.cpp.o: ../jit/JitContext.cpp
 
 CMakeFiles/dig.dir/lexer/Lexer.cpp.o: ../lexer/Lexer.cpp
@@ -734,6 +741,7 @@ CMakeFiles/dig.dir/main.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableExpr.h
+CMakeFiles/dig.dir/main.cpp.o: .././interactive/Interactive.h
 CMakeFiles/dig.dir/main.cpp.o: .././lexer/TokenQueue.h
 CMakeFiles/dig.dir/main.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/main.cpp.o: ../config.h

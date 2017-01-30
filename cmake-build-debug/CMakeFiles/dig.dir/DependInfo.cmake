@@ -45,6 +45,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86inst.cpp.o"
   "/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand.cpp.o"
   "/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o"
+  "/home/wax/workbench/dig/interactive/IO.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/interactive/IO.cpp.o"
+  "/home/wax/workbench/dig/interactive/Interactive.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/interactive/Interactive.cpp.o"
   "/home/wax/workbench/dig/jit/JitContext.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/jit/JitContext.cpp.o"
   "/home/wax/workbench/dig/lexer/Lexer.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/lexer/Lexer.cpp.o"
   "/home/wax/workbench/dig/lexer/TokenQueue.cpp" "/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o"

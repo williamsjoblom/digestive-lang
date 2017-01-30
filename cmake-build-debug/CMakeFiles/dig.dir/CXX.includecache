@@ -140,6 +140,8 @@ ast/Expr.h
 ast/BlockStmt.h
 .././gen/ast/BlockStmt.h
 
+.././interactive/Interactive.h
+
 .././jit/JitContext.h
 
 .././lexer/Token.h
@@ -1084,6 +1086,36 @@ gen/Gen.h
 Gen.h
 /home/wax/workbench/dig/gen/Gen.h
 
+/home/wax/workbench/dig/interactive/IO.cpp
+iostream
+-
+cstring
+-
+climits
+-
+unistd.h
+-
+limits.h
+-
+IO.h
+/home/wax/workbench/dig/interactive/IO.h
+
+/home/wax/workbench/dig/interactive/IO.h
+fstream
+-
+
+/home/wax/workbench/dig/interactive/Interactive.cpp
+thread
+-
+iostream
+-
+Interactive.h
+/home/wax/workbench/dig/interactive/Interactive.h
+IO.h
+/home/wax/workbench/dig/interactive/IO.h
+
+/home/wax/workbench/dig/interactive/Interactive.h
+
 /home/wax/workbench/dig/jit/JitContext.cpp
 
 /home/wax/workbench/dig/lexer/Lexer.cpp
@@ -1132,6 +1164,8 @@ Token.h
 iostream
 -
 asmjit/asmjit.h
+-
+interactive/Interactive.h
 -
 config.h
 /home/wax/workbench/dig/config.h

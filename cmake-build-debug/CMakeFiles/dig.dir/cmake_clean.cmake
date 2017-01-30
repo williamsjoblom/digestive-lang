@@ -36,6 +36,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dig.dir/gen/Unit.cpp.o"
   "CMakeFiles/dig.dir/gen/Function.cpp.o"
   "CMakeFiles/dig.dir/jit/JitContext.cpp.o"
+  "CMakeFiles/dig.dir/interactive/IO.cpp.o"
+  "CMakeFiles/dig.dir/interactive/Interactive.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o"

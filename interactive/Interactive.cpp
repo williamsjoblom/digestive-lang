@@ -10,7 +10,7 @@
 
 namespace Interactive {
 
-    void writePrompt();
+    void evaluate(std::string cmd);
 
     void start() {
         std::thread t1(loop);
@@ -18,18 +18,25 @@ namespace Interactive {
     }
 
     void loop() {
-        IO::init();
+        if (!IO::init()) {
+            std::cout << "Failed to open pipe" << std::endl;
+            return;
+        }
 
         while (true) {
-            writePrompt();
             std::string s;
-            IO::in >> s;
-            std::cout << "Read: " << s << std::endl;
+            std::getline(IO::in, s);
+            if (!s.empty()) {
+                std::cout << "Read: " << s << std::endl;
+            }
+
+            if (IO::in.eof()) IO::in.clear();
         }
     }
 
-    void writePrompt() {
-        IO::out << "dig> ";
-        //IO::out.flush();
+    void evaluate(std::string cmd) {
+        if (cmd == "update") {
+
+        }
     }
 }

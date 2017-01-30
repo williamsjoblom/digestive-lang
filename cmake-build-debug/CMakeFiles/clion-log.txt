@@ -1,6 +1,6 @@
 /usr/share/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/wax/workbench/dig
 -- [asmjit] Included | Mode=Embed | Test=Off
--- [asmjit] ASMJIT_DIR=/home/wax/lib/asmjit
+-- [asmjit] ASMJIT_DIR=~/lib/asmjit
 -- [asmjit] ASMJIT_DEPS=pthread;rt
 -- [asmjit] ASMJIT_LIBS=pthread;rt
 -- [asmjit] ASMJIT_CFLAGS=

@@ -26,3 +26,7 @@ void FunctionDecl::dump(size_t indent) {
 void FunctionDecl::generate(X86Compiler &c) {
     Generate::function(c, this);
 }
+
+long FunctionDecl::operator==(FunctionDecl *functionDecl) {
+    return 0;
+}
