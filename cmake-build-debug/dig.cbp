@@ -376,6 +376,12 @@
 		<Unit filename="/home/wax/workbench/compiler-experiment/interactive/Interactive.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/compiler-experiment/jit/Jit.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/compiler-experiment/jit/Jit.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/compiler-experiment/jit/JitContext.cpp">
 			<Option target="dig"/>
 		</Unit>

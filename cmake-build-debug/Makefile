@@ -1284,6 +1284,33 @@ interactive/Interactive.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/Interactive.cpp.s
 .PHONY : interactive/Interactive.cpp.s
 
+jit/Jit.o: jit/Jit.cpp.o
+
+.PHONY : jit/Jit.o
+
+# target to build an object file
+jit/Jit.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/Jit.cpp.o
+.PHONY : jit/Jit.cpp.o
+
+jit/Jit.i: jit/Jit.cpp.i
+
+.PHONY : jit/Jit.i
+
+# target to preprocess a source file
+jit/Jit.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/Jit.cpp.i
+.PHONY : jit/Jit.cpp.i
+
+jit/Jit.s: jit/Jit.cpp.s
+
+.PHONY : jit/Jit.s
+
+# target to generate assembly for a file
+jit/Jit.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/Jit.cpp.s
+.PHONY : jit/Jit.cpp.s
+
 jit/JitContext.o: jit/JitContext.cpp.o
 
 .PHONY : jit/JitContext.o
@@ -1908,6 +1935,9 @@ help:
 	@echo "... interactive/Interactive.o"
 	@echo "... interactive/Interactive.i"
 	@echo "... interactive/Interactive.s"
+	@echo "... jit/Jit.o"
+	@echo "... jit/Jit.i"
+	@echo "... jit/Jit.s"
 	@echo "... jit/JitContext.o"
 	@echo "... jit/JitContext.i"
 	@echo "... jit/JitContext.s"

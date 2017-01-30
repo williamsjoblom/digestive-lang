@@ -31,11 +31,15 @@ bool FunctionDecl::equals(const Node &other) const {
     const FunctionDecl* o = dynamic_cast<const FunctionDecl*>(&other);
     if (o == nullptr) return false;
 
-    if (o->parameters->size() != parameters->size()) return false;
+    return matchesSignature(*o) && *body == *o->body;
+}
+
+bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
+    if (other.parameters->size() != parameters->size()) return false;
 
     for (int i = 0; i < parameters->size(); i++) {
         VariableDecl* parameter = (*parameters)[i];
-        VariableDecl* otherParameter = (*o->parameters)[i];
+        VariableDecl* otherParameter = (*other.parameters)[i];
 
         if (*parameter != *otherParameter) return false;
     }

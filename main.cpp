@@ -1,18 +1,31 @@
 
 #include <iostream>
 #include <asmjit/asmjit.h>
-#include <interactive/Interactive.h>
+
 
 #include "config.h"
 
 #include "gen/Gen.h"
 #include "lexer/Lexer.h"
 #include "parse/Parse.h"
+#include "interactive/Interactive.h"
+#include "jit/Jit.h"
 
 int main() {
 
+    Jit jit;
+    jit.load("/home/wax/test1.dg");
 
-    Interactive::start();
+    int first = jit.run();
+
+    jit.reload("/home/wax/test2.dg");
+    int second = jit.run();
+
+    //std::cout << "First run: " << first << ", second run: " << second << std::endl;
+
+    return 0;
+
+    //Interactive::start();
 
     std::string source = "func f() { return 3; } return f();";
 

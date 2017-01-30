@@ -28,10 +28,6 @@ namespace Generate {
 
         c.finalize();
 
-#if DUMP_ASM
-        std::cout << std::endl << "AST -> ASM =>" << std::endl << logger.getString() << std::endl;
-#endif
-
         ProgramType func = asmjit_cast<ProgramType>(a.make());
         return func;
     }
