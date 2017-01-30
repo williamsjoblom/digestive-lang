@@ -33,4 +33,14 @@ void VariableDecl::generate(X86Compiler &c) {
     Generate::variableDeclaration(c, this);
 }
 
+bool VariableDecl::equals(const Node &other) const {
+    const VariableDecl* o = dynamic_cast<const VariableDecl*>(&other);
+    if (o == nullptr) return false;
+
+    if (o->value == nullptr && value != nullptr) return false;
+    if (o->value != nullptr && value == nullptr) return false;
+
+    return *o->value == *value && Decl::equals(other);
+}
+
 

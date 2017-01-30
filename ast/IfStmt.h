@@ -21,6 +21,8 @@ public:
 
     void analyze(Scope* scope);
 
+    virtual bool equals(const Node& other) const;
+
     void dump(size_t indent);
 
 };

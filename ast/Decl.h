@@ -13,6 +13,7 @@ class Decl : public Stmt {
 public:
     std::string identifier;
 
+    virtual bool equals(const Node& other) const;
     Decl(std::string identifier);
 };
 

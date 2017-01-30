@@ -22,9 +22,8 @@ public:
 
     void generate(X86Compiler &c);
     void analyze(Scope* scope);
+    virtual bool equals(const Node& other) const;
     virtual void dump(size_t indent);
-
-    //operator==(FunctionDecl* functionDecl);
 };
 
 

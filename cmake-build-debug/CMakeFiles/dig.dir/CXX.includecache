@@ -816,127 +816,127 @@ stdlib.h
 string.h
 -
 
-/home/wax/workbench/dig/ast/Analyzable.h
+/home/wax/workbench/compiler-experiment/ast/Analyzable.h
 semantic/Scope.h
-/home/wax/workbench/dig/ast/semantic/Scope.h
+/home/wax/workbench/compiler-experiment/ast/semantic/Scope.h
 
-/home/wax/workbench/dig/ast/BinaryExpr.cpp
+/home/wax/workbench/compiler-experiment/ast/BinaryExpr.cpp
 gen/Gen.h
 -
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 BinaryExpr.h
-/home/wax/workbench/dig/ast/BinaryExpr.h
+/home/wax/workbench/compiler-experiment/ast/BinaryExpr.h
 
-/home/wax/workbench/dig/ast/BinaryExpr.h
+/home/wax/workbench/compiler-experiment/ast/BinaryExpr.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 Operator.h
-/home/wax/workbench/dig/ast/Operator.h
+/home/wax/workbench/compiler-experiment/ast/Operator.h
 
-/home/wax/workbench/dig/ast/BlockStmt.cpp
+/home/wax/workbench/compiler-experiment/ast/BlockStmt.cpp
 vector
 -
 BlockStmt.h
-/home/wax/workbench/dig/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/ast/BlockStmt.h
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 
-/home/wax/workbench/dig/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/ast/BlockStmt.h
 vector
 -
 Stmt.h
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 
-/home/wax/workbench/dig/ast/Decl.cpp
+/home/wax/workbench/compiler-experiment/ast/Decl.cpp
 gen/Gen.h
 -
 Decl.h
-/home/wax/workbench/dig/ast/Decl.h
+/home/wax/workbench/compiler-experiment/ast/Decl.h
 
-/home/wax/workbench/dig/ast/Decl.h
+/home/wax/workbench/compiler-experiment/ast/Decl.h
 string
 -
 Stmt.h
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 Analyzable.h
-/home/wax/workbench/dig/ast/Analyzable.h
+/home/wax/workbench/compiler-experiment/ast/Analyzable.h
 
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 asmjit/asmjit.h
 -
 Node.h
-/home/wax/workbench/dig/ast/Node.h
+/home/wax/workbench/compiler-experiment/ast/Node.h
 
-/home/wax/workbench/dig/ast/FunctionCall.cpp
+/home/wax/workbench/compiler-experiment/ast/FunctionCall.cpp
 util/PrettyPrint.h
 -
 gen/Gen.h
 -
 FunctionCall.h
-/home/wax/workbench/dig/ast/FunctionCall.h
+/home/wax/workbench/compiler-experiment/ast/FunctionCall.h
 
-/home/wax/workbench/dig/ast/FunctionCall.h
+/home/wax/workbench/compiler-experiment/ast/FunctionCall.h
 vector
 -
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 
-/home/wax/workbench/dig/ast/FunctionDecl.cpp
+/home/wax/workbench/compiler-experiment/ast/FunctionDecl.cpp
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 gen/Gen.h
-/home/wax/workbench/dig/ast/gen/Gen.h
+/home/wax/workbench/compiler-experiment/ast/gen/Gen.h
 FunctionDecl.h
-/home/wax/workbench/dig/ast/FunctionDecl.h
+/home/wax/workbench/compiler-experiment/ast/FunctionDecl.h
 
-/home/wax/workbench/dig/ast/FunctionDecl.h
+/home/wax/workbench/compiler-experiment/ast/FunctionDecl.h
 semantic/Scope.h
 -
 Decl.h
-/home/wax/workbench/dig/ast/Decl.h
+/home/wax/workbench/compiler-experiment/ast/Decl.h
 BlockStmt.h
-/home/wax/workbench/dig/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/ast/BlockStmt.h
 VariableDecl.h
-/home/wax/workbench/dig/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/ast/VariableDecl.h
 
-/home/wax/workbench/dig/ast/IfStmt.cpp
+/home/wax/workbench/compiler-experiment/ast/IfStmt.cpp
 assert.h
 -
 util/PrettyPrint.h
 -
 IfStmt.h
-/home/wax/workbench/dig/ast/IfStmt.h
+/home/wax/workbench/compiler-experiment/ast/IfStmt.h
 
-/home/wax/workbench/dig/ast/IfStmt.h
+/home/wax/workbench/compiler-experiment/ast/IfStmt.h
 Stmt.h
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 BlockStmt.h
-/home/wax/workbench/dig/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/ast/BlockStmt.h
 
-/home/wax/workbench/dig/ast/LiteralExpr.cpp
+/home/wax/workbench/compiler-experiment/ast/LiteralExpr.cpp
 gen/Gen.h
 -
 LiteralExpr.h
-/home/wax/workbench/dig/ast/LiteralExpr.h
+/home/wax/workbench/compiler-experiment/ast/LiteralExpr.h
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 
-/home/wax/workbench/dig/ast/LiteralExpr.h
+/home/wax/workbench/compiler-experiment/ast/LiteralExpr.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 
-/home/wax/workbench/dig/ast/Node.h
+/home/wax/workbench/compiler-experiment/ast/Node.h
 iostream
 -
 Analyzable.h
-/home/wax/workbench/dig/ast/Analyzable.h
+/home/wax/workbench/compiler-experiment/ast/Analyzable.h
 
-/home/wax/workbench/dig/ast/Operator.cpp
+/home/wax/workbench/compiler-experiment/ast/Operator.cpp
 Operator.h
-/home/wax/workbench/dig/ast/Operator.h
+/home/wax/workbench/compiler-experiment/ast/Operator.h
 map
 -
 assert.h
@@ -944,85 +944,85 @@ assert.h
 util/PrettyPrint.h
 -
 
-/home/wax/workbench/dig/ast/Operator.h
+/home/wax/workbench/compiler-experiment/ast/Operator.h
 string
 -
 Node.h
-/home/wax/workbench/dig/ast/Node.h
+/home/wax/workbench/compiler-experiment/ast/Node.h
 
-/home/wax/workbench/dig/ast/PlnStmt.cpp
+/home/wax/workbench/compiler-experiment/ast/PlnStmt.cpp
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 PlnStmt.h
-/home/wax/workbench/dig/ast/PlnStmt.h
+/home/wax/workbench/compiler-experiment/ast/PlnStmt.h
 
-/home/wax/workbench/dig/ast/PlnStmt.h
+/home/wax/workbench/compiler-experiment/ast/PlnStmt.h
 Stmt.h
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 
-/home/wax/workbench/dig/ast/ReturnStmt.cpp
+/home/wax/workbench/compiler-experiment/ast/ReturnStmt.cpp
 gen/Gen.h
 -
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 ReturnStmt.h
-/home/wax/workbench/dig/ast/ReturnStmt.h
+/home/wax/workbench/compiler-experiment/ast/ReturnStmt.h
 
-/home/wax/workbench/dig/ast/ReturnStmt.h
+/home/wax/workbench/compiler-experiment/ast/ReturnStmt.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 Stmt.h
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 
-/home/wax/workbench/dig/ast/Stmt.h
+/home/wax/workbench/compiler-experiment/ast/Stmt.h
 asmjit/asmjit.h
 -
 Node.h
-/home/wax/workbench/dig/ast/Node.h
+/home/wax/workbench/compiler-experiment/ast/Node.h
 Analyzable.h
-/home/wax/workbench/dig/ast/Analyzable.h
+/home/wax/workbench/compiler-experiment/ast/Analyzable.h
 
-/home/wax/workbench/dig/ast/Unit.cpp
+/home/wax/workbench/compiler-experiment/ast/Unit.cpp
 gen/Gen.h
-/home/wax/workbench/dig/ast/gen/Gen.h
+/home/wax/workbench/compiler-experiment/ast/gen/Gen.h
 
-/home/wax/workbench/dig/ast/VariableDecl.cpp
+/home/wax/workbench/compiler-experiment/ast/VariableDecl.cpp
 util/PrettyPrint.h
 -
 gen/Gen.h
 -
 VariableDecl.h
-/home/wax/workbench/dig/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/ast/VariableDecl.h
 
-/home/wax/workbench/dig/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/ast/VariableDecl.h
 Decl.h
-/home/wax/workbench/dig/ast/Decl.h
+/home/wax/workbench/compiler-experiment/ast/Decl.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 
-/home/wax/workbench/dig/ast/VariableExpr.cpp
+/home/wax/workbench/compiler-experiment/ast/VariableExpr.cpp
 gen/Gen.h
-/home/wax/workbench/dig/ast/gen/Gen.h
+/home/wax/workbench/compiler-experiment/ast/gen/Gen.h
 util/PrettyPrint.h
-/home/wax/workbench/dig/ast/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/ast/util/PrettyPrint.h
 VariableExpr.h
-/home/wax/workbench/dig/ast/VariableExpr.h
+/home/wax/workbench/compiler-experiment/ast/VariableExpr.h
 
-/home/wax/workbench/dig/ast/VariableExpr.h
+/home/wax/workbench/compiler-experiment/ast/VariableExpr.h
 Expr.h
-/home/wax/workbench/dig/ast/Expr.h
+/home/wax/workbench/compiler-experiment/ast/Expr.h
 
-/home/wax/workbench/dig/config.h
+/home/wax/workbench/compiler-experiment/config.h
 
-/home/wax/workbench/dig/gen/Declaration.cpp
+/home/wax/workbench/compiler-experiment/gen/Declaration.cpp
 asmjit/asmjit.h
 -
 ast/VariableDecl.h
-/home/wax/workbench/dig/gen/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/gen/ast/VariableDecl.h
 
-/home/wax/workbench/dig/gen/Expression.cpp
+/home/wax/workbench/compiler-experiment/gen/Expression.cpp
 asmjit/asmjit.h
 -
 ast/VariableExpr.h
@@ -1038,55 +1038,55 @@ ast/FunctionDecl.h
 jit/JitContext.h
 -
 ast/BinaryExpr.h
-/home/wax/workbench/dig/gen/ast/BinaryExpr.h
+/home/wax/workbench/compiler-experiment/gen/ast/BinaryExpr.h
 ast/LiteralExpr.h
-/home/wax/workbench/dig/gen/ast/LiteralExpr.h
+/home/wax/workbench/compiler-experiment/gen/ast/LiteralExpr.h
 
-/home/wax/workbench/dig/gen/Function.cpp
+/home/wax/workbench/compiler-experiment/gen/Function.cpp
 Gen.h
-/home/wax/workbench/dig/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 
-/home/wax/workbench/dig/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 ast/FunctionCall.h
-/home/wax/workbench/dig/gen/ast/FunctionCall.h
+/home/wax/workbench/compiler-experiment/gen/ast/FunctionCall.h
 asmjit/asmjit.h
-/home/wax/workbench/dig/gen/asmjit/asmjit.h
+/home/wax/workbench/compiler-experiment/gen/asmjit/asmjit.h
 ast/VariableExpr.h
-/home/wax/workbench/dig/gen/ast/VariableExpr.h
+/home/wax/workbench/compiler-experiment/gen/ast/VariableExpr.h
 ast/ReturnStmt.h
-/home/wax/workbench/dig/gen/ast/ReturnStmt.h
+/home/wax/workbench/compiler-experiment/gen/ast/ReturnStmt.h
 ast/Unit.h
-/home/wax/workbench/dig/gen/ast/Unit.h
+/home/wax/workbench/compiler-experiment/gen/ast/Unit.h
 ast/BinaryExpr.h
-/home/wax/workbench/dig/gen/ast/BinaryExpr.h
+/home/wax/workbench/compiler-experiment/gen/ast/BinaryExpr.h
 ast/LiteralExpr.h
-/home/wax/workbench/dig/gen/ast/LiteralExpr.h
+/home/wax/workbench/compiler-experiment/gen/ast/LiteralExpr.h
 ast/Expr.h
-/home/wax/workbench/dig/gen/ast/Expr.h
+/home/wax/workbench/compiler-experiment/gen/ast/Expr.h
 ast/BlockStmt.h
-/home/wax/workbench/dig/gen/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/gen/ast/BlockStmt.h
 
-/home/wax/workbench/dig/gen/Program.cpp
+/home/wax/workbench/compiler-experiment/gen/Program.cpp
 iostream
 -
 jit/JitContext.h
-/home/wax/workbench/dig/gen/jit/JitContext.h
+/home/wax/workbench/compiler-experiment/gen/jit/JitContext.h
 ast/Unit.h
-/home/wax/workbench/dig/gen/ast/Unit.h
+/home/wax/workbench/compiler-experiment/gen/ast/Unit.h
 config.h
-/home/wax/workbench/dig/gen/config.h
+/home/wax/workbench/compiler-experiment/gen/config.h
 Gen.h
-/home/wax/workbench/dig/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 
-/home/wax/workbench/dig/gen/Return.cpp
+/home/wax/workbench/compiler-experiment/gen/Return.cpp
 gen/Gen.h
-/home/wax/workbench/dig/gen/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/gen/Gen.h
 
-/home/wax/workbench/dig/gen/Unit.cpp
+/home/wax/workbench/compiler-experiment/gen/Unit.cpp
 Gen.h
-/home/wax/workbench/dig/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 
-/home/wax/workbench/dig/interactive/IO.cpp
+/home/wax/workbench/compiler-experiment/interactive/IO.cpp
 iostream
 -
 cstring
@@ -1098,35 +1098,35 @@ unistd.h
 limits.h
 -
 IO.h
-/home/wax/workbench/dig/interactive/IO.h
+/home/wax/workbench/compiler-experiment/interactive/IO.h
 
-/home/wax/workbench/dig/interactive/IO.h
+/home/wax/workbench/compiler-experiment/interactive/IO.h
 fstream
 -
 
-/home/wax/workbench/dig/interactive/Interactive.cpp
+/home/wax/workbench/compiler-experiment/interactive/Interactive.cpp
 thread
 -
 iostream
 -
 Interactive.h
-/home/wax/workbench/dig/interactive/Interactive.h
+/home/wax/workbench/compiler-experiment/interactive/Interactive.h
 IO.h
-/home/wax/workbench/dig/interactive/IO.h
+/home/wax/workbench/compiler-experiment/interactive/IO.h
 
-/home/wax/workbench/dig/interactive/Interactive.h
+/home/wax/workbench/compiler-experiment/interactive/Interactive.h
 
-/home/wax/workbench/dig/jit/JitContext.cpp
+/home/wax/workbench/compiler-experiment/jit/JitContext.cpp
 
-/home/wax/workbench/dig/lexer/Lexer.cpp
+/home/wax/workbench/compiler-experiment/lexer/Lexer.cpp
 assert.h
 -
 Lexer.h
-/home/wax/workbench/dig/lexer/Lexer.h
+/home/wax/workbench/compiler-experiment/lexer/Lexer.h
 Token.h
-/home/wax/workbench/dig/lexer/Token.h
+/home/wax/workbench/compiler-experiment/lexer/Token.h
 
-/home/wax/workbench/dig/lexer/Lexer.h
+/home/wax/workbench/compiler-experiment/lexer/Lexer.h
 vector
 -
 string
@@ -1136,31 +1136,31 @@ iostream
 map
 -
 TokenQueue.h
-/home/wax/workbench/dig/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
 Token.h
-/home/wax/workbench/dig/lexer/Token.h
+/home/wax/workbench/compiler-experiment/lexer/Token.h
 
-/home/wax/workbench/dig/lexer/Token.h
+/home/wax/workbench/compiler-experiment/lexer/Token.h
 iostream
 -
 map
 -
 
-/home/wax/workbench/dig/lexer/TokenQueue.cpp
+/home/wax/workbench/compiler-experiment/lexer/TokenQueue.cpp
 assert.h
 -
 TokenQueue.h
-/home/wax/workbench/dig/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
 parse/ParseError.h
-/home/wax/workbench/dig/lexer/parse/ParseError.h
+/home/wax/workbench/compiler-experiment/lexer/parse/ParseError.h
 
-/home/wax/workbench/dig/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
 vector
 -
 Token.h
-/home/wax/workbench/dig/lexer/Token.h
+/home/wax/workbench/compiler-experiment/lexer/Token.h
 
-/home/wax/workbench/dig/main.cpp
+/home/wax/workbench/compiler-experiment/main.cpp
 iostream
 -
 asmjit/asmjit.h
@@ -1168,27 +1168,27 @@ asmjit/asmjit.h
 interactive/Interactive.h
 -
 config.h
-/home/wax/workbench/dig/config.h
+/home/wax/workbench/compiler-experiment/config.h
 gen/Gen.h
-/home/wax/workbench/dig/gen/Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 lexer/Lexer.h
-/home/wax/workbench/dig/lexer/Lexer.h
+/home/wax/workbench/compiler-experiment/lexer/Lexer.h
 parse/Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Block.cpp
+/home/wax/workbench/compiler-experiment/parse/Block.cpp
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 ast/BlockStmt.h
-/home/wax/workbench/dig/parse/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/parse/ast/BlockStmt.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Expression.cpp
+/home/wax/workbench/compiler-experiment/parse/Expression.cpp
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 ParseError.h
-/home/wax/workbench/dig/parse/ParseError.h
+/home/wax/workbench/compiler-experiment/parse/ParseError.h
 vector
 -
 stack
@@ -1206,33 +1206,33 @@ ast/VariableExpr.h
 ast/FunctionCall.h
 -
 
-/home/wax/workbench/dig/parse/File.cpp
+/home/wax/workbench/compiler-experiment/parse/File.cpp
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 ast/BlockStmt.h
-/home/wax/workbench/dig/parse/ast/BlockStmt.h
+/home/wax/workbench/compiler-experiment/parse/ast/BlockStmt.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Function.cpp
+/home/wax/workbench/compiler-experiment/parse/Function.cpp
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 ParseError.h
-/home/wax/workbench/dig/parse/ParseError.h
+/home/wax/workbench/compiler-experiment/parse/ParseError.h
 ast/FunctionDecl.h
-/home/wax/workbench/dig/parse/ast/FunctionDecl.h
+/home/wax/workbench/compiler-experiment/parse/ast/FunctionDecl.h
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 
-/home/wax/workbench/dig/parse/If.cpp
+/home/wax/workbench/compiler-experiment/parse/If.cpp
 lexer/TokenQueue.h
 -
 ast/IfStmt.h
-/home/wax/workbench/dig/parse/ast/IfStmt.h
+/home/wax/workbench/compiler-experiment/parse/ast/IfStmt.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 ast/ReturnStmt.h
 -
 ast/VariableDecl.h
@@ -1246,95 +1246,95 @@ ast/IfStmt.h
 ast/Unit.h
 -
 ast/Expr.h
-/home/wax/workbench/dig/parse/ast/Expr.h
+/home/wax/workbench/compiler-experiment/parse/ast/Expr.h
 ast/FunctionDecl.h
-/home/wax/workbench/dig/parse/ast/FunctionDecl.h
+/home/wax/workbench/compiler-experiment/parse/ast/FunctionDecl.h
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 
-/home/wax/workbench/dig/parse/ParseError.cpp
+/home/wax/workbench/compiler-experiment/parse/ParseError.cpp
 ParseError.h
-/home/wax/workbench/dig/parse/ParseError.h
+/home/wax/workbench/compiler-experiment/parse/ParseError.h
 
-/home/wax/workbench/dig/parse/ParseError.h
+/home/wax/workbench/compiler-experiment/parse/ParseError.h
 lexer/Token.h
 -
 
-/home/wax/workbench/dig/parse/Pln.cpp
+/home/wax/workbench/compiler-experiment/parse/Pln.cpp
 ast/PlnStmt.h
-/home/wax/workbench/dig/parse/ast/PlnStmt.h
+/home/wax/workbench/compiler-experiment/parse/ast/PlnStmt.h
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Return.cpp
+/home/wax/workbench/compiler-experiment/parse/Return.cpp
 ast/ReturnStmt.h
-/home/wax/workbench/dig/parse/ast/ReturnStmt.h
+/home/wax/workbench/compiler-experiment/parse/ast/ReturnStmt.h
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Statement.cpp
+/home/wax/workbench/compiler-experiment/parse/Statement.cpp
 ast/ExprStmt.h
 -
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Unit.cpp
+/home/wax/workbench/compiler-experiment/parse/Unit.cpp
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 ast/Unit.h
-/home/wax/workbench/dig/parse/ast/Unit.h
+/home/wax/workbench/compiler-experiment/parse/ast/Unit.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/parse/Variable.cpp
+/home/wax/workbench/compiler-experiment/parse/Variable.cpp
 lexer/TokenQueue.h
-/home/wax/workbench/dig/parse/lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 ast/VariableDecl.h
-/home/wax/workbench/dig/parse/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/parse/ast/VariableDecl.h
 Parse.h
-/home/wax/workbench/dig/parse/Parse.h
+/home/wax/workbench/compiler-experiment/parse/Parse.h
 
-/home/wax/workbench/dig/semantic/Scope.cpp
+/home/wax/workbench/compiler-experiment/semantic/Scope.cpp
 util/PrettyPrint.h
 -
 Scope.h
-/home/wax/workbench/dig/semantic/Scope.h
+/home/wax/workbench/compiler-experiment/semantic/Scope.h
 SemanticError.h
-/home/wax/workbench/dig/semantic/SemanticError.h
+/home/wax/workbench/compiler-experiment/semantic/SemanticError.h
 ast/FunctionDecl.h
-/home/wax/workbench/dig/semantic/ast/FunctionDecl.h
+/home/wax/workbench/compiler-experiment/semantic/ast/FunctionDecl.h
 ast/VariableDecl.h
-/home/wax/workbench/dig/semantic/ast/VariableDecl.h
+/home/wax/workbench/compiler-experiment/semantic/ast/VariableDecl.h
 
-/home/wax/workbench/dig/semantic/Scope.h
+/home/wax/workbench/compiler-experiment/semantic/Scope.h
 map
 -
 set
 -
 
-/home/wax/workbench/dig/semantic/SemanticError.cpp
+/home/wax/workbench/compiler-experiment/semantic/SemanticError.cpp
 iostream
 -
 SemanticError.h
-/home/wax/workbench/dig/semantic/SemanticError.h
+/home/wax/workbench/compiler-experiment/semantic/SemanticError.h
 
-/home/wax/workbench/dig/semantic/SemanticError.h
+/home/wax/workbench/compiler-experiment/semantic/SemanticError.h
 string
 -
 
-/home/wax/workbench/dig/util/PrettyPrint.cpp
+/home/wax/workbench/compiler-experiment/util/PrettyPrint.cpp
 iostream
 -
 PrettyPrint.h
-/home/wax/workbench/dig/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/util/PrettyPrint.h
 
-/home/wax/workbench/dig/util/PrettyPrint.h
+/home/wax/workbench/compiler-experiment/util/PrettyPrint.h
 iostream
 -
 

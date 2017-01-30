@@ -16,6 +16,8 @@ public:
 
     virtual X86GpVar* generate(X86Compiler &c);
 
+    virtual bool equals(const Node& other) const;
+
     void analyze(Scope* scope) { }
     virtual void dump(size_t indent);
 };

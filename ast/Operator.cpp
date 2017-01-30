@@ -38,6 +38,13 @@ bool Operator::isOperator(std::string s) {
     return stringToSymbol.find(s) != stringToSymbol.end();
 }
 
+bool Operator::equals(const Node &other) const {
+    const Operator* o = dynamic_cast<const Operator*>(&other);
+    if (o == nullptr) return false;
+
+    return o->symbol == symbol;
+}
+
 OperatorSymbol symbolFromString(std::string s) {
     return stringToSymbol.at(s);
 }

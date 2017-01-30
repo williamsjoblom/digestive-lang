@@ -10,6 +10,8 @@
 #include "parse/Parse.h"
 
 int main() {
+
+
     Interactive::start();
 
     std::string source = "func f() { return 3; } return f();";

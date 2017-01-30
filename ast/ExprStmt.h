@@ -16,7 +16,15 @@ public:
     ExprStmt(Expr* expression) { this->expression = expression; }
     virtual void generate(X86Compiler &c) { expression->generate(c); }
     void analyze(Scope* scope) { expression->analyze(scope); }
+
     void dump(size_t indent) { printIndent(indent); expression->dump(indent); std::cout << std::endl; }
+
+    virtual bool equals(const Node& other) const {
+        const ExprStmt* o = dynamic_cast<const ExprStmt*>(&other);
+        if (o == nullptr) return false;
+
+        return o->expression == expression;
+    }
 };
 
 #endif //DIG_EXPRSTMT_H

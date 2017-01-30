@@ -46,3 +46,14 @@ void IfStmt::dump(size_t indent) {
         elseBlock->dump(indent);
     }
 }
+
+bool IfStmt::equals(const Node &other) const {
+    const IfStmt* o = dynamic_cast<const IfStmt*>(&other);
+    if (o == nullptr) return false;
+
+    if (o->elseBlock == nullptr && elseBlock == nullptr) return false;
+    if (o->elseBlock == nullptr && elseBlock != nullptr) return false;
+    if (o->elseBlock != nullptr && elseBlock == nullptr) return false;
+
+    return *o->condition == *condition && *o->ifBlock == *ifBlock && *o->elseBlock == *elseBlock;
+}

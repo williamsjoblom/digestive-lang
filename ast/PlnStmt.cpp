@@ -19,3 +19,10 @@ void PlnStmt::dump(size_t indent) {
     expression->dump();
     std::cout << std::endl;
 }
+
+bool PlnStmt::equals(const Node &other) const {
+    const PlnStmt* o = dynamic_cast<const PlnStmt*>(&other);
+    if (o == nullptr) return false;
+
+    return *o->expression == *expression;
+}

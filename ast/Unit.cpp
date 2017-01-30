@@ -34,3 +34,27 @@ void Unit::dump(size_t indent) {
 void Unit::generate(X86Compiler &c) {
     Generate::unit(c, this);
 }
+
+bool Unit::equals(const Node &other) const {
+    const Unit* o = dynamic_cast<const Unit*>(&other);
+    if (o == nullptr) return false;
+
+    if (o->statements.size() != statements.size()) return false;
+    if (o->functions.size() != functions.size()) return false;
+
+    for (int i = 0; i < statements.size(); i++) {
+        Stmt* statement =  statements[i];
+        Stmt* otherStatement = o->statements[i];
+
+        if (*statement != *otherStatement) return false;
+    }
+
+    for (int i = 0; i < functions.size(); i++) {
+        Stmt* function =  functions[i];
+        Stmt* otherFunction = o->functions[i];
+
+        if (*function != *otherFunction) return false;
+    }
+
+    return true;
+}

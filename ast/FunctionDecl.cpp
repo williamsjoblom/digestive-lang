@@ -27,6 +27,18 @@ void FunctionDecl::generate(X86Compiler &c) {
     Generate::function(c, this);
 }
 
-long FunctionDecl::operator==(FunctionDecl *functionDecl) {
-    return 0;
+bool FunctionDecl::equals(const Node &other) const {
+    const FunctionDecl* o = dynamic_cast<const FunctionDecl*>(&other);
+    if (o == nullptr) return false;
+
+    if (o->parameters->size() != parameters->size()) return false;
+
+    for (int i = 0; i < parameters->size(); i++) {
+        VariableDecl* parameter = (*parameters)[i];
+        VariableDecl* otherParameter = (*o->parameters)[i];
+
+        if (*parameter != *otherParameter) return false;
+    }
+
+    return Decl::equals(other);
 }

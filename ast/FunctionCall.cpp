@@ -33,3 +33,19 @@ void FunctionCall::analyze(Scope* scope) {
 X86GpVar* FunctionCall::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
+
+bool FunctionCall::equals(const Node &other) const {
+    const FunctionCall* o = dynamic_cast<const FunctionCall*>(&other);
+    if (o == nullptr) return false;
+
+    if (o->arguments->size() != arguments->size()) return false;
+
+    for (int i = 0; i < arguments->size(); i++) {
+        Expr* argument = (*arguments)[i];
+        Expr* otherArgument = (*o->arguments)[i];
+
+        if (*argument != *otherArgument) return false;
+    }
+
+    return o->identifier == identifier;
+}

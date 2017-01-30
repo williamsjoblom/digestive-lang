@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = -DASMJIT_STATIC
 
-CXX_INCLUDES = -I/home/wax/workbench/dig/. 
+CXX_INCLUDES = -I/home/wax/workbench/compiler-experiment/. 
 

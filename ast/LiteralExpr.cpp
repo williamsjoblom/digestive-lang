@@ -18,4 +18,11 @@ X86GpVar* LiteralExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 
+bool LiteralExpr::equals(const Node &other) const {
+    const LiteralExpr* o = dynamic_cast<const LiteralExpr*>(&other);
+    if (o == nullptr) return false;
+
+    return o->value == value;
+}
+
 

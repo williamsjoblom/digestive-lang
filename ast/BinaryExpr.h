@@ -21,6 +21,8 @@ public:
 
     BinaryExpr(Expr* left, Operator* op, Expr* right);
 
+    virtual bool equals(const Node& other) const;
+
     void dump(size_t indent);
 };
 

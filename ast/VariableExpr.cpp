@@ -22,3 +22,10 @@ void VariableExpr::dump(size_t indent) {
 X86GpVar* VariableExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
+
+bool VariableExpr::equals(const Node &other) const {
+    const VariableExpr* o = dynamic_cast<const VariableExpr*>(&other);
+    if (o == nullptr) return false;
+
+    return o->identifier == identifier;
+}

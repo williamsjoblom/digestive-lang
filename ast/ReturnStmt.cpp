@@ -25,4 +25,11 @@ void ReturnStmt::generate(X86Compiler &c) {
     Generate::statement(c, this);
 }
 
+bool ReturnStmt::equals(const Node &other) const {
+    const ReturnStmt* o = dynamic_cast<const ReturnStmt*>(&other);
+    if (o == nullptr) return false;
+
+    return *o->expression == *expression;
+}
+
 
