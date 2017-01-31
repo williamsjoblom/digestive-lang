@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <asmjit/asmjit.h>
+#include <unistd.h>
 
 
 #include "config.h"
@@ -12,22 +13,23 @@
 #include "jit/Jit.h"
 
 int main() {
-
     Jit jit;
+    Interactive::start(&jit);
+
     jit.load("/home/wax/test1.dg");
 
     int first = jit.run();
 
-    jit.reload("/home/wax/test2.dg");
-    int second = jit.run();
+    //usleep(100 * 1000);
 
-    //std::cout << "First run: " << first << ", second run: " << second << std::endl;
+    //jit.reload("/home/wax/test2.dg");
+    //int second = jit.run();
+
+    std::cout << "First run: " << first << std::endl;
 
     return 0;
-
-    //Interactive::start();
-
-    std::string source = "func f() { return 3; } return f();";
+/*
+    //
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
@@ -60,4 +62,5 @@ int main() {
     }
 
     return 0;
+    */
 }

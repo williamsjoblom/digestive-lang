@@ -48,10 +48,10 @@ RM = /usr/share/clion/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wax/workbench/compiler-experiment
+CMAKE_SOURCE_DIR = /home/wax/workbench/dig
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wax/workbench/compiler-experiment/cmake-build-debug
+CMAKE_BINARY_DIR = /home/wax/workbench/dig/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles /home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wax/workbench/dig/cmake-build-debug/CMakeFiles /home/wax/workbench/dig/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wax/workbench/dig/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -312,6 +312,33 @@ ast/LiteralExpr.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LiteralExpr.cpp.s
 .PHONY : ast/LiteralExpr.cpp.s
 
+ast/LoopStmt.o: ast/LoopStmt.cpp.o
+
+.PHONY : ast/LoopStmt.o
+
+# target to build an object file
+ast/LoopStmt.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LoopStmt.cpp.o
+.PHONY : ast/LoopStmt.cpp.o
+
+ast/LoopStmt.i: ast/LoopStmt.cpp.i
+
+.PHONY : ast/LoopStmt.i
+
+# target to preprocess a source file
+ast/LoopStmt.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LoopStmt.cpp.i
+.PHONY : ast/LoopStmt.cpp.i
+
+ast/LoopStmt.s: ast/LoopStmt.cpp.s
+
+.PHONY : ast/LoopStmt.s
+
+# target to generate assembly for a file
+ast/LoopStmt.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/LoopStmt.cpp.s
+.PHONY : ast/LoopStmt.cpp.s
+
 ast/Operator.o: ast/Operator.cpp.o
 
 .PHONY : ast/Operator.o
@@ -474,6 +501,33 @@ ast/VariableExpr.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/ast/VariableExpr.cpp.s
 .PHONY : ast/VariableExpr.cpp.s
 
+gen/BuiltIn.o: gen/BuiltIn.cpp.o
+
+.PHONY : gen/BuiltIn.o
+
+# target to build an object file
+gen/BuiltIn.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/BuiltIn.cpp.o
+.PHONY : gen/BuiltIn.cpp.o
+
+gen/BuiltIn.i: gen/BuiltIn.cpp.i
+
+.PHONY : gen/BuiltIn.i
+
+# target to preprocess a source file
+gen/BuiltIn.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/BuiltIn.cpp.i
+.PHONY : gen/BuiltIn.cpp.i
+
+gen/BuiltIn.s: gen/BuiltIn.cpp.s
+
+.PHONY : gen/BuiltIn.s
+
+# target to generate assembly for a file
+gen/BuiltIn.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/BuiltIn.cpp.s
+.PHONY : gen/BuiltIn.cpp.s
+
 gen/Declaration.o: gen/Declaration.cpp.o
 
 .PHONY : gen/Declaration.o
@@ -554,6 +608,33 @@ gen/Function.s: gen/Function.cpp.s
 gen/Function.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.s
 .PHONY : gen/Function.cpp.s
+
+gen/Loop.o: gen/Loop.cpp.o
+
+.PHONY : gen/Loop.o
+
+# target to build an object file
+gen/Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Loop.cpp.o
+.PHONY : gen/Loop.cpp.o
+
+gen/Loop.i: gen/Loop.cpp.i
+
+.PHONY : gen/Loop.i
+
+# target to preprocess a source file
+gen/Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Loop.cpp.i
+.PHONY : gen/Loop.cpp.i
+
+gen/Loop.s: gen/Loop.cpp.s
+
+.PHONY : gen/Loop.s
+
+# target to generate assembly for a file
+gen/Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Loop.cpp.s
+.PHONY : gen/Loop.cpp.s
 
 gen/Program.o: gen/Program.cpp.o
 
@@ -1284,6 +1365,33 @@ interactive/Interactive.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/interactive/Interactive.cpp.s
 .PHONY : interactive/Interactive.cpp.s
 
+jit/BuiltIn.o: jit/BuiltIn.cpp.o
+
+.PHONY : jit/BuiltIn.o
+
+# target to build an object file
+jit/BuiltIn.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/BuiltIn.cpp.o
+.PHONY : jit/BuiltIn.cpp.o
+
+jit/BuiltIn.i: jit/BuiltIn.cpp.i
+
+.PHONY : jit/BuiltIn.i
+
+# target to preprocess a source file
+jit/BuiltIn.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/BuiltIn.cpp.i
+.PHONY : jit/BuiltIn.cpp.i
+
+jit/BuiltIn.s: jit/BuiltIn.cpp.s
+
+.PHONY : jit/BuiltIn.s
+
+# target to generate assembly for a file
+jit/BuiltIn.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/jit/BuiltIn.cpp.s
+.PHONY : jit/BuiltIn.cpp.s
+
 jit/Jit.o: jit/Jit.cpp.o
 
 .PHONY : jit/Jit.o
@@ -1553,6 +1661,33 @@ parse/If.s: parse/If.cpp.s
 parse/If.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/If.cpp.s
 .PHONY : parse/If.cpp.s
+
+parse/Loop.o: parse/Loop.cpp.o
+
+.PHONY : parse/Loop.o
+
+# target to build an object file
+parse/Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Loop.cpp.o
+.PHONY : parse/Loop.cpp.o
+
+parse/Loop.i: parse/Loop.cpp.i
+
+.PHONY : parse/Loop.i
+
+# target to preprocess a source file
+parse/Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Loop.cpp.i
+.PHONY : parse/Loop.cpp.i
+
+parse/Loop.s: parse/Loop.cpp.s
+
+.PHONY : parse/Loop.s
+
+# target to generate assembly for a file
+parse/Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Loop.cpp.s
+.PHONY : parse/Loop.cpp.s
 
 parse/ParseError.o: parse/ParseError.cpp.o
 
@@ -1827,6 +1962,9 @@ help:
 	@echo "... ast/LiteralExpr.o"
 	@echo "... ast/LiteralExpr.i"
 	@echo "... ast/LiteralExpr.s"
+	@echo "... ast/LoopStmt.o"
+	@echo "... ast/LoopStmt.i"
+	@echo "... ast/LoopStmt.s"
 	@echo "... ast/Operator.o"
 	@echo "... ast/Operator.i"
 	@echo "... ast/Operator.s"
@@ -1845,6 +1983,9 @@ help:
 	@echo "... ast/VariableExpr.o"
 	@echo "... ast/VariableExpr.i"
 	@echo "... ast/VariableExpr.s"
+	@echo "... gen/BuiltIn.o"
+	@echo "... gen/BuiltIn.i"
+	@echo "... gen/BuiltIn.s"
 	@echo "... gen/Declaration.o"
 	@echo "... gen/Declaration.i"
 	@echo "... gen/Declaration.s"
@@ -1854,6 +1995,9 @@ help:
 	@echo "... gen/Function.o"
 	@echo "... gen/Function.i"
 	@echo "... gen/Function.s"
+	@echo "... gen/Loop.o"
+	@echo "... gen/Loop.i"
+	@echo "... gen/Loop.s"
 	@echo "... gen/Program.o"
 	@echo "... gen/Program.i"
 	@echo "... gen/Program.s"
@@ -1935,6 +2079,9 @@ help:
 	@echo "... interactive/Interactive.o"
 	@echo "... interactive/Interactive.i"
 	@echo "... interactive/Interactive.s"
+	@echo "... jit/BuiltIn.o"
+	@echo "... jit/BuiltIn.i"
+	@echo "... jit/BuiltIn.s"
 	@echo "... jit/Jit.o"
 	@echo "... jit/Jit.i"
 	@echo "... jit/Jit.s"
@@ -1965,6 +2112,9 @@ help:
 	@echo "... parse/If.o"
 	@echo "... parse/If.i"
 	@echo "... parse/If.s"
+	@echo "... parse/Loop.o"
+	@echo "... parse/Loop.i"
+	@echo "... parse/Loop.s"
 	@echo "... parse/ParseError.o"
 	@echo "... parse/ParseError.i"
 	@echo "... parse/ParseError.s"

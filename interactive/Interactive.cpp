@@ -4,20 +4,22 @@
 
 #include <thread>
 #include <iostream>
+#include <jit/Jit.h>
 
 #include "Interactive.h"
 #include "IO.h"
 
 namespace Interactive {
 
-    void evaluate(std::string cmd);
+    void evaluate(Jit* jit, std::string cmd);
 
-    void start() {
-        std::thread t1(loop);
-        t1.join();
+    void start(Jit* jit) {
+        std::thread t1(loop, jit);
+        t1.detach();
+        //t1.join();
     }
 
-    void loop() {
+    void loop(Jit* jit) {
         if (!IO::init()) {
             std::cout << "Failed to open pipe" << std::endl;
             return;
@@ -27,16 +29,14 @@ namespace Interactive {
             std::string s;
             std::getline(IO::in, s);
             if (!s.empty()) {
-                std::cout << "Read: " << s << std::endl;
+                evaluate(jit, s);
             }
 
             if (IO::in.eof()) IO::in.clear();
         }
     }
 
-    void evaluate(std::string cmd) {
-        if (cmd == "update") {
-
-        }
+    void evaluate(Jit* jit, std::string cmd) {
+        jit->reload("/home/wax/test2.dg");
     }
 }

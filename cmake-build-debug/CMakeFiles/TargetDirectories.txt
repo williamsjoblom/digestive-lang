@@ -1,3 +1,3 @@
-/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir
+/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wax/workbench/dig/cmake-build-debug/CMakeFiles/dig.dir

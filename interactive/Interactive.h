@@ -5,10 +5,11 @@
 #ifndef DIG_INTERACTIVE_H
 #define DIG_INTERACTIVE_H
 
+#include "jit/Jit.h"
 
 namespace Interactive {
-    void start();
-    void loop();
+    void start(Jit* jit);
+    void loop(Jit* jit);
 }
 
 

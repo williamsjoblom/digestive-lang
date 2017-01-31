@@ -2,6 +2,7 @@
 // Created by wax on 12/16/16.
 //
 
+#include <gen/Gen.h>
 #include "util/PrettyPrint.h"
 #include "PlnStmt.h"
 
@@ -25,4 +26,8 @@ bool PlnStmt::equals(const Node &other) const {
     if (o == nullptr) return false;
 
     return *o->expression == *expression;
+}
+
+void PlnStmt::generate(X86Compiler& c) {
+    Generate::pln(c, this);
 }

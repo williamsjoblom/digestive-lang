@@ -43,6 +43,7 @@ bool Jit::load(std::string path) {
 }
 
 bool Jit::reload(std::string path) {
+    std::cout << "Reloading " << path << std::endl;
     std::string source = readFile(path);
 
     Lexer lexer;
@@ -91,6 +92,7 @@ bool Jit::reload(std::string path) {
         }
 
         program = Generate::program(runtime, root);
+        std::cout << "Updated " << updated << " function(s)" << std::endl;
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
         return false;

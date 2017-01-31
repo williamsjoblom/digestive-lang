@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\lib\;CMake Files\..\..\lib\asmjit\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/wax/workbench/compiler-experiment/cmake-build-debug"/>
+				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/wax/workbench/compiler-experiment/cmake-build-debug"/>
+				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/wax/workbench/compiler-experiment/cmake-build-debug"/>
+				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="dig">
-				<Option output="/home/wax/workbench/compiler-experiment/cmake-build-debug/dig" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/wax/workbench/compiler-experiment/cmake-build-debug"/>
+				<Option output="/home/wax/workbench/dig/cmake-build-debug/dig" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DASMJIT_STATIC"/>
-					<Add directory="/home/wax/workbench/compiler-experiment/."/>
+					<Add directory="/home/wax/workbench/dig/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
@@ -56,21 +56,21 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 dig"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 dig"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="dig/fast">
-				<Option output="/home/wax/workbench/compiler-experiment/cmake-build-debug/dig" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/wax/workbench/compiler-experiment/cmake-build-debug"/>
+				<Option output="/home/wax/workbench/dig/cmake-build-debug/dig" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/wax/workbench/dig/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DASMJIT_STATIC"/>
-					<Add directory="/home/wax/workbench/compiler-experiment/."/>
+					<Add directory="/home/wax/workbench/dig/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
@@ -81,10 +81,10 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 dig/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/wax/workbench/compiler-experiment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 dig/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wax/workbench/dig/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -247,226 +247,247 @@
 		<Unit filename="/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Analyzable.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Analyzable.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/BinaryExpr.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/BinaryExpr.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/BinaryExpr.h">
+		<Unit filename="/home/wax/workbench/dig/ast/BinaryExpr.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/BlockStmt.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/BlockStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/BlockStmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/BlockStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Decl.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/Decl.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Decl.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Decl.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Expr.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Expr.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/ExprStmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/ExprStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/FunctionCall.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionCall.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/FunctionCall.h">
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionCall.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/FunctionDecl.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/FunctionDecl.h">
+		<Unit filename="/home/wax/workbench/dig/ast/FunctionDecl.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/IfStmt.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/IfStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/IfStmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/IfStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/LiteralExpr.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/LiteralExpr.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/LiteralExpr.h">
+		<Unit filename="/home/wax/workbench/dig/ast/LiteralExpr.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Node.h">
+		<Unit filename="/home/wax/workbench/dig/ast/LoopStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Operator.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/LoopStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Operator.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Node.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/PlnStmt.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/Operator.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/PlnStmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Operator.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/ReturnStmt.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/PlnStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/ReturnStmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/PlnStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Stmt.h">
+		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Unit.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/ReturnStmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Unit.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Stmt.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/VariableDecl.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/VariableDecl.h">
+		<Unit filename="/home/wax/workbench/dig/ast/Unit.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/VariableExpr.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/VariableDecl.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/ast/VariableExpr.h">
+		<Unit filename="/home/wax/workbench/dig/ast/VariableDecl.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/config.h">
+		<Unit filename="/home/wax/workbench/dig/ast/VariableExpr.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Declaration.cpp">
+		<Unit filename="/home/wax/workbench/dig/ast/VariableExpr.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Expression.cpp">
+		<Unit filename="/home/wax/workbench/dig/config.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Function.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/BuiltIn.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Gen.h">
+		<Unit filename="/home/wax/workbench/dig/gen/Declaration.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Program.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/Expression.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Return.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/Function.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/gen/Unit.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/Gen.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/interactive/IO.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/Loop.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/interactive/IO.h">
+		<Unit filename="/home/wax/workbench/dig/gen/Program.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/interactive/Interactive.cpp">
+		<Unit filename="/home/wax/workbench/dig/gen/Return.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/interactive/Interactive.h">
+		<Unit filename="/home/wax/workbench/dig/gen/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/jit/Jit.cpp">
+		<Unit filename="/home/wax/workbench/dig/interactive/IO.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/jit/Jit.h">
+		<Unit filename="/home/wax/workbench/dig/interactive/IO.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/jit/JitContext.cpp">
+		<Unit filename="/home/wax/workbench/dig/interactive/Interactive.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/jit/JitContext.h">
+		<Unit filename="/home/wax/workbench/dig/interactive/Interactive.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/lexer/Lexer.cpp">
+		<Unit filename="/home/wax/workbench/dig/jit/BuiltIn.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/lexer/Lexer.h">
+		<Unit filename="/home/wax/workbench/dig/jit/BuiltIn.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/lexer/Token.h">
+		<Unit filename="/home/wax/workbench/dig/jit/Jit.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/lexer/TokenQueue.cpp">
+		<Unit filename="/home/wax/workbench/dig/jit/Jit.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/lexer/TokenQueue.h">
+		<Unit filename="/home/wax/workbench/dig/jit/JitContext.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/main.cpp">
+		<Unit filename="/home/wax/workbench/dig/jit/JitContext.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Block.cpp">
+		<Unit filename="/home/wax/workbench/dig/lexer/Lexer.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Expression.cpp">
+		<Unit filename="/home/wax/workbench/dig/lexer/Lexer.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/File.cpp">
+		<Unit filename="/home/wax/workbench/dig/lexer/Token.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Function.cpp">
+		<Unit filename="/home/wax/workbench/dig/lexer/TokenQueue.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/If.cpp">
+		<Unit filename="/home/wax/workbench/dig/lexer/TokenQueue.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Parse.h">
+		<Unit filename="/home/wax/workbench/dig/main.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/ParseError.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Block.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/ParseError.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Expression.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Pln.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/File.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Return.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Function.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Statement.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/If.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Unit.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Loop.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Variable.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Parse.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/semantic/Scope.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/ParseError.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/semantic/Scope.h">
+		<Unit filename="/home/wax/workbench/dig/parse/ParseError.h">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/semantic/SemanticError.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Pln.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/semantic/SemanticError.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Return.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/util/PrettyPrint.cpp">
+		<Unit filename="/home/wax/workbench/dig/parse/Statement.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/util/PrettyPrint.h">
+		<Unit filename="/home/wax/workbench/dig/parse/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/CMakeLists.txt">
+		<Unit filename="/home/wax/workbench/dig/parse/Variable.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/Scope.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/Scope.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/SemanticError.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/semantic/SemanticError.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/util/PrettyPrint.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/util/PrettyPrint.h">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/dig/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/wax/workbench/compiler-experiment/../../lib/asmjit/CMakeLists.txt">
+		<Unit filename="/home/wax/workbench/dig/../../lib/asmjit/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\..\..\lib\asmjit\"/>
 		</Unit>
 	</Project>

@@ -16,6 +16,9 @@ public:
     PlnStmt(Expr* expression);
 
     void analyze(Scope* scope);
+
+    void generate(X86Compiler& c) override;
+
     virtual bool equals(const Node& other) const;
     void dump(size_t indent);
 };

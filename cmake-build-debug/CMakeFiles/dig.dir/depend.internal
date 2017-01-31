@@ -10,7 +10,9 @@ CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -19,18 +21,18 @@ CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/BinaryExpr.cpp
- /home/wax/workbench/compiler-experiment/ast/BinaryExpr.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/Operator.h
+ /home/wax/workbench/dig/ast/BinaryExpr.cpp
+ /home/wax/workbench/dig/ast/BinaryExpr.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/Operator.h
 CMakeFiles/dig.dir/ast/BlockStmt.cpp.o
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/BlockStmt.cpp
- /home/wax/workbench/compiler-experiment/ast/BlockStmt.h
- /home/wax/workbench/compiler-experiment/ast/Node.h
- /home/wax/workbench/compiler-experiment/ast/Stmt.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/BlockStmt.cpp
+ /home/wax/workbench/dig/ast/BlockStmt.h
+ /home/wax/workbench/dig/ast/Node.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o
  .././ast/BinaryExpr.h
  .././ast/BlockStmt.h
@@ -38,18 +40,20 @@ CMakeFiles/dig.dir/ast/Decl.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
  .././gen/Gen.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/Decl.cpp
- /home/wax/workbench/compiler-experiment/ast/Decl.h
- /home/wax/workbench/compiler-experiment/ast/Stmt.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Decl.cpp
+ /home/wax/workbench/dig/ast/Decl.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -59,8 +63,10 @@ CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -69,17 +75,19 @@ CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/FunctionCall.cpp
- /home/wax/workbench/compiler-experiment/ast/FunctionCall.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/FunctionCall.cpp
+ /home/wax/workbench/dig/ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
  .././ast/BinaryExpr.h
  .././ast/BlockStmt.h
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -87,22 +95,22 @@ CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/BlockStmt.h
- /home/wax/workbench/compiler-experiment/ast/Decl.h
- /home/wax/workbench/compiler-experiment/ast/FunctionDecl.cpp
- /home/wax/workbench/compiler-experiment/ast/FunctionDecl.h
- /home/wax/workbench/compiler-experiment/ast/VariableDecl.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/BlockStmt.h
+ /home/wax/workbench/dig/ast/Decl.h
+ /home/wax/workbench/dig/ast/FunctionDecl.cpp
+ /home/wax/workbench/dig/ast/FunctionDecl.h
+ /home/wax/workbench/dig/ast/VariableDecl.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/BlockStmt.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/IfStmt.cpp
- /home/wax/workbench/compiler-experiment/ast/IfStmt.h
- /home/wax/workbench/compiler-experiment/ast/Node.h
- /home/wax/workbench/compiler-experiment/ast/Stmt.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/BlockStmt.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/IfStmt.cpp
+ /home/wax/workbench/dig/ast/IfStmt.h
+ /home/wax/workbench/dig/ast/Node.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -112,8 +120,10 @@ CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -122,25 +132,63 @@ CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/LiteralExpr.cpp
- /home/wax/workbench/compiler-experiment/ast/LiteralExpr.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/LiteralExpr.cpp
+ /home/wax/workbench/dig/ast/LiteralExpr.h
+CMakeFiles/dig.dir/ast/LoopStmt.cpp.o
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././gen/Gen.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/LoopStmt.cpp
+ /home/wax/workbench/dig/ast/LoopStmt.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/Operator.cpp.o
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/Node.h
- /home/wax/workbench/compiler-experiment/ast/Operator.cpp
- /home/wax/workbench/compiler-experiment/ast/Operator.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Node.h
+ /home/wax/workbench/dig/ast/Operator.cpp
+ /home/wax/workbench/dig/ast/Operator.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/Node.h
- /home/wax/workbench/compiler-experiment/ast/PlnStmt.cpp
- /home/wax/workbench/compiler-experiment/ast/PlnStmt.h
- /home/wax/workbench/compiler-experiment/ast/Stmt.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/PlnStmt.cpp
+ /home/wax/workbench/dig/ast/PlnStmt.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
  .././ast/BinaryExpr.h
  .././ast/BlockStmt.h
@@ -149,8 +197,10 @@ CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
@@ -158,11 +208,11 @@ CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/ReturnStmt.cpp
- /home/wax/workbench/compiler-experiment/ast/ReturnStmt.h
- /home/wax/workbench/compiler-experiment/ast/Stmt.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/ReturnStmt.cpp
+ /home/wax/workbench/dig/ast/ReturnStmt.h
+ /home/wax/workbench/dig/ast/Stmt.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -172,8 +222,10 @@ CMakeFiles/dig.dir/ast/Unit.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -181,7 +233,7 @@ CMakeFiles/dig.dir/ast/Unit.cpp.o
  .././ast/VariableExpr.h
  .././gen/Gen.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/ast/Unit.cpp
+ /home/wax/workbench/dig/ast/Unit.cpp
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
  .././ast/BinaryExpr.h
  .././ast/BlockStmt.h
@@ -189,8 +241,10 @@ CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -198,11 +252,11 @@ CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Analyzable.h
- /home/wax/workbench/compiler-experiment/ast/Decl.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/VariableDecl.cpp
- /home/wax/workbench/compiler-experiment/ast/VariableDecl.h
+ /home/wax/workbench/dig/ast/Analyzable.h
+ /home/wax/workbench/dig/ast/Decl.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/VariableDecl.cpp
+ /home/wax/workbench/dig/ast/VariableDecl.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -212,8 +266,10 @@ CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -222,9 +278,31 @@ CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
  .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/ast/Expr.h
- /home/wax/workbench/compiler-experiment/ast/VariableExpr.cpp
- /home/wax/workbench/compiler-experiment/ast/VariableExpr.h
+ /home/wax/workbench/dig/ast/Expr.h
+ /home/wax/workbench/dig/ast/VariableExpr.cpp
+ /home/wax/workbench/dig/ast/VariableExpr.h
+CMakeFiles/dig.dir/gen/BuiltIn.cpp.o
+ .././ast/Analyzable.h
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././jit/BuiltIn.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/gen/BuiltIn.cpp
+ /home/wax/workbench/dig/gen/Gen.h
 CMakeFiles/dig.dir/gen/Declaration.cpp.o
  .././ast/Analyzable.h
  .././ast/Decl.h
@@ -233,7 +311,7 @@ CMakeFiles/dig.dir/gen/Declaration.cpp.o
  .././ast/Stmt.h
  .././ast/VariableDecl.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Declaration.cpp
+ /home/wax/workbench/dig/gen/Declaration.cpp
 CMakeFiles/dig.dir/gen/Expression.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -250,7 +328,7 @@ CMakeFiles/dig.dir/gen/Expression.cpp.o
  .././ast/VariableExpr.h
  .././jit/JitContext.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Expression.cpp
+ /home/wax/workbench/dig/gen/Expression.cpp
 CMakeFiles/dig.dir/gen/Function.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -260,16 +338,39 @@ CMakeFiles/dig.dir/gen/Function.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Function.cpp
- /home/wax/workbench/compiler-experiment/gen/Gen.h
+ /home/wax/workbench/dig/gen/Function.cpp
+ /home/wax/workbench/dig/gen/Gen.h
+CMakeFiles/dig.dir/gen/Loop.cpp.o
+ .././ast/Analyzable.h
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/gen/Gen.h
+ /home/wax/workbench/dig/gen/Loop.cpp
 CMakeFiles/dig.dir/gen/Program.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -279,8 +380,10 @@ CMakeFiles/dig.dir/gen/Program.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -289,8 +392,8 @@ CMakeFiles/dig.dir/gen/Program.cpp.o
  .././config.h
  .././jit/JitContext.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Gen.h
- /home/wax/workbench/compiler-experiment/gen/Program.cpp
+ /home/wax/workbench/dig/gen/Gen.h
+ /home/wax/workbench/dig/gen/Program.cpp
 CMakeFiles/dig.dir/gen/Return.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -300,8 +403,10 @@ CMakeFiles/dig.dir/gen/Return.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
@@ -309,7 +414,7 @@ CMakeFiles/dig.dir/gen/Return.cpp.o
  .././ast/VariableExpr.h
  .././gen/Gen.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Return.cpp
+ /home/wax/workbench/dig/gen/Return.cpp
 CMakeFiles/dig.dir/gen/Unit.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -319,16 +424,18 @@ CMakeFiles/dig.dir/gen/Unit.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
+ .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/gen/Gen.h
- /home/wax/workbench/compiler-experiment/gen/Unit.cpp
+ /home/wax/workbench/dig/gen/Gen.h
+ /home/wax/workbench/dig/gen/Unit.cpp
 CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o
  /home/wax/lib/asmjit/src/asmjit/./build.h
  /home/wax/lib/asmjit/src/asmjit/apibegin.h
@@ -705,25 +812,76 @@ CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp.o
  /home/wax/lib/asmjit/src/asmjit/x86/x86operand_regs.cpp
  /home/wax/lib/asmjit/src/test/broken.h
 CMakeFiles/dig.dir/interactive/IO.cpp.o
- /home/wax/workbench/compiler-experiment/interactive/IO.cpp
- /home/wax/workbench/compiler-experiment/interactive/IO.h
+ /home/wax/workbench/dig/interactive/IO.cpp
+ /home/wax/workbench/dig/interactive/IO.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o
- /home/wax/workbench/compiler-experiment/interactive/IO.h
- /home/wax/workbench/compiler-experiment/interactive/Interactive.cpp
- /home/wax/workbench/compiler-experiment/interactive/Interactive.h
+ .././ast/Analyzable.h
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././gen/Gen.h
+ .././jit/Jit.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/interactive/IO.h
+ /home/wax/workbench/dig/interactive/Interactive.cpp
+ /home/wax/workbench/dig/interactive/Interactive.h
+CMakeFiles/dig.dir/jit/BuiltIn.cpp.o
+ /home/wax/workbench/dig/jit/BuiltIn.cpp
+ /home/wax/workbench/dig/jit/BuiltIn.h
+CMakeFiles/dig.dir/jit/Jit.cpp.o
+ .././ast/Analyzable.h
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././gen/Gen.h
+ .././lexer/Lexer.h
+ .././lexer/Token.h
+ .././lexer/TokenQueue.h
+ .././parse/Parse.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/jit/Jit.cpp
+ /home/wax/workbench/dig/jit/Jit.h
+ /home/wax/workbench/dig/jit/JitContext.h
 CMakeFiles/dig.dir/jit/JitContext.cpp.o
- /home/wax/workbench/compiler-experiment/jit/JitContext.cpp
+ /home/wax/workbench/dig/jit/JitContext.cpp
 CMakeFiles/dig.dir/lexer/Lexer.cpp.o
- /home/wax/workbench/compiler-experiment/lexer/Lexer.cpp
- /home/wax/workbench/compiler-experiment/lexer/Lexer.h
- /home/wax/workbench/compiler-experiment/lexer/Token.h
- /home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
+ /home/wax/workbench/dig/lexer/Lexer.cpp
+ /home/wax/workbench/dig/lexer/Lexer.h
+ /home/wax/workbench/dig/lexer/Token.h
+ /home/wax/workbench/dig/lexer/TokenQueue.h
 CMakeFiles/dig.dir/lexer/TokenQueue.cpp.o
  .././lexer/Token.h
  .././parse/ParseError.h
- /home/wax/workbench/compiler-experiment/lexer/Token.h
- /home/wax/workbench/compiler-experiment/lexer/TokenQueue.cpp
- /home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
+ /home/wax/workbench/dig/lexer/Token.h
+ /home/wax/workbench/dig/lexer/TokenQueue.cpp
+ /home/wax/workbench/dig/lexer/TokenQueue.h
 CMakeFiles/dig.dir/main.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -734,6 +892,7 @@ CMakeFiles/dig.dir/main.cpp.o
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
  .././ast/PlnStmt.h
@@ -742,16 +901,17 @@ CMakeFiles/dig.dir/main.cpp.o
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
- .././interactive/Interactive.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/config.h
- /home/wax/workbench/compiler-experiment/gen/Gen.h
- /home/wax/workbench/compiler-experiment/lexer/Lexer.h
- /home/wax/workbench/compiler-experiment/lexer/Token.h
- /home/wax/workbench/compiler-experiment/lexer/TokenQueue.h
- /home/wax/workbench/compiler-experiment/main.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
+ /home/wax/workbench/dig/config.h
+ /home/wax/workbench/dig/gen/Gen.h
+ /home/wax/workbench/dig/interactive/Interactive.h
+ /home/wax/workbench/dig/jit/Jit.h
+ /home/wax/workbench/dig/lexer/Lexer.h
+ /home/wax/workbench/dig/lexer/Token.h
+ /home/wax/workbench/dig/lexer/TokenQueue.h
+ /home/wax/workbench/dig/main.cpp
+ /home/wax/workbench/dig/parse/Parse.h
 CMakeFiles/dig.dir/parse/Block.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -760,6 +920,7 @@ CMakeFiles/dig.dir/parse/Block.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -769,8 +930,8 @@ CMakeFiles/dig.dir/parse/Block.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Block.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
+ /home/wax/workbench/dig/parse/Block.cpp
+ /home/wax/workbench/dig/parse/Parse.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -781,6 +942,7 @@ CMakeFiles/dig.dir/parse/Expression.cpp.o
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
  .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/Operator.h
  .././ast/PlnStmt.h
@@ -792,9 +954,9 @@ CMakeFiles/dig.dir/parse/Expression.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Expression.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/ParseError.h
+ /home/wax/workbench/dig/parse/Expression.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/ParseError.h
 CMakeFiles/dig.dir/parse/File.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -803,6 +965,7 @@ CMakeFiles/dig.dir/parse/File.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -812,8 +975,8 @@ CMakeFiles/dig.dir/parse/File.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/File.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
+ /home/wax/workbench/dig/parse/File.cpp
+ /home/wax/workbench/dig/parse/Parse.h
 CMakeFiles/dig.dir/parse/Function.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -822,6 +985,7 @@ CMakeFiles/dig.dir/parse/Function.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -831,9 +995,9 @@ CMakeFiles/dig.dir/parse/Function.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Function.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/ParseError.h
+ /home/wax/workbench/dig/parse/Function.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/ParseError.h
 CMakeFiles/dig.dir/parse/If.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -842,6 +1006,7 @@ CMakeFiles/dig.dir/parse/If.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -851,12 +1016,32 @@ CMakeFiles/dig.dir/parse/If.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/If.cpp
- /home/wax/workbench/compiler-experiment/parse/Parse.h
+ /home/wax/workbench/dig/parse/If.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+CMakeFiles/dig.dir/parse/Loop.cpp.o
+ .././ast/Analyzable.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././lexer/Token.h
+ .././lexer/TokenQueue.h
+ .././semantic/Scope.h
+ /home/wax/workbench/dig/parse/Loop.cpp
+ /home/wax/workbench/dig/parse/Parse.h
 CMakeFiles/dig.dir/parse/ParseError.cpp.o
  .././lexer/Token.h
- /home/wax/workbench/compiler-experiment/parse/ParseError.cpp
- /home/wax/workbench/compiler-experiment/parse/ParseError.h
+ /home/wax/workbench/dig/parse/ParseError.cpp
+ /home/wax/workbench/dig/parse/ParseError.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -865,6 +1050,7 @@ CMakeFiles/dig.dir/parse/Pln.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -874,8 +1060,8 @@ CMakeFiles/dig.dir/parse/Pln.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/Pln.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/Pln.cpp
 CMakeFiles/dig.dir/parse/Return.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -884,6 +1070,7 @@ CMakeFiles/dig.dir/parse/Return.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -893,8 +1080,8 @@ CMakeFiles/dig.dir/parse/Return.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/Return.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/Return.cpp
 CMakeFiles/dig.dir/parse/Statement.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -904,6 +1091,7 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -914,8 +1102,8 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/Statement.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/Statement.cpp
 CMakeFiles/dig.dir/parse/Unit.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -924,6 +1112,7 @@ CMakeFiles/dig.dir/parse/Unit.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -933,8 +1122,8 @@ CMakeFiles/dig.dir/parse/Unit.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/Unit.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/Unit.cpp
 CMakeFiles/dig.dir/parse/Variable.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -943,6 +1132,7 @@ CMakeFiles/dig.dir/parse/Variable.cpp.o
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
  .././ast/IfStmt.h
+ .././ast/LoopStmt.h
  .././ast/Node.h
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
@@ -952,8 +1142,8 @@ CMakeFiles/dig.dir/parse/Variable.cpp.o
  .././lexer/Token.h
  .././lexer/TokenQueue.h
  .././semantic/Scope.h
- /home/wax/workbench/compiler-experiment/parse/Parse.h
- /home/wax/workbench/compiler-experiment/parse/Variable.cpp
+ /home/wax/workbench/dig/parse/Parse.h
+ /home/wax/workbench/dig/parse/Variable.cpp
 CMakeFiles/dig.dir/semantic/Scope.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -965,12 +1155,12 @@ CMakeFiles/dig.dir/semantic/Scope.cpp.o
  .././ast/VariableDecl.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
- /home/wax/workbench/compiler-experiment/semantic/Scope.cpp
- /home/wax/workbench/compiler-experiment/semantic/Scope.h
- /home/wax/workbench/compiler-experiment/semantic/SemanticError.h
+ /home/wax/workbench/dig/semantic/Scope.cpp
+ /home/wax/workbench/dig/semantic/Scope.h
+ /home/wax/workbench/dig/semantic/SemanticError.h
 CMakeFiles/dig.dir/semantic/SemanticError.cpp.o
- /home/wax/workbench/compiler-experiment/semantic/SemanticError.cpp
- /home/wax/workbench/compiler-experiment/semantic/SemanticError.h
+ /home/wax/workbench/dig/semantic/SemanticError.cpp
+ /home/wax/workbench/dig/semantic/SemanticError.h
 CMakeFiles/dig.dir/util/PrettyPrint.cpp.o
- /home/wax/workbench/compiler-experiment/util/PrettyPrint.cpp
- /home/wax/workbench/compiler-experiment/util/PrettyPrint.h
+ /home/wax/workbench/dig/util/PrettyPrint.cpp
+ /home/wax/workbench/dig/util/PrettyPrint.h
