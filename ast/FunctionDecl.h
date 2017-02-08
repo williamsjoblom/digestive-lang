@@ -25,6 +25,8 @@ public:
     virtual bool equals(const Node& other) const;
     virtual void dump(size_t indent);
     bool matchesSignature(const FunctionDecl& other) const;
+
+    int stackSize() override;
 };
 
 

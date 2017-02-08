@@ -67,6 +67,7 @@ bool Jit::reload(std::string path) {
                     break;
 
                 } else if (newFunction->matchesSignature(*oldFunction)) {  // Function body updated.
+                    newFunction->bHandleIndex = oldFunction->bHandleIndex;
                     root->functions[i] = newFunction;
                     JitContext::handles[oldFunction->bHandleIndex] = Generate::function(runtime, newFunction);
 
@@ -78,7 +79,7 @@ bool Jit::reload(std::string path) {
             }
 
             if (addFunction) {
-                assert(false); // Not implemented.
+                assert(false); // FIXME: Not implemented.
             }
         }
 
@@ -91,7 +92,6 @@ bool Jit::reload(std::string path) {
             if (*function != *oldFunction) return false;
         }
 
-        program = Generate::program(runtime, root);
         std::cout << "Updated " << updated << " function(s)" << std::endl;
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;

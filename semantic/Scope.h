@@ -26,6 +26,8 @@ public:
 
     bool contains(std::string identifier);
 
+    int stackSize();
+
     void addChild(Scope* scope);
     void removeChild(Scope* scope);
 

@@ -95,4 +95,8 @@ void Scope::dump(size_t indent) {
     }
 }
 
+int Scope::stackSize() {
+    return 0;
+}
+
 

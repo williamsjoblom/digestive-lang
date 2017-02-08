@@ -833,6 +833,7 @@ CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/VariableExpr.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././gen/Gen.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././jit/Jit.h
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././jit/JitContext.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/IO.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/Interactive.cpp
@@ -900,6 +901,7 @@ CMakeFiles/dig.dir/main.cpp.o: .././ast/Stmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableExpr.h
+CMakeFiles/dig.dir/main.cpp.o: .././jit/JitContext.h
 CMakeFiles/dig.dir/main.cpp.o: .././lexer/TokenQueue.h
 CMakeFiles/dig.dir/main.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/main.cpp.o: ../config.h

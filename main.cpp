@@ -2,6 +2,7 @@
 #include <iostream>
 #include <asmjit/asmjit.h>
 #include <unistd.h>
+#include <jit/JitContext.h>
 
 
 #include "config.h"
@@ -17,6 +18,8 @@ int main() {
     Interactive::start(&jit);
 
     jit.load("/home/wax/test1.dg");
+
+    JitContext::dumpHandles();
 
     int first = jit.run();
 

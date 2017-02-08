@@ -46,3 +46,8 @@ bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
 
     return Decl::equals(other);
 }
+
+
+int FunctionDecl::stackSize() {
+    return sizeof(void*);
+}

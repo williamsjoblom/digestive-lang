@@ -43,4 +43,8 @@ bool VariableDecl::equals(const Node &other) const {
     return *o->value == *value && Decl::equals(other);
 }
 
+int VariableDecl::stackSize() {
+    return sizeof(int);
+}
+
 

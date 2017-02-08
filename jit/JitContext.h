@@ -7,6 +7,8 @@
 
 namespace JitContext {
     extern void** handles;
+
+    void dumpHandles();
 }
 
 #endif //DIG_JITCONTEXT_H

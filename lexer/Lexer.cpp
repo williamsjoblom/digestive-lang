@@ -21,9 +21,9 @@ TokenQueue Lexer::lex(std::string source) {
 
     std::vector<Token>* tokens = new std::vector<Token>();
 
-    while (index < source.size()) {
-        readWhitespace();
+    readWhitespace();
 
+    while (index < source.size()) {
         Token t;
         t.row = row;
         t.col = col;
@@ -37,6 +37,8 @@ TokenQueue Lexer::lex(std::string source) {
             readSymbol(t);
 
         tokens->push_back(t);
+
+        readWhitespace();
     }
 
 
@@ -101,7 +103,11 @@ void Lexer::readSymbol(Token &token) {
     } while (symbolToTokenType.find(current) != symbolToTokenType.end());
     index--;
 
-    if (index == oldIndex) assert(false); // FIXME: will assert if unknown symbol is found. Replace with suitable error-code/exception.
+    if (index == oldIndex) { // FIXME: will assert if unknown symbol is found. Replace with suitable error-code/exception.
+        std::cout << "[" << token.row << ":" << token.col << "] Unknown symbol " << "'" << source[index] << "':" << (int)source[index] << std::endl;
+        std::cout << index << " of " << source.size() - 1 << std::endl;
+        assert(false);
+    }
 
     token.value = longest;
     token.type = symbolToTokenType.at(token.value);

@@ -5,6 +5,9 @@
 #include <thread>
 #include <iostream>
 #include <jit/Jit.h>
+#include <sstream>
+#include <iterator>
+#include <jit/JitContext.h>
 
 #include "Interactive.h"
 #include "IO.h"
@@ -21,7 +24,7 @@ namespace Interactive {
 
     void loop(Jit* jit) {
         if (!IO::init()) {
-            std::cout << "Failed to open pipe" << std::endl;
+            std::cout << "Failed to open interaction pipe" << std::endl;
             return;
         }
 
@@ -36,7 +39,22 @@ namespace Interactive {
         }
     }
 
-    void evaluate(Jit* jit, std::string cmd) {
-        jit->reload("/home/wax/test2.dg");
+    void evaluate(Jit* jit, std::string line) {
+        std::istringstream buffer(line);
+        std::vector<std::string> args((std::istream_iterator<std::string>(buffer)),
+                                     std::istream_iterator<std::string>());
+
+        if (args.size() < 1) return;
+
+        if (args[0] == "reload") {
+            if (args.size() != 2) {
+                std::cout << "SYNTAX: reload FILE_TO_RELOAD" << std::endl;
+                return;
+            }
+
+            jit->reload(args[1]);
+        }
+
+
     }
 }
