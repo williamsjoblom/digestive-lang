@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import sys, os
 
@@ -15,8 +16,6 @@ if not os.path.exists(path):
 out = open(path, 'w')
     
 while True:
-    cmd = ""
-    if sys.version
     cmd = input('> ')
     print(cmd)
     out.write(cmd)
