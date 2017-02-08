@@ -21,15 +21,12 @@ namespace IO {
 
         std::string inPath  = path + "/in";
 
-        std::cout << "Waiting for connection" << std::endl;
         in.open(inPath);
 
         if (in.fail()) {
             std::cout << "Could not open file 'in': " << std::strerror(errno) << std::endl;
             return false;
         }
-
-        std::cout << "Connected!" << std::endl;
 
         return true;
     }

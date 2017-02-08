@@ -12,7 +12,7 @@
 namespace Generate {
 
     void entry(X86Compiler& c, Unit* unit);
-    void** functions(JitRuntime* runtime, Unit* unit);
+    void functions(JitRuntime* runtime, Unit* unit);
 
     // Rename function to Generate::unit.
     ProgramType program(JitRuntime* runtime, Unit* unit) {
@@ -22,11 +22,14 @@ namespace Generate {
         StringLogger logger;
         a.setLogger(&logger);
 
-        JitContext::handles = Generate::functions(runtime, unit);
+        JitContext::handles = new void*[unit->functions.size()];
+        Generate::functions(runtime, unit);
 
         Generate::entry(c, unit);
 
         c.finalize();
+
+        std::cout << "Generated program:" << std::endl << logger.getString();
 
         ProgramType func = asmjit_cast<ProgramType>(a.make());
         return func;
@@ -42,18 +45,14 @@ namespace Generate {
         c.endFunc();
     }
 
-    void** functions(JitRuntime* runtime, Unit* unit) {
+    void functions(JitRuntime* runtime, Unit* unit) {
         int index = 0;
-
-        void** handles = new void*[unit->functions.size()];
 
         for (FunctionDecl* func : unit->functions) {
             func->bHandleIndex = index;
             void* ptr = Generate::function(runtime, func);
-            handles[index] = ptr;
+            JitContext::handles[index] = ptr;
             index++;
         }
-
-        return handles;
     }
 }

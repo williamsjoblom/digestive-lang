@@ -18,26 +18,29 @@ using namespace asmjit;
 namespace Generate {
 
     X86GpVar* expression(X86Compiler &c, BinaryExpr* expr) {
+        X86GpVar* result = new X86GpVar(c.newInt32());
 
         X86GpVar* left = expr->left->generate(c);
         X86GpVar* right = expr->right->generate(c);
 
+        c.mov(*result, *left);
+
         switch(expr->op->symbol) {
             case OperatorSymbol::PLUS:
-                c.add(*left, *right);
+                c.add(*result, *right);
                 break;
             case OperatorSymbol::MINUS:
-                c.sub(*left, *right);
+                c.sub(*result, *right);
                 break;
             case OperatorSymbol::MUL:
-                c.imul(*left, *right);
+                c.imul(*result, *right);
                 break;
             case OperatorSymbol::DIV:
                 assert(false); // Not implemented.
                 break;
         }
 
-        return left;
+        return result;
     }
 
     X86GpVar* expression(X86Compiler &c, LiteralExpr* expr) {
@@ -52,12 +55,26 @@ namespace Generate {
     }
 
     X86GpVar* expression(X86Compiler &c, FunctionCall* expr) {
+        FunctionDecl* decl = expr->declaration;
+
         X86GpVar ret = c.newInt32();
 
         X86GpVar handle = c.newIntPtr();
-        c.mov(handle, imm_ptr(JitContext::handles + expr->declaration->bHandleIndex));
+        c.mov(handle, imm_ptr(JitContext::handles + decl->bHandleIndex));
 
-        X86CallNode* call = c.addCall(x86::ptr(handle), FuncBuilder0<int>(kCallConvHost));
+        std::vector<X86GpVar*> args;
+        for (unsigned int i = 0; i < expr->arguments->size(); i++) {
+            X86GpVar* a = expr->arguments->at(i)->generate(c);
+            args.push_back(a);
+        }
+
+        X86CallNode* call = c.addCall(x86::ptr(handle), decl->bGetPrototype());
+
+        for (unsigned int i = 0; i < args.size(); i++) {
+            X86GpVar *a = args.at(i);
+            call->setArg(i, *a);
+        }
+
         //X86CallNode* call = c.addCall(expr->declaration->bEntryLabel, FuncBuilder0<int>(kCallConvHost));
         call->setRet(0, ret);
 

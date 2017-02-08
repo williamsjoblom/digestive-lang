@@ -7,6 +7,7 @@
 
 #include <ast/LoopStmt.h>
 #include <ast/PlnStmt.h>
+#include <ast/IfStmt.h>
 #include "ast/FunctionCall.h"
 #include "asmjit/asmjit.h"
 #include "ast/VariableExpr.h"
@@ -30,6 +31,7 @@ namespace Generate {
     void statement(X86Compiler &c, ReturnStmt* stmt);
 
     void loop(X86Compiler& c, LoopStmt* stmt);
+    void ifStmt(X86Compiler& c, IfStmt* stmt);
 
     void function(X86Compiler &c, FunctionDecl* func); // Old "inline"
     void* function(JitRuntime* runtime, FunctionDecl* func);

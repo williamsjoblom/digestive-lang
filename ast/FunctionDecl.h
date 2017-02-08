@@ -24,6 +24,8 @@ public:
     void analyze(Scope* scope);
     virtual bool equals(const Node& other) const;
     virtual void dump(size_t indent);
+
+    FuncPrototype bGetPrototype();
     bool matchesSignature(const FunctionDecl& other) const;
 
     int stackSize() override;

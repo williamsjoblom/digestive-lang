@@ -17,9 +17,7 @@ int main() {
     Jit jit;
     Interactive::start(&jit);
 
-    jit.load("/home/wax/test1.dg");
-
-    JitContext::dumpHandles();
+    jit.load("/home/wax/fib.dg");
 
     int first = jit.run();
 

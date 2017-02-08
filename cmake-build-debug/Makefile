@@ -609,6 +609,33 @@ gen/Function.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/Function.cpp.s
 .PHONY : gen/Function.cpp.s
 
+gen/If.o: gen/If.cpp.o
+
+.PHONY : gen/If.o
+
+# target to build an object file
+gen/If.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/If.cpp.o
+.PHONY : gen/If.cpp.o
+
+gen/If.i: gen/If.cpp.i
+
+.PHONY : gen/If.i
+
+# target to preprocess a source file
+gen/If.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/If.cpp.i
+.PHONY : gen/If.cpp.i
+
+gen/If.s: gen/If.cpp.s
+
+.PHONY : gen/If.s
+
+# target to generate assembly for a file
+gen/If.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/gen/If.cpp.s
+.PHONY : gen/If.cpp.s
+
 gen/Loop.o: gen/Loop.cpp.o
 
 .PHONY : gen/Loop.o
@@ -1995,6 +2022,9 @@ help:
 	@echo "... gen/Function.o"
 	@echo "... gen/Function.i"
 	@echo "... gen/Function.s"
+	@echo "... gen/If.o"
+	@echo "... gen/If.i"
+	@echo "... gen/If.s"
 	@echo "... gen/Loop.o"
 	@echo "... gen/Loop.i"
 	@echo "... gen/Loop.s"

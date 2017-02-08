@@ -11,6 +11,7 @@
 
 #include "Interactive.h"
 #include "IO.h"
+#include "util/Colors.h"
 
 namespace Interactive {
 
@@ -46,15 +47,16 @@ namespace Interactive {
 
         if (args.size() < 1) return;
 
+        std::cout << KRED;
+
         if (args[0] == "reload") {
             if (args.size() != 2) {
                 std::cout << "SYNTAX: reload  [path to file]" << std::endl;
-                return;
+            } else {
+                jit->reload(args[1]);
             }
-
-            jit->reload(args[1]);
         }
 
-
+        std::cout << RST;
     }
 }

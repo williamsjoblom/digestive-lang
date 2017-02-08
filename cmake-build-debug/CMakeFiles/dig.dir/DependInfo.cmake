@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wax/workbench/compiler-experiment/gen/Declaration.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Declaration.cpp.o"
   "/home/wax/workbench/compiler-experiment/gen/Expression.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Expression.cpp.o"
   "/home/wax/workbench/compiler-experiment/gen/Function.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Function.cpp.o"
+  "/home/wax/workbench/compiler-experiment/gen/If.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/If.cpp.o"
   "/home/wax/workbench/compiler-experiment/gen/Loop.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Loop.cpp.o"
   "/home/wax/workbench/compiler-experiment/gen/Program.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Program.cpp.o"
   "/home/wax/workbench/compiler-experiment/gen/Return.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/gen/Return.cpp.o"

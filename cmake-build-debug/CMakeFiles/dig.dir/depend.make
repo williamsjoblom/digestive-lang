@@ -8,6 +8,7 @@ CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o: .././ast/Node.h
@@ -38,6 +39,7 @@ CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/BlockStmt.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/Decl.cpp.o: .././ast/Node.h
@@ -61,6 +63,7 @@ CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/FunctionCall.cpp.o: .././ast/Node.h
@@ -82,6 +85,7 @@ CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/BinaryExpr.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/BlockStmt.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/FunctionCall.h
+CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: .././ast/Node.h
@@ -101,6 +105,23 @@ CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: ../ast/FunctionDecl.cpp
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: ../ast/FunctionDecl.h
 CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o: ../ast/VariableDecl.h
 
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/BinaryExpr.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/BlockStmt.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/Decl.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/Expr.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/FunctionCall.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/IfStmt.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/LiteralExpr.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/LoopStmt.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/Operator.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/PlnStmt.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/ReturnStmt.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/Unit.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/VariableDecl.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././ast/VariableExpr.h
+CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././gen/Gen.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: .././util/PrettyPrint.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/Analyzable.h
@@ -108,7 +129,6 @@ CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/BlockStmt.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/Expr.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/IfStmt.cpp
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/IfStmt.h
-CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/Node.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o: ../ast/Stmt.h
 
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/Analyzable.h
@@ -118,6 +138,7 @@ CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o: .././ast/Node.h
@@ -141,6 +162,7 @@ CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/LoopStmt.cpp.o: .././ast/Node.h
@@ -171,6 +193,7 @@ CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/PlnStmt.cpp.o: .././ast/Node.h
@@ -195,6 +218,7 @@ CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o: .././ast/Node.h
@@ -220,6 +244,7 @@ CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/Unit.cpp.o: .././ast/Node.h
@@ -239,6 +264,7 @@ CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/BlockStmt.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/VariableDecl.cpp.o: .././ast/Node.h
@@ -264,6 +290,7 @@ CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/ast/VariableExpr.cpp.o: .././ast/Node.h
@@ -288,6 +315,7 @@ CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/BuiltIn.cpp.o: .././ast/Node.h
@@ -336,6 +364,7 @@ CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: .././ast/Node.h
@@ -350,6 +379,28 @@ CMakeFiles/dig.dir/gen/Function.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/gen/Function.cpp.o: ../gen/Function.cpp
 CMakeFiles/dig.dir/gen/Function.cpp.o: ../gen/Gen.h
 
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Analyzable.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/BinaryExpr.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/BlockStmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Decl.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Expr.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/FunctionCall.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/IfStmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/LiteralExpr.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/LoopStmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Operator.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/PlnStmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/ReturnStmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/Unit.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/VariableDecl.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././ast/VariableExpr.h
+CMakeFiles/dig.dir/gen/If.cpp.o: .././semantic/Scope.h
+CMakeFiles/dig.dir/gen/If.cpp.o: ../gen/Gen.h
+CMakeFiles/dig.dir/gen/If.cpp.o: ../gen/If.cpp
+
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/Analyzable.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/BinaryExpr.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/BlockStmt.h
@@ -357,6 +408,7 @@ CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/Loop.cpp.o: .././ast/Node.h
@@ -378,6 +430,7 @@ CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/Program.cpp.o: .././ast/Node.h
@@ -401,6 +454,7 @@ CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/Return.cpp.o: .././ast/Node.h
@@ -422,6 +476,7 @@ CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/gen/Unit.cpp.o: .././ast/Node.h
@@ -821,6 +876,7 @@ CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/Decl.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/Expr.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/FunctionCall.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/FunctionDecl.h
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/IfStmt.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/LiteralExpr.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/LoopStmt.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././ast/Node.h
@@ -835,6 +891,7 @@ CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././gen/Gen.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././jit/Jit.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././jit/JitContext.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././semantic/Scope.h
+CMakeFiles/dig.dir/interactive/Interactive.cpp.o: .././util/Colors.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/IO.h
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/Interactive.cpp
 CMakeFiles/dig.dir/interactive/Interactive.cpp.o: ../interactive/Interactive.h

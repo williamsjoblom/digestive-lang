@@ -9,6 +9,7 @@ CMakeFiles/dig.dir/ast/BinaryExpr.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -39,6 +40,7 @@ CMakeFiles/dig.dir/ast/Decl.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -62,6 +64,7 @@ CMakeFiles/dig.dir/ast/FunctionCall.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -83,6 +86,7 @@ CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
  .././ast/BlockStmt.h
  .././ast/Expr.h
  .././ast/FunctionCall.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -102,6 +106,23 @@ CMakeFiles/dig.dir/ast/FunctionDecl.cpp.o
  /home/wax/workbench/compiler-experiment/ast/FunctionDecl.h
  /home/wax/workbench/compiler-experiment/ast/VariableDecl.h
 CMakeFiles/dig.dir/ast/IfStmt.cpp.o
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././gen/Gen.h
  .././semantic/Scope.h
  .././util/PrettyPrint.h
  /home/wax/workbench/compiler-experiment/ast/Analyzable.h
@@ -109,7 +130,6 @@ CMakeFiles/dig.dir/ast/IfStmt.cpp.o
  /home/wax/workbench/compiler-experiment/ast/Expr.h
  /home/wax/workbench/compiler-experiment/ast/IfStmt.cpp
  /home/wax/workbench/compiler-experiment/ast/IfStmt.h
- /home/wax/workbench/compiler-experiment/ast/Node.h
  /home/wax/workbench/compiler-experiment/ast/Stmt.h
 CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
  .././ast/Analyzable.h
@@ -119,6 +139,7 @@ CMakeFiles/dig.dir/ast/LiteralExpr.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -142,6 +163,7 @@ CMakeFiles/dig.dir/ast/LoopStmt.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -172,6 +194,7 @@ CMakeFiles/dig.dir/ast/PlnStmt.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -196,6 +219,7 @@ CMakeFiles/dig.dir/ast/ReturnStmt.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -221,6 +245,7 @@ CMakeFiles/dig.dir/ast/Unit.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -240,6 +265,7 @@ CMakeFiles/dig.dir/ast/VariableDecl.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -265,6 +291,7 @@ CMakeFiles/dig.dir/ast/VariableExpr.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -289,6 +316,7 @@ CMakeFiles/dig.dir/gen/BuiltIn.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -337,6 +365,7 @@ CMakeFiles/dig.dir/gen/Function.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -350,6 +379,28 @@ CMakeFiles/dig.dir/gen/Function.cpp.o
  .././semantic/Scope.h
  /home/wax/workbench/compiler-experiment/gen/Function.cpp
  /home/wax/workbench/compiler-experiment/gen/Gen.h
+CMakeFiles/dig.dir/gen/If.cpp.o
+ .././ast/Analyzable.h
+ .././ast/BinaryExpr.h
+ .././ast/BlockStmt.h
+ .././ast/Decl.h
+ .././ast/Expr.h
+ .././ast/FunctionCall.h
+ .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
+ .././ast/LiteralExpr.h
+ .././ast/LoopStmt.h
+ .././ast/Node.h
+ .././ast/Operator.h
+ .././ast/PlnStmt.h
+ .././ast/ReturnStmt.h
+ .././ast/Stmt.h
+ .././ast/Unit.h
+ .././ast/VariableDecl.h
+ .././ast/VariableExpr.h
+ .././semantic/Scope.h
+ /home/wax/workbench/compiler-experiment/gen/Gen.h
+ /home/wax/workbench/compiler-experiment/gen/If.cpp
 CMakeFiles/dig.dir/gen/Loop.cpp.o
  .././ast/Analyzable.h
  .././ast/BinaryExpr.h
@@ -358,6 +409,7 @@ CMakeFiles/dig.dir/gen/Loop.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -379,6 +431,7 @@ CMakeFiles/dig.dir/gen/Program.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -402,6 +455,7 @@ CMakeFiles/dig.dir/gen/Return.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -423,6 +477,7 @@ CMakeFiles/dig.dir/gen/Unit.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -822,6 +877,7 @@ CMakeFiles/dig.dir/interactive/Interactive.cpp.o
  .././ast/Expr.h
  .././ast/FunctionCall.h
  .././ast/FunctionDecl.h
+ .././ast/IfStmt.h
  .././ast/LiteralExpr.h
  .././ast/LoopStmt.h
  .././ast/Node.h
@@ -836,6 +892,7 @@ CMakeFiles/dig.dir/interactive/Interactive.cpp.o
  .././jit/Jit.h
  .././jit/JitContext.h
  .././semantic/Scope.h
+ .././util/Colors.h
  /home/wax/workbench/compiler-experiment/interactive/IO.h
  /home/wax/workbench/compiler-experiment/interactive/Interactive.cpp
  /home/wax/workbench/compiler-experiment/interactive/Interactive.h

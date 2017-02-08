@@ -14,6 +14,11 @@ FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* p
 void FunctionDecl::analyze(Scope* scope) {
     scope->declare(this);
     Scope* innerScope = new Scope(scope);
+
+    for (VariableDecl* param : *this->parameters) {
+        param->analyze(innerScope);
+    }
+
     body->analyze(innerScope);
 }
 
@@ -50,4 +55,14 @@ bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
 
 int FunctionDecl::stackSize() {
     return sizeof(void*);
+}
+
+FuncPrototype FunctionDecl::bGetPrototype() {
+    FuncBuilderX prototype = FuncBuilderX(kCallConvHost);
+
+    for (unsigned int i = 0; i < parameters->size(); i++) {
+        prototype.addArg(TypeId<int>::kId);
+    }
+
+    return prototype;
 }

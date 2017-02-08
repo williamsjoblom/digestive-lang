@@ -16,6 +16,10 @@ VariableDecl::VariableDecl(std::string identifier, Expr* value) : Decl(identifie
 
 void VariableDecl::analyze(Scope* scope) {
     scope->declare(this);
+
+    if (this->value != nullptr) {
+        this->value->analyze(scope);
+    }
 }
 
 void VariableDecl::dump(size_t indent) {

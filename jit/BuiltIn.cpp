@@ -8,8 +8,7 @@
 
 namespace BuiltIn {
     void pln(int i) {
-        std::cout << "\r" << i;
-        std::cout.flush();
+        std::cout << i << std::endl;
         usleep(500 * 1000); // Sleep 500ms between prints to ease testing.
     }
 }

@@ -133,6 +133,8 @@ ast/LoopStmt.h
 -
 ast/PlnStmt.h
 -
+ast/IfStmt.h
+-
 ast/FunctionCall.h
 .././gen/ast/FunctionCall.h
 asmjit/asmjit.h
@@ -221,6 +223,8 @@ map
 -
 set
 -
+
+.././util/Colors.h
 
 .././util/PrettyPrint.h
 iostream
@@ -961,6 +965,8 @@ assert.h
 -
 util/PrettyPrint.h
 -
+gen/Gen.h
+-
 IfStmt.h
 /home/wax/workbench/compiler-experiment/ast/IfStmt.h
 
@@ -1131,6 +1137,8 @@ ast/LoopStmt.h
 -
 ast/PlnStmt.h
 -
+ast/IfStmt.h
+-
 ast/FunctionCall.h
 /home/wax/workbench/compiler-experiment/gen/ast/FunctionCall.h
 asmjit/asmjit.h
@@ -1149,6 +1157,10 @@ ast/Expr.h
 /home/wax/workbench/compiler-experiment/gen/ast/Expr.h
 ast/BlockStmt.h
 /home/wax/workbench/compiler-experiment/gen/ast/BlockStmt.h
+
+/home/wax/workbench/compiler-experiment/gen/If.cpp
+Gen.h
+/home/wax/workbench/compiler-experiment/gen/Gen.h
 
 /home/wax/workbench/compiler-experiment/gen/Loop.cpp
 Gen.h
@@ -1209,6 +1221,8 @@ Interactive.h
 /home/wax/workbench/compiler-experiment/interactive/Interactive.h
 IO.h
 /home/wax/workbench/compiler-experiment/interactive/IO.h
+util/Colors.h
+/home/wax/workbench/compiler-experiment/interactive/util/Colors.h
 
 /home/wax/workbench/compiler-experiment/interactive/Interactive.h
 jit/Jit.h
