@@ -1,1 +1,1 @@
-CMake: 3.6.3@/usr/share/clion/bin/cmake/bin/cmake
+CMake: 3.6.2@/usr/share/clion/bin/cmake/bin/cmake

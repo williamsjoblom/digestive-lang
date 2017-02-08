@@ -48,7 +48,7 @@ namespace Interactive {
 
         if (args[0] == "reload") {
             if (args.size() != 2) {
-                std::cout << "SYNTAX: reload FILE_TO_RELOAD" << std::endl;
+                std::cout << "SYNTAX: reload  [path to file]" << std::endl;
                 return;
             }
 

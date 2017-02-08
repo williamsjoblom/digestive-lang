@@ -43,7 +43,7 @@ bool Jit::load(std::string path) {
 }
 
 bool Jit::reload(std::string path) {
-    std::cout << "Reloading " << path << std::endl;
+    std::cout << "Reloading '" << path << "'"<< std::endl;
     std::string source = readFile(path);
 
     Lexer lexer;
@@ -69,6 +69,8 @@ bool Jit::reload(std::string path) {
                 } else if (newFunction->matchesSignature(*oldFunction)) {  // Function body updated.
                     newFunction->bHandleIndex = oldFunction->bHandleIndex;
                     root->functions[i] = newFunction;
+                    std::cout << "Transfering function handle " << oldFunction->bHandleIndex << std::endl;
+                    newFunction->bHandleIndex = oldFunction->bHandleIndex;
                     JitContext::handles[oldFunction->bHandleIndex] = Generate::function(runtime, newFunction);
 
                     addFunction = false;
