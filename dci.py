@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os
+import sys, os, readline
 
 if len(sys.argv) > 1:
     path = sys.argv[1]
@@ -18,6 +18,6 @@ out = open(path, 'w')
 while True:
     cmd = input('> ')
     print(cmd)
-    out.write(cmd)
-
+    out.write(cmd + '\n')
+    out.flush()
 
