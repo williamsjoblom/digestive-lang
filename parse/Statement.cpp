@@ -13,6 +13,7 @@ namespace Parse {
 
         Stmt* stmt;
         if((stmt = Parse::ret(tokens)) != nullptr) return stmt;
+        else if((stmt = Parse::block(tokens)) != nullptr) return stmt;
         else if((stmt = Parse::variable(tokens)) != nullptr) return stmt;
         else if((stmt = Parse::pln(tokens)) != nullptr) return stmt;
         else if((stmt = Parse::ifStmt(tokens)) != nullptr) return stmt;
