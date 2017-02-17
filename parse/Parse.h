@@ -14,7 +14,9 @@
 #include <ast/LoopStmt.h>
 #include "ast/Expr.h"
 #include "ast/FunctionDecl.h"
+#include "ast/Trap.h"
 #include "lexer/TokenQueue.h"
+
 
 // TODO: divide into several headers if compile times gets too slow
 
@@ -32,6 +34,7 @@ namespace Parse {
     IfStmt* ifStmt(TokenQueue& tokens);
     LoopStmt* loopStmt(TokenQueue& tokens);
     Unit* unit(TokenQueue& tokens);
+    Trap* trap(TokenQueue& tokens);
 }
 
 #endif //DIG_PARSE_H

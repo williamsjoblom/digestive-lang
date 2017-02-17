@@ -18,6 +18,7 @@ namespace Parse {
         else if((stmt = Parse::pln(tokens)) != nullptr) return stmt;
         else if((stmt = Parse::ifStmt(tokens)) != nullptr) return stmt;
         else if((stmt = Parse::loopStmt(tokens)) != nullptr) return stmt;
+        else if((stmt = Parse::trap(tokens)) != nullptr) return stmt;
 
         Expr* expression = Parse::expression(tokens);
         tokens.expect(SEMICOL);
