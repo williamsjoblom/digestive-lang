@@ -9,6 +9,8 @@
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body) : Decl(identifier) {
     this->parameters = parameters;
     this->body = body;
+
+    this->baPrototype = nullptr;
 }
 
 void FunctionDecl::analyze(Scope* scope) {
@@ -57,12 +59,16 @@ int FunctionDecl::stackSize() {
     return sizeof(void*);
 }
 
-FuncPrototype FunctionDecl::bGetPrototype() {
-    FuncBuilderX prototype = FuncBuilderX(kCallConvHost);
+FuncBuilderX FunctionDecl::bGetFuncPrototype() {
+    if (baPrototype == nullptr) {
+        baPrototype = new FuncBuilderX(kCallConvHost);
+        baPrototype->setRet(TypeId<int>::kId);
 
-    for (unsigned int i = 0; i < parameters->size(); i++) {
-        prototype.addArg(TypeId<int>::kId);
+        for (unsigned int i = 0; i < parameters->size(); i++) {
+            baPrototype->addArg(TypeId<int>::kId);
+        }
     }
 
-    return prototype;
+    return *baPrototype;
 }
+

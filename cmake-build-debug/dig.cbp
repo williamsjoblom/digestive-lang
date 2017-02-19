@@ -328,6 +328,9 @@
 		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Stmt.h">
 			<Option target="dig"/>
 		</Unit>
+		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Trap.h">
+			<Option target="dig"/>
+		</Unit>
 		<Unit filename="/home/wax/workbench/compiler-experiment/ast/Unit.cpp">
 			<Option target="dig"/>
 		</Unit>
@@ -461,6 +464,9 @@
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Statement.cpp">
+			<Option target="dig"/>
+		</Unit>
+		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Trap.cpp">
 			<Option target="dig"/>
 		</Unit>
 		<Unit filename="/home/wax/workbench/compiler-experiment/parse/Unit.cpp">

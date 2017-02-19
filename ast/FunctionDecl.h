@@ -15,8 +15,8 @@ public:
     std::vector<VariableDecl*>* parameters;
     BlockStmt* body;
 
-    Label bEntryLabel;
     int bHandleIndex;
+    FuncBuilderX* baPrototype;
 
     FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body);
 
@@ -25,8 +25,8 @@ public:
     virtual bool equals(const Node& other) const;
     virtual void dump(size_t indent);
 
-    FuncPrototype bGetPrototype();
     bool matchesSignature(const FunctionDecl& other) const;
+    FuncBuilderX bGetFuncPrototype();
 
     int stackSize() override;
 };

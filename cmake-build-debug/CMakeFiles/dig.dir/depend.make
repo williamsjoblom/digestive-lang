@@ -914,6 +914,7 @@ CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/Operator.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/jit/Jit.cpp.o: .././ast/VariableExpr.h
@@ -955,6 +956,7 @@ CMakeFiles/dig.dir/main.cpp.o: .././ast/Operator.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/main.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/main.cpp.o: .././ast/VariableExpr.h
@@ -983,6 +985,7 @@ CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Block.cpp.o: .././lexer/Token.h
@@ -1006,6 +1009,7 @@ CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Operator.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Expression.cpp.o: .././ast/VariableExpr.h
@@ -1028,6 +1032,7 @@ CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/File.cpp.o: .././lexer/Token.h
@@ -1048,6 +1053,7 @@ CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Function.cpp.o: .././lexer/Token.h
@@ -1069,6 +1075,7 @@ CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/If.cpp.o: .././lexer/Token.h
@@ -1089,6 +1096,7 @@ CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Loop.cpp.o: .././lexer/Token.h
@@ -1113,6 +1121,7 @@ CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Pln.cpp.o: .././lexer/Token.h
@@ -1133,6 +1142,7 @@ CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Return.cpp.o: .././lexer/Token.h
@@ -1154,6 +1164,7 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././lexer/Token.h
@@ -1162,6 +1173,15 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o: .././semantic/Scope.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: .././util/PrettyPrint.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: ../parse/Parse.h
 CMakeFiles/dig.dir/parse/Statement.cpp.o: ../parse/Statement.cpp
+
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././ast/Analyzable.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././ast/Node.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././ast/Trap.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././lexer/Token.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././lexer/TokenQueue.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: .././semantic/Scope.h
+CMakeFiles/dig.dir/parse/Trap.cpp.o: ../parse/Trap.cpp
 
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/Analyzable.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/BlockStmt.h
@@ -1175,6 +1195,7 @@ CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Unit.cpp.o: .././lexer/Token.h
@@ -1195,6 +1216,7 @@ CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Node.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/PlnStmt.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/ReturnStmt.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Stmt.h
+CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Trap.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/Unit.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././ast/VariableDecl.h
 CMakeFiles/dig.dir/parse/Variable.cpp.o: .././lexer/Token.h

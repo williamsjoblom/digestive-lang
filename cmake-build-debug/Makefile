@@ -1824,6 +1824,33 @@ parse/Statement.cpp.s:
 	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Statement.cpp.s
 .PHONY : parse/Statement.cpp.s
 
+parse/Trap.o: parse/Trap.cpp.o
+
+.PHONY : parse/Trap.o
+
+# target to build an object file
+parse/Trap.cpp.o:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Trap.cpp.o
+.PHONY : parse/Trap.cpp.o
+
+parse/Trap.i: parse/Trap.cpp.i
+
+.PHONY : parse/Trap.i
+
+# target to preprocess a source file
+parse/Trap.cpp.i:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Trap.cpp.i
+.PHONY : parse/Trap.cpp.i
+
+parse/Trap.s: parse/Trap.cpp.s
+
+.PHONY : parse/Trap.s
+
+# target to generate assembly for a file
+parse/Trap.cpp.s:
+	$(MAKE) -f CMakeFiles/dig.dir/build.make CMakeFiles/dig.dir/parse/Trap.cpp.s
+.PHONY : parse/Trap.cpp.s
+
 parse/Unit.o: parse/Unit.cpp.o
 
 .PHONY : parse/Unit.o
@@ -2157,6 +2184,9 @@ help:
 	@echo "... parse/Statement.o"
 	@echo "... parse/Statement.i"
 	@echo "... parse/Statement.s"
+	@echo "... parse/Trap.o"
+	@echo "... parse/Trap.i"
+	@echo "... parse/Trap.s"
 	@echo "... parse/Unit.o"
 	@echo "... parse/Unit.i"
 	@echo "... parse/Unit.s"

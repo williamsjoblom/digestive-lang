@@ -9,8 +9,7 @@ namespace Generate {
     void function(X86Compiler &c, FunctionDecl* func) {
         FuncPrototype prototype = FuncBuilder0<int>(kCallConvHost);
 
-        X86FuncNode* node = c.addFunc(prototype);
-        func->bEntryLabel = node->getEntryLabel();
+        c.addFunc(prototype);
 
         func->body->generate(c);
         c.endFunc();
@@ -22,14 +21,9 @@ namespace Generate {
         StringLogger logger;
         a.setLogger(&logger);
 
-        FuncBuilderX prototype = FuncBuilderX(kCallConvHost);
-        prototype.setRet(TypeId<int>::kId);
+        FuncBuilderX prototype = func->bGetFuncPrototype();
 
-        for (unsigned int i = 0; i < func->parameters->size(); i++) {
-            prototype.addArg(TypeId<int>::kId);
-        }
-
-        c.addFunc(prototype);
+        X86FuncNode* f = c.addFunc(prototype);
 
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
@@ -38,10 +32,7 @@ namespace Generate {
             c.setArg(i, *param->bVar);
         }
 
-
         func->body->generate(c);
-
-
 
         c.endFunc();
 

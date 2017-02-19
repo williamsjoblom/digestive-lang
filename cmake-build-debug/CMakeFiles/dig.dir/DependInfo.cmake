@@ -67,6 +67,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wax/workbench/compiler-experiment/parse/Pln.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Pln.cpp.o"
   "/home/wax/workbench/compiler-experiment/parse/Return.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Return.cpp.o"
   "/home/wax/workbench/compiler-experiment/parse/Statement.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Statement.cpp.o"
+  "/home/wax/workbench/compiler-experiment/parse/Trap.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Trap.cpp.o"
   "/home/wax/workbench/compiler-experiment/parse/Unit.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Unit.cpp.o"
   "/home/wax/workbench/compiler-experiment/parse/Variable.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/parse/Variable.cpp.o"
   "/home/wax/workbench/compiler-experiment/semantic/Scope.cpp" "/home/wax/workbench/compiler-experiment/cmake-build-debug/CMakeFiles/dig.dir/semantic/Scope.cpp.o"

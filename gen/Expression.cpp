@@ -18,10 +18,10 @@ using namespace asmjit;
 namespace Generate {
 
     X86GpVar* expression(X86Compiler &c, BinaryExpr* expr) {
-        X86GpVar* result = new X86GpVar(c.newInt32());
-
         X86GpVar* left = expr->left->generate(c);
         X86GpVar* right = expr->right->generate(c);
+
+        X86GpVar* result = new X86GpVar(c.newInt32("binexp"));
 
         c.mov(*result, *left);
 
@@ -44,7 +44,7 @@ namespace Generate {
     }
 
     X86GpVar* expression(X86Compiler &c, LiteralExpr* expr) {
-        X86GpVar* result = new X86GpVar(c.newInt32());
+        X86GpVar* result = new X86GpVar(c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str()));
         c.mov(*result, expr->value);
 
         return result;
@@ -57,9 +57,9 @@ namespace Generate {
     X86GpVar* expression(X86Compiler &c, FunctionCall* expr) {
         FunctionDecl* decl = expr->declaration;
 
-        X86GpVar ret = c.newInt32();
+        X86GpVar ret = c.newInt32("return");
 
-        X86GpVar handle = c.newIntPtr();
+        X86GpVar handle = c.newIntPtr("handle");
         c.mov(handle, imm_ptr(JitContext::handles + decl->bHandleIndex));
 
         std::vector<X86GpVar*> args;
@@ -68,7 +68,9 @@ namespace Generate {
             args.push_back(a);
         }
 
-        X86CallNode* call = c.addCall(x86::ptr(handle), decl->bGetPrototype());
+        X86CallNode* call = c.addCall(x86::ptr(handle), decl->bGetFuncPrototype());
+        call->setRet(0, ret);
+
 
         for (unsigned int i = 0; i < args.size(); i++) {
             X86GpVar *a = args.at(i);
@@ -76,7 +78,6 @@ namespace Generate {
         }
 
         //X86CallNode* call = c.addCall(expr->declaration->bEntryLabel, FuncBuilder0<int>(kCallConvHost));
-        call->setRet(0, ret);
 
         return new X86GpVar(ret);
     }

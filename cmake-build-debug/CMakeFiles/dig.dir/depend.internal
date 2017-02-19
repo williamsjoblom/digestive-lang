@@ -915,6 +915,7 @@ CMakeFiles/dig.dir/jit/Jit.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
@@ -956,6 +957,7 @@ CMakeFiles/dig.dir/main.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
@@ -984,6 +986,7 @@ CMakeFiles/dig.dir/parse/Block.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1007,6 +1010,7 @@ CMakeFiles/dig.dir/parse/Expression.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././ast/VariableExpr.h
@@ -1029,6 +1033,7 @@ CMakeFiles/dig.dir/parse/File.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1049,6 +1054,7 @@ CMakeFiles/dig.dir/parse/Function.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1070,6 +1076,7 @@ CMakeFiles/dig.dir/parse/If.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1090,6 +1097,7 @@ CMakeFiles/dig.dir/parse/Loop.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1114,6 +1122,7 @@ CMakeFiles/dig.dir/parse/Pln.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1134,6 +1143,7 @@ CMakeFiles/dig.dir/parse/Return.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1155,6 +1165,7 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1163,6 +1174,15 @@ CMakeFiles/dig.dir/parse/Statement.cpp.o
  .././util/PrettyPrint.h
  /home/wax/workbench/compiler-experiment/parse/Parse.h
  /home/wax/workbench/compiler-experiment/parse/Statement.cpp
+CMakeFiles/dig.dir/parse/Trap.cpp.o
+ .././ast/Analyzable.h
+ .././ast/Node.h
+ .././ast/Stmt.h
+ .././ast/Trap.h
+ .././lexer/Token.h
+ .././lexer/TokenQueue.h
+ .././semantic/Scope.h
+ /home/wax/workbench/compiler-experiment/parse/Trap.cpp
 CMakeFiles/dig.dir/parse/Unit.cpp.o
  .././ast/Analyzable.h
  .././ast/BlockStmt.h
@@ -1176,6 +1196,7 @@ CMakeFiles/dig.dir/parse/Unit.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h
@@ -1196,6 +1217,7 @@ CMakeFiles/dig.dir/parse/Variable.cpp.o
  .././ast/PlnStmt.h
  .././ast/ReturnStmt.h
  .././ast/Stmt.h
+ .././ast/Trap.h
  .././ast/Unit.h
  .././ast/VariableDecl.h
  .././lexer/Token.h

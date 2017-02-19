@@ -8,7 +8,7 @@
 
 namespace Generate {
     void variableDeclaration(X86Compiler &c, VariableDecl* decl) {
-        decl->bVar = new X86GpVar(c.newInt32());
+        decl->bVar = new X86GpVar(c.newInt32(decl->identifier.c_str()));
         if (decl->value != nullptr) {
             c.mov(*decl->bVar, *decl->value->generate(c));
         }

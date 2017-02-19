@@ -112,6 +112,10 @@ Node.h
 Analyzable.h
 .././ast/Analyzable.h
 
+.././ast/Trap.h
+Stmt.h
+.././ast/Stmt.h
+
 .././ast/Unit.h
 FunctionDecl.h
 .././ast/FunctionDecl.h
@@ -211,6 +215,8 @@ ast/Expr.h
 .././parse/ast/Expr.h
 ast/FunctionDecl.h
 .././parse/ast/FunctionDecl.h
+ast/Trap.h
+.././parse/ast/Trap.h
 lexer/TokenQueue.h
 .././parse/lexer/TokenQueue.h
 
@@ -1417,6 +1423,8 @@ ast/Expr.h
 /home/wax/workbench/compiler-experiment/parse/ast/Expr.h
 ast/FunctionDecl.h
 /home/wax/workbench/compiler-experiment/parse/ast/FunctionDecl.h
+ast/Trap.h
+/home/wax/workbench/compiler-experiment/parse/ast/Trap.h
 lexer/TokenQueue.h
 /home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 
@@ -1451,6 +1459,12 @@ lexer/TokenQueue.h
 /home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
 Parse.h
 /home/wax/workbench/compiler-experiment/parse/Parse.h
+
+/home/wax/workbench/compiler-experiment/parse/Trap.cpp
+lexer/TokenQueue.h
+/home/wax/workbench/compiler-experiment/parse/lexer/TokenQueue.h
+ast/Trap.h
+/home/wax/workbench/compiler-experiment/parse/ast/Trap.h
 
 /home/wax/workbench/compiler-experiment/parse/Unit.cpp
 lexer/TokenQueue.h

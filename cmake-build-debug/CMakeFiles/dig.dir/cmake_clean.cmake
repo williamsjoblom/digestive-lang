@@ -45,6 +45,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/dig.dir/jit/BuiltIn.cpp.o"
   "CMakeFiles/dig.dir/parse/Loop.cpp.o"
   "CMakeFiles/dig.dir/gen/If.cpp.o"
+  "CMakeFiles/dig.dir/parse/Trap.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/assembler.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compiler.cpp.o"
   "CMakeFiles/dig.dir/home/wax/lib/asmjit/src/asmjit/base/compilercontext.cpp.o"
