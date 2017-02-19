@@ -25,7 +25,14 @@ enum TokenType {
     LBRACK,
     RBRACK,
     LPAR,
-    RPAR
+    RPAR,
+
+    EQ,
+    NOTEQ,
+    LESSEQ,
+    GREATEREQ,
+    LESS,
+    GREATER,
 };
 
 struct Token {
@@ -50,7 +57,14 @@ static std::map<std::string, TokenType> symbolToTokenType =
                 {"{", LBRACK},
                 {"}", RBRACK},
                 {"(", LPAR},
-                {")", RPAR}
+                {")", RPAR},
+
+                {"==", EQ},
+                {"!=", NOTEQ},
+                {"<=", LESSEQ},
+                {">=", GREATEREQ},
+                {"<", LESS},
+                {">", GREATER},
         };
 
 #endif //DIG_TOKEN_H

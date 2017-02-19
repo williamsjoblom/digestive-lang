@@ -12,7 +12,14 @@ enum class OperatorSymbol {
     PLUS,
     MINUS,
     MUL,
-    DIV
+    DIV,
+
+    EQ,
+    NOTEQ,
+    LESSEQ,
+    GREATEREQ,
+    LESS,
+    GREATER,
 };
 
 class Operator : public Node {

@@ -23,20 +23,54 @@ namespace Generate {
 
         X86GpVar* result = new X86GpVar(c.newInt32("binexp"));
 
-        c.mov(*result, *left);
 
         switch(expr->op->symbol) {
             case OperatorSymbol::PLUS:
+                c.mov(*result, *left);
                 c.add(*result, *right);
                 break;
             case OperatorSymbol::MINUS:
+                c.mov(*result, *left);
                 c.sub(*result, *right);
                 break;
             case OperatorSymbol::MUL:
+                c.mov(*result, *left);
                 c.imul(*result, *right);
                 break;
             case OperatorSymbol::DIV:
+                c.mov(*result, *left);
                 assert(false); // Not implemented.
+                break;
+
+            case OperatorSymbol::EQ:
+                c.cmp(*left, *right);
+                c.sete(result->r8());
+                c.movzx(*result, result->r8());
+                break;
+            case OperatorSymbol::NOTEQ:
+                c.cmp(*left, *right);
+                c.setne(result->r8());
+                c.movzx(*result, result->r8());
+                break;
+            case OperatorSymbol::LESSEQ:
+                c.cmp(*left, *right);
+                c.setle(result->r8());
+                c.movzx(*result, result->r8());
+                break;
+            case OperatorSymbol::GREATEREQ:
+                c.cmp(*left, *right);
+                c.setge(result->r8());
+                c.movzx(*result, result->r8());
+                break;
+            case OperatorSymbol::LESS:
+                c.cmp(*left, *right);
+                c.setl(result->r8());
+                c.movzx(*result, result->r8());
+                break;
+            case OperatorSymbol::GREATER:
+                c.cmp(*left, *right);
+                c.setg(result->r8());
+                c.movzx(*result, result->r8());
                 break;
         }
 
