@@ -33,7 +33,7 @@ void Unit::dump(size_t indent) {
 }
 
 void Unit::generate(X86Compiler &c) {
-    Generate::unit(c, this);
+    assert(false); // Use Generate::program(...).
 }
 
 bool Unit::equals(const Node &other) const {
