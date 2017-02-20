@@ -19,7 +19,7 @@ public:
     bool reload(std::string path);
     int run();
 private:
-    JitRuntime* runtime;
+    JitRuntime runtime;
     ProgramType program;
     Unit* root;
 

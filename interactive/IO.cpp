@@ -16,9 +16,7 @@ namespace IO {
     std::string getWorkingDir();
 
     bool init() {
-
         std::string path = getWorkingDir();
-
         std::string inPath  = path + "/in";
 
         in.open(inPath);

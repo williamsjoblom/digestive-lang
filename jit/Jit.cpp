@@ -14,13 +14,11 @@
 #include "JitContext.h"
 
 Jit::Jit() {
-    runtime = new JitRuntime();
     program = nullptr;
 }
 
 Jit::~Jit() {
-    runtime->release((void*) program);
-    delete runtime;
+    runtime.release((void*) program);
     delete root;
 }
 
@@ -37,7 +35,7 @@ bool Jit::load(std::string path) {
         Scope fileScope;
         root->analyze(&fileScope);
 
-        program = Generate::program(runtime, root);
+        program = Generate::program(&runtime, root);
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
         return false;
@@ -75,7 +73,7 @@ bool Jit::reload(std::string path) {
                     root->functions[i] = newFunction;
                     std::cout << "Transfering function handle " << oldFunction->bHandleIndex << std::endl;
                     newFunction->bHandleIndex = oldFunction->bHandleIndex;
-                    JitContext::handles[oldFunction->bHandleIndex] = Generate::function(runtime, newFunction);
+                    JitContext::handles[oldFunction->bHandleIndex] = Generate::function(&runtime, newFunction);
 
                     addFunction = false;
                     delete oldFunction;
