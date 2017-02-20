@@ -14,6 +14,10 @@ VariableDecl::VariableDecl(std::string identifier, Expr* value) : Decl(identifie
     this->value = value;
 }
 
+VariableDecl::~VariableDecl() {
+    delete value;
+}
+
 void VariableDecl::analyze(Scope* scope) {
     scope->declare(this);
 
@@ -50,5 +54,4 @@ bool VariableDecl::equals(const Node &other) const {
 int VariableDecl::stackSize() {
     return sizeof(int);
 }
-
 

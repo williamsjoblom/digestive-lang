@@ -10,6 +10,10 @@ PlnStmt::PlnStmt(Expr* expression) {
     this->expression = expression;
 }
 
+PlnStmt::~PlnStmt() {
+    delete expression;
+}
+
 void PlnStmt::analyze(Scope* scope) {
     expression->analyze(scope);
 }
@@ -31,3 +35,5 @@ bool PlnStmt::equals(const Node &other) const {
 void PlnStmt::generate(X86Compiler& c) {
     Generate::pln(c, this);
 }
+
+

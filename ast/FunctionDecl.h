@@ -19,6 +19,7 @@ public:
     FuncBuilderX* baPrototype;
 
     FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body);
+    ~FunctionDecl();
 
     void generate(X86Compiler &c);
     void analyze(Scope* scope);

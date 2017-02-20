@@ -38,9 +38,7 @@ namespace Generate {
     void entry(X86Compiler& c, Unit* unit) {
         c.addFunc(FuncBuilder0<int>(kCallConvHost));
 
-        for(Stmt* stmt : unit->statements) {
-            stmt->generate(c);
-        }
+        unit->statements->generate(c);
 
         c.endFunc();
     }

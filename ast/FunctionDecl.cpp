@@ -13,6 +13,13 @@ FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* p
     this->baPrototype = nullptr;
 }
 
+FunctionDecl::~FunctionDecl() {
+    for (VariableDecl* parameter : *parameters) delete parameter;
+    delete parameters;
+    delete body;
+    delete baPrototype;
+}
+
 void FunctionDecl::analyze(Scope* scope) {
     scope->declare(this);
     Scope* innerScope = new Scope(scope);
@@ -71,4 +78,6 @@ FuncBuilderX FunctionDecl::bGetFuncPrototype() {
 
     return *baPrototype;
 }
+
+
 

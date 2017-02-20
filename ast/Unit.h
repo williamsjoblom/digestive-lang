@@ -10,10 +10,11 @@
 
 class Unit : public Node {
 public:
-    std::vector<Stmt*> statements;
+    BlockStmt* statements;
     std::vector<FunctionDecl*> functions;
 
     Unit(std::vector<Stmt*> statements, std::vector<FunctionDecl*> functions);
+    ~Unit();
 
     virtual void generate(X86Compiler &c);
 

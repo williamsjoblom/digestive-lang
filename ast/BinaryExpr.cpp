@@ -12,6 +12,12 @@ BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
     this->right = right;
 }
 
+BinaryExpr::~BinaryExpr() {
+    delete left;
+    delete op;
+    delete right;
+}
+
 void BinaryExpr::analyze(Scope *scope) {
     left->analyze(scope);
     right->analyze(scope);
@@ -29,7 +35,7 @@ void BinaryExpr::dump(size_t indent) {
     std::cout << ")";
 }
 
-X86GpVar* BinaryExpr::generate(X86Compiler &c) {
+X86GpVar BinaryExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 
@@ -38,3 +44,5 @@ bool BinaryExpr::equals(const Node &other) const {
     if (o == nullptr) return false;
     return *o->left == *left && *o->op == *op && *o->right == *right;
 }
+
+

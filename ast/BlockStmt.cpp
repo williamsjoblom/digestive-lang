@@ -10,6 +10,10 @@ BlockStmt::BlockStmt(std::vector<Stmt*> statements) {
     this->statements = statements;
 }
 
+BlockStmt::~BlockStmt() {
+    for (Stmt* statement : statements) delete statement;
+}
+
 void BlockStmt::analyze(Scope* scope) {
     Scope* innerScope = new Scope(scope);
     for (Stmt* stmt : statements) {

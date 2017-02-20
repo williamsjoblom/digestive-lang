@@ -19,10 +19,11 @@ Scope::Scope(Scope* parent) {
 }
 
 Scope::~Scope() {
-    for (Scope* child : children)
-        delete child;
+    if (parent != nullptr)
+        parent->removeChild(this);
 
-    parent->removeChild(this);
+    for (auto it = children.begin(); it != children.end(); it++)
+        delete *it;
 }
 
 void Scope::declare(VariableDecl* variableDecl) {

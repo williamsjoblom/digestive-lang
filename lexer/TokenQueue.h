@@ -12,12 +12,13 @@
 
 class TokenQueue {
 public:
-    TokenQueue(std::vector<Token>*);
+    TokenQueue(std::vector<Token>);
     ~TokenQueue();
     Token pop();
     Token peek() const;
     void rewind(int distance);
     Token top() const;
+    Token at(int i) const;
 
     Token expect(const TokenType type);
     bool eat(const TokenType type);
@@ -27,7 +28,7 @@ public:
     void dump() const;
 private:
     int index;
-    std::vector<Token>* tokens;
+    std::vector<Token> tokens;
 };
 
 

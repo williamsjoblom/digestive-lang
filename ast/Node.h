@@ -11,6 +11,8 @@
 
 class Node : public Analyzable {
 public:
+    virtual ~Node() { }
+
     bool operator==(const Node& other) { return equals(other); }
     bool operator!=(const Node& other) const { return !equals(other); }
     virtual bool equals(const Node& other) const { assert(false); }

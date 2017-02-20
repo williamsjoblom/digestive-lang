@@ -18,6 +18,7 @@ public:
 
     IfStmt(Expr* condition, Stmt* ifBlock);
     IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock);
+    ~IfStmt();
 
     void analyze(Scope* scope);
 

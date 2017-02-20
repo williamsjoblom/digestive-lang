@@ -14,6 +14,7 @@ public:
     Expr* expression;
 
     PlnStmt(Expr* expression);
+    ~PlnStmt();
 
     void analyze(Scope* scope);
 

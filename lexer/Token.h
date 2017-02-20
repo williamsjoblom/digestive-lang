@@ -33,6 +33,8 @@ enum TokenType {
     GREATEREQ,
     LESS,
     GREATER,
+
+    END_OF_FILE,
 };
 
 struct Token {

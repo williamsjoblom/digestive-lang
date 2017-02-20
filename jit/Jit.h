@@ -14,6 +14,7 @@ class Jit {
 public:
     Jit();
     ~Jit();
+
     bool load(std::string path);
     bool reload(std::string path);
     int run();

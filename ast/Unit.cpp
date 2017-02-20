@@ -5,8 +5,13 @@
 #include "gen/Gen.h"
 
 Unit::Unit(std::vector<Stmt*> statements, std::vector<FunctionDecl*> functions) {
-    this->statements = statements;
+    this->statements = new BlockStmt(statements);
     this->functions = functions;
+}
+
+Unit::~Unit() {
+    delete statements;
+    for(FunctionDecl* function : functions) delete function;
 }
 
 void Unit::analyze(Scope *scope) {
@@ -16,9 +21,7 @@ void Unit::analyze(Scope *scope) {
         func->analyze(innerScope);
     }
 
-    for (Stmt* stmt : statements) {
-        stmt->analyze(innerScope);
-    }
+    statements->analyze(innerScope);
 }
 
 void Unit::dump(size_t indent) {
@@ -26,9 +29,7 @@ void Unit::dump(size_t indent) {
         func->dump(indent + 1);
     }
 
-    for (Stmt* stmt : statements) {
-        stmt->dump(indent + 1);
-    }
+    statements->dump(indent);
 }
 
 void Unit::generate(X86Compiler &c) {
@@ -39,15 +40,9 @@ bool Unit::equals(const Node &other) const {
     const Unit* o = dynamic_cast<const Unit*>(&other);
     if (o == nullptr) return false;
 
-    if (o->statements.size() != statements.size()) return false;
+    if(*o->statements != *statements) return false;
+
     if (o->functions.size() != functions.size()) return false;
-
-    for (int i = 0; i < statements.size(); i++) {
-        Stmt* statement =  statements[i];
-        Stmt* otherStatement = o->statements[i];
-
-        if (*statement != *otherStatement) return false;
-    }
 
     for (int i = 0; i < functions.size(); i++) {
         Stmt* function =  functions[i];

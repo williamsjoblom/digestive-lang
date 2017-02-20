@@ -17,78 +17,77 @@ using namespace asmjit;
 
 namespace Generate {
 
-    X86GpVar* expression(X86Compiler &c, BinaryExpr* expr) {
-        X86GpVar* left = expr->left->generate(c);
-        X86GpVar* right = expr->right->generate(c);
+    X86GpVar expression(X86Compiler &c, BinaryExpr* expr) {
+        X86GpVar left = expr->left->generate(c);
+        X86GpVar right = expr->right->generate(c);
 
-        X86GpVar* result = new X86GpVar(c.newInt32("binexp"));
-
+        X86GpVar result = c.newInt32("binexp");
 
         switch(expr->op->symbol) {
             case OperatorSymbol::PLUS:
-                c.mov(*result, *left);
-                c.add(*result, *right);
+                c.mov(result, left);
+                c.add(result, right);
                 break;
             case OperatorSymbol::MINUS:
-                c.mov(*result, *left);
-                c.sub(*result, *right);
+                c.mov(result, left);
+                c.sub(result, right);
                 break;
             case OperatorSymbol::MUL:
-                c.mov(*result, *left);
-                c.imul(*result, *right);
+                c.mov(result, left);
+                c.imul(result, right);
                 break;
             case OperatorSymbol::DIV:
-                c.mov(*result, *left);
+                c.mov(result, left);
                 assert(false); // Not implemented.
                 break;
 
             case OperatorSymbol::EQ:
-                c.cmp(*left, *right);
-                c.sete(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.sete(result.r8());
+                c.movzx(result, result.r8());
                 break;
             case OperatorSymbol::NOTEQ:
-                c.cmp(*left, *right);
-                c.setne(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.setne(result.r8());
+                c.movzx(result, result.r8());
                 break;
             case OperatorSymbol::LESSEQ:
-                c.cmp(*left, *right);
-                c.setle(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.setle(result.r8());
+                c.movzx(result, result.r8());
                 break;
             case OperatorSymbol::GREATEREQ:
-                c.cmp(*left, *right);
-                c.setge(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.setge(result.r8());
+                c.movzx(result, result.r8());
                 break;
             case OperatorSymbol::LESS:
-                c.cmp(*left, *right);
-                c.setl(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.setl(result.r8());
+                c.movzx(result, result.r8());
                 break;
             case OperatorSymbol::GREATER:
-                c.cmp(*left, *right);
-                c.setg(result->r8());
-                c.movzx(*result, result->r8());
+                c.cmp(left, right);
+                c.setg(result.r8());
+                c.movzx(result, result.r8());
                 break;
         }
 
         return result;
     }
 
-    X86GpVar* expression(X86Compiler &c, LiteralExpr* expr) {
-        X86GpVar* result = new X86GpVar(c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str()));
-        c.mov(*result, expr->value);
+    X86GpVar expression(X86Compiler &c, LiteralExpr* expr) {
+        X86GpVar result = c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str());
+        c.mov(result, expr->value);
 
         return result;
     }
 
-    X86GpVar* expression(X86Compiler &c, VariableExpr* expr) {
+    X86GpVar expression(X86Compiler &c, VariableExpr* expr) {
         return expr->declaration->bVar;
     }
 
-    X86GpVar* expression(X86Compiler &c, FunctionCall* expr) {
+    X86GpVar expression(X86Compiler &c, FunctionCall* expr) {
         FunctionDecl* decl = expr->declaration;
 
         X86GpVar ret = c.newInt32("return");
@@ -96,9 +95,9 @@ namespace Generate {
         X86GpVar handle = c.newIntPtr("handle");
         c.mov(handle, imm_ptr(JitContext::handles + decl->bHandleIndex));
 
-        std::vector<X86GpVar*> args;
+        std::vector<X86GpVar> args;
         for (unsigned int i = 0; i < expr->arguments->size(); i++) {
-            X86GpVar* a = expr->arguments->at(i)->generate(c);
+            X86GpVar a = expr->arguments->at(i)->generate(c);
             args.push_back(a);
         }
 
@@ -107,12 +106,10 @@ namespace Generate {
 
 
         for (unsigned int i = 0; i < args.size(); i++) {
-            X86GpVar *a = args.at(i);
-            call->setArg(i, *a);
+            X86GpVar a = args.at(i);
+            call->setArg(i, a);
         }
 
-        //X86CallNode* call = c.addCall(expr->declaration->bEntryLabel, FuncBuilder0<int>(kCallConvHost));
-
-        return new X86GpVar(ret);
+        return ret;
     }
 }

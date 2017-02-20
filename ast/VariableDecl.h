@@ -11,10 +11,11 @@
 class VariableDecl : public Decl {
 public:
     Expr* value;
-    X86GpVar* bVar;
+    X86GpVar bVar;
 
     VariableDecl(std::string identifier);
     VariableDecl(std::string identifier, Expr* value);
+    ~VariableDecl();
 
     virtual void generate(X86Compiler &c);
 

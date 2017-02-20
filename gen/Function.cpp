@@ -29,7 +29,7 @@ namespace Generate {
             VariableDecl* param = func->parameters->at(i);
             param->generate(c);
 
-            c.setArg(i, *param->bVar);
+            c.setArg(i, param->bVar);
         }
 
         func->body->generate(c);

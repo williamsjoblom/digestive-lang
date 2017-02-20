@@ -14,7 +14,7 @@ public:
 
     LiteralExpr(int value);
 
-    virtual X86GpVar* generate(X86Compiler &c);
+    virtual X86GpVar generate(X86Compiler &c);
 
     virtual bool equals(const Node& other) const;
 

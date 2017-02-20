@@ -14,6 +14,11 @@ LoopStmt::LoopStmt(Expr* condition, Stmt* body) {
     assert(body != nullptr);
 }
 
+LoopStmt::~LoopStmt() {
+    delete condition;
+    delete body;
+}
+
 void LoopStmt::generate(X86Compiler& c) {
     Generate::loop(c, this);
 }
@@ -34,3 +39,5 @@ bool LoopStmt::equals(const Node& other) const {
 void LoopStmt::dump(size_t indent) {
 
 }
+
+

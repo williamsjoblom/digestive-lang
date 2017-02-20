@@ -11,6 +11,7 @@
 class BlockStmt : public Stmt {
 public:
     BlockStmt(std::vector<Stmt*> statements);
+    ~BlockStmt();
 
     virtual void generate(X86Compiler &c);
 
@@ -18,6 +19,7 @@ public:
     virtual bool equals(const Node& other) const;
 
     void dump(size_t indent);
+
 private:
     std::vector<Stmt*> statements;
 };

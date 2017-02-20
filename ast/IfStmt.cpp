@@ -8,21 +8,30 @@
 #include "IfStmt.h"
 
 IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) {
+    assert(ifBlock != nullptr);
+
     this->condition = condition;
     this->ifBlock = ifBlock;
     this->elseBlock = nullptr;
 }
 
 IfStmt::IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock) {
+    assert(ifBlock != nullptr);
+
     this->condition = condition;
     this->ifBlock = ifBlock;
     this->elseBlock = elseBlock;
 }
 
+IfStmt::~IfStmt() {
+    delete condition;
+    delete ifBlock;
+    if (elseBlock != nullptr) delete elseBlock;
+}
+
 void IfStmt::analyze(Scope *scope) {
     condition->analyze(scope);
 
-    assert(ifBlock != nullptr);
     Scope* ifScope = new Scope(scope);
     ifBlock->analyze(ifScope);
 

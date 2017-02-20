@@ -15,6 +15,7 @@ public:
     Stmt* body;
 
     LoopStmt(Expr* condition, Stmt* body);
+    ~LoopStmt();
 
     virtual void generate(X86Compiler &c);
 

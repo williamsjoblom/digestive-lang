@@ -10,6 +10,10 @@ ReturnStmt::ReturnStmt(Expr* expression) {
     this->expression = expression;
 }
 
+ReturnStmt::~ReturnStmt() {
+    delete expression;
+}
+
 void ReturnStmt::dump(size_t indent) {
     printIndent(indent);
     std::cout << "return ";

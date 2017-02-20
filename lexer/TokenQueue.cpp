@@ -7,7 +7,7 @@
 #include "TokenQueue.h"
 #include "parse/ParseError.h"
 
-TokenQueue::TokenQueue(std::vector<Token>* content) {
+TokenQueue::TokenQueue(std::vector<Token> content) {
     index = 0;
     tokens = content;
 }
@@ -15,13 +15,11 @@ TokenQueue::TokenQueue(std::vector<Token>* content) {
 TokenQueue::~TokenQueue() { }
 
 Token TokenQueue::pop() {
-    assert(index < tokens->size());
-    return (*tokens)[index++];
+    return at(index++);
 }
 
 Token TokenQueue::peek() const {
-    assert(index < tokens->size());
-    return (*tokens)[index];
+    return at(index);
 }
 
 void TokenQueue::rewind(int distance) {
@@ -30,14 +28,27 @@ void TokenQueue::rewind(int distance) {
 }
 
 Token TokenQueue::top() const {
-    return (*tokens)[index];
+    return at(index);
+}
+
+Token TokenQueue::at(int i) const {
+    if (i >= tokens.size()) {
+        Token t;
+        t.type = TokenType::END_OF_FILE;
+        t.row = -1;
+        t.col = -1;
+        t.value = "EOF";
+        return t;
+    }
+
+    return tokens.at(i);
 }
 
 void TokenQueue::dump() const {
     std::cout << "{";
 
-    for (auto it = tokens->begin(); it != tokens->end(); it++) {
-        if (it != tokens->begin())
+    for (auto it = tokens.begin(); it != tokens.end(); it++) {
+        if (it != tokens.begin())
             std::cout << ", ";
         std::cout << (*it).value;
     }
@@ -54,7 +65,7 @@ Token TokenQueue::expect(const TokenType type) {
 }
 
 bool TokenQueue::eat(const TokenType type) {
-    if ((*tokens)[index].type == type) {
+    if (at(index).type == type) {
         index++;
         return true;
     }
@@ -63,7 +74,7 @@ bool TokenQueue::eat(const TokenType type) {
 }
 
 bool TokenQueue::eatIdentifier(const std::string value) {
-    Token t = (*tokens)[index];
+    Token t = at(index);
     if (t.type == IDENTIFIER && t.value == value) {
         index++;
         return true;
@@ -73,8 +84,10 @@ bool TokenQueue::eatIdentifier(const std::string value) {
 }
 
 bool TokenQueue::empty() const {
-    return index >= tokens->size();
+    return index >= tokens.size();
 }
+
+
 
 
 

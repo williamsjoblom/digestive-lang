@@ -20,6 +20,8 @@ Jit::Jit() {
 
 Jit::~Jit() {
     runtime->release((void*) program);
+    delete runtime;
+    delete root;
 }
 
 bool Jit::load(std::string path) {
@@ -28,10 +30,12 @@ bool Jit::load(std::string path) {
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
 
+    tokens.dump();
+
     try {
         root = Parse::unit(tokens);
-        Scope* fileScope = new Scope();
-        root->analyze(fileScope);
+        Scope fileScope;
+        root->analyze(&fileScope);
 
         program = Generate::program(runtime, root);
     } catch (int i) {
@@ -51,8 +55,8 @@ bool Jit::reload(std::string path) {
 
     try {
         Unit* newRoot = Parse::unit(tokens);
-        Scope* fileScope = new Scope();
-        root->analyze(fileScope);
+        Scope fileScope;
+        root->analyze(&fileScope);
 
         int updated = 0;
 

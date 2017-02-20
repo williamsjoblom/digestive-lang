@@ -12,7 +12,9 @@
 class ReturnStmt : public Stmt {
 public:
     Expr* expression;
+
     ReturnStmt(Expr* expression);
+    ~ReturnStmt();
 
     virtual void generate(X86Compiler &c);
 

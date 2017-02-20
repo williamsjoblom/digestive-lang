@@ -6,6 +6,6 @@
 
 namespace Generate {
     void statement(X86Compiler &c, ReturnStmt* stmt) {
-        c.ret(*stmt->expression->generate(c));
+        c.ret(stmt->expression->generate(c));
     }
 }

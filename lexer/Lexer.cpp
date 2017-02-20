@@ -19,7 +19,7 @@ TokenQueue Lexer::lex(std::string source) {
     this->row = 0;
     this->col = 0;
 
-    std::vector<Token>* tokens = new std::vector<Token>();
+    std::vector<Token> tokens = std::vector<Token>();
 
     readWhitespace();
 
@@ -36,7 +36,7 @@ TokenQueue Lexer::lex(std::string source) {
         else
             readSymbol(t);
 
-        tokens->push_back(t);
+        tokens.push_back(t);
 
         readWhitespace();
     }

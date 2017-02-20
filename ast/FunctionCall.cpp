@@ -11,6 +11,11 @@ FunctionCall::FunctionCall(std::string identifier, std::vector<Expr*>* arguments
     this->arguments = arguments;
 }
 
+FunctionCall::~FunctionCall() {
+    for (Expr* argument : *arguments) delete argument;
+    delete arguments;
+}
+
 void FunctionCall::dump(size_t indent) {
     std::cout << identifier << "(";
 
@@ -26,11 +31,13 @@ void FunctionCall::dump(size_t indent) {
 void FunctionCall::analyze(Scope* scope) {
     declaration = scope->resolveFunction(identifier);
 
+    if (declaration->parameters->size() != arguments->size()) throw 1;
+
     for (Expr* argument : *arguments)
         argument->analyze(scope);
 }
 
-X86GpVar* FunctionCall::generate(X86Compiler &c) {
+X86GpVar FunctionCall::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

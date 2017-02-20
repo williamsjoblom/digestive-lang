@@ -14,7 +14,10 @@ public:
     Expr* expression;
 
     ExprStmt(Expr* expression) { this->expression = expression; }
-    virtual void generate(X86Compiler &c) { expression->generate(c); }
+    ~ExprStmt() { delete expression; }
+
+    void generate(X86Compiler &c) { expression->generate(c); }
+
     void analyze(Scope* scope) { expression->analyze(scope); }
 
     void dump(size_t indent) { printIndent(indent); expression->dump(indent); std::cout << std::endl; }

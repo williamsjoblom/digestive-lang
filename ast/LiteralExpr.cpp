@@ -14,7 +14,7 @@ void LiteralExpr::dump(size_t indent) {
     std::cout << value;
 }
 
-X86GpVar* LiteralExpr::generate(X86Compiler &c) {
+X86GpVar LiteralExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

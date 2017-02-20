@@ -15,13 +15,14 @@ public:
     Operator* op;
     Expr* right;
 
-    virtual X86GpVar* generate(X86Compiler &c);
+    BinaryExpr(Expr* left, Operator* op, Expr* right);
+    ~BinaryExpr();
+
+    virtual X86GpVar generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 
-    BinaryExpr(Expr* left, Operator* op, Expr* right);
-
-    virtual bool equals(const Node& other) const;
+    bool equals(const Node& other) const;
 
     void dump(size_t indent);
 };

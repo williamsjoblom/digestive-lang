@@ -22,14 +22,14 @@ namespace Parse {
 
     Expr* expression(TokenQueue& tokens) {
         std::vector<Token> rpn = shuntingYard(tokens);
-        TokenQueue rpnQueue(&rpn);
+        TokenQueue rpnQueue(rpn);
         Expr* expr = rpnToExpr(rpnQueue);
         return expr;
     }
 
     std::vector<Expr*>* argumentList(TokenQueue& tokens) {
-        std::vector<Expr*>* arguments = new std::vector<Expr*>();
         if (!tokens.eat(LPAR)) return nullptr;
+        std::vector<Expr*>* arguments = new std::vector<Expr*>();
 
         if (tokens.top().type != RPAR) {
             bool hasArg = true;
