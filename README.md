@@ -1,4 +1,4 @@
-Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation and self modifying code.
+Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation and self modifying code. Currently supporting little of planned functionality.
 
 ### Example
 ```c
