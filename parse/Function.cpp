@@ -23,16 +23,25 @@ namespace Parse {
         return new FunctionDecl(identifier.value, parameters, body);
     }
 
+    VariableDecl* parameter(TokenQueue& tokens) {
+        Token identifier = tokens.top();
+        if (identifier.type != TokenType::IDENTIFIER) return nullptr;
+        tokens.pop();
+
+        return new VariableDecl(identifier.value);
+    }
+
     std::vector<VariableDecl*>* parameterList(TokenQueue& tokens) {
         std::vector<VariableDecl*>* parameters = new std::vector<VariableDecl*>();
         if (!tokens.eat(LPAR)) return nullptr;
 
         if (tokens.top().type != RPAR) {
-            VariableDecl* parameter = Parse::variable(tokens);
+
+            VariableDecl* parameter = Parse::parameter(tokens);
             while (parameter != nullptr) {
                 parameters->push_back(parameter);
                 tokens.eat(COMMA);
-                parameter = Parse::variable(tokens);
+                parameter = Parse::parameter(tokens);
             }
         }
 
