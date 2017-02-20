@@ -1,9 +1,0 @@
-/usr/share/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/wax/workbench/compiler-experiment
--- [asmjit] Included | Mode=Embed | Test=Off
--- [asmjit] ASMJIT_DIR=~/lib/asmjit
--- [asmjit] ASMJIT_DEPS=pthread;rt
--- [asmjit] ASMJIT_LIBS=pthread;rt
--- [asmjit] ASMJIT_CFLAGS=
--- Configuring done
--- Generating done
--- Build files have been written to: /home/wax/workbench/compiler-experiment/cmake-build-debug
