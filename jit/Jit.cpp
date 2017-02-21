@@ -28,8 +28,6 @@ bool Jit::load(std::string path) {
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
 
-    tokens.dump();
-
     try {
         root = Parse::unit(tokens);
         Scope fileScope;

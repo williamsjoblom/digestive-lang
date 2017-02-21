@@ -13,10 +13,12 @@
 #include <assert.h>
 #include <ast/VariableExpr.h>
 #include <ast/FunctionCall.h>
+#include <ast/UnaryExpr.h>
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
 Expr* rpnToExpr(TokenQueue& tokens);
+Expr* buildUnary(std::stack<Operator*>& operators, Expr* expr);
 
 namespace Parse {
 
@@ -54,6 +56,8 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
     std::vector<Token> output;
     std::stack<Token> stack;
 
+    bool expectUnary = true;
+
     int parDepth = 0;
 
     while (!tokens.empty()) {
@@ -67,6 +71,7 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
 
         if (token.type == NUMBER) {
             output.push_back(token);
+            expectUnary = false;
         } else if(token.type == IDENTIFIER) {
             if(tokens.top().type == LPAR) { // Function call
                 output.push_back(token);
@@ -81,8 +86,15 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
             } else { // Variable
                 output.push_back(token);
             }
+
+            expectUnary = false;
         } else if (Operator::isOperator(token.value)) {
             Operator o1(token.value);
+
+            if (expectUnary) {
+                output.push_back(token);
+                continue;
+            }
 
             while (!stack.empty() && Operator::isOperator(stack.top().value)) {
                 Token top = stack.top();
@@ -97,6 +109,8 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
             }
 
             stack.push(token);
+
+            expectUnary = true;
         } else if (token.type == LPAR) {
             parDepth++;
             stack.push(token);
@@ -133,27 +147,51 @@ Expr* rpnToExpr(TokenQueue& tokens) {
 
     Token first = tokens.top();
 
+    std::stack<Operator*> unaryOperators;
+
+    if (!tokens.empty() && Operator::isOperator(tokens.top().value)) {
+        Token t = tokens.top();
+        Operator* op = new Operator(t.value);
+        if (op->isUnary()) {
+            tokens.pop();
+            unaryOperators.push(op);
+        } else {
+            parseError(t, "Operator not unary");
+        }
+
+    }
+
     while(!tokens.empty()) {
         Token token = tokens.pop();
 
         if (token.type == NUMBER) {
             int number = std::stoi(token.value);
-            stack.push(new LiteralExpr(number));
+            Expr* expr = buildUnary(unaryOperators, new LiteralExpr(number));
+            stack.push(expr);
         } else if (token.type == IDENTIFIER) {
             std::vector<Expr*>* argList = Parse::argumentList(tokens);
-            if (argList != nullptr) {
-                stack.push(new FunctionCall(token.value, argList));
-            } else {
-                stack.push(new VariableExpr(token.value));
-            }
-        } else if (Operator::isOperator(token.value)) {
-            if (stack.size() < 2)
-                parseError(token, "Missing operand in expression");
 
-            Expr* right = stack.top(); stack.pop();
-            Expr* left = stack.top(); stack.pop();
-            Operator* op = new Operator(token.value);
-            stack.push(new BinaryExpr(left, op, right));
+            Expr* expr;
+            if (argList != nullptr) {
+                expr = buildUnary(unaryOperators, new FunctionCall(token.value, argList));
+            } else {
+                expr = buildUnary(unaryOperators, new VariableExpr(token.value));
+            }
+
+            stack.push(expr);
+        } else if (Operator::isOperator(token.value)) {
+            if (stack.size() == 0) {
+                parseError(token, "Missing operand in expression");
+            }
+
+            if (stack.size() == 1) {
+                unaryOperators.push(new Operator(token.value));
+            } else {
+                Expr* right = stack.top(); stack.pop();
+                Expr* left = stack.top(); stack.pop();
+                Operator* op = new Operator(token.value);
+                stack.push(new BinaryExpr(left, op, right));
+            }
         } else {
             assert(false);
         }
@@ -166,4 +204,13 @@ Expr* rpnToExpr(TokenQueue& tokens) {
         parseError(first, "Missing operator in expression");
 
     return stack.top();
+}
+
+Expr* buildUnary(std::stack<Operator*>& operators, Expr* expr) {
+    if (operators.empty()) return expr;
+
+    Operator* op = operators.top();
+    operators.pop();
+
+    return new UnaryExpr(op, buildUnary(operators, expr));
 }

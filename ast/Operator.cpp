@@ -12,6 +12,11 @@ OperatorSymbol symbolFromString(std::string s);
 const std::string symbolToString(OperatorSymbol symbol);
 int precedenceOf(OperatorSymbol symbol);
 
+Operator::Operator() {
+    this->symbol = OperatorSymbol::NOT_AN_OPERATOR;
+    this->precedence = precedenceOf(this->symbol);
+}
+
 Operator::Operator(std::string s) {
     this->symbol = symbolFromString(s);
     this->precedence = precedenceOf(symbol);
@@ -52,6 +57,24 @@ bool Operator::equals(const Node &other) const {
     return o->symbol == symbol;
 }
 
+bool Operator::isBinary() {
+    switch(symbol) {
+        case OperatorSymbol::MINUS:
+            return true;
+        default:
+            return !isUnary();
+    }
+}
+
+bool Operator::isUnary() {
+    switch(symbol) {
+        case OperatorSymbol::MINUS:
+            return true;
+        default:
+            return false;
+    }
+}
+
 OperatorSymbol symbolFromString(std::string s) {
     return stringToSymbol.at(s);
 }
@@ -69,6 +92,7 @@ const std::string symbolToString(OperatorSymbol symbol) {
         case OperatorSymbol::GREATEREQ: return ">=";
         case OperatorSymbol::LESS: return "<";
         case OperatorSymbol::GREATER: return ">";
+        case OperatorSymbol::NOT_AN_OPERATOR: return "NOT_AN_OPERATOR";
     }
 
     assert(false);
@@ -90,6 +114,9 @@ int precedenceOf(OperatorSymbol symbol) {
         case OperatorSymbol::LESS:
         case OperatorSymbol::GREATER:
             return 100;
+
+        case OperatorSymbol::NOT_AN_OPERATOR:
+            return -1;
     }
 
     assert(false);

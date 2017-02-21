@@ -20,6 +20,8 @@ enum class OperatorSymbol {
     GREATEREQ,
     LESS,
     GREATER,
+
+    NOT_AN_OPERATOR
 };
 
 class Operator : public Node {
@@ -27,10 +29,15 @@ public:
     OperatorSymbol symbol;
     int precedence;
 
+    Operator();
     Operator(std::string s);
     Operator(OperatorSymbol symbol);
 
     static bool isOperator(std::string s);
+
+    bool isBinary();
+    bool isUnary();
+
     void analyze(Scope* scope) { }
     virtual bool equals(const Node& other) const;
 

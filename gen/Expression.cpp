@@ -10,6 +10,7 @@
 #include <ast/FunctionDecl.h>
 #include <jit/JitContext.h>
 
+#include "Gen.h"
 #include "ast/BinaryExpr.h"
 #include "ast/LiteralExpr.h"
 
@@ -71,6 +72,8 @@ namespace Generate {
                 c.setg(result.r8());
                 c.movzx(result, result.r8());
                 break;
+            default:
+                assert(false);
         }
 
         return result;
@@ -111,5 +114,15 @@ namespace Generate {
         }
 
         return ret;
+    }
+
+    X86GpVar expression(X86Compiler& c, UnaryExpr* expr) {
+        X86GpVar value = expr->expr->generate(c);
+        X86GpVar result = c.newInt32("unaryexp");
+
+        c.mov(result, value);
+        c.neg(result);
+
+        return result;
     }
 }

@@ -29,7 +29,7 @@ namespace Generate {
 
         c.finalize();
 
-        std::cout << "Generated program:" << std::endl << logger.getString();
+        //std::cout << "Generated program:" << std::endl << logger.getString();
 
         ProgramType func = asmjit_cast<ProgramType>(a.make());
         return func;

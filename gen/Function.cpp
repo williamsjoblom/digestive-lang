@@ -38,7 +38,7 @@ namespace Generate {
 
         c.finalize();
 
-        std::cout << "Generated func: " << std::endl << logger.getString();
+        //std::cout << "Generated func: " << std::endl << logger.getString();
 
 
         return a.make();
