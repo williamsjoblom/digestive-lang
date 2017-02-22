@@ -9,13 +9,14 @@
 #include <ast/PlnStmt.h>
 #include <ast/IfStmt.h>
 #include <ast/UnaryExpr.h>
+#include <ast/IntegerLiteral.h>
 #include "ast/FunctionCall.h"
 #include "asmjit/asmjit.h"
 #include "ast/VariableExpr.h"
 #include "ast/ReturnStmt.h"
 #include "ast/Unit.h"
 #include "ast/BinaryExpr.h"
-#include "ast/LiteralExpr.h"
+#include "ast/Literal.h"
 #include "ast/Expr.h"
 #include "ast/BlockStmt.h"
 
@@ -42,7 +43,7 @@ namespace Generate {
     void pln(X86Compiler& c, PlnStmt* stmt);
 
     X86GpVar expression(X86Compiler& c, BinaryExpr* expr);
-    X86GpVar expression(X86Compiler& c, LiteralExpr* expr);
+    X86GpVar expression(X86Compiler& c, IntegerLiteral* expr);
     X86GpVar expression(X86Compiler& c, VariableExpr* expr);
     X86GpVar expression(X86Compiler& c, FunctionCall* expr);
     X86GpVar expression(X86Compiler& c, UnaryExpr* expr);

@@ -9,10 +9,11 @@
 #include <ast/FunctionCall.h>
 #include <ast/FunctionDecl.h>
 #include <jit/JitContext.h>
+#include <ast/IntegerLiteral.h>
 
 #include "Gen.h"
 #include "ast/BinaryExpr.h"
-#include "ast/LiteralExpr.h"
+#include "ast/Literal.h"
 
 using namespace asmjit;
 
@@ -79,7 +80,7 @@ namespace Generate {
         return result;
     }
 
-    X86GpVar expression(X86Compiler &c, LiteralExpr* expr) {
+    X86GpVar expression(X86Compiler &c, IntegerLiteral* expr) {
         X86GpVar result = c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str());
         c.mov(result, expr->value);
 

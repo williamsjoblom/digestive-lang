@@ -8,12 +8,13 @@
 #include <vector>
 #include <stack>
 #include <ast/Operator.h>
-#include <ast/LiteralExpr.h>
+#include <ast/Literal.h>
 #include <ast/BinaryExpr.h>
 #include <assert.h>
 #include <ast/VariableExpr.h>
 #include <ast/FunctionCall.h>
 #include <ast/UnaryExpr.h>
+#include <ast/IntegerLiteral.h>
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
@@ -166,7 +167,7 @@ Expr* rpnToExpr(TokenQueue& tokens) {
 
         if (token.type == NUMBER) {
             int number = std::stoi(token.value);
-            Expr* expr = buildUnary(unaryOperators, new LiteralExpr(number));
+            Expr* expr = buildUnary(unaryOperators, new IntegerLiteral(number));
             stack.push(expr);
         } else if (token.type == IDENTIFIER) {
             std::vector<Expr*>* argList = Parse::argumentList(tokens);

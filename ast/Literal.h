@@ -8,13 +8,13 @@
 
 #include "Expr.h"
 
-class LiteralExpr : public Expr {
+class Literal : public Expr {
 public:
     int value;
 
-    LiteralExpr(int value);
+    Literal(int value);
 
-    virtual X86GpVar generate(X86Compiler &c);
+    virtual X86GpVar generate(X86Compiler &c) = 0;
 
     virtual bool equals(const Node& other) const;
 
