@@ -1,12 +1,11 @@
 
 #include <iostream>
-#include <asmjit/asmjit.h>
-#include <unistd.h>
-#include <jit/JitContext.h>
-
 
 #include "config.h"
 
+#include "ast/type/Type.h"
+#include "ast/type/Types.h"
+#include "semantic/TypeUtil.h"
 #include "gen/Gen.h"
 #include "lexer/Lexer.h"
 #include "parse/Parse.h"
