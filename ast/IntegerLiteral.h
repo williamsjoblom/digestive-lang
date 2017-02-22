@@ -15,6 +15,8 @@ public:
     IntegerLiteral(int value);
 
     X86GpVar generate(X86Compiler &c);
+    bool equals(const Node& other) const;
+    void dump(size_t indent);
 };
 
 

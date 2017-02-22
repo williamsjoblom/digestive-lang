@@ -10,16 +10,9 @@
 
 class Literal : public Expr {
 public:
-    int value;
-
-    Literal(int value);
-
-    virtual X86GpVar generate(X86Compiler &c) = 0;
-
-    virtual bool equals(const Node& other) const;
+    Literal() = default;
 
     void analyze(Scope* scope) { }
-    virtual void dump(size_t indent);
 };
 
 
