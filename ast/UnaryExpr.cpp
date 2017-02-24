@@ -17,6 +17,8 @@ UnaryExpr::~UnaryExpr() {
 
 void UnaryExpr::analyze(Scope* scope) {
     expr->analyze(scope);
+    // FIXME: assuming all unary expressions have the same type as their operand
+    this->type = expr->type;
 }
 
 bool UnaryExpr::equals(const Node& other) const {

@@ -8,6 +8,8 @@
 #include <sstream>
 #include <assert.h>
 
+#include "config.h"
+
 #include "gen/Gen.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"

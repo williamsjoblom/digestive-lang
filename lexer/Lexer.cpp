@@ -41,7 +41,6 @@ TokenQueue Lexer::lex(std::string source) {
         readWhitespace();
     }
 
-
     return TokenQueue(tokens);
 }
 
@@ -65,7 +64,7 @@ void Lexer::readAlpha(Token &token) {
     unsigned int oldIndex = index;
 
     char c = source[index];
-    while (isalpha(c)) {
+    while (isalpha(c) || (index != oldIndex && isdigit(c))) {
         col++;
         c = source[++index];
     }
@@ -74,15 +73,18 @@ void Lexer::readAlpha(Token &token) {
 }
 
 void Lexer::readNum(Token &token) {
-    token.type = NUMBER;
-
     unsigned int oldIndex = index;
 
+    bool hasDecimalMark = false;
+
     char c = source[index];
-    while (isdigit(c)) {
+    while (isdigit(c) || (c == '.' && index != oldIndex)) {
+        if (c == '.') hasDecimalMark = true;
         col++;
         c = source[++index];
     }
+
+    token.type = hasDecimalMark ? REAL : INTEGER;
 
     token.value = source.substr(oldIndex, index - oldIndex);
 }

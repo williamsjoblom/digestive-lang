@@ -25,3 +25,10 @@ void PrimitiveType::dump() const {
 
     std::cout << size;
 }
+
+bool PrimitiveType::equals(const Type &other) const {
+    const PrimitiveType* o = dynamic_cast<const PrimitiveType*>(&other);
+    if (o == nullptr) return false;
+
+    return o->kind == kind && o->size == size;
+}

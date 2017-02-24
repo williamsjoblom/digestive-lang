@@ -30,6 +30,7 @@ void FunctionCall::dump(size_t indent) {
 
 void FunctionCall::analyze(Scope* scope) {
     declaration = scope->resolveFunction(identifier);
+    this->type = declaration->type;
 
     if (declaration->parameters->size() != arguments->size()) throw 1;
 

@@ -6,6 +6,7 @@
 #define DIG_EXPR_H
 
 #include <asmjit/asmjit.h>
+#include <ast/type/Type.h>
 
 #include "Node.h"
 
@@ -13,6 +14,8 @@ using namespace asmjit;
 
 class Expr : public Node {
 public:
+    Type* type;
+
     virtual X86GpVar generate(X86Compiler &c) = 0;
 };
 

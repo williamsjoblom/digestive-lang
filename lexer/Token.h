@@ -10,7 +10,8 @@
 
 enum TokenType {
     IDENTIFIER,
-    NUMBER,
+    INTEGER,
+    REAL,
 
     // Symbols
     PLUS,
@@ -21,6 +22,7 @@ enum TokenType {
     ASSIGN,
 
     SEMICOL,
+    COL,
     COMMA,
     LBRACK,
     RBRACK,
@@ -55,6 +57,7 @@ static std::map<std::string, TokenType> symbolToTokenType =
                 {"=", ASSIGN},
 
                 {";", SEMICOL},
+                {":", COL},
                 {",", COMMA},
                 {"{", LBRACK},
                 {"}", RBRACK},

@@ -13,8 +13,8 @@ public:
     Expr* value;
     X86GpVar bVar;
 
-    VariableDecl(std::string identifier);
-    VariableDecl(std::string identifier, Expr* value);
+    VariableDecl(std::string identifier, Type* type);
+    VariableDecl(std::string identifier, Type* type, Expr* value);
     ~VariableDecl();
 
     virtual void generate(X86Compiler &c);

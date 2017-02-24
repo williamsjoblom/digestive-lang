@@ -8,12 +8,12 @@
 #include "Type.h"
 #include "PrimitiveType.h"
 
-PrimitiveType INT8TYPE = PrimitiveType(PrimitiveKind::INTEGER, 8);
-PrimitiveType INT16TYPE = PrimitiveType(PrimitiveKind::INTEGER, 16);
-PrimitiveType INT32TYPE = PrimitiveType(PrimitiveKind::INTEGER, 32);
-PrimitiveType INT64TYPE = PrimitiveType(PrimitiveKind::INTEGER, 64);
+extern PrimitiveType INT8TYPE;
+extern PrimitiveType INT16TYPE;
+extern PrimitiveType INT32TYPE;
+extern PrimitiveType INT64TYPE;
 
-PrimitiveType FLOAT32TYPE = PrimitiveType(PrimitiveKind::REAL, 32);
-PrimitiveType FLOAT64TYPE = PrimitiveType(PrimitiveKind::REAL, 64);
+extern PrimitiveType FLOAT32TYPE;
+extern PrimitiveType FLOAT64TYPE;
 
 #endif //DIG_TYPES_H

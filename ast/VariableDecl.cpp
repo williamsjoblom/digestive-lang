@@ -4,14 +4,18 @@
 
 #include <util/PrettyPrint.h>
 #include <gen/Gen.h>
+#include <ast/type/Types.h>
+#include <semantic/SemanticError.h>
 #include "VariableDecl.h"
 
-VariableDecl::VariableDecl(std::string identifier) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, Type* type) : Decl(identifier) {
     this->value = nullptr;
+    this->type = type;
 }
 
-VariableDecl::VariableDecl(std::string identifier, Expr* value) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, Type* type, Expr* value) : Decl(identifier) {
     this->value = value;
+    this->type = type;
 }
 
 VariableDecl::~VariableDecl() {
@@ -23,6 +27,15 @@ void VariableDecl::analyze(Scope* scope) {
 
     if (this->value != nullptr) {
         this->value->analyze(scope);
+
+        // Type inference
+        if (this->type == nullptr) {
+            this->type = value->type;
+        } else if (*this->type != *value->type) {
+            // TODO: Check if an implicit cast is possible.
+            semanticError("Type mismatch");
+            throw 1;
+        }
     }
 }
 

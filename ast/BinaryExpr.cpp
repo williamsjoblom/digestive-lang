@@ -2,7 +2,8 @@
 // Created by wax on 12/15/16.
 //
 
-#include <gen/Gen.h>
+#include "gen/Gen.h"
+#include "semantic/TypeUtil.h"
 #include "util/PrettyPrint.h"
 #include "BinaryExpr.h"
 
@@ -21,6 +22,8 @@ BinaryExpr::~BinaryExpr() {
 void BinaryExpr::analyze(Scope *scope) {
     left->analyze(scope);
     right->analyze(scope);
+
+    this->type = resultingType(left->type, op->symbol, right->type);
 }
 
 void BinaryExpr::dump(size_t indent) {

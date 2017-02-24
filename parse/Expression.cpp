@@ -15,6 +15,7 @@
 #include <ast/FunctionCall.h>
 #include <ast/UnaryExpr.h>
 #include <ast/IntegerLiteral.h>
+#include "ast/RealLiteral.h"
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
@@ -70,7 +71,7 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
 
         tokens.pop();
 
-        if (token.type == NUMBER) {
+        if (token.type == INTEGER || token.type == REAL) {
             output.push_back(token);
             expectUnary = false;
         } else if(token.type == IDENTIFIER) {
@@ -159,15 +160,18 @@ Expr* rpnToExpr(TokenQueue& tokens) {
         } else {
             parseError(t, "Operator not unary");
         }
-
     }
 
     while(!tokens.empty()) {
         Token token = tokens.pop();
 
-        if (token.type == NUMBER) {
+        if (token.type == INTEGER) {
             int number = std::stoi(token.value);
-            Expr* expr = buildUnary(unaryOperators, new IntegerLiteral(number));
+            Expr *expr = buildUnary(unaryOperators, new IntegerLiteral(number));
+            stack.push(expr);
+        } else if (token.type == REAL) {
+            double number = std::stod(token.value);
+            Expr *expr = buildUnary(unaryOperators, new RealLiteral(number));
             stack.push(expr);
         } else if (token.type == IDENTIFIER) {
             std::vector<Expr*>* argList = Parse::argumentList(tokens);

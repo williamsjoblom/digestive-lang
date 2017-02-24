@@ -28,7 +28,15 @@ namespace Parse {
         if (identifier.type != TokenType::IDENTIFIER) return nullptr;
         tokens.pop();
 
-        return new VariableDecl(identifier.value);
+
+        tokens.expect(COL);
+        Type* type = Parse::type(tokens);
+        if (type == nullptr) {
+            Token t = tokens.top();
+            parseError(t, "Expected type");
+        }
+
+        return new VariableDecl(identifier.value, type);
     }
 
     std::vector<VariableDecl*>* parameterList(TokenQueue& tokens) {

@@ -2,6 +2,7 @@
 // Created by wax on 12/14/16.
 //
 
+#include "ast/type/Types.h"
 #include "util/PrettyPrint.h"
 #include "gen/Gen.h"
 #include "FunctionDecl.h"
@@ -21,6 +22,9 @@ FunctionDecl::~FunctionDecl() {
 }
 
 void FunctionDecl::analyze(Scope* scope) {
+    // FIXME: Replace with actual type.
+    this->type = &INT32TYPE;
+
     scope->declare(this);
     Scope* innerScope = new Scope(scope);
 

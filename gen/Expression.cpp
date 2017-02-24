@@ -10,6 +10,7 @@
 #include <ast/FunctionDecl.h>
 #include <jit/JitContext.h>
 #include <ast/IntegerLiteral.h>
+#include <ast/type/PrimitiveType.h>
 
 #include "Gen.h"
 #include "ast/BinaryExpr.h"
@@ -126,4 +127,18 @@ namespace Generate {
 
         return result;
     }
+}
+
+
+X86XmmVar convertToFloat(Expr* expr, Type* resulting) {
+    const PrimitiveType* exprType = dynamic_cast<const PrimitiveType*>(expr->type);
+    const PrimitiveType* resType = dynamic_cast<const PrimitiveType*>(resulting);
+    // Casts should not fail. This error should be caught in semantic analysis.
+    assert(exprType != nullptr && resType != nullptr);
+    assert(resType->kind == PrimitiveKind::REAL);
+
+    if (exprType->kind == PrimitiveKind::REAL) {
+
+    }
+
 }

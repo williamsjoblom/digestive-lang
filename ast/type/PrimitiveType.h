@@ -9,7 +9,7 @@
 #include "Type.h"
 #include "TypeVisitor.h"
 
-enum PrimitiveKind {
+enum class PrimitiveKind {
     INTEGER,
     REAL
 };
@@ -18,7 +18,10 @@ class PrimitiveType : public Type {
 public:
     PrimitiveKind kind;
     int size;
+    PrimitiveType() = default;
     PrimitiveType(PrimitiveKind kind, int size);
+
+    bool equals(const Type &other) const override;
 
     void accept(TypeVisitor* visitor) const { visitor->visit(this); }
     void dump() const;

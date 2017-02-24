@@ -12,6 +12,7 @@ VariableExpr::VariableExpr(std::string identifier) {
 
 void VariableExpr::analyze(Scope* scope) {
     declaration = scope->resolveVariable(identifier);
+    this->type = declaration->type;
 }
 
 void VariableExpr::dump(size_t indent) {
