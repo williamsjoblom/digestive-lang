@@ -20,9 +20,9 @@ using namespace asmjit;
 
 namespace Generate {
 
-    X86GpVar expression(X86Compiler &c, BinaryExpr* expr) {
-        X86GpVar left = expr->left->generate(c);
-        X86GpVar right = expr->right->generate(c);
+    X86Var * expression(X86Compiler &c, BinaryExpr* expr) {
+        X86Var* left = expr->left->generate(c);
+        X86Var* right = expr->right->generate(c);
 
         X86GpVar result = c.newInt32("binexp");
 
@@ -81,18 +81,18 @@ namespace Generate {
         return result;
     }
 
-    X86GpVar expression(X86Compiler &c, IntegerLiteral* expr) {
+    X86Var* expression(X86Compiler &c, IntegerLiteral* expr) {
         X86GpVar result = c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str());
         c.mov(result, expr->value);
 
         return result;
     }
 
-    X86GpVar expression(X86Compiler &c, VariableExpr* expr) {
+    X86Var* expression(X86Compiler &c, VariableExpr* expr) {
         return expr->declaration->bVar;
     }
 
-    X86GpVar expression(X86Compiler &c, FunctionCall* expr) {
+    X86Var* expression(X86Compiler &c, FunctionCall* expr) {
         FunctionDecl* decl = expr->declaration;
 
         X86GpVar ret = c.newInt32("return");
@@ -118,9 +118,9 @@ namespace Generate {
         return ret;
     }
 
-    X86GpVar expression(X86Compiler& c, UnaryExpr* expr) {
-        X86GpVar value = expr->expr->generate(c);
-        X86GpVar result = c.newInt32("unaryexp");
+    X86Var* expression(X86Compiler& c, UnaryExpr* expr) {
+        X86Var* value = expr->expr->generate(c);
+        X86Var result = c.newInt32("unaryexp");
 
         c.mov(result, value);
         c.neg(result);

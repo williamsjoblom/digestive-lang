@@ -16,7 +16,7 @@ class Expr : public Node {
 public:
     Type* type;
 
-    virtual X86GpVar generate(X86Compiler &c) = 0;
+    virtual X86Var* generate(X86Compiler &c) = 0;
 };
 
 

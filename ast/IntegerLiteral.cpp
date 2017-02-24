@@ -13,7 +13,7 @@ IntegerLiteral::IntegerLiteral(int value) {
     this->type = &INT32TYPE;
 }
 
-X86GpVar IntegerLiteral::generate(X86Compiler &c) {
+X86Var * IntegerLiteral::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

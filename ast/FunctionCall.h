@@ -18,7 +18,7 @@ public:
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
     ~FunctionCall();
 
-    virtual X86GpVar generate(X86Compiler &c);
+    X86Var* generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

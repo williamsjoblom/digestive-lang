@@ -12,10 +12,10 @@ RealLiteral::RealLiteral(double value) {
     this->type = &FLOAT32TYPE;
 }
 
-X86GpVar RealLiteral::generate(X86Compiler &c) {
+X86Var * RealLiteral::generate(X86Compiler &c) {
     // FIXME: Implement codegen
     assert(false); // Not implemented
-    return X86GpVar();
+    return new X86XmmVar(c.newXmmPs());
     //return Generate::expression(c, this);
 }
 

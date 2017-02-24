@@ -15,7 +15,7 @@ public:
 
     VariableExpr(std::string identifier);
 
-    virtual X86GpVar generate(X86Compiler &c);
+    virtual X86Var * generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 
