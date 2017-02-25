@@ -16,6 +16,12 @@ public:
 
     X86Var* cast(Type* type);
 
+    X86GpVar* gpCast();
+    void gpCast(X86Compiler& c, X86GpVar& result);
+
+    X86XmmVar* xmmCast();
+    void xmmCast(X86Compiler& c, X86XmmVar& result);
+
     X86GpVar* i8(X86Compiler& c);
     X86GpVar* i16(X86Compiler& c);
     X86GpVar* i32(X86Compiler& c);

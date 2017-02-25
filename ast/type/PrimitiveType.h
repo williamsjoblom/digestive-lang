@@ -21,6 +21,9 @@ public:
     PrimitiveType() = default;
     PrimitiveType(PrimitiveKind kind, int size);
 
+    bool isInt() override;
+    bool isFloat() override;
+
     bool equals(const Type &other) const override;
 
     void accept(TypeVisitor* visitor) const { visitor->visit(this); }

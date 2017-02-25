@@ -14,6 +14,9 @@ class Type {
 public:
     Type() = default;
 
+    virtual bool isInt() { return false; };
+    virtual bool isFloat() { return false; };
+
     virtual void accept(TypeVisitor* visitor) const = 0;
     virtual void dump() const = 0;
 

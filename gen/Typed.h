@@ -8,7 +8,7 @@
 #include "Gen.h"
 
 namespace Generate {
-    X86Var* typedMov(X86Compiler& c, X86Var o0, X86Var o1);
+    void typedMov(X86Compiler& c, X86Var o0, X86Var o1);
 }
 
 #endif //DIG_TYPED_H

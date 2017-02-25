@@ -11,6 +11,14 @@ PrimitiveType::PrimitiveType(PrimitiveKind kind, int size) {
     this->size = size;
 }
 
+bool PrimitiveType::isInt() {
+    return kind == PrimitiveKind::INTEGER;
+}
+
+bool PrimitiveType::isFloat() {
+    return kind == PrimitiveKind::REAL;
+}
+
 void PrimitiveType::dump() const {
     switch (kind) {
         case PrimitiveKind::INTEGER:
@@ -19,8 +27,6 @@ void PrimitiveType::dump() const {
         case PrimitiveKind::REAL:
             std::cout << "real";
             break;
-        default:
-            assert(false);
     }
 
     std::cout << size;
@@ -32,3 +38,5 @@ bool PrimitiveType::equals(const Type &other) const {
 
     return o->kind == kind && o->size == size;
 }
+
+
