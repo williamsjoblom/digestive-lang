@@ -47,6 +47,7 @@ bool VariableDecl::equals(const Node &other) const {
 
     if (o->value == nullptr && value != nullptr) return false;
     if (o->value != nullptr && value == nullptr) return false;
+    if (o->value == nullptr && value == nullptr) return Decl::equals(other);
 
     return *o->value == *value && Decl::equals(other);
 }

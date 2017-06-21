@@ -16,7 +16,8 @@ public:
     BlockStmt* body;
 
     int bHandleIndex;
-    FuncBuilderX* baPrototype;
+    FuncSignatureX* baPrototype;
+    size_t codeSize;
 
     FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body);
     ~FunctionDecl();
@@ -27,7 +28,7 @@ public:
     virtual void dump(size_t indent);
 
     bool matchesSignature(const FunctionDecl& other) const;
-    FuncBuilderX bGetFuncPrototype();
+    FuncSignatureX bGetFuncPrototype();
 
     int stackSize() override;
 };

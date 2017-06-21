@@ -8,9 +8,10 @@
 namespace Generate {
 
     void pln(X86Compiler& c, PlnStmt* stmt) {
-        X86GpVar arg = stmt->expression->generate(c);
+        X86Gp arg = stmt->expression->generate(c);
 
-        X86CallNode* call = c.addCall(imm_ptr((void*) BuiltIn::pln), FuncBuilder1<void, int>(kCallConvHost));
+        CCFuncCall* call = c.call(imm_ptr((void*) BuiltIn::pln), FuncSignature1<void, int>(CallConv::kIdHost));
+
         call->setArg(0, arg);
     }
 

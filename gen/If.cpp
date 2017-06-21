@@ -9,7 +9,7 @@ namespace Generate {
         Label elseLabel = c.newLabel();
         Label endLabel = c.newLabel();
 
-        X86GpVar condition = stmt->condition->generate(c);
+        X86Gp condition = stmt->condition->generate(c);
         c.cmp(condition, Imm(0));
         c.je(elseLabel);
 

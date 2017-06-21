@@ -34,6 +34,6 @@ void UnaryExpr::dump(size_t indent) {
     std::cout << ")";
 }
 
-X86GpVar UnaryExpr::generate(X86Compiler& c) {
+X86Gp UnaryExpr::generate(X86Compiler& c) {
     return Generate::expression(c, this);
 }

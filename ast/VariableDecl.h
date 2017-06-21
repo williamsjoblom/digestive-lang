@@ -11,7 +11,7 @@
 class VariableDecl : public Decl {
 public:
     Expr* value;
-    X86GpVar bVar;
+    X86Gp bVar;
 
     VariableDecl(std::string identifier);
     VariableDecl(std::string identifier, Expr* value);

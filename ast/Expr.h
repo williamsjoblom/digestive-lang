@@ -13,7 +13,7 @@ using namespace asmjit;
 
 class Expr : public Node {
 public:
-    virtual X86GpVar generate(X86Compiler &c) = 0;
+    virtual X86Gp generate(X86Compiler &c) = 0;
 };
 
 

@@ -42,11 +42,11 @@ namespace Generate {
 
     void pln(X86Compiler& c, PlnStmt* stmt);
 
-    X86GpVar expression(X86Compiler& c, BinaryExpr* expr);
-    X86GpVar expression(X86Compiler& c, IntegerLiteral* expr);
-    X86GpVar expression(X86Compiler& c, VariableExpr* expr);
-    X86GpVar expression(X86Compiler& c, FunctionCall* expr);
-    X86GpVar expression(X86Compiler& c, UnaryExpr* expr);
+    X86Gp expression(X86Compiler& c, BinaryExpr* expr);
+    X86Gp expression(X86Compiler& c, IntegerLiteral* expr);
+    X86Gp expression(X86Compiler& c, VariableExpr* expr);
+    X86Gp expression(X86Compiler& c, FunctionCall* expr);
+    X86Gp expression(X86Compiler& c, UnaryExpr* expr);
 }
 
 #endif //DIG_GEN_H

@@ -18,7 +18,7 @@ public:
     BinaryExpr(Expr* left, Operator* op, Expr* right);
     ~BinaryExpr();
 
-    virtual X86GpVar generate(X86Compiler &c);
+    virtual X86Gp generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

@@ -11,7 +11,7 @@ IntegerLiteral::IntegerLiteral(int value) {
     this->value = value;
 }
 
-X86GpVar IntegerLiteral::generate(X86Compiler &c) {
+X86Gp IntegerLiteral::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

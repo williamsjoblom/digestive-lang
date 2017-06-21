@@ -37,7 +37,7 @@ void FunctionCall::analyze(Scope* scope) {
         argument->analyze(scope);
 }
 
-X86GpVar FunctionCall::generate(X86Compiler &c) {
+X86Gp FunctionCall::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

@@ -16,13 +16,14 @@ namespace Generate {
 
     // Rename function to Generate::unit.
     ProgramType program(JitRuntime* runtime, Unit* unit) {
-        X86Assembler a(runtime);
-        X86Compiler c(&a);
+        CodeHolder code;
+        code.init(runtime->getCodeInfo());
+
+        X86Compiler c(&code);
 
         StringLogger logger;
-        a.setLogger(&logger);
+        code.setLogger(&logger);
 
-        JitContext::handles = new void*[unit->functions.size()];
         Generate::functions(runtime, unit);
 
         Generate::entry(c, unit);
@@ -31,12 +32,17 @@ namespace Generate {
 
         //std::cout << "Generated program:" << std::endl << logger.getString();
 
-        ProgramType func = asmjit_cast<ProgramType>(a.make());
+        ProgramType func;
+        Error err = runtime->add(&func, &code);
+        if (err) throw 1;
+
         return func;
     }
 
     void entry(X86Compiler& c, Unit* unit) {
-        c.addFunc(FuncBuilder0<int>(kCallConvHost));
+        CCFunc* f = c.addFunc(FuncSignature0<int>(CallConv::kIdHost));
+        f->getFrameInfo().enableCalls();
+        f->getFrameInfo().enablePreservedFP();
 
         unit->statements->generate(c);
 
@@ -44,13 +50,14 @@ namespace Generate {
     }
 
     void functions(JitRuntime* runtime, Unit* unit) {
-        int index = 0;
 
         for (FunctionDecl* func : unit->functions) {
-            func->bHandleIndex = index;
+            func->bHandleIndex = JitContext::handleCount;
+
             void* ptr = Generate::function(runtime, func);
-            JitContext::handles[index] = ptr;
-            index++;
+
+            int index = JitContext::addHandle(ptr);
+            assert(index == func->bHandleIndex);
         }
     }
 }

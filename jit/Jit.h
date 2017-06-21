@@ -18,10 +18,12 @@ public:
     bool load(std::string path);
     bool reload(std::string path);
     int run();
+
+    void allocateHandles(unsigned int functionCount);
 private:
     JitRuntime runtime;
     ProgramType program;
-    Unit* root;
+
 
     std::string readFile(std::string path);
 };

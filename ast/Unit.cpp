@@ -53,3 +53,7 @@ bool Unit::equals(const Node &other) const {
 
     return true;
 }
+
+unsigned int Unit::functionCount() {
+    return (unsigned int)functions.size();
+}

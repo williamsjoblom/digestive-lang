@@ -8,10 +8,14 @@
 #include <sstream>
 #include <iterator>
 #include <jit/JitContext.h>
+#include <signal.h>
+#include <execinfo.h>
+#include <bits/siginfo.h>
 
 #include "Interactive.h"
 #include "IO.h"
 #include "util/Colors.h"
+
 
 namespace Interactive {
 
@@ -24,17 +28,20 @@ namespace Interactive {
     }
 
     void loop(Jit* jit) {
+
         if (!IO::init()) {
             std::cout << "Failed to open interaction pipe" << std::endl;
             return;
         }
 
+        bool status = false;
+
         while (true) {
             std::string s;
+
             std::getline(IO::in, s);
-            if (!s.empty()) {
-                evaluate(jit, s);
-            }
+
+            evaluate(jit, s);
 
             if (IO::in.eof()) IO::in.clear();
         }
@@ -59,4 +66,6 @@ namespace Interactive {
 
         std::cout << RST;
     }
+
+
 }

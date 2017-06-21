@@ -7,23 +7,32 @@
 namespace Generate {
 
     void function(X86Compiler &c, FunctionDecl* func) {
-        FuncPrototype prototype = FuncBuilder0<int>(kCallConvHost);
+        FuncSignature prototype = FuncSignature0<int>(CallConv::kIdHost);
 
-        c.addFunc(prototype);
+        CCFunc* f = c.addFunc(prototype);
+        f->getFrameInfo().enablePreservedFP();
+        f->getFrameInfo().enableCalls();
+
 
         func->body->generate(c);
         c.endFunc();
     }
 
     void* function(JitRuntime* runtime, FunctionDecl* func) {
-        X86Assembler a(runtime);
-        X86Compiler c(&a);
+        CodeHolder code;
+        code.init(runtime->getCodeInfo());
+
+        X86Compiler c(&code);
         StringLogger logger;
-        a.setLogger(&logger);
+        code.setLogger(&logger);
 
-        FuncBuilderX prototype = func->bGetFuncPrototype();
+        FuncSignatureX prototype = func->bGetFuncPrototype();
 
-        X86FuncNode* f = c.addFunc(prototype);
+        CCFunc* f = c.addFunc(prototype);
+        f->getFrameInfo().enablePreservedFP();
+        f->getDetail().addUsedRegs(x86::rbx.getKind(), Utils::mask(x86::rbx.getId()));
+
+        c.newIntPtr();
 
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
@@ -38,9 +47,13 @@ namespace Generate {
 
         c.finalize();
 
-        //std::cout << "Generated func: " << std::endl << logger.getString();
+        std::cout << "Generated func: " << std::endl << logger.getString();
 
+        func->codeSize = code.getCodeSize();
 
-        return a.make();
+        void* ptr;
+        runtime->_add(&ptr, &code);
+
+        return ptr;
     }
 }

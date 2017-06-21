@@ -17,7 +17,7 @@ public:
     UnaryExpr(Operator* op, Expr* expr);
     ~UnaryExpr();
 
-    X86GpVar generate(X86Compiler &c);
+    X86Gp generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 
