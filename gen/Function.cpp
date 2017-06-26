@@ -30,9 +30,6 @@ namespace Generate {
 
         CCFunc* f = c.addFunc(prototype);
         f->getFrameInfo().enablePreservedFP();
-        f->getDetail().addUsedRegs(x86::rbx.getKind(), Utils::mask(x86::rbx.getId()));
-
-        c.newIntPtr();
 
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
@@ -47,7 +44,7 @@ namespace Generate {
 
         c.finalize();
 
-        std::cout << "Generated func: " << std::endl << logger.getString();
+        std::cout << func->identifier << "(): " << std::endl << logger.getString() << std::endl;
 
         func->codeSize = code.getCodeSize();
 

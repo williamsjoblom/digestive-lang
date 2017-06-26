@@ -10,56 +10,29 @@
 #include <execinfo.h>
 #include <bits/signum.h>
 #include <signal.h>
+#include <bits/siginfo.h>
+#include <sys/ucontext.h>
+#include <util/Colors.h>
 
 #include "gen/Gen.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
 #include "JitContext.h"
+#include "Backtrace.h"
 
-struct stack_frame {
-    struct stack_frame* next;
-    void* ret;
-};
-
-int get_call_stack(void** retaddrs, int max_size) {
-    /* x86/gcc-specific: this tells gcc that the fp
-       variable should be an alias to the %ebp register
-       which keeps the frame pointer */
-    register struct stack_frame* fp asm("ebp");
-    /* the rest just walks through the linked list */
-    struct stack_frame* frame = fp;
-    retaddrs[0] = frame->ret;
-    retaddrs[1] = frame->next->ret;
-    retaddrs[2] = frame->next->next->ret;
-    return 3;
-    /*int i = 0;
-    while(frame) {
-        if(i < max_size) {
-            retaddrs[i++] = frame->ret;
-        }
-        frame = frame->next;
-    }
-    return i;*/
-}
-
-void signal_handler(int signo) {
-    std::cout << "Signal received; backtrace:" << std::endl;
-    void* trace[32];
-    int traceSize = get_call_stack(trace, 32);
-
-    //int traceSize = backtrace(trace, 32);
-    //char** symbols = backtrace_symbols(trace, traceSize);
-
-    for (int i = 0; i < traceSize; i++) {
-        std::cout << trace[i] << std::endl;
-    }
-
-    std::cout << std::endl;
-}
+struct sigaction sa;
+void signal_handler(int sig, siginfo_t* info, void* ptr);
 
 Jit::Jit() {
     program = nullptr;
-    signal(SIGTRAP, signal_handler);
+
+
+    sa.sa_sigaction = signal_handler;
+    sigemptyset (&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;
+
+    sigaction(SIGTRAP, &sa, NULL);
+    sigaction(SIGSEGV, &sa, NULL);
 }
 
 Jit::~Jit() {
@@ -156,12 +129,6 @@ bool Jit::reload(std::string path) {
             }
         }
 
-        /*
-        std::cout << "Previous function handles: ";
-        for (FunctionDecl* oldFunction : root->functions) {
-
-        }
-        */
         std::cout << "New function handles: ";
         for (FunctionDecl* newFunction : newRoot->functions) {
             std::cout << "[" << newFunction->identifier
@@ -173,16 +140,6 @@ bool Jit::reload(std::string path) {
 
         std::cout << std::endl;
 
-        /*
-        if (root->functions.size() != this->root->functions.size()) return false;
-
-        for (int i = 0; i < root->functions.size(); i++) {
-            Stmt* function =  root->functions[i];
-            Stmt* oldFunction = this->root->functions[i];
-
-            if (*function != *oldFunction) return false;
-        }
-        */
 
         std::cout << "Added " << added << " function(s)" << std::endl;
         std::cout << "Updated " << updated << " function(s)" << std::endl;
@@ -217,6 +174,19 @@ void Jit::allocateHandles(unsigned int functionCount) {
     unsigned int capacity = 128 + functionCount * 2;
     JitContext::allocateHandles(capacity);
 }
+
+void signal_handler(int sig, siginfo_t* info, void* ptr) {
+    ucontext_t* ctxt = (ucontext_t*) ptr;
+    void* pc = (void*) ctxt->uc_mcontext.gregs[REG_RIP];
+
+    void* framePtr = __builtin_frame_address(1);
+
+    char* signal = strsignal(sig);
+    std::cout << "Program received signal " << BOLD(<<sig<<) << ", " << BOLD(<<signal<<) << std::endl;
+    Backtrace::ssd(pc, framePtr);
+}
+
+
 
 
 

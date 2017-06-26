@@ -23,6 +23,7 @@ public:
     void dump(size_t indent);
 
     unsigned int functionCount();
+    std::string symbolFromPtr(void* ptr);
 
 private:
 };
