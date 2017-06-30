@@ -12,6 +12,7 @@
 class ReturnStmt : public Stmt {
 public:
     Expr* expression;
+    const Type* returnType;
 
     ReturnStmt(Expr* expression);
     ~ReturnStmt();

@@ -17,6 +17,11 @@ UnaryExpr::~UnaryExpr() {
 
 void UnaryExpr::analyze(Scope* scope) {
     expr->analyze(scope);
+
+    /*
+     * FIXME: will not work as expected for natural numbers and to be implemented product types.
+     */
+    type = expr->type;
 }
 
 bool UnaryExpr::equals(const Node& other) const {

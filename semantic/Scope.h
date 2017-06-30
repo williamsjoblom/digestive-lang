@@ -15,9 +15,9 @@ class VariableDecl;
 class Scope {
 public:
     Scope* parent;
+    FunctionDecl* functionContext;
 
-    Scope();
-    Scope(Scope* parent);
+    Scope(Scope* parent=nullptr, FunctionDecl* functionContext=nullptr);
 
     ~Scope();
 

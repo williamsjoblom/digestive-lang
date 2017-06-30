@@ -17,6 +17,7 @@ public:
     Token pop();
     Token peek() const;
     void rewind(int distance);
+    void rewindTo(Token t);
     Token top() const;
     Token at(int i) const;
 

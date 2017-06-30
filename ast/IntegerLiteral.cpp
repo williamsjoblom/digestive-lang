@@ -3,12 +3,14 @@
 //
 
 
+#include "ast/type/Types.h"
 #include "IntegerLiteral.h"
 #include "gen/Gen.h"
 
 
 IntegerLiteral::IntegerLiteral(int value) {
     this->value = value;
+    this->type = &INT32TYPE;
 }
 
 X86Gp IntegerLiteral::generate(X86Compiler &c) {

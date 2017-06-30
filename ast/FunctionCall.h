@@ -18,11 +18,11 @@ public:
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
     ~FunctionCall();
 
-    virtual X86Gp generate(X86Compiler &c);
+    X86Gp generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 
-    virtual bool equals(const Node& other) const;
+    bool equals(const Node& other) const;
 
     void dump(size_t indent);
 };

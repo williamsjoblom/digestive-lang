@@ -81,8 +81,9 @@ bool Jit::reload(std::string path) {
         int added = 0;
 
         std::cout << "Parsed " << newRoot->functions.size() << " functions" << std::endl;
-
+        
         // TODO: O(N^2), will be slow for large files later on! Also not very pretty!
+        // (Use some neat tree or map structure for storing functions instead for less expensive lookup)
         for (FunctionDecl* newFunction : newRoot->functions) {
             bool addFunction = true;
 
@@ -156,7 +157,7 @@ std::string Jit::readFile(std::string path) {
     std::ifstream t(path);
     std::stringstream buffer;
 
-    if(!t.is_open()) {
+    if (!t.is_open()) {
         std::cout << "Failed to open file: " << path << std::endl;
         throw 1;
     }

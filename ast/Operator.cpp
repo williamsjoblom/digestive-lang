@@ -92,6 +92,7 @@ const std::string symbolToString(OperatorSymbol symbol) {
         case OperatorSymbol::GREATEREQ: return ">=";
         case OperatorSymbol::LESS: return "<";
         case OperatorSymbol::GREATER: return ">";
+
         case OperatorSymbol::NOT_AN_OPERATOR: return "NOT_AN_OPERATOR";
     }
 

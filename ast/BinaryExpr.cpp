@@ -3,6 +3,7 @@
 //
 
 #include <gen/Gen.h>
+#include <semantic/TypeUtil.h>
 #include "util/PrettyPrint.h"
 #include "BinaryExpr.h"
 
@@ -21,6 +22,8 @@ BinaryExpr::~BinaryExpr() {
 void BinaryExpr::analyze(Scope *scope) {
     left->analyze(scope);
     right->analyze(scope);
+
+    type = resultingType(left->type, *op, right->type);
 }
 
 void BinaryExpr::dump(size_t indent) {

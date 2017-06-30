@@ -19,6 +19,8 @@ TokenQueue Lexer::lex(std::string source) {
     this->row = 0;
     this->col = 0;
 
+
+    int tokenIndex = 0;
     std::vector<Token> tokens = std::vector<Token>();
 
     readWhitespace();
@@ -27,6 +29,7 @@ TokenQueue Lexer::lex(std::string source) {
         Token t;
         t.row = row;
         t.col = col;
+        t.index = tokenIndex++;
 
         char c = source[index];
         if (isalpha(c))
@@ -62,15 +65,15 @@ void Lexer::readWhitespace() {
 void Lexer::readAlpha(Token &token) {
     token.type = IDENTIFIER;
 
-    unsigned int oldIndex = index;
+    unsigned int startIndex = index;
 
     char c = source[index];
-    while (isalpha(c)) {
+    while (isalpha(c) || (startIndex != index && (isdigit(c) || c == '_'))) {
         col++;
         c = source[++index];
     }
 
-    token.value = source.substr(oldIndex, index - oldIndex);
+    token.value = source.substr(startIndex, index - startIndex);
 }
 
 void Lexer::readNum(Token &token) {

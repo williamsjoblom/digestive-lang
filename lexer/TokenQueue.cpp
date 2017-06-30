@@ -27,6 +27,10 @@ void TokenQueue::rewind(int distance) {
     assert(index >= 0);
 }
 
+void TokenQueue::rewindTo(Token t) {
+    index = t.index;
+}
+
 Token TokenQueue::top() const {
     return at(index);
 }
@@ -86,6 +90,8 @@ bool TokenQueue::eatIdentifier(const std::string value) {
 bool TokenQueue::empty() const {
     return index >= tokens.size();
 }
+
+
 
 
 

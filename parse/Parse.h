@@ -35,6 +35,7 @@ namespace Parse {
     LoopStmt* loopStmt(TokenQueue& tokens);
     Unit* unit(TokenQueue& tokens);
     Trap* trap(TokenQueue& tokens);
+    const Type* type(TokenQueue& tokens);
 }
 
 #endif //DIG_PARSE_H

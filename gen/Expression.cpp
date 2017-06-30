@@ -19,71 +19,10 @@ using namespace asmjit;
 
 namespace Generate {
 
-    X86Gp expression(X86Compiler &c, BinaryExpr* expr) {
-        X86Gp left = expr->left->generate(c);
-        X86Gp right = expr->right->generate(c);
-
-        X86Gp result = c.newInt32("binexp");
-
-        switch(expr->op->symbol) {
-            case OperatorSymbol::PLUS:
-                c.mov(result, left);
-                c.add(result, right);
-                break;
-            case OperatorSymbol::MINUS:
-                c.mov(result, left);
-                c.sub(result, right);
-                break;
-            case OperatorSymbol::MUL:
-                c.mov(result, left);
-                c.imul(result, right);
-                break;
-            case OperatorSymbol::DIV:
-                c.mov(result, left);
-                assert(false); // Not implemented.
-                break;
-
-            case OperatorSymbol::EQ:
-                c.cmp(left, right);
-                c.sete(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            case OperatorSymbol::NOTEQ:
-                c.cmp(left, right);
-                c.setne(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            case OperatorSymbol::LESSEQ:
-                c.cmp(left, right);
-                c.setle(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            case OperatorSymbol::GREATEREQ:
-                c.cmp(left, right);
-                c.setge(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            case OperatorSymbol::LESS:
-                c.cmp(left, right);
-                c.setl(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            case OperatorSymbol::GREATER:
-                c.cmp(left, right);
-                c.setg(result.r8());
-                c.movzx(result, result.r8());
-                break;
-            default:
-                assert(false);
-        }
-
-        return result;
-    }
 
     X86Gp expression(X86Compiler &c, IntegerLiteral* expr) {
-        X86Gp result = c.newInt32(("literal(" + std::to_string(expr->value) + ")").c_str());
-        c.mov(result, expr->value);
-
+        X86Gp result = Generate::typedRegister(c, expr->type);
+        c.mov(result, Imm(expr->value));
         return result;
     }
 
@@ -94,7 +33,7 @@ namespace Generate {
     X86Gp expression(X86Compiler &c, FunctionCall* expr) {
         FunctionDecl* decl = expr->declaration;
 
-        X86Gp ret = c.newInt32("return");
+        X86Gp ret = Generate::typedRegister(c, decl->returnType);
 
         X86Gp handle = c.newGpd("handle");
         assert(decl->bHandleIndex != -1); // Handle index has not been assigned!
@@ -106,7 +45,7 @@ namespace Generate {
             args.push_back(a);
         }
 
-        CCFuncCall* call = c.call(x86::ptr(handle), decl->bGetFuncPrototype());
+        CCFuncCall* call = c.call(x86::ptr(handle), decl->bCreatePrototype());
         call->setRet(0, ret);
 
 
@@ -127,4 +66,5 @@ namespace Generate {
 
         return result;
     }
+
 }

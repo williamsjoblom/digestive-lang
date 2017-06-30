@@ -20,6 +20,7 @@ enum TokenType {
 
     ASSIGN,
 
+    COL,
     SEMICOL,
     COMMA,
     LBRACK,
@@ -34,6 +35,8 @@ enum TokenType {
     LESS,
     GREATER,
 
+    RIGHTARROW,
+
     END_OF_FILE,
 };
 
@@ -41,6 +44,7 @@ struct Token {
     TokenType type;
     std::string value;
     int row, col;
+    int index;
 
     void dump() { std::cout << "[" << row << ":" << col << "]" << value << std::endl; }
 };
@@ -54,6 +58,7 @@ static std::map<std::string, TokenType> symbolToTokenType =
 
                 {"=", ASSIGN},
 
+                {":", COL},
                 {";", SEMICOL},
                 {",", COMMA},
                 {"{", LBRACK},
@@ -67,6 +72,8 @@ static std::map<std::string, TokenType> symbolToTokenType =
                 {">=", GREATEREQ},
                 {"<", LESS},
                 {">", GREATER},
+
+                {"->", RIGHTARROW},
         };
 
 #endif //DIG_TOKEN_H

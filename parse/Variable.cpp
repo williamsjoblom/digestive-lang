@@ -5,6 +5,7 @@
 #include "lexer/TokenQueue.h"
 #include "ast/VariableDecl.h"
 #include "Parse.h"
+#include "ParseError.h"
 
 namespace Parse {
     VariableDecl* variable(TokenQueue& tokens) {
@@ -13,12 +14,19 @@ namespace Parse {
 
         Expr* expression = nullptr;
 
+        tokens.expect(TokenType::COL);
+
+        const Type* type = Parse::type(tokens);
+
         if(tokens.eat(ASSIGN)) {
             expression = Parse::expression(tokens);
+        } else if (type == nullptr) {
+            Token t = tokens.top();
+            parseError(t, "Expected variable type or inferred type");
         }
 
         tokens.expect(SEMICOL);
 
-        return new VariableDecl(identifier.value, expression);
+        return new VariableDecl(identifier.value, type, expression);
     }
 }

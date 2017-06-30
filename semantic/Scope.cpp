@@ -9,13 +9,16 @@
 #include "ast/FunctionDecl.h"
 #include "ast/VariableDecl.h"
 
-Scope::Scope() {
-    this->parent = nullptr;
-}
-
-Scope::Scope(Scope* parent) {
+Scope::Scope(Scope* parent, FunctionDecl* functionContext) {
     this->parent = parent;
-    parent->addChild(this);
+
+    if (functionContext == nullptr && parent != nullptr)
+        this->functionContext = parent->functionContext;
+    else
+        this->functionContext = functionContext;
+
+    if (parent != nullptr)
+        parent->addChild(this);
 }
 
 Scope::~Scope() {

@@ -14,23 +14,56 @@ class FunctionDecl : public Decl {
 public:
     std::vector<VariableDecl*>* parameters;
     BlockStmt* body;
+    const Type* returnType;
 
+
+    /**
+     * Print assembly after code generation.
+     */
+    bool dumpAssembly;
+
+    /**
+     * Index of function pointer in current JitContext.
+     */
     int bHandleIndex;
+
+    /**
+     * Function prototype.
+     */
     FuncSignatureX* baPrototype;
+
+    /**
+     * Byte size of code.
+     */
     size_t codeSize;
 
-    FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body);
+    /**
+     * Constructor.
+     */
+    FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
+                 const Type* returnType, bool dumpAssembly=false);
+    /**
+     * Destructor.
+     */
     ~FunctionDecl();
 
+    /**
+     * Generate.
+     */
     void generate(X86Compiler &c);
+
+    /**
+     * Semantically analyze node.
+     */
     void analyze(Scope* scope);
+
     virtual bool equals(const Node& other) const;
-    virtual void dump(size_t indent);
+    virtual void dump(size_t indent) override;
 
     bool matchesSignature(const FunctionDecl& other) const;
-    FuncSignatureX bGetFuncPrototype();
+    FuncSignatureX bCreatePrototype();
 
-    int stackSize() override;
+    int stackSize();
 };
 
 

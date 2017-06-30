@@ -3,6 +3,7 @@
 //
 
 #include <gen/Gen.h>
+#include <ast/type/Types.h>
 #include "util/PrettyPrint.h"
 #include "ReturnStmt.h"
 
@@ -23,6 +24,11 @@ void ReturnStmt::dump(size_t indent) {
 
 void ReturnStmt::analyze(Scope* scope) {
     expression->analyze(scope);
+
+    if (scope->functionContext != nullptr)
+        returnType = scope->functionContext->returnType;
+    else
+        returnType = &NAT8TYPE; // No function context <=> returns exit code.
 }
 
 void ReturnStmt::generate(X86Compiler &c) {

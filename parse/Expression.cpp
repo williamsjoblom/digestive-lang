@@ -1,5 +1,5 @@
 //
-// Created by wax on 12/15/16.
+// Created by wax on 6/28/17.
 //
 
 #include "Parse.h"
@@ -15,6 +15,7 @@
 #include <ast/FunctionCall.h>
 #include <ast/UnaryExpr.h>
 #include <ast/IntegerLiteral.h>
+#include <ast/TupleExpr.h>
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
@@ -53,6 +54,11 @@ void mismatchedParenthesis(Token token) {
     parseError(token, "Mismatched parenthesis in expression");
 }
 
+
+/**
+ * Heavily modified implementation of the shunting yard algorithm.
+ * Modified to support unary operators, variable argument function calls and tuples.
+ */
 std::vector<Token> shuntingYard(TokenQueue& tokens) {
     std::vector<Token> output;
     std::stack<Token> stack;
@@ -65,7 +71,7 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
         Token token = tokens.top();
 
         if(token.type == SEMICOL) break;
-        if(token.type == COMMA) break;
+        if(token.type == COMMA && parDepth == 0) break;
         if(token.type == RPAR && parDepth == 0) break;
 
         tokens.pop();
@@ -114,19 +120,42 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
             expectUnary = true;
         } else if (token.type == LPAR) {
             parDepth++;
+
             stack.push(token);
+            output.push_back(token);
         } else if (token.type == RPAR ) {
             parDepth--;
+
             Token top;
-            while (stack.top().type != LPAR) {
-                if (stack.size() <= 1)
+            while (stack.top().type != LPAR && stack.top().type != COMMA) {
+                if (stack.size() <= 0) // 1
                     mismatchedParenthesis(top);
 
                 top = stack.top();
                 output.push_back(top);
                 stack.pop();
             }
+
+            output.push_back(token);
             stack.pop(); // Pop LPAR
+
+            expectUnary = false;
+
+        } else if (token.type == COMMA) {
+            Token top;
+            while (stack.top().type != LPAR && stack.top().type != COMMA) {
+                if (stack.size() <= 0) // 1
+                    mismatchedParenthesis(top);
+
+                top = stack.top();
+                output.push_back(top);
+                stack.pop();
+            }
+
+            output.push_back(token);
+            stack.pop();
+            stack.push(token);
+
         }
     }
 
@@ -162,17 +191,20 @@ Expr* rpnToExpr(TokenQueue& tokens) {
 
     }
 
+    int tupleSize = 1;
+
+    std::stack<int> tupleSizeStack = std::stack<int>();
     while(!tokens.empty()) {
         Token token = tokens.pop();
 
         if (token.type == NUMBER) {
             int number = std::stoi(token.value);
-            Expr* expr = buildUnary(unaryOperators, new IntegerLiteral(number));
+            Expr *expr = buildUnary(unaryOperators, new IntegerLiteral(number));
             stack.push(expr);
         } else if (token.type == IDENTIFIER) {
-            std::vector<Expr*>* argList = Parse::argumentList(tokens);
+            std::vector<Expr *> *argList = Parse::argumentList(tokens);
 
-            Expr* expr;
+            Expr *expr;
             if (argList != nullptr) {
                 expr = buildUnary(unaryOperators, new FunctionCall(token.value, argList));
             } else {
@@ -180,6 +212,7 @@ Expr* rpnToExpr(TokenQueue& tokens) {
             }
 
             stack.push(expr);
+
         } else if (Operator::isOperator(token.value)) {
             if (stack.size() == 0) {
                 parseError(token, "Missing operand in expression");
@@ -188,11 +221,33 @@ Expr* rpnToExpr(TokenQueue& tokens) {
             if (stack.size() == 1) {
                 unaryOperators.push(new Operator(token.value));
             } else {
-                Expr* right = stack.top(); stack.pop();
-                Expr* left = stack.top(); stack.pop();
-                Operator* op = new Operator(token.value);
+                Expr *right = stack.top();
+                stack.pop();
+                Expr *left = stack.top();
+                stack.pop();
+                Operator *op = new Operator(token.value);
                 stack.push(new BinaryExpr(left, op, right));
             }
+        } else if (token.type == LPAR) {
+            tupleSizeStack.push(tupleSize);
+            tupleSize = 1;
+        } else if(token.type == RPAR) {
+            if(tupleSize != 1) {
+                std::vector<Expr*> tupleValues = std::vector<Expr*>();
+                for (int i = 0; i < tupleSize; i++) {
+                    Expr* v = stack.top();
+                    tupleValues.push_back(v);
+                    stack.pop();
+                }
+
+                stack.push(new TupleExpr(tupleValues));
+            }
+
+            tupleSize = tupleSizeStack.top();
+            tupleSizeStack.pop();
+
+        } else if (token.type == COMMA) {
+            tupleSize++;
         } else {
             assert(false);
         }

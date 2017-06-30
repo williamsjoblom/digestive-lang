@@ -8,12 +8,29 @@
 #include "Type.h"
 #include "PrimitiveType.h"
 
-PrimitiveType INT8TYPE = PrimitiveType(PrimitiveKind::INTEGER, 8);
-PrimitiveType INT16TYPE = PrimitiveType(PrimitiveKind::INTEGER, 16);
-PrimitiveType INT32TYPE = PrimitiveType(PrimitiveKind::INTEGER, 32);
-PrimitiveType INT64TYPE = PrimitiveType(PrimitiveKind::INTEGER, 64);
+/**
+ * Untyped type
+ * TODO: should this really be an instance of primitive type?
+ */
+const PrimitiveType VOIDTYPE = PrimitiveType(PrimitiveKind::VOID, 0);
 
-PrimitiveType FLOAT32TYPE = PrimitiveType(PrimitiveKind::REAL, 32);
-PrimitiveType FLOAT64TYPE = PrimitiveType(PrimitiveKind::REAL, 64);
+
+/**
+ * Integers: 0, 1, -1, 2, -2...
+ */
+const PrimitiveType INT16TYPE = PrimitiveType(PrimitiveKind::INTEGER, 2);
+const PrimitiveType INT32TYPE = PrimitiveType(PrimitiveKind::INTEGER, 4);
+const PrimitiveType INT64TYPE = PrimitiveType(PrimitiveKind::INTEGER, 8);
+
+
+/**
+ * Natural numbers: 0, 1, 2...
+ */
+const PrimitiveType NAT8TYPE = PrimitiveType(PrimitiveKind::NATURAL, 1);
+const PrimitiveType NAT16TYPE = PrimitiveType(PrimitiveKind::NATURAL, 2);
+const PrimitiveType NAT32TYPE = PrimitiveType(PrimitiveKind::NATURAL, 4);
+const PrimitiveType NAT64TYPE = PrimitiveType(PrimitiveKind::NATURAL, 8);
+
+
 
 #endif //DIG_TYPES_H

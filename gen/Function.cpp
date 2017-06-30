@@ -26,7 +26,7 @@ namespace Generate {
         StringLogger logger;
         code.setLogger(&logger);
 
-        FuncSignatureX prototype = func->bGetFuncPrototype();
+        FuncSignatureX prototype = func->bCreatePrototype();
 
         CCFunc* f = c.addFunc(prototype);
         f->getFrameInfo().enablePreservedFP();
@@ -44,7 +44,9 @@ namespace Generate {
 
         c.finalize();
 
-        std::cout << func->identifier << "(): " << std::endl << logger.getString() << std::endl;
+        if (func->dumpAssembly) {
+            std::cout << func->identifier << "(): " << std::endl << logger.getString() << std::endl;
+        }
 
         func->codeSize = code.getCodeSize();
 

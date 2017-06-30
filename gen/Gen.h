@@ -35,12 +35,16 @@ namespace Generate {
     void loop(X86Compiler& c, LoopStmt* stmt);
     void ifStmt(X86Compiler& c, IfStmt* stmt);
 
-    void function(X86Compiler &c, FunctionDecl* func); // Old "inline"
+    void function(X86Compiler &c, FunctionDecl* func); // Deprecated
     void* function(JitRuntime* runtime, FunctionDecl* func);
 
     void variableDeclaration(X86Compiler &c, VariableDecl* decl);
 
     void pln(X86Compiler& c, PlnStmt* stmt);
+
+
+    X86Gp cast(X86Compiler& c, Expr* expr, const Type* t);
+    X86Gp typedRegister(X86Compiler& c, const Type* t);
 
     X86Gp expression(X86Compiler& c, BinaryExpr* expr);
     X86Gp expression(X86Compiler& c, IntegerLiteral* expr);

@@ -5,12 +5,11 @@
 #include <asmjit/asmjit.h>
 
 #include "ast/VariableDecl.h"
+#include "Gen.h"
 
 namespace Generate {
+
     void variableDeclaration(X86Compiler &c, VariableDecl* decl) {
-        decl->bVar = c.newInt32(decl->identifier.c_str());
-        if (decl->value != nullptr) {
-            c.mov(decl->bVar, decl->value->generate(c));
-        }
+        decl->bVar = Generate::cast(c, decl->value, decl->type);
     }
 }

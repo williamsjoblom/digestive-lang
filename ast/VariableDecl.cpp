@@ -6,12 +6,14 @@
 #include <gen/Gen.h>
 #include "VariableDecl.h"
 
-VariableDecl::VariableDecl(std::string identifier) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, const Type* type) : Decl(identifier) {
     this->value = nullptr;
+    this->type = type;
 }
 
-VariableDecl::VariableDecl(std::string identifier, Expr* value) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, const Type* type, Expr* value) : Decl(identifier) {
     this->value = value;
+    this->type = type;
 }
 
 VariableDecl::~VariableDecl() {
@@ -23,6 +25,12 @@ void VariableDecl::analyze(Scope* scope) {
 
     if (this->value != nullptr) {
         this->value->analyze(scope);
+    }
+
+    // Parse error should occur before assertion fails.
+    assert(this->type != nullptr || this->value != nullptr);
+    if (this->type == nullptr) {
+        this->type = this->value->type; // Infer type from value.
     }
 }
 
@@ -53,6 +61,7 @@ bool VariableDecl::equals(const Node &other) const {
 }
 
 int VariableDecl::stackSize() {
+    // FIXME: read actual stack size from type.
     return sizeof(int);
 }
 

@@ -14,7 +14,6 @@ namespace Generate {
     void entry(X86Compiler& c, Unit* unit);
     void functions(JitRuntime* runtime, Unit* unit);
 
-    // Rename function to Generate::unit.
     ProgramType program(JitRuntime* runtime, Unit* unit) {
         CodeHolder code;
         code.init(runtime->getCodeInfo());
@@ -30,11 +29,12 @@ namespace Generate {
 
         c.finalize();
 
-        //std::cout << "Generated program:" << std::endl << logger.getString();
-
         ProgramType func;
         Error err = runtime->add(&func, &code);
         if (err) throw 1;
+
+        std::cout << "entry:" << std::endl;
+        std::cout << logger.getString();
 
         return func;
     }
