@@ -12,15 +12,6 @@ pln fib(10);
 ```
 Example that prints the 10th fibonacci number.
 
-### Variable Declarations
-With type inference (the type of `x` will be infered from its assigned value):
-```c
-var x := 42;
-```
-Without type inference
-```c
-var x : i32 = 42;
-```
 ### Types
 
 #### Primitive Types
@@ -35,3 +26,14 @@ var x : i32 = 42;
 | `n64`         | 64 bit unsigned integer   |
 
 #### Tuple Types
+...
+
+### Variable Declarations
+With type inference (the type of `x` will be infered from its assigned value):
+```c
+var x := 42;
+```
+Without type inference (variable will be of type `i32`)
+```c
+var x : i32 = 42;
+```
