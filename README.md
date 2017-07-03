@@ -33,7 +33,7 @@ With type inference (the type of `x` will be infered from its assigned value):
 ```c
 var x := 42;
 ```
-Without type inference ('x` will be of type `i32`)
+Without type inference (`x` will be of type `i32`)
 ```c
 var x : i32 = 42;
 ```
