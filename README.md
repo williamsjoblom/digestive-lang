@@ -16,7 +16,7 @@ Example that prints the 10th fibonacci number.
 
 #### Primitive
 | Type          | Description               |
-| ------------- |--------------------------:|
+| ------------- |---------------------------|
 | i16           | 16 bit signed integer     |
 | i32           | 32 bit signed integer     |
 | i64           | 64 bit signed integer     |
