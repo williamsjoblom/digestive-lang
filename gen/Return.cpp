@@ -6,6 +6,16 @@
 
 namespace Generate {
     void statement(X86Compiler &c, ReturnStmt* stmt) {
-        c.ret(Generate::cast(c, stmt->expression, stmt->returnType));
+        Regs regs = Generate::cast(c, stmt->expression, stmt->returnType);
+
+        if (stmt->returnType.isPrimitive()) {
+            assert(regs.size() == 1);
+            c.ret(regs[0]);
+        } else if(stmt->returnType.isTuple()) {
+            for (X86Gp reg : regs)
+                c.push(reg);
+        } else {
+            assert(false);
+        }
     }
 }

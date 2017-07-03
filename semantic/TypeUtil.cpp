@@ -99,7 +99,7 @@ const DType resultingPrimitive(const DType& left, Operator op, const DType& righ
 }
 
 
-const DType resultingType(const DType left, Operator op, const DType right) {
+const DType resultingType(DType& left, Operator op, DType& right) {
     if (left.isPrimitive() && right.isPrimitive()) return resultingPrimitive(left, op, right);
     semanticError("Bad type conversion");
 }

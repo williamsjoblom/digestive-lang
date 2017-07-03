@@ -16,11 +16,11 @@ namespace Parse {
 
         tokens.expect(TokenType::COL);
 
-        const Type* type = Parse::type(tokens);
+        DType type = Parse::type(tokens);
 
         if(tokens.eat(ASSIGN)) {
             expression = Parse::expression(tokens);
-        } else if (type == nullptr) {
+        } else if (type.isNilType()) {
             Token t = tokens.top();
             parseError(t, "Expected variable type or inferred type");
         }

@@ -3,6 +3,7 @@
 //
 
 #include "TupleExpr.h"
+#include "gen/Gen.h"
 
 TupleExpr::TupleExpr(std::vector<Expr *> values) {
     this->values = values;
@@ -12,12 +13,18 @@ TupleExpr::~TupleExpr() {
     for (Expr* v : values) delete v;
 }
 
-X86Gp TupleExpr::generate(X86Compiler &c) {
-    return X86Gp();
+Regs TupleExpr::generate(X86Compiler &c) {
+    return Generate::expression(c, this);
 }
 
 void TupleExpr::analyze(Scope *scope) {
-    for (Expr* v : values) v->analyze(scope);
+    std::vector<DType>* types = new std::vector<DType>();
+    for (Expr* v : values) {
+        v->analyze(scope);
+        types->push_back(v->type);
+    }
+
+    type = DType(types);
 }
 
 bool TupleExpr::equals(const Node &other) const {

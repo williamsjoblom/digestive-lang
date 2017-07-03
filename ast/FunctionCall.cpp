@@ -39,7 +39,7 @@ void FunctionCall::analyze(Scope* scope) {
         argument->analyze(scope);
 }
 
-X86Gp FunctionCall::generate(X86Compiler &c) {
+std::vector<X86Gp> FunctionCall::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

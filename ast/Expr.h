@@ -15,9 +15,9 @@ using namespace asmjit;
 
 class Expr : public Node {
 public:
-    const Type* type;
+    DType type;
 
-    virtual X86Gp generate(X86Compiler &c) = 0;
+    virtual std::vector<X86Gp> generate(X86Compiler &c) = 0;
 };
 
 

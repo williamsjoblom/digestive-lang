@@ -6,6 +6,7 @@
 #define DIG_TUPLEEXPR_H
 
 
+#include <gen/Base.h>
 #include "Expr.h"
 
 class TupleExpr : public Expr {
@@ -16,7 +17,7 @@ public:
     TupleExpr(std::vector<Expr*> values);
     ~TupleExpr();
 
-    X86Gp generate(X86Compiler &c);
+    Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

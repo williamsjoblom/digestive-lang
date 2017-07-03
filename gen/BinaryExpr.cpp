@@ -11,13 +11,21 @@
 using namespace asmjit;
 
 X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
-    const PrimitiveType* type = dynamic_cast<const PrimitiveType*>(expr->type);
-    assert(type != nullptr);
+    DType& type = expr->type;
+    assert(!type.isNilType());
 
-    X86Gp left = Generate::cast(c, expr->left, type);
-    X86Gp right = Generate::cast(c, expr->right, type);
+    Regs leftRegs = Generate::cast(c, expr->left, type);
+    Regs rightRegs = Generate::cast(c, expr->right, type);
+    assert(rightRegs.size() == 1 && leftRegs.size() == 1);
 
-    X86Gp result = Generate::typedRegister(c, type);
+    X86Gp left = leftRegs[0];
+    X86Gp right = rightRegs[0];
+
+    assert(left.getSize() == right.getSize());
+
+    Regs resultRegs = Generate::typedRegister(c, type);
+    assert(resultRegs.size() == 1);
+    X86Gp result = resultRegs[0];
 
     switch(expr->op->symbol) {
         case OperatorSymbol::PLUS:
@@ -30,7 +38,7 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
             break;
         case OperatorSymbol::MUL:
             c.mov(result, left);
-            if (type->kind == INTEGER)
+            if (type.type.primitive == DPrimitiveKind::INTEGER)
                 c.imul(result, right);
             else
                 c.mul(result, right);
@@ -79,9 +87,9 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 
 namespace Generate {
 
-    X86Gp expression(X86Compiler &c, BinaryExpr* expr) {
-        if (expr->left->type->isPrimitive() && expr->right->type->isPrimitive()) {
-            return primitiveBinaryExpr(c, expr);
+    std::vector<X86Gp> expression(X86Compiler &c, BinaryExpr* expr) {
+        if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
+            return { primitiveBinaryExpr(c, expr) };
         }
 
         // Not returning before this point should have resulted in a semantic error during analysis of the binary expr.

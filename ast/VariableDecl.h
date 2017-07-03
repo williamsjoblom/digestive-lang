@@ -5,17 +5,18 @@
 #ifndef DIG_VARIABLEDECL_H
 #define DIG_VARIABLEDECL_H
 
+#include <gen/Gen.h>
 #include "Decl.h"
 #include "Expr.h"
 
 class VariableDecl : public Decl {
 public:
     Expr* value;
-    const Type* type;
-    X86Gp bVar;
+    DType type;
+    Regs bVar;
 
-    VariableDecl(std::string identifier, const Type* type);
-    VariableDecl(std::string identifier, const Type* type, Expr* value);
+    VariableDecl(std::string identifier, DType type);
+    VariableDecl(std::string identifier, DType type, Expr* value);
     ~VariableDecl();
 
     virtual void generate(X86Compiler &c);

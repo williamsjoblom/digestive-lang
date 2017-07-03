@@ -8,6 +8,7 @@
 #include "ast/Unit.h"
 #include "config.h"
 #include "Gen.h"
+#include "ErrHandler.h"
 
 namespace Generate {
 
@@ -18,7 +19,10 @@ namespace Generate {
         CodeHolder code;
         code.init(runtime->getCodeInfo());
 
+        ErrHandler handler;
+
         X86Compiler c(&code);
+        code.setErrorHandler(&handler);
 
         StringLogger logger;
         code.setLogger(&logger);

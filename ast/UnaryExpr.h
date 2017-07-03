@@ -17,7 +17,7 @@ public:
     UnaryExpr(Operator* op, Expr* expr);
     ~UnaryExpr();
 
-    X86Gp generate(X86Compiler &c);
+    std::vector<X86Gp> generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

@@ -6,6 +6,7 @@
 #define DIG_INTEGERLITERAL_H
 
 
+#include "gen/Base.h"
 #include "Literal.h"
 
 class IntegerLiteral : public Literal {
@@ -14,7 +15,7 @@ public:
 
     IntegerLiteral(int value);
 
-    X86Gp generate(X86Compiler &c);
+    Regs generate(X86Compiler &c);
     bool equals(const Node& other) const;
     void dump(size_t indent);
 };

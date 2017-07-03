@@ -5,6 +5,9 @@
 #ifndef DIG_GEN_H
 #define DIG_GEN_H
 
+#include "Base.h"
+
+#include "ast/TupleExpr.h"
 #include <ast/LoopStmt.h>
 #include <ast/PlnStmt.h>
 #include <ast/IfStmt.h>
@@ -14,15 +17,16 @@
 #include "asmjit/asmjit.h"
 #include "ast/VariableExpr.h"
 #include "ast/ReturnStmt.h"
-#include "ast/Unit.h"
+#include <ast/Unit.h>
 #include "ast/BinaryExpr.h"
 #include "ast/Literal.h"
 #include "ast/Expr.h"
 #include "ast/BlockStmt.h"
 
-typedef int (*ProgramType)(void);
 
 using namespace asmjit;
+
+class Unit;
 
 namespace Generate {
     ProgramType program(JitRuntime* runtime, Unit* unit);
@@ -43,14 +47,15 @@ namespace Generate {
     void pln(X86Compiler& c, PlnStmt* stmt);
 
 
-    X86Gp cast(X86Compiler& c, Expr* expr, const Type* t);
-    X86Gp typedRegister(X86Compiler& c, const Type* t);
+    Regs cast(X86Compiler& c, Expr* expr, DType& t);
+    Regs typedRegister(X86Compiler& c, DType& t);
 
-    X86Gp expression(X86Compiler& c, BinaryExpr* expr);
-    X86Gp expression(X86Compiler& c, IntegerLiteral* expr);
-    X86Gp expression(X86Compiler& c, VariableExpr* expr);
-    X86Gp expression(X86Compiler& c, FunctionCall* expr);
-    X86Gp expression(X86Compiler& c, UnaryExpr* expr);
+    Regs expression(X86Compiler& c, BinaryExpr* expr);
+    Regs expression(X86Compiler& c, IntegerLiteral* expr);
+    Regs expression(X86Compiler& c, VariableExpr* expr);
+    Regs expression(X86Compiler& c, FunctionCall* expr);
+    Regs expression(X86Compiler& c, UnaryExpr* expr);
+    Regs expression(X86Compiler& c, TupleExpr* expr);
 }
 
 #endif //DIG_GEN_H

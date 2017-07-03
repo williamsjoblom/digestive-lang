@@ -2,6 +2,7 @@
 // Created by wax on 6/27/17.
 //
 
+#include <ast/type/DType.h>
 #include "ast/type/Type.h"
 #include "lexer/TokenQueue.h"
 #include "ast/type/Types.h"
@@ -9,34 +10,40 @@
 
 namespace Parse {
 
-    static std::map<std::string, const Type*>  symbolToType = {
-            {"i16", &INT16TYPE},
-            {"i32", &INT32TYPE},
-            {"i64", &INT64TYPE},
+    static std::map<std::string, DType>  symbolToType = {
+            {"bool", N8_TYPE},
 
-            {"n8", &NAT8TYPE},
-            {"byte", &NAT8TYPE},
-            {"n16", &NAT16TYPE},
-            {"n32", &NAT32TYPE},
-            {"n64", &NAT64TYPE},
+            {"i16", I16_TYPE},
+            {"i32", I32_TYPE},
+            {"i64", I64_TYPE},
+
+            {"n8", N8_TYPE},
+            {"byte", N8_TYPE},
+            {"n16", N16_TYPE},
+            {"n32", N32_TYPE},
+            {"n64", N64_TYPE},
     };
 
-    const Type* type(TokenQueue& tokens) {
+    DType type(TokenQueue& tokens) {
         Token t = tokens.top();
         if (t.type == IDENTIFIER) {
             auto p = symbolToType.find(t.value);
             if (p == symbolToType.end())
-                return nullptr;
+                return NIL_TYPE;
 
             tokens.pop();
             return p->second;
         } else if (t.type == LPAR) {
             tokens.pop(); // Pop LPAR.
 
-            std::vector<const Type*> types = std::vector<const Type*>();
+            if(tokens.eat(RPAR)) // () = nil-type.
+                return NIL_TYPE;
+
+
+            std::vector<DType>* types = new std::vector<DType>();
             while (tokens.top().type == IDENTIFIER) {
-                const Type* innerType = Parse::type(tokens);
-                types.push_back(innerType);
+                const DType innerType = Parse::type(tokens);
+                types->push_back(innerType);
 
                 if(tokens.top().type != COMMA) break;
                 tokens.pop();
@@ -44,9 +51,12 @@ namespace Parse {
 
             tokens.pop(); // Pop RPAR.
 
-            if (types.size() == 0) return nullptr;
-            if (types.size() == 1) return types[0];
-            return new TupleType(types);
+            if (types->size() == 0) return nullptr;
+            if (types->size() == 1) return (*types)[0];
+
+            return DType(types);
         }
+
+        return NIL_TYPE; // Return NIL-type.
     }
 }

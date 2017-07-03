@@ -10,10 +10,10 @@
 
 IntegerLiteral::IntegerLiteral(int value) {
     this->value = value;
-    this->type = &INT32TYPE;
+    this->type = I32_TYPE;
 }
 
-X86Gp IntegerLiteral::generate(X86Compiler &c) {
+Regs IntegerLiteral::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

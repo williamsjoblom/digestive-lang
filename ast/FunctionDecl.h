@@ -14,7 +14,7 @@ class FunctionDecl : public Decl {
 public:
     std::vector<VariableDecl*>* parameters;
     BlockStmt* body;
-    const Type* returnType;
+    DType returnType;
 
 
     /**
@@ -41,7 +41,7 @@ public:
      * Constructor.
      */
     FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                 const Type* returnType, bool dumpAssembly=false);
+                 DType returnType, bool dumpAssembly=false);
     /**
      * Destructor.
      */

@@ -22,15 +22,16 @@ namespace Parse {
         std::vector<VariableDecl*>* parameters = Parse::parameterList(tokens);
 
 
-        const Type* returnType;
+        DType returnType;
         if(tokens.eat(RIGHTARROW)) {
             returnType = Parse::type(tokens);
-            if(returnType == nullptr) {
+
+            if(returnType.isNilType()) {
                 Token t = tokens.top();
                 parseError(t, "Expected function return type");
             }
         } else {
-            returnType = &VOIDTYPE;
+            returnType = NIL_TYPE;
         }
 
         bool dumpAssembly = false;
@@ -58,8 +59,8 @@ namespace Parse {
 
         tokens.expect(TokenType::COL);
 
-        const Type* type = Parse::type(tokens);
-        if (type == nullptr) {
+        const DType type = Parse::type(tokens);
+        if (type.isNilType()) {
             Token t = tokens.top();
             parseError(t, "Expected function return type");
         }

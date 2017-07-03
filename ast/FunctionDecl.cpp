@@ -7,7 +7,7 @@
 #include "FunctionDecl.h"
 
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                           const Type* returnType, bool dumpAssembly) : Decl(identifier) {
+                           DType returnType, bool dumpAssembly) : Decl(identifier) {
     this->parameters = parameters;
     this->body = body;
     this->bHandleIndex = -1;

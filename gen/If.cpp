@@ -9,8 +9,9 @@ namespace Generate {
         Label elseLabel = c.newLabel();
         Label endLabel = c.newLabel();
 
-        X86Gp condition = stmt->condition->generate(c);
-        c.cmp(condition, Imm(0));
+        Regs condition = stmt->condition->generate(c);
+        assert(condition.size() == 1);
+        c.cmp(condition[0], Imm(0));
         c.je(elseLabel);
 
         stmt->ifBlock->generate(c);

@@ -28,7 +28,7 @@ void ReturnStmt::analyze(Scope* scope) {
     if (scope->functionContext != nullptr)
         returnType = scope->functionContext->returnType;
     else
-        returnType = &NAT8TYPE; // No function context <=> returns exit code.
+        returnType = N8_TYPE; // No function context <=> returns exit code.
 }
 
 void ReturnStmt::generate(X86Compiler &c) {

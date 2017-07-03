@@ -7,7 +7,9 @@
 
 
 namespace BuiltIn {
-    void pln(int i);
+    template <typename T>
+    void pln(T i);
+
 }
 
 

@@ -20,20 +20,19 @@ using namespace asmjit;
 namespace Generate {
 
 
-    X86Gp expression(X86Compiler &c, IntegerLiteral* expr) {
-        X86Gp result = Generate::typedRegister(c, expr->type);
-        c.mov(result, Imm(expr->value));
-        return result;
+    Regs expression(X86Compiler &c, IntegerLiteral* expr) {
+        Regs regs = Generate::typedRegister(c, expr->type);
+        assert(regs.size() == 1);
+        c.mov(regs[0], Imm(expr->value));
+        return regs;
     }
 
-    X86Gp expression(X86Compiler &c, VariableExpr* expr) {
+    std::vector<X86Gp> expression(X86Compiler &c, VariableExpr* expr) {
         return expr->declaration->bVar;
     }
 
-    X86Gp expression(X86Compiler &c, FunctionCall* expr) {
+    std::vector<X86Gp> expression(X86Compiler &c, FunctionCall* expr) {
         FunctionDecl* decl = expr->declaration;
-
-        X86Gp ret = Generate::typedRegister(c, decl->returnType);
 
         X86Gp handle = c.newGpd("handle");
         assert(decl->bHandleIndex != -1); // Handle index has not been assigned!
@@ -41,13 +40,23 @@ namespace Generate {
 
         std::vector<X86Gp> args;
         for (unsigned int i = 0; i < expr->arguments->size(); i++) {
-            X86Gp a = expr->arguments->at(i)->generate(c);
-            args.push_back(a);
+            Regs a = expr->arguments->at(i)->generate(c);
+            assert(a.size() == 1);
+            args.push_back(a[0]);
         }
 
         CCFuncCall* call = c.call(x86::ptr(handle), decl->bCreatePrototype());
-        call->setRet(0, ret);
 
+        Regs ret = Generate::typedRegister(c, decl->returnType);
+        if (expr->type.isPrimitive()) {
+            // Primitives uses calling convention...
+            call->setRet(0, ret[0]);
+        } else if (expr->type.isTuple()) {
+            // ...while tuples are passed on the stack.
+            for (int i = (int) ret.size() - 1; i >= 0; i--) {
+                 c.pop(ret[i])kontore;
+            }
+        }
 
         for (unsigned int i = 0; i < args.size(); i++) {
             X86Gp a = args.at(i);
@@ -57,14 +66,33 @@ namespace Generate {
         return ret;
     }
 
-    X86Gp expression(X86Compiler& c, UnaryExpr* expr) {
-        X86Gp value = expr->expr->generate(c);
+    Regs expression(X86Compiler& c, UnaryExpr* expr) {
+        assert(expr->type.isPrimitive());
+
+        Regs regs = expr->expr->generate(c);
+        assert(regs.size() == 1);
+        X86Gp value = regs[0];
         X86Gp result = c.newInt32("unaryexp");
 
         c.mov(result, value);
-        c.neg(result);
+        if (expr->op->symbol == OperatorSymbol::MINUS)
+            c.neg(result);
 
-        return result;
+        return { result };
+    }
+
+    Regs expression(X86Compiler& c, TupleExpr* expr) {
+        Regs regs = Generate::typedRegister(c, expr->type);
+
+
+        for (int i = 0; i < regs.size(); i++) {
+            Regs valueRegs = Generate::cast(c, expr->values[i], (*expr->type.type.tuple)[i]);
+            assert(valueRegs.size() == 1);
+
+            c.mov(regs[i], valueRegs[0]);
+        }
+
+        return regs;
     }
 
 }

@@ -8,6 +8,6 @@
 #include "ast/type/Type.h"
 #include "ast/Operator.h"
 
-const Type* resultingType(const Type* left, Operator op, const Type* right);
+const DType resultingType(DType& left, Operator op, DType& right);
 
 #endif //DIG_TYPEUTIL_H

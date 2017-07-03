@@ -51,10 +51,10 @@ bool Jit::load(std::string path) {
         Scope fileScope;
         JitContext::root->analyze(&fileScope);
 
-
         allocateHandles(JitContext::root->functionCount());
 
         program = Generate::program(&runtime, JitContext::root);
+
         JitContext::dumpHandles();
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;

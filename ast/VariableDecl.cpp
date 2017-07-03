@@ -6,12 +6,12 @@
 #include <gen/Gen.h>
 #include "VariableDecl.h"
 
-VariableDecl::VariableDecl(std::string identifier, const Type* type) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier) {
     this->value = nullptr;
     this->type = type;
 }
 
-VariableDecl::VariableDecl(std::string identifier, const Type* type, Expr* value) : Decl(identifier) {
+VariableDecl::VariableDecl(std::string identifier, const DType type, Expr* value) : Decl(identifier) {
     this->value = value;
     this->type = type;
 }
@@ -28,8 +28,8 @@ void VariableDecl::analyze(Scope* scope) {
     }
 
     // Parse error should occur before assertion fails.
-    assert(this->type != nullptr || this->value != nullptr);
-    if (this->type == nullptr) {
+    assert(!this->type.isNilType() || this->value != nullptr);
+    if (this->type.isNilType()) {
         this->type = this->value->type; // Infer type from value.
     }
 }
