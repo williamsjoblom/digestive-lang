@@ -15,13 +15,12 @@ Example that prints the 10th fibonacci number.
 ### Types
 
 #### Primitive
-```
-i16 - 16 bit signed integer
-i32 - 32 bit signed integer
-i64 - 64 bit signed integer
-
-n8, byte - 8 bit unsigned integer
-n16 - 16 bit unsigned integer
-n32 - 32 bit unsigned integer
-n64 - 64 bit unsigned integer
-```
+| Type          | Description               |
+| ------------- |--------------------------:|
+| i16           | 16 bit signed integer     |
+| i32           | 16 bit signed integer     |
+| i64           | 16 bit signed integer     |
+| n8, byte      | 8 bit unsigned integer    |
+| n16           | 16 bit unsigned integer   |
+| n32           | 32 bit unsigned integer   |
+| n64           | 64 bit unsigned integer   |
