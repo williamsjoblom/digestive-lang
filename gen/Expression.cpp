@@ -54,7 +54,7 @@ namespace Generate {
         } else if (expr->type.isTuple()) {
             // ...while tuples are passed on the stack.
             for (int i = (int) ret.size() - 1; i >= 0; i--) {
-                 c.pop(ret[i])kontore;
+                 c.pop(ret[i]);
             }
         }
 
