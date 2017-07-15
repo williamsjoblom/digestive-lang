@@ -79,7 +79,7 @@ Return values are specified using the `->` syntax. The `return` keyword is used 
 ```c
 func f(x : i32) { pln x; }
 ```
-Since this function only takes a single element tuple it can be called with (`f(42)`) or without (`f 42`) parantheses. These two are equivalent.
+Since this function only takes a single element tuple it can be called with (`f(42);`) or without (`f 42;`) parantheses. These two are equivalent.
 
 ##### Multiple parameters:
 ```c
