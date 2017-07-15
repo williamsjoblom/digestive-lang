@@ -1,4 +1,4 @@
-Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation and self modifying code. Currently supporting little of planned functionality.
+Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
 
 ### Example
 ```c
@@ -33,19 +33,19 @@ Numeric literals are treated as 32 bit signed integers unless another type is ex
 
 #### Tuples
 Tuple types are declared using the following syntax:
-```
+```c
 <type>
 '('<type>[',' <type>]*')'
 ```
 The same syntax applies to tuple literals:
-```
+```c
 <expr>
 '('<expr>[',' <expr>]*')'
 ```
 
 ### Variable Declarations
 Variables are declared using the following syntax:
-```
+```c
 'var' <identifier> ':' <type>
 'var' <identifier> ':' <type>? '=' <expr>
 ```
