@@ -31,44 +31,51 @@ All types are tuple-types, even primtives. Primitive expressions are treated as 
 Numeric literals are treated as 32 bit signed integers unless another type is explicitly specified (Numeric literals will get implicitly casted when assigned to a variable if needed).
 
 #### Tuples
-Tuple types are declared using the following syntax:
+##### Type syntax
 ```c
 <type>
 '('<type>[',' <type>]*')'
 ```
-The same syntax applies to tuple literals:
+##### Literal syntax
 ```c
 <expr>
 '('<expr>[',' <expr>]*')'
 ```
 
 ### Variable Declarations
-Variables are declared using the following syntax:
+##### Syntax
 ```c
 'var' <identifier> ':' <type>
 'var' <identifier> ':' <type>? '=' <expr>
 ```
 #### Examples
-With type inference (the type of `x` will be infered from its assigned value):
+##### With type inference
 ```c
 var x := 42;
 ```
-Without type inference (`x` will be of type `i32`)
+The type of `x` will be infered from its assigned value.
+##### Without type inference
 ```c
 var x : i32 = 42;
 ```
-
+`x` will be of type `i32`.
 ### Function Declarations
 Functions are declared using the following syntax:
 ```c
 'func' <type> ['->' <type>]? '{' <stmt>* '}'
 ```
 #### Examples
-Function without parameters and return values:
+##### Without parameters and return values
 ```c
 func f() { }
 ```
-Function with a single parameter:
+##### Single return value
+```c
+func f() -> i32 { return 42; }
+```
+Return values are specified using the "arrow" syntax. The `return` keyword is used to exit the function and in this case return the value '42'.
+
+##### Single parameter
 ```c
 func f(x : i32) { pln x; }
 ```
