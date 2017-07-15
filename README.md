@@ -73,7 +73,7 @@ func f() { }
 ```c
 func f() -> i32 { return 42; }
 ```
-Return values are specified using the "arrow" syntax. The `return` keyword is used to exit the function and in this case return the value '42'.
+Return values are specified using the `->` syntax. The `return` keyword is used to exit the function and in this case return the value '42'.
 
 ##### Single parameter
 ```c
