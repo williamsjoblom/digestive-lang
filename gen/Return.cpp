@@ -12,8 +12,17 @@ namespace Generate {
             assert(regs.size() == 1);
             c.ret(regs[0]);
         } else if(stmt->returnType.isTuple()) {
-            for (X86Gp reg : regs)
+
+            int stackOffset = 0;
+            for (X86Gp reg : regs) {
+                c.mov(x86::ptr(x86::rsp, -(reg.getSize() + stackOffset)), reg);
+                stackOffset += reg.getSize();
+            }
+
+
+            /*for (X86Gp reg : regs)
                 c.push(reg);
+                */
         } else {
             assert(false);
         }

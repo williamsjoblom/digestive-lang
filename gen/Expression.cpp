@@ -57,8 +57,15 @@ namespace Generate {
             call->setRet(0, ret[0]);
         } else if (expr->type.isTuple()) {
             // ...while tuples are passed on the stack.
+
+            // Compensate for newly popped base pointer.
+            int stackOffset = x86::rbp.getSize() + sizeof(int);
+
             for (int i = (int) ret.size() - 1; i >= 0; i--) {
-                 c.pop(ret[i]);
+                c.mov(ret[i], x86::ptr(x86::rsp, -(ret[i].getSize() + stackOffset)));
+                stackOffset += ret[i].getSize();
+
+                //c.pop(ret[i]);
             }
         }
 
