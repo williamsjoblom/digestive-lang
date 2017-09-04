@@ -41,7 +41,8 @@ X86Gp primitiveCast(X86Compiler& c, Expr* expr, DType& type) {
 namespace Generate {
     Regs cast(X86Compiler& c, Expr* expr, DType& type) {
         // Failed assertion should have resulted in semantic error.
-        c.getLastError();
+
+        if (expr == nullptr) return Generate::typedRegister(c, type);
 
         if (expr->type == type) return expr->generate(c);
 
