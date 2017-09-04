@@ -10,6 +10,10 @@
 namespace Generate {
 
     void variableDeclaration(X86Compiler &c, VariableDecl* decl) {
-        decl->bVar = Generate::cast(c, decl->value, decl->type);
+        if (decl->value != nullptr) {
+            decl->bVar = Generate::cast(c, decl->value, decl->type);
+        } else {
+            decl->bVar = Generate::typedRegister(c, decl->type);
+        }
     }
 }

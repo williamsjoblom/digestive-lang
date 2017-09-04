@@ -34,7 +34,7 @@ namespace Generate {
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
             param->generate(c);
-            assert(param->bVar.size() != 1);
+            assert(param->bVar.size() == 1);
             c.setArg(i, param->bVar[0]);
         }
 

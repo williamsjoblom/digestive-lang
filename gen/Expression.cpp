@@ -27,7 +27,11 @@ namespace Generate {
         return regs;
     }
 
-    std::vector<X86Gp> expression(X86Compiler &c, VariableExpr* expr) {
+    Regs expression(X86Compiler &c, VariableExpr* expr) {
+        std::cout << "bVar.size: " << expr->declaration->bVar.size() << std::endl;
+
+        std::cout << expr->declaration->bVar[0].kIdAx;
+
         return expr->declaration->bVar;
     }
 
@@ -48,7 +52,7 @@ namespace Generate {
         CCFuncCall* call = c.call(x86::ptr(handle), decl->bCreatePrototype());
 
         Regs ret = Generate::typedRegister(c, decl->returnType);
-        if (expr->type.isPrimitive()) {
+        if (expr->type.isPrimitive() && !expr->type.isNilType()) {
             // Primitives uses calling convention...
             call->setRet(0, ret[0]);
         } else if (expr->type.isTuple()) {
@@ -83,7 +87,6 @@ namespace Generate {
 
     Regs expression(X86Compiler& c, TupleExpr* expr) {
         Regs regs = Generate::typedRegister(c, expr->type);
-
 
         for (int i = 0; i < regs.size(); i++) {
             Regs valueRegs = Generate::cast(c, expr->values[i], (*expr->type.type.tuple)[i]);

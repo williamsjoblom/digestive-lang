@@ -233,10 +233,10 @@ Expr* rpnToExpr(TokenQueue& tokens) {
             tupleSize = 1;
         } else if(token.type == RPAR) {
             if(tupleSize != 1) {
-                std::vector<Expr*> tupleValues = std::vector<Expr*>();
+                std::vector<Expr*> tupleValues = std::vector<Expr*>(tupleSize);
                 for (int i = 0; i < tupleSize; i++) {
                     Expr* v = stack.top();
-                    tupleValues.push_back(v);
+                    tupleValues[(tupleSize - 1) - i] = v;
                     stack.pop();
                 }
 

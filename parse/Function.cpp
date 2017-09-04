@@ -21,7 +21,6 @@ namespace Parse {
         Token identifier = tokens.expect(IDENTIFIER);
         std::vector<VariableDecl*>* parameters = Parse::parameterList(tokens);
 
-
         DType returnType;
         if(tokens.eat(RIGHTARROW)) {
             returnType = Parse::type(tokens);

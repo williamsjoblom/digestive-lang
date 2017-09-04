@@ -5,7 +5,7 @@
 #ifndef DIG_VARIABLEEXPR_H
 #define DIG_VARIABLEEXPR_H
 
-
+#include "gen/Base.h"
 #include "Expr.h"
 
 class VariableExpr : public Expr {
@@ -15,7 +15,7 @@ public:
 
     VariableExpr(std::string identifier);
 
-    virtual std::vector<X86Gp> generate(X86Compiler &c);
+    virtual Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

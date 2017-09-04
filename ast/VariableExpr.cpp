@@ -20,7 +20,7 @@ void VariableExpr::dump(size_t indent) {
     std::cout << identifier << std::endl;
 }
 
-std::vector<X86Gp> VariableExpr::generate(X86Compiler &c) {
+Regs VariableExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

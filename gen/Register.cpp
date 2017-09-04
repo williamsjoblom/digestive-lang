@@ -16,7 +16,7 @@ namespace Generate {
 
     Regs typedRegister(X86Compiler& c, DType& type) {
         if (type.isPrimitive()) {
-            assert(!type.isNilType());
+
             switch (type.type.primitive) {
                 case DPrimitiveKind::INTEGER:
                     if (type.byteSize() == 2) { return {c.newInt16()}; }
@@ -29,8 +29,8 @@ namespace Generate {
                     if (type.byteSize() == 4) { return {c.newUInt32()}; }
                     if (type.byteSize() == 8) { return {c.newUInt64()}; }
                     break;
-                default:
-                    assert(false);
+                case DPrimitiveKind::NIL:
+                    return { };
             }
         } else if (type.isTuple()){
             Regs regs = Regs();
