@@ -7,7 +7,8 @@
 
 #include "ast/type/Type.h"
 #include "ast/Operator.h"
+#include "ast/Expr.h"
 
-const DType resultingType(DType& left, Operator op, DType& right);
+const DType resultingType(Expr* left, Operator op, Expr* right);
 
 #endif //DIG_TYPEUTIL_H

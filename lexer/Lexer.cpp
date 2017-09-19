@@ -26,11 +26,13 @@ TokenQueue Lexer::lex(std::string source) {
     readWhitespace();
 
     while (index < source.size()) {
+	readComment();
+	
         Token t;
         t.row = row;
         t.col = col;
         t.index = tokenIndex++;
-
+	
         char c = source[index];
         if (isalpha(c))
             readAlpha(t);
@@ -41,7 +43,7 @@ TokenQueue Lexer::lex(std::string source) {
 
         tokens.push_back(t);
 
-        readWhitespace();
+	readWhitespace();
     }
 
 
@@ -57,9 +59,26 @@ void Lexer::readWhitespace() {
         } else if(isprint(c)) {
             col++;
         }
-
+	
         c = source[++index];
     }
+}
+
+void Lexer::readComment() {
+    readWhitespace();
+    
+    char c = source[index];
+    while (c == '#') {
+	while (c != '\n' && index < source.length() + 1) {
+	    c = source[++index];
+	}
+	
+	readWhitespace();
+	c = source[index];
+    }
+    
+    row++;
+    col = 0;
 }
 
 void Lexer::readAlpha(Token &token) {

@@ -15,5 +15,10 @@ namespace Generate {
         } else {
             decl->bVar = Generate::typedRegister(c, decl->type);
         }
+
+        // Spill variables to stack
+        for (X86Reg var : decl->bVar) {
+            c.spill(var);
+        }
     }
 }

@@ -7,6 +7,7 @@
 #include "TypeUtil.h"
 #include "ast/type/TypeVisitor.h"
 #include "SemanticError.h"
+#include "ast/IntegerLiteral.h"
 
 /**
  * Type result visitor.
@@ -73,14 +74,6 @@ const Type* resultingType(const Type* left, Operator op, const Type* right) {
 
 
 
-
-
-
-
-
-
-
-
 const DType resultingPrimitive(const DType& left, Operator op, const DType& right) {
     assert(left.isPrimitive() && right.isPrimitive());
 
@@ -99,7 +92,27 @@ const DType resultingPrimitive(const DType& left, Operator op, const DType& righ
 }
 
 
-const DType resultingType(DType& left, Operator op, DType& right) {
-    if (left.isPrimitive() && right.isPrimitive()) return resultingPrimitive(left, op, right);
+const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* right) {
+    if (op.symbol == OperatorSymbol::DOT &&
+	right->type.type.primitive == DPrimitiveKind::INTEGER) {
+	
+	const IntegerLiteral* literal = dynamic_cast<const IntegerLiteral*>(right);
+	if (literal == nullptr) semanticError("Tuples are only indexable by integer literals");
+
+	int i = literal->value;
+	std::vector<DType>* tupleTypes = left->type.type.tuple;
+
+	if (i >= tupleTypes->size()) semanticError("Tuple index out of bounds");
+
+	return tupleTypes->at(i);
+    }
+
+    semanticError("Bad type conversion");
+}
+
+const DType resultingType(Expr* left, Operator op, Expr* right) {
+    if (left->type.isPrimitive() && right->type.isPrimitive()) return resultingPrimitive(left->type, op, right->type);
+    if (left->type.isTuple() && right->type.isPrimitive()) return resultingTuplePrimitive(left, op, right);
+	
     semanticError("Bad type conversion");
 }

@@ -22,6 +22,7 @@ private:
     int row, col;
 
     void readWhitespace();
+    void readComment();
     void readAlpha(Token& token);
     void readNum(Token& token);
     void readSymbol(Token& token);

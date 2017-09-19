@@ -7,7 +7,7 @@
 int main() {
     Jit jit;
     Interactive::start(&jit);
-
+    
     if(jit.load("/home/wax/test.dg")) {
         int result = jit.run();
 

@@ -44,6 +44,8 @@ const std::map<std::string, OperatorSymbol> stringToSymbol =
                 {">=", OperatorSymbol::GREATEREQ},
                 {"<", OperatorSymbol::LESS},
                 {">", OperatorSymbol::GREATER},
+		
+		{".", OperatorSymbol::DOT}
         };
 
 bool Operator::isOperator(std::string s) {
@@ -81,19 +83,21 @@ OperatorSymbol symbolFromString(std::string s) {
 
 const std::string symbolToString(OperatorSymbol symbol) {
     switch(symbol) {
-        case OperatorSymbol::PLUS: return "+";
-        case OperatorSymbol::MINUS: return "-";
-        case OperatorSymbol::MUL: return "*";
-        case OperatorSymbol::DIV: return "/";
-
-        case OperatorSymbol::EQ: return "==";
-        case OperatorSymbol::NOTEQ: return "!=";
-        case OperatorSymbol::LESSEQ: return "<=";
-        case OperatorSymbol::GREATEREQ: return ">=";
-        case OperatorSymbol::LESS: return "<";
-        case OperatorSymbol::GREATER: return ">";
-
-        case OperatorSymbol::NOT_AN_OPERATOR: return "NOT_AN_OPERATOR";
+    case OperatorSymbol::PLUS: return "+";
+    case OperatorSymbol::MINUS: return "-";
+    case OperatorSymbol::MUL: return "*";
+    case OperatorSymbol::DIV: return "/";
+	
+    case OperatorSymbol::EQ: return "==";
+    case OperatorSymbol::NOTEQ: return "!=";
+    case OperatorSymbol::LESSEQ: return "<=";
+    case OperatorSymbol::GREATEREQ: return ">=";
+    case OperatorSymbol::LESS: return "<";
+    case OperatorSymbol::GREATER: return ">";
+	
+    case OperatorSymbol::DOT: return ".";
+	
+    case OperatorSymbol::NOT_AN_OPERATOR: return "NOT_AN_OPERATOR";
     }
 
     assert(false);
@@ -101,23 +105,26 @@ const std::string symbolToString(OperatorSymbol symbol) {
 
 int precedenceOf(OperatorSymbol symbol) {
     switch (symbol) {
-        case OperatorSymbol::PLUS:
-        case OperatorSymbol::MINUS:
-            return 10;
-        case OperatorSymbol::MUL:
-        case OperatorSymbol::DIV:
-            return 20;
-
-        case OperatorSymbol::EQ:
-        case OperatorSymbol::NOTEQ:
-        case OperatorSymbol::LESSEQ:
-        case OperatorSymbol::GREATEREQ:
-        case OperatorSymbol::LESS:
-        case OperatorSymbol::GREATER:
-            return 100;
-
-        case OperatorSymbol::NOT_AN_OPERATOR:
-            return -1;
+    case OperatorSymbol::PLUS:
+    case OperatorSymbol::MINUS:
+	return 10;
+    case OperatorSymbol::MUL:
+    case OperatorSymbol::DIV:
+	return 20;
+	
+    case OperatorSymbol::EQ:
+    case OperatorSymbol::NOTEQ:
+    case OperatorSymbol::LESSEQ:
+    case OperatorSymbol::GREATEREQ:
+    case OperatorSymbol::LESS:
+    case OperatorSymbol::GREATER:
+	return 100;
+	
+    case OperatorSymbol::DOT:
+	return 500;
+	
+    case OperatorSymbol::NOT_AN_OPERATOR:
+	return -1;
     }
 
     assert(false);

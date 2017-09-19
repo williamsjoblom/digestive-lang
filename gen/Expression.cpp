@@ -64,8 +64,6 @@ namespace Generate {
             for (int i = (int) ret.size() - 1; i >= 0; i--) {
                 c.mov(ret[i], x86::ptr(x86::rsp, -(ret[i].getSize() + stackOffset)));
                 stackOffset += ret[i].getSize();
-
-                //c.pop(ret[i]);
             }
         }
 

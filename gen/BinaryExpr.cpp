@@ -85,13 +85,44 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
     return result;
 }
 
+Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
+    assert(expr->left->type.isTuple());
+    assert(expr->right->type.isPrimitive());
+    assert(expr->op.symbol == OperatorSymbol::Dot);
+
+    assert(expr->type.isTuple()); // Not implemented. 
+    
+    IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
+
+    std::cout << "Compiling tuple access: " << literal->value << std::endl;
+
+    std::vector<DType>* containedTypes = expr->left->type.type.tuple;
+    
+    int index = 0;
+    for (int i = 0; i < literal->value; i++) {
+	DType containedType = containedTypes->at(i);
+	
+	if (containedType.isPrimitive())
+	    index++;
+	else if (containedType.isTuple())
+	    index += containedType.type.tuple->size();
+	else
+	    assert(false); // Not implemented.
+    }
+
+    return { expr->left->generate(c)[index] };
+}
+
 namespace Generate {
 
     std::vector<X86Gp> expression(X86Compiler &c, BinaryExpr* expr) {
         if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
             return { primitiveBinaryExpr(c, expr) };
-        }
-
+        } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT &&
+		   expr->right->type.isPrimitive() && expr->right->type.type.primitive == DPrimitiveKind::INTEGER) {
+	    return tupleAccessExpr(c, expr);
+	}
+	
         // Not returning before this point should have resulted in a semantic error during analysis of the binary expr.
         assert(false);
     }

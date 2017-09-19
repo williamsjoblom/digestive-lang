@@ -22,8 +22,8 @@ BinaryExpr::~BinaryExpr() {
 void BinaryExpr::analyze(Scope *scope) {
     left->analyze(scope);
     right->analyze(scope);
-
-    type = resultingType(left->type, *op, right->type);
+    
+    type = resultingType(left, *op, right);
 }
 
 void BinaryExpr::dump(size_t indent) {

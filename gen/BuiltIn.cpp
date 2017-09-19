@@ -2,7 +2,7 @@
 // Created by wax on 1/31/17.
 //
 
-#include <jit/BuiltIn.h>
+#include "jit/BuiltIn.h"
 #include "Gen.h"
 
 namespace Generate {

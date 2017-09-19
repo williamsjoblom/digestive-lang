@@ -20,6 +20,7 @@ enum class OperatorSymbol {
     GREATEREQ,
     LESS,
     GREATER,
+    DOT,
 
     NOT_AN_OPERATOR
 };
