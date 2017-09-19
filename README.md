@@ -1,6 +1,6 @@
 Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
 
-### Example
+### Examples
 ```c
 func fib(n : i32) -> i32 {
     if (n <= 1) return n;
@@ -11,6 +11,16 @@ func fib(n : i32) -> i32 {
 pln fib(10);
 ```
 Example that prints the 10th fibonacci number.
+
+```c
+func printTriple(v : (i32, i32, i32)) {
+    pln v.0; pln v.1; pln v.2;
+}
+
+var triple := (13, 14, 15);
+printTriple(triple);
+```
+Example that prints the values of a tuple.
 
 ## Language
 
