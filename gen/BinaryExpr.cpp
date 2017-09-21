@@ -10,6 +10,10 @@
 
 using namespace asmjit;
 
+
+/*
+ * Generate primitive primitive binary expression.
+ */
 X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
     DType& type = expr->type;
     assert(!type.isNilType());
@@ -85,6 +89,10 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
     return result;
 }
 
+
+/*
+ * Generate tuple access expression: (a, b, c).2
+ */
 Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->left->type.isTuple());
     assert(expr->right->type.isPrimitive());
@@ -93,8 +101,6 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->type.isTuple()); // Not implemented. 
     
     IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
-
-    std::cout << "Compiling tuple access: " << literal->value << std::endl;
 
     std::vector<DType>* containedTypes = expr->left->type.type.tuple;
     
@@ -115,6 +121,9 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 
 namespace Generate {
 
+    /*
+     * Generate binary expression.
+     */
     std::vector<X86Gp> expression(X86Compiler &c, BinaryExpr* expr) {
         if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
             return { primitiveBinaryExpr(c, expr) };

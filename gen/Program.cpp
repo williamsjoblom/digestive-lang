@@ -37,8 +37,9 @@ namespace Generate {
         Error err = runtime->add(&func, &code);
         if (err) throw 1;
 
-        std::cout << "entry:" << std::endl;
+        std::cout << std::endl << "entry:" << std::endl;
         std::cout << logger.getString();
+	std::cout << std::endl;
 
         return func;
     }
