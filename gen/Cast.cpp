@@ -56,17 +56,16 @@ Regs tupleCast(X86Compiler& c, Expr* expr, DType& type) {
     assert(expr->type.isTuple());
     assert(expr->type.type.tuple->size() >= type.type.tuple->size());
 
-    int valueCount = (int) type.type.tuple->size();
-
     expr->dump(); std::cout << std::endl;
     Regs e = expr->generate(c);
-    std::cout << "e.size: " << e.size() << " valueCount: " << valueCount << std::endl;
+    
     Regs result = Regs();
-    for (int i = 0; i < valueCount; i++) {
+    for (int i = 0; i < e.size(); i++) {
         DType regType = (*expr->type.type.tuple)[i];
         DType targetType = (*type.type.tuple)[i];
 
         X86Gp castedReg = registerCast(c, e[i], regType, targetType);
+	    
         result.push_back(castedReg);
     }
 

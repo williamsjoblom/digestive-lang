@@ -37,7 +37,7 @@ namespace Generate {
 
             for (DType t : *type.type.tuple) {
                 Regs valueRegs = Generate::typedRegister(c, t);
-                assert(valueRegs.size() == 1);
+                
                 for (X86Gp valueReg : valueRegs)
                     regs.push_back(valueReg);
             }

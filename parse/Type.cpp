@@ -2,7 +2,7 @@
 // Created by wax on 6/27/17.
 //
 
-#include <ast/type/DType.h>
+#include "ast/type/DType.h"
 #include "ast/type/Type.h"
 #include "lexer/TokenQueue.h"
 #include "ast/type/Types.h"
@@ -39,21 +39,21 @@ namespace Parse {
             if(tokens.eat(RPAR)) // () = nil-type.
                 return NIL_TYPE;
 
-
             std::vector<DType>* types = new std::vector<DType>();
-            while (tokens.top().type == IDENTIFIER) {
+            while (tokens.top().type == IDENTIFIER || tokens.top().type == LPAR) {
                 const DType innerType = Parse::type(tokens);
                 types->push_back(innerType);
 
                 if(tokens.top().type != COMMA) break;
                 tokens.pop();
-            }
+	    }
 
-            tokens.pop(); // Pop RPAR.
+            tokens.expect(RPAR); // Pop RPAR.
 
+	    //assert(types != nullptr);
             if (types->size() == 0) return nullptr;
             if (types->size() == 1) return (*types)[0];
-
+	    
             return DType(types);
         }
 

@@ -90,12 +90,25 @@ namespace Generate {
     Regs expression(X86Compiler& c, TupleExpr* expr) {
         Regs regs = Generate::typedRegister(c, expr->type);
 
+	int actualIndex = 0;
+	std::vector<DType> tupleTypes = *expr->type.type.tuple;
+	for (Expr* value : expr->values) {
+	    Regs valueRegs = value->generate(c);//Generate::cast(c, value, tupleTypes[i]);
+
+	    for (X86Gp reg : valueRegs) {
+		c.mov(regs[actualIndex++], reg);
+	    }
+	}
+	
+	/*
         for (int i = 0; i < regs.size(); i++) {
             Regs valueRegs = Generate::cast(c, expr->values[i], (*expr->type.type.tuple)[i]);
-            assert(valueRegs.size() == 1);
-
-            c.mov(regs[i], valueRegs[0]);
-        }
+	    
+	    for (X86Gp reg : valueRegs) {
+		c.mov(regs[actualIndex++], reg);
+	    }
+	}
+	*/
 
         return regs;
     }

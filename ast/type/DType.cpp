@@ -28,6 +28,7 @@ DType::DType(std::vector<DType>* tupleTypes) {
     type.tuple = tupleTypes;
 
     sz = 0;
+    assert(tupleTypes != nullptr);
     for (DType t : *tupleTypes) sz += t.byteSize();
 }
 
