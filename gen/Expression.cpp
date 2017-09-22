@@ -41,8 +41,9 @@ namespace Generate {
         std::vector<X86Gp> args;
         for (unsigned int i = 0; i < expr->arguments->size(); i++) {
             Regs a = expr->arguments->at(i)->generate(c);
-            assert(a.size() == 1);
-            args.push_back(a[0]);
+            //assert(a.size() == 1);
+	    for (X86Gp arg : a)
+		args.push_back(arg);
         }
 
         CCFuncCall* call = c.call(x86::ptr(handle), decl->bCreatePrototype());
@@ -56,7 +57,7 @@ namespace Generate {
 
             // Compensate for newly popped base pointer.
             int stackOffset = x86::rbp.getSize() + sizeof(int);
-
+	    
             for (int i = (int) ret.size() - 1; i >= 0; i--) {
                 c.mov(ret[i], x86::ptr(x86::rsp, -(ret[i].getSize() + stackOffset)));
                 stackOffset += ret[i].getSize();

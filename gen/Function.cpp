@@ -3,6 +3,7 @@
 //
 
 #include "Gen.h"
+#include "ErrHandler.h"
 
 namespace Generate {
 
@@ -18,9 +19,12 @@ namespace Generate {
         c.endFunc();
     }
 
+
     void* function(JitRuntime* runtime, FunctionDecl* func) {
         CodeHolder code;
         code.init(runtime->getCodeInfo());
+	ErrHandler handler;
+	code.setErrorHandler(&handler);
 
         X86Compiler c(&code);
         StringLogger logger;
@@ -31,12 +35,16 @@ namespace Generate {
         CCFunc* f = c.addFunc(prototype);
         f->getFrameInfo().enablePreservedFP();
 
+	int argIndex = 0;
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
             param->generate(c);
-            assert(param->bVar.size() == 1);
-            c.setArg(i, param->bVar[0]);
-        }
+            //assert(param->bVar.size() == 1);
+	    for (X86Gp reg : param->bVar) {
+		c.setArg(argIndex, reg);
+		argIndex++;
+	    }
+	}
 
         func->body->generate(c);
 

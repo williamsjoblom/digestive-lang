@@ -6,13 +6,13 @@
 #include <iostream>
 #include "BuiltIn.h"
 #include "Backtrace.h"
+#include<stdarg.h>
+
 
 namespace BuiltIn {
     template <typename T>
     void pln(T i) {
         std::cout << i << std::endl;
-        //Stack::ssd();
-        usleep(500 * 1000); // Sleep 500ms between prints to ease testing.
     }
 
     template void pln(short);

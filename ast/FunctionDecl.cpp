@@ -71,14 +71,56 @@ int FunctionDecl::stackSize() {
     return sizeof(void*);
 }
 
+
+/**
+ * Add single parameter to function prototype.
+ */
+int addParamToPrototype(DType type, FuncSignatureX* prototype) {
+    int count = 0;
+    
+    if (type.isPrimitive()) {
+	prototype->addArg(TypeIdOf<int>::kTypeId);
+	count++;
+    } else if (type.isTuple()) {
+	for (int i = 0; i < type.type.tuple->size(); i++) {
+	    addParamToPrototype(type.type.tuple->at(i), prototype);
+	    count++;
+	}
+    } else {
+	assert(false); 	// Not implemented.
+    }
+
+    return count;
+}
+
+
+/**
+ * Add parameters to function prototype according to calling convention.
+ */
+int addParamsToPrototype(std::vector<VariableDecl*>* params, FuncSignatureX* prototype) {
+    int count = 0;
+    for (int i = 0; i < params->size(); i++) {
+	count += addParamToPrototype(params->at(i)->type, prototype);
+    }
+
+    return count;
+}
+
+
 FuncSignatureX FunctionDecl::bCreatePrototype() {
     if (baPrototype == nullptr) {
         baPrototype = new FuncSignatureX(CallConv::kIdHostCDecl);
         baPrototype->setRet(TypeIdOf<int>::kTypeId);
 
+	int count = addParamsToPrototype(parameters, baPrototype);
+	std::cout << "Created prototype: " << count << std::endl;
+	
+	
+	/*
         for (unsigned int i = 0; i < parameters->size(); i++) {
             baPrototype->addArg(TypeIdOf<int>::kTypeId);
         }
+	*/
     }
 
     return *baPrototype;

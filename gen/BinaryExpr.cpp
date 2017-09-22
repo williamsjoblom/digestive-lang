@@ -96,13 +96,15 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->left->type.isTuple());
     assert(expr->right->type.isPrimitive());
-    assert(expr->op.symbol == OperatorSymbol::Dot);
+    assert(expr->op->symbol == OperatorSymbol::DOT);
 
-    assert(expr->type.isTuple()); // Not implemented. 
+    assert(!expr->type.isTuple()); // Not implemented. 
     
     IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
 
     std::vector<DType>* containedTypes = expr->left->type.type.tuple;
+
+
     
     int index = 0;
     for (int i = 0; i < literal->value; i++) {
