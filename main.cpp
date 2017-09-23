@@ -4,8 +4,12 @@
 #include "lexer/Lexer.h"
 #include "interactive/Interactive.h"
 
-int main() {
-    std::string path = "/home/wax/test.dg";
+int main(int argc, char* argv[]) {
+    std::string path;
+    if (argc == 1)
+	path = "/home/wax/test.dg";
+    else
+	path = argv[1];
     
     Jit jit;
     Interactive::start(&jit);
