@@ -28,9 +28,7 @@ namespace Generate {
     }
 
     Regs expression(X86Compiler &c, VariableExpr* expr) {
-	std::cout << expr->identifier << " has " << expr->declaration->bVar.size()
-		  << " regs " << std::endl;
-        return expr->declaration->bVar;
+	return expr->declaration->bVar;
     }
 
     std::vector<X86Gp> expression(X86Compiler &c, FunctionCall* expr) {
@@ -93,25 +91,14 @@ namespace Generate {
         Regs regs = Generate::typedRegister(c, expr->type);
 
 	int actualIndex = 0;
-	//std::vector<DType>* tupleTypes = expr->type.type.tuple;
 	for (Expr* value : expr->values) {
-	    Regs valueRegs = value->generate(c);//Generate::cast(c, value, tupleTypes[i]);
+	    Regs valueRegs = value->generate(c);
 	    
 	    for (X86Gp reg : valueRegs) {
 		c.mov(regs[actualIndex++], reg);
 	    }
 	}
 	
-	/*
-        for (int i = 0; i < regs.size(); i++) {
-            Regs valueRegs = Generate::cast(c, expr->values[i], (*expr->type.type.tuple)[i]);
-	    
-	    for (X86Gp reg : valueRegs) {
-		c.mov(regs[actualIndex++], reg);
-	    }
-	}
-	*/
-
         return regs;
     }
 

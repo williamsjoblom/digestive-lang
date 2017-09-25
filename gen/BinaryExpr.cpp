@@ -133,14 +133,8 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 	    result.push_back(sink);
 	}
 
-	std::cout << "Tuple access tuple; index, size = " << index << " "
-		  << result.size() << std::endl;
-	expr->type.dump();
-	std::cout << std::endl << std::endl;
-
 	return result;
     } else {
-	std::cout << "tuple access primitive " << index << std::endl;
 	X86Gp reg = leftRegs[index];
 	return { reg };
     }
