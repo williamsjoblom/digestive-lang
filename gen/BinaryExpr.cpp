@@ -127,12 +127,10 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 	int size = neededRegisterCount(expr->type);
 	for (int i = 0; i < size; i++) {
 	    X86Gp source = leftRegs[index + i];
-	    //result.push_back(source);
-	    //X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
-
-	    //c.mov(sink, source);
+	    X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
+	    c.mov(sink, source);
 	    
-	    //result.push_back(sink);
+	    result.push_back(sink);
 	}
 
 	std::cout << "Tuple access tuple; index, size = " << index << " "
@@ -142,8 +140,8 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 
 	return result;
     } else {
-	X86Gp reg = leftRegs[index];
 	std::cout << "tuple access primitive " << index << std::endl;
+	X86Gp reg = leftRegs[index];
 	return { reg };
     }
 }
