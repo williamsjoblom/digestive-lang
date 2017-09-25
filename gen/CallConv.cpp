@@ -12,6 +12,8 @@ int neededRegisterCount(DType& type) {
 	    count += neededRegisterCount(tupleTypes->at(i));
 	}
 
+	std::cout << "neededRegisterCount = " << count << std::endl;
+	
 	return count;
     } else if (type.isPrimitive()) {
 	std::cout << "Primitive" << std::endl;

@@ -38,7 +38,7 @@ void BinaryExpr::dump(size_t indent) {
     std::cout << ")";
 }
 
-std::vector<X86Gp> BinaryExpr::generate(X86Compiler &c) {
+Regs BinaryExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
 

@@ -63,14 +63,17 @@ Regs tupleCast(X86Compiler& c, Expr* expr, DType& type) {
     for (int i = 0; i < e.size(); i++) {
         DType regType = (*expr->type.type.tuple)[i];
         DType targetType = (*type.type.tuple)[i];
-
+	
         X86Gp castedReg = registerCast(c, e[i], regType, targetType);
-	    
-        result.push_back(castedReg);
+	X86Gp resultingReg = Generate::typedRegister(c, targetType)[0];
+
+	c.mov(resultingReg, castedReg);
+	
+        result.push_back(resultingReg);
     }
 
     std::cout << "Tuple cast completed: " << result.size() << std::endl;
-
+    
     return result;
 }
 
@@ -86,7 +89,7 @@ namespace Generate {
             result = tupleCast(c, expr, type);
         else
             assert(false);
-
+	
         return result;
     }
 }

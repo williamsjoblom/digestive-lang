@@ -8,6 +8,7 @@
 
 #include "Expr.h"
 #include "Operator.h"
+#include "gen/Base.h"
 
 class BinaryExpr : public Expr {
 public:
@@ -18,7 +19,7 @@ public:
     BinaryExpr(Expr* left, Operator* op, Expr* right);
     ~BinaryExpr();
 
-    virtual std::vector<X86Gp> generate(X86Compiler &c);
+    virtual Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

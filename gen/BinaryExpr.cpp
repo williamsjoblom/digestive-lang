@@ -93,12 +93,20 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 
 /*
  * Generate tuple access expression: (a, b, c).2
+ *
+ * OPTIMIZATION POSSIBILITY: 
+ * Currently the accessed values are being moved to new registers.
+ * If the sink of the indexed tuple is constant or if the indexed tuple member
+ * is being assinged the move to new register should not occur.
+ *
+ * Currently all registers of the accessed tuple is generated.
+ * Is it viable to only generate the needed register(s)?
  */
 Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->left->type.isTuple());
     assert(expr->right->type.isPrimitive());
     assert(expr->op->symbol == OperatorSymbol::DOT);
-
+    
     //assert(!expr->type.isTuple()); // Not implemented. 
     
     IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
@@ -108,21 +116,7 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     int index = 0;
     for (int i = 0; i < literal->value; i++) {
 	DType& containedType = containedTypes->at(i);
-	std::cout << "Contained type = " << std::endl;
-	containedType.dump();
-	std::cout << std::endl;
-	
 	index += neededRegisterCount(containedType);
-	std::cout << "index = " << index << std::endl;
-	
-	/*
-	if (containedType.isPrimitive())
-	    index++;
-	else if (containedType.isTuple())
-	    index += containedType.type.tuple->size();
-	else
-	    assert(false); // Not implemented.
-	*/
     }
     
     Regs leftRegs = expr->left->generate(c);
@@ -132,14 +126,21 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 	
 	int size = neededRegisterCount(expr->type);
 	for (int i = 0; i < size; i++) {
-	    X86Gp reg = leftRegs[index + i];
-	    result.push_back(reg);
+	    X86Gp source = leftRegs[index + i];
+	    //result.push_back(source);
+	    //X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
+
+	    //c.mov(sink, source);
+	    
+	    //result.push_back(sink);
 	}
 
 	std::cout << "Tuple access tuple; index, size = " << index << " "
 		  << result.size() << std::endl;
 	expr->type.dump();
 	std::cout << std::endl << std::endl;
+
+	return result;
     } else {
 	X86Gp reg = leftRegs[index];
 	std::cout << "tuple access primitive " << index << std::endl;

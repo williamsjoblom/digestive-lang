@@ -8,6 +8,7 @@
 
 #include "Expr.h"
 #include "Operator.h"
+#include "gen/Base.h"
 
 class UnaryExpr : public Expr {
 public:
@@ -17,7 +18,7 @@ public:
     UnaryExpr(Operator* op, Expr* expr);
     ~UnaryExpr();
 
-    std::vector<X86Gp> generate(X86Compiler &c);
+    Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 

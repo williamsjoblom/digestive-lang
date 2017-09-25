@@ -28,6 +28,8 @@ namespace Generate {
     }
 
     Regs expression(X86Compiler &c, VariableExpr* expr) {
+	std::cout << expr->identifier << " has " << expr->declaration->bVar.size()
+		  << " regs " << std::endl;
         return expr->declaration->bVar;
     }
 

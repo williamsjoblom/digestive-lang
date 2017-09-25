@@ -2,9 +2,10 @@
 // Created by wax on 12/16/16.
 //
 
-#include <gen/Gen.h>
+#include "gen/Gen.h"
 #include "util/PrettyPrint.h"
 #include "PlnStmt.h"
+#include "semantic/SemanticError.h"
 
 PlnStmt::PlnStmt(Expr* expression) {
     this->expression = expression;
@@ -16,6 +17,8 @@ PlnStmt::~PlnStmt() {
 
 void PlnStmt::analyze(Scope* scope) {
     expression->analyze(scope);
+    if (!expression->type.isPrimitive())
+	semanticError("pln function only takes primitive type arguments");
 }
 
 void PlnStmt::dump(size_t indent) {

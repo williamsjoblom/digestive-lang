@@ -8,6 +8,7 @@
 #include <asmjit/asmjit.h>
 #include <ast/type/DType.h>
 
+#include "gen/Base.h"
 #include "ast/type/Type.h"
 #include "Node.h"
 
@@ -17,7 +18,7 @@ class Expr : public Node {
 public:
     DType type;
 
-    virtual std::vector<X86Gp> generate(X86Compiler &c) = 0;
+    virtual Regs generate(X86Compiler &c) = 0;
 };
 
 

@@ -5,9 +5,8 @@
 #ifndef DIG_FUNCTIONCALL_H
 #define DIG_FUNCTIONCALL_H
 
-
-#include <vector>
 #include "Expr.h"
+#include "gen/Base.h"
 
 class FunctionCall : public Expr {
 public:
@@ -18,7 +17,7 @@ public:
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
     ~FunctionCall();
 
-    std::vector<X86Gp> generate(X86Compiler &c);
+    Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);
 
