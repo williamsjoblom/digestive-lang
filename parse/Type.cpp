@@ -35,10 +35,10 @@ namespace Parse {
             return p->second;
         } else if (t.type == LPAR) {
             tokens.pop(); // Pop LPAR.
-
+	    
             if(tokens.eat(RPAR)) // () = nil-type.
                 return NIL_TYPE;
-
+	    
             std::vector<DType>* types = new std::vector<DType>();
             while (tokens.top().type == IDENTIFIER || tokens.top().type == LPAR) {
                 const DType innerType = Parse::type(tokens);

@@ -91,10 +91,10 @@ namespace Generate {
         Regs regs = Generate::typedRegister(c, expr->type);
 
 	int actualIndex = 0;
-	std::vector<DType> tupleTypes = *expr->type.type.tuple;
+	//std::vector<DType>* tupleTypes = expr->type.type.tuple;
 	for (Expr* value : expr->values) {
 	    Regs valueRegs = value->generate(c);//Generate::cast(c, value, tupleTypes[i]);
-
+	    
 	    for (X86Gp reg : valueRegs) {
 		c.mov(regs[actualIndex++], reg);
 	    }

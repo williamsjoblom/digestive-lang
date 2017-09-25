@@ -24,12 +24,7 @@ namespace Parse {
         DType returnType;
         if(tokens.eat(RIGHTARROW)) {
             returnType = Parse::type(tokens);
-
-            if(returnType.isNilType()) {
-                Token t = tokens.top();
-                parseError(t, "Expected function return type");
-            }
-        } else {
+	} else {
             returnType = NIL_TYPE;
         }
 
@@ -61,7 +56,7 @@ namespace Parse {
         const DType type = Parse::type(tokens);
         if (type.isNilType()) {
             Token t = tokens.top();
-            parseError(t, "Expected function return type");
+            parseError(t, "Expected parameter type");
         }
 
         return new VariableDecl(identifier.value, type);

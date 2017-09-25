@@ -44,9 +44,9 @@ int DType::byteSize() const {
 void DType::copy(const DType &o) {
     kind = o.kind;
     switch (kind) {
-        case DKind::PRIMITIVE: type.primitive = o.type.primitive; break;
-        case DKind::TUPLE: type.tuple = o.type.tuple; break;
-        case DKind::ARRAY: type.seq = o.type.seq; break;
+    case DKind::PRIMITIVE: type.primitive = o.type.primitive; break;
+    case DKind::TUPLE: type.tuple = new std::vector<DType>(*o.type.tuple); break;
+    case DKind::ARRAY: type.seq = new DType(*o.type.seq); break;
     }
     sz = o.sz;
 }
@@ -54,8 +54,6 @@ void DType::copy(const DType &o) {
 bool DType::operator==(const DType &o) {
     if (kind != o.kind) return false;
     if (sz != o.sz) return false;
-
-
 
     switch (kind) {
         case DKind::PRIMITIVE: return type.primitive == o.type.primitive;

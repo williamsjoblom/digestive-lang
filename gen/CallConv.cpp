@@ -1,6 +1,22 @@
+#include <assert.h>
+#include <iostream>
 
-#include "ast/Expr.h"
+#include "ast/type/DType.h"
 
-void collectFlattenedTypeSignature(Expr* expr, std::vector<DType>& flattened) {
-    
+int neededRegisterCount(DType& type) {
+    if (type.isTuple()) {
+	int count = 0;
+	
+	std::vector<DType>* tupleTypes = type.type.tuple;
+	for (int i = 0; i < tupleTypes->size(); i++) {
+	    count += neededRegisterCount(tupleTypes->at(i));
+	}
+
+	return count;
+    } else if (type.isPrimitive()) {
+	std::cout << "Primitive" << std::endl;
+	return 1;
+    } else {
+	assert(false);
+    }
 }

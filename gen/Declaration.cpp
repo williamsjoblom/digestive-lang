@@ -21,8 +21,8 @@ namespace Generate {
         }
 
         // Spill variables to stack
-        for (X86Gp var : decl->bVar) {
-            c.spill(var);
+	//for (X86Gp var : decl->bVar) {
+            //c.spill(var);
 
 	    /*
 	    c.mov(var, asmjit::Imm(12));
@@ -44,6 +44,6 @@ namespace Generate {
 	    std::cout << "Spilled to: " << mem.getAddrType() << std::endl;
 	    */
 	    //getVarMem(vr);
-        }
+	//}
     }
 }

@@ -7,6 +7,7 @@
 #include <ast/type/PrimitiveType.h>
 
 #include "Gen.h"
+#include "CallConv.h"
 
 using namespace asmjit;
 
@@ -98,27 +99,52 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->right->type.isPrimitive());
     assert(expr->op->symbol == OperatorSymbol::DOT);
 
-    assert(!expr->type.isTuple()); // Not implemented. 
+    //assert(!expr->type.isTuple()); // Not implemented. 
     
     IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
 
     std::vector<DType>* containedTypes = expr->left->type.type.tuple;
-
-
     
     int index = 0;
     for (int i = 0; i < literal->value; i++) {
-	DType containedType = containedTypes->at(i);
+	DType& containedType = containedTypes->at(i);
+	std::cout << "Contained type = " << std::endl;
+	containedType.dump();
+	std::cout << std::endl;
 	
+	index += neededRegisterCount(containedType);
+	std::cout << "index = " << index << std::endl;
+	
+	/*
 	if (containedType.isPrimitive())
 	    index++;
 	else if (containedType.isTuple())
 	    index += containedType.type.tuple->size();
 	else
 	    assert(false); // Not implemented.
+	*/
     }
+    
+    Regs leftRegs = expr->left->generate(c);
+	
+    if (expr->type.isTuple()) {
+	Regs result;
+	
+	int size = neededRegisterCount(expr->type);
+	for (int i = 0; i < size; i++) {
+	    X86Gp reg = leftRegs[index + i];
+	    result.push_back(reg);
+	}
 
-    return { expr->left->generate(c)[index] };
+	std::cout << "Tuple access tuple; index, size = " << index << " "
+		  << result.size() << std::endl;
+	expr->type.dump();
+	std::cout << std::endl << std::endl;
+    } else {
+	X86Gp reg = leftRegs[index];
+	std::cout << "tuple access primitive " << index << std::endl;
+	return { reg };
+    }
 }
 
 namespace Generate {
