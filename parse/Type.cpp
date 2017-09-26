@@ -7,6 +7,7 @@
 #include "lexer/TokenQueue.h"
 #include "ast/type/Types.h"
 #include "ast/type/TupleType.h"
+#include "parse/ParseError.h"
 
 namespace Parse {
 
@@ -45,9 +46,17 @@ namespace Parse {
 		// Check if this type has an associated label.
 		std::string label = "";
 		if (tokens.lookahead().type == COL) {
-		    label = tokens.top().value;
+		    Token labelToken = tokens.top();
+		    label = labelToken.value;
+		    
 		    tokens.pop();
 		    tokens.eat(COL);
+
+		    for (DType type : *types) {
+			if (type.label == label)
+			    parseError(labelToken,
+				       "A labeled type with this name already exist in this tuple");
+		    }
 		}
 		
                 DType innerType = Parse::type(tokens);

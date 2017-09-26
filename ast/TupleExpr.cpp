@@ -4,6 +4,7 @@
 
 #include "TupleExpr.h"
 #include "gen/Gen.h"
+#include "semantic/SemanticError.h"
 
 TupleExpr::TupleExpr(std::vector<Expr *> values) {
     this->values = values;
@@ -19,6 +20,7 @@ Regs TupleExpr::generate(X86Compiler &c) {
 
 void TupleExpr::analyze(Scope *scope) {
     std::vector<DType>* types = new std::vector<DType>();
+    
     for (Expr* v : values) {
         v->analyze(scope);
         types->push_back(v->type);
