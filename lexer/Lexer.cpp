@@ -23,11 +23,8 @@ TokenQueue Lexer::lex(std::string source) {
     int tokenIndex = 0;
     std::vector<Token> tokens = std::vector<Token>();
 
-    readWhitespace();
-
+    readComment();
     while (index < source.size()) {
-	readComment();
-	
         Token t;
         t.row = row;
         t.col = col;
@@ -43,7 +40,7 @@ TokenQueue Lexer::lex(std::string source) {
 
         tokens.push_back(t);
 
-	readWhitespace();
+	readComment();
     }
 
 
