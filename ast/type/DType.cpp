@@ -71,16 +71,18 @@ bool DType::operator==(const DType &o) {
 void DType::dump() const {
     switch(kind) {
         case DKind::PRIMITIVE:
-            std::cout << "p";
+            std::cout << "";
             if (type.primitive == DPrimitiveKind::NATURAL)
                 std::cout << "NAT";
             else if (type.primitive == DPrimitiveKind::INTEGER)
                 std::cout << "INT";
             else if (type.primitive == DPrimitiveKind::NIL)
                 std::cout << "NIL";
+
+	    std::cout << sz;
             break;
         case DKind::TUPLE:
-            std::cout << "t( ";
+            std::cout << "(";
             for (DType t : *type.tuple) {
                 t.dump();
                 std::cout << " ";
@@ -88,10 +90,9 @@ void DType::dump() const {
             std::cout << ")";
             break;
         default:
+	    std::cout << "Dumping unknown DKind " << (int) kind << std::endl;
             assert(false);
     }
-
-    std::cout << sz;
 }
 
 

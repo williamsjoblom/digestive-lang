@@ -113,14 +113,6 @@ FuncSignatureX FunctionDecl::bCreatePrototype() {
         baPrototype->setRet(TypeIdOf<int>::kTypeId);
 
 	int count = addParamsToPrototype(parameters, baPrototype);
-	std::cout << "Created prototype: " << count << std::endl;
-	
-	
-	/*
-        for (unsigned int i = 0; i < parameters->size(); i++) {
-            baPrototype->addArg(TypeIdOf<int>::kTypeId);
-        }
-	*/
     }
 
     return *baPrototype;

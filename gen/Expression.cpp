@@ -14,6 +14,7 @@
 #include "Gen.h"
 #include "ast/BinaryExpr.h"
 #include "ast/Literal.h"
+#include "gen/CallConv.h"
 
 using namespace asmjit;
 
@@ -53,15 +54,22 @@ namespace Generate {
             // Primitives uses calling convention...
             call->setRet(0, ret[0]);
         } else if (expr->type.isTuple()) {
-            // ...while tuples are passed on the stack.
-
-            // Compensate for newly popped base pointer.
-            int stackOffset = x86::rbp.getSize() + sizeof(int);
+	    // A pointer to the first tuple member will be returned.
+	    X86Gp returnPointer = c.newIntPtr("Return pointer");
+	    call->setRet(0, returnPointer);
 	    
-            for (int i = (int) ret.size() - 1; i >= 0; i--) {
-                c.mov(ret[i], x86::ptr(x86::rsp, -(ret[i].getSize() + stackOffset)));
-                stackOffset += ret[i].getSize();
-            }
+	    X86Mem returnStack(returnPointer, 0, 1);
+	    
+	    std::vector<DType> types = flattenType(decl->returnType);
+	    assert(types.size() == ret.size());
+	    
+	    int index = 0;
+	    for (X86Gp reg : ret) {
+		int sz = types[index++].byteSize();
+		returnStack.setSize(sz);
+		c.mov(reg, returnStack);
+		returnStack.addOffset(sz);
+	    }
         }
 
         for (unsigned int i = 0; i < args.size(); i++) {

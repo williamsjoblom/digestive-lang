@@ -39,7 +39,7 @@ namespace Generate {
         for (unsigned int i = 0; i < func->parameters->size(); i++) {
             VariableDecl* param = func->parameters->at(i);
             param->generate(c);
-            //assert(param->bVar.size() == 1);
+
 	    for (X86Gp reg : param->bVar) {
 		c.setArg(argIndex, reg);
 		argIndex++;
