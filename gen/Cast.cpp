@@ -3,9 +3,11 @@
 //
 
 #include <asmjit/asmjit.h>
+
 #include "ast/type/PrimitiveType.h"
 #include "ast/Expr.h"
 #include "Gen.h"
+#include "gen/CallConv.h"
 
 using namespace asmjit;
 
@@ -58,11 +60,15 @@ Regs tupleCast(X86Compiler& c, Expr* expr, DType& type) {
 
     expr->dump(); std::cout << std::endl;
     Regs e = expr->generate(c);
+
+    std::vector<DType> regTypes = flattenType(expr->type);
+    std::vector<DType> targetTypes = flattenType(type);
+    assert(regTypes.size() == targetTypes.size());
     
     Regs result = Regs();
     for (int i = 0; i < e.size(); i++) {
-        DType regType = (*expr->type.type.tuple)[i];
-        DType targetType = (*type.type.tuple)[i];
+        DType regType = regTypes[i];
+        DType targetType = targetTypes[i];
 	
         X86Gp castedReg = registerCast(c, e[i], regType, targetType);
 	X86Gp resultingReg = Generate::typedRegister(c, targetType)[0];
