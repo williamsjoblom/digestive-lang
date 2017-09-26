@@ -91,6 +91,35 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 }
 
 
+int tupleAccessIndex(BinaryExpr* expr) {
+    std::vector<DType> containedTypes = *expr->left->type.type.tuple;
+    
+    IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
+    if (literal != nullptr) {
+	int index = 0;
+	for (int i = 0; i < literal->value; i++) {
+	    DType& containedType = containedTypes[i];
+	    index += neededRegisterCount(containedType);
+	}
+
+	return index;
+    }
+
+    VariableExpr* label = dynamic_cast<VariableExpr*>(expr->right);
+    if (label != nullptr) {
+	int index = 0;
+	for (DType containedType : containedTypes) {
+	    if (containedType.label == label->identifier)
+		return index;
+	    
+	    index += neededRegisterCount(containedType);
+	}
+    }
+
+    assert(false); // Should be caught during semantic analysis.
+}
+
+
 /*
  * Generate tuple access expression: (a, b, c).2
  *
@@ -104,21 +133,11 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
  */
 Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->left->type.isTuple());
-    assert(expr->right->type.isPrimitive());
     assert(expr->op->symbol == OperatorSymbol::DOT);
     
-    //assert(!expr->type.isTuple()); // Not implemented. 
-    
-    IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
-
-    std::vector<DType>* containedTypes = expr->left->type.type.tuple;
-    
-    int index = 0;
-    for (int i = 0; i < literal->value; i++) {
-	DType& containedType = containedTypes->at(i);
-	index += neededRegisterCount(containedType);
-    }
-    
+    int index = tupleAccessIndex(expr);
+    std::cout << "Found tuple member with index " << index << std::endl;
+        
     Regs leftRegs = expr->left->generate(c);
 	
     if (expr->type.isTuple()) {
@@ -148,8 +167,7 @@ namespace Generate {
     std::vector<X86Gp> expression(X86Compiler &c, BinaryExpr* expr) {
         if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
             return { primitiveBinaryExpr(c, expr) };
-        } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT &&
-		   expr->right->type.isPrimitive() && expr->right->type.type.primitive == DPrimitiveKind::INTEGER) {
+        } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT) {
 	    return tupleAccessExpr(c, expr);
 	}
 	

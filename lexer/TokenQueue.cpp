@@ -22,6 +22,10 @@ Token TokenQueue::peek() const {
     return at(index);
 }
 
+Token TokenQueue::lookahead(int distance) const {
+    return at(index + distance);
+}
+
 void TokenQueue::rewind(int distance) {
     index -= distance;
     assert(index >= 0);

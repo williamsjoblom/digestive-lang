@@ -21,7 +21,8 @@ BinaryExpr::~BinaryExpr() {
 
 void BinaryExpr::analyze(Scope *scope) {
     left->analyze(scope);
-    right->analyze(scope);
+    if (op->symbol != OperatorSymbol::DOT)
+	right->analyze(scope);
     
     type = resultingType(left, *op, right);
 }

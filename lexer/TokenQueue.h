@@ -16,6 +16,7 @@ public:
     ~TokenQueue();
     Token pop();
     Token peek() const;
+    Token lookahead(int distance=1) const;
     void rewind(int distance);
     void rewindTo(Token t);
     Token top() const;

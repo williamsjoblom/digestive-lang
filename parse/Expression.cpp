@@ -202,9 +202,9 @@ Expr* rpnToExpr(TokenQueue& tokens) {
             Expr *expr = buildUnary(unaryOperators, new IntegerLiteral(number));
             stack.push(expr);
         } else if (token.type == IDENTIFIER) {
-            std::vector<Expr *> *argList = Parse::argumentList(tokens);
+            std::vector<Expr*>* argList = Parse::argumentList(tokens);
 
-            Expr *expr;
+            Expr* expr;
             if (argList != nullptr) {
                 expr = buildUnary(unaryOperators, new FunctionCall(token.value, argList));
             } else {

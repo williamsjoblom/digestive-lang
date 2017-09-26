@@ -41,7 +41,17 @@ namespace Parse {
 	    
             std::vector<DType>* types = new std::vector<DType>();
             while (tokens.top().type == IDENTIFIER || tokens.top().type == LPAR) {
-                const DType innerType = Parse::type(tokens);
+
+		// Check if this type has an associated label.
+		std::string label = "";
+		if (tokens.lookahead().type == COL) {
+		    label = tokens.top().value;
+		    tokens.pop();
+		    tokens.eat(COL);
+		}
+		
+                DType innerType = Parse::type(tokens);
+		innerType.label = label;
                 types->push_back(innerType);
 
                 if(tokens.top().type != COMMA) break;

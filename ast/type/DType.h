@@ -6,6 +6,7 @@
 #define DIG_DTYPE_H
 
 #include <vector>
+#include <string>
 
 enum class DPrimitiveKind {
     NIL,
@@ -47,6 +48,11 @@ public:
      */
     int sz;
 
+    /**
+     * Label.
+     * Used to refer to this type when inside a named tuple.
+     */
+    std::string label;
 
     /**
      * Initialize to NIL-type.
@@ -89,6 +95,7 @@ public:
     inline bool isTuple() const { return kind == DKind::TUPLE; }
     inline bool isSeq() const { return kind == DKind::ARRAY; }
     inline bool isPtr() const { return isSeq(); }
+    inline bool hasLabel() const { return label != ""; }
     void dump() const;
 
     void copy(const DType& o);

@@ -15,12 +15,14 @@ DType::DType(const DType &o) {
 DType::DType(DKind kind, int sz) {
     this->kind = kind;
     this->sz = sz;
+    this->label = "";
 }
 
 DType::DType(DPrimitiveKind primitiveKind, int sz) {
     this->kind = DKind::PRIMITIVE;
     this->type.primitive = primitiveKind;
     this->sz = sz;
+    this->label = "";
 }
 
 DType::DType(std::vector<DType>* tupleTypes) {
@@ -30,6 +32,7 @@ DType::DType(std::vector<DType>* tupleTypes) {
     sz = 0;
     assert(tupleTypes != nullptr);
     for (DType t : *tupleTypes) sz += t.byteSize();
+    this->label = "";
 }
 
 
@@ -49,6 +52,7 @@ void DType::copy(const DType &o) {
     case DKind::ARRAY: type.seq = new DType(*o.type.seq); break;
     }
     sz = o.sz;
+    label = o.label;
 }
 
 bool DType::operator==(const DType &o) {

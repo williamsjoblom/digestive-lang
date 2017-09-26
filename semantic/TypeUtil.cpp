@@ -8,6 +8,7 @@
 #include "ast/type/TypeVisitor.h"
 #include "SemanticError.h"
 #include "ast/IntegerLiteral.h"
+#include "ast/VariableExpr.h"
 
 /**
  * Type result visitor.
@@ -93,18 +94,30 @@ const DType resultingPrimitive(const DType& left, Operator op, const DType& righ
 
 
 const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* right) {
-    if (op.symbol == OperatorSymbol::DOT &&
-	right->type.type.primitive == DPrimitiveKind::INTEGER) {
+    if (op.symbol == OperatorSymbol::DOT) {
+
+	std::vector<DType> tupleTypes = *left->type.type.tuple;
 	
 	const IntegerLiteral* literal = dynamic_cast<const IntegerLiteral*>(right);
-	if (literal == nullptr) semanticError("Tuples are only indexable by integer literals");
+	if (literal != nullptr) {
+	    int i = literal->value;
+	    if (i >= tupleTypes.size()) semanticError("Tuple index out of bounds");
+	    
+	    return tupleTypes[i];
+	}
 
-	int i = literal->value;
-	std::vector<DType>* tupleTypes = left->type.type.tuple;
+	const VariableExpr* label = dynamic_cast<const VariableExpr*>(right);
+	if (label != nullptr) {
+	    std::string identifier = label->identifier;
 
-	if (i >= tupleTypes->size()) semanticError("Tuple index out of bounds");
+	    for (DType type : tupleTypes) {
+		if (type.label == identifier) return type;
+	    }
 
-	return tupleTypes->at(i);
+	    semanticError("No such tuple member");
+	}
+
+	semanticError("Tuples are only indexable by integer literals or names");
     }
 
     semanticError("Bad type conversion");
@@ -112,7 +125,7 @@ const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* r
 
 const DType resultingType(Expr* left, Operator op, Expr* right) {
     if (left->type.isPrimitive() && right->type.isPrimitive()) return resultingPrimitive(left->type, op, right->type);
-    if (left->type.isTuple() && right->type.isPrimitive()) return resultingTuplePrimitive(left, op, right);
+    if (left->type.isTuple()) return resultingTuplePrimitive(left, op, right);
 	
     semanticError("Bad type conversion");
 }
