@@ -14,6 +14,7 @@
 #include <sys/ucontext.h>
 #include <util/Colors.h>
 
+#include "globals.h"
 #include "gen/Gen.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
@@ -55,7 +56,7 @@ bool Jit::load(std::string path) {
 
         program = Generate::program(&runtime, JitContext::root);
 
-        JitContext::dumpHandles();
+	if (verbose) JitContext::dumpHandles();
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
         return false;
@@ -80,7 +81,8 @@ bool Jit::reload(std::string path) {
         int updated = 0;
         int added = 0;
 
-        std::cout << "Parsed " << newRoot->functions.size() << " functions" << std::endl;
+	if (verbose)
+	    std::cout << "Parsed " << newRoot->functions.size() << " functions" << std::endl;
         
         // TODO: O(N^2), will be slow for large files later on! Also not very pretty!
         // (Use some neat tree or map structure for storing functions instead for less expensive lookup)
@@ -130,20 +132,20 @@ bool Jit::reload(std::string path) {
             }
         }
 
-        std::cout << "New function handles: ";
-        for (FunctionDecl* newFunction : newRoot->functions) {
-            std::cout << "[" << newFunction->identifier
-                      << " [" << newFunction->bHandleIndex << "]"
-                      << "=" << JitContext::handles[newFunction->bHandleIndex]
-                      << "] ";
+	if (verbose) {
+	    std::cout << "New function handles: ";
+	    for (FunctionDecl* newFunction : newRoot->functions) {
+		std::cout << "[" << newFunction->identifier
+			  << " [" << newFunction->bHandleIndex << "]"
+			  << "=" << JitContext::handles[newFunction->bHandleIndex]
+			  << "] ";
+	    }
 
-        }
+	    std::cout << std::endl;
+	    std::cout << "Added " << added << " function(s)" << std::endl;
+	    std::cout << "Updated " << updated << " function(s)" << std::endl;   
+	}
 
-        std::cout << std::endl;
-
-
-        std::cout << "Added " << added << " function(s)" << std::endl;
-        std::cout << "Updated " << updated << " function(s)" << std::endl;
 
     } catch (int i) {
         std::cout << "Runtime error " << i << std::endl;

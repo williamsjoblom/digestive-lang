@@ -18,7 +18,7 @@ using namespace asmjit;
 X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
     DType& type = expr->type;
     assert(!type.isNilType());
-
+    
     Regs leftRegs = Generate::cast(c, expr->left, type);
     Regs rightRegs = Generate::cast(c, expr->right, type);
     assert(rightRegs.size() == 1 && leftRegs.size() == 1);
@@ -91,6 +91,9 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 }
 
 
+/**
+ * 
+ */
 int tupleAccessIndex(BinaryExpr* expr) {
     std::vector<DType> containedTypes = *expr->left->type.type.tuple;
     

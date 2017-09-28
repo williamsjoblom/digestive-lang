@@ -12,6 +12,7 @@
 #include <execinfo.h>
 #include <bits/siginfo.h>
 
+#include "globals.h"
 #include "Interactive.h"
 #include "IO.h"
 #include "util/Colors.h"
@@ -30,7 +31,8 @@ namespace Interactive {
     void loop(Jit* jit) {
 
         if (!IO::init()) {
-            std::cout << "Failed to open interaction pipe" << std::endl;
+	    if (verbose)
+		std::cout << "Failed to open interaction pipe" << std::endl;
             return;
         }
 

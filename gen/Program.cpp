@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#include "globals.h"
 #include "jit/JitContext.h"
 #include "ast/Unit.h"
 #include "config.h"
@@ -37,10 +38,12 @@ namespace Generate {
         Error err = runtime->add(&func, &code);
         if (err) throw 1;
 
-        std::cout << std::endl << "entry:" << std::endl;
-        std::cout << logger.getString();
-	std::cout << std::endl;
-
+	if (verbose) {
+	    std::cout << std::endl << "entry:" << std::endl;
+	    std::cout << logger.getString();
+	    std::cout << std::endl;
+	}
+	
         return func;
     }
 

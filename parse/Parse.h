@@ -5,13 +5,13 @@
 #ifndef DIG_PARSE_H
 #define DIG_PARSE_H
 
-#include <ast/ReturnStmt.h>
-#include <ast/VariableDecl.h>
-#include <ast/FunctionCall.h>
-#include <ast/PlnStmt.h>
-#include <ast/IfStmt.h>
-#include <ast/Unit.h>
-#include <ast/LoopStmt.h>
+#include "ast/ReturnStmt.h"
+#include "ast/VariableDecl.h"
+#include "ast/FunctionCall.h"
+#include "ast/PlnStmt.h"
+#include "ast/IfStmt.h"
+#include "ast/Unit.h"
+#include "ast/LoopStmt.h"
 #include "ast/Expr.h"
 #include "ast/FunctionDecl.h"
 #include "ast/Trap.h"

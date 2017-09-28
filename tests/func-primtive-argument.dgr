@@ -1,0 +1,25 @@
+# Test header:
+#@ description: single argument function call
+
+func b(x : n16) { pln x; }
+func c(x : n32) { pln x; }
+func d(x : n64) { pln x; }
+
+func e(x : i16) { pln x; }
+func f(x : i32) { pln x; }
+func g(x : i64) { pln x; }
+
+b(2);
+c(3);
+d(4);
+e(5);
+f(6);
+g(7);
+
+# Expected output:
+#$ 2
+#$ 3
+#$ 4
+#$ 5
+#$ 6
+#$ 7

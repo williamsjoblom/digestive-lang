@@ -36,7 +36,7 @@ namespace Parse {
             }
         }
 
-        BlockStmt* body = Parse::block(tokens);
+	BlockStmt* body = Parse::block(tokens);
         if (body == nullptr) {
             Token t = tokens.top();
             parseError(t, "Expected function body");

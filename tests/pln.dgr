@@ -1,0 +1,7 @@
+# Test header:
+#@ description: print line
+
+pln 42;
+
+# Expected output:
+#$ 42

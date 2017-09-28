@@ -45,7 +45,6 @@ X86Gp registerCast(X86Compiler& c, X86Gp reg, DType& regType, DType& targetType)
  * Tuples can be casted to primitives, returning a primitive containing the tuples first value.
  */
 X86Gp primitiveCast(X86Compiler& c, Expr* expr, DType& type) {
-    std::cout << "Generating primitive cast" << std::endl;
     assert(expr->type.isPrimitive() || expr->type.isTuple());
     X86Gp e = expr->generate(c)[0];
     return registerCast(c, e, expr->type, type);
@@ -58,7 +57,6 @@ Regs tupleCast(X86Compiler& c, Expr* expr, DType& type) {
     assert(expr->type.isTuple());
     assert(expr->type.type.tuple->size() >= type.type.tuple->size());
 
-    expr->dump(); std::cout << std::endl;
     Regs e = expr->generate(c);
 
     std::vector<DType> regTypes = flattenType(expr->type);
@@ -77,8 +75,6 @@ Regs tupleCast(X86Compiler& c, Expr* expr, DType& type) {
 	
         result.push_back(resultingReg);
     }
-
-    std::cout << "Tuple cast completed: " << result.size() << std::endl;
     
     return result;
 }

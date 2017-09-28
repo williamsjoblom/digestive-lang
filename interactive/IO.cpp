@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 
+#include "globals.h"
 #include "IO.h"
 
 namespace IO {
@@ -22,7 +23,8 @@ namespace IO {
         in.open(inPath);
 
         if (in.fail()) {
-            std::cout << "Could not open file 'in': " << std::strerror(errno) << std::endl;
+	    if (verbose)
+		std::cout << "Could not open file 'in': " << std::strerror(errno) << std::endl;
             return false;
         }
 
