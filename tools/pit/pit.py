@@ -8,6 +8,42 @@ from os import listdir
 from os import linesep
 from os.path import isfile, join
 
+
+class TestResult:
+    """
+    Test result.
+    """
+    
+    def __init__(self, test, failed_lines):
+        """
+        Constructor.
+        Takes a list of tuples consisting of (actual line, expected line)
+        """
+        self.test = test
+        self.failed_lines = failed_lines
+
+        
+    def passed(self):
+        """
+        Return true if this test passed
+        """
+        return not self.failed_lines
+
+    
+    def dump(self):
+        """
+        Print result.
+        """
+        MAX_FAILED_LINES = 4
+        
+        n = min(MAX_FAILED_LINES, len(self.failed_lines))
+
+        print("%s:" % self.test.path)
+        for i in range(n):
+            actual, expected = self.failed_lines[i]
+            print("%s%d: expected '%s', got '%s'." %
+                  (" "*4, i + 1, expected, actual))
+
 class Test:
     """
     Test.
@@ -30,14 +66,19 @@ class Test:
         process = subprocess.Popen(["dg", self.path], stdout=subprocess.PIPE)
         output = process.stdout.readlines()
 
-        if len(output) != len(self.expected_lines):
-            return False
-        
-        for i in range(len(output)):
-            if output[i].decode("utf-8").strip() != self.expected_lines[i].strip():
-                return False
+        failed_lines = []            
+        for i in range(len(self.expected_lines)):
+            e = self.expected_lines[i].strip()
+            if (i >= len(output)):
+                failed_lines.append(("", e))
+                continue
+            
+            a = output[i].decode("utf-8").strip()
+            
+            if e != a:
+                failed_lines.append((a, e))
 
-        return True
+        return TestResult(self, failed_lines)
         
         
 def parse_test(path):
@@ -88,10 +129,11 @@ def test(tests):
     passed, failed = [], []
     
     for t in tests:
-        if t.run():
-            passed.append(t)
+        result = t.run();
+        if result.passed():
+            passed.append(result)
         else:
-            failed.append(t)
+            failed.append(result)
 
     return (passed, failed)
 
@@ -136,8 +178,8 @@ if __name__ == "__main__":
         
     if failed:
         print("-"*8, "Failed tests:", len(failed), "-"*8)
-        for t in failed:
-            print(" "*4, t.path)
+        for result in failed:
+            result.dump()
     else:
         print("All tests passed! ヾ(⌐■_■)ノ♪")    
     
