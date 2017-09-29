@@ -93,7 +93,7 @@ def test(tests):
         else:
             failed.append(t)
 
-    return passed, failed
+    return (passed, failed)
 
 
 def test_files(files):
@@ -106,7 +106,7 @@ def test_files(files):
         tests.append(t)
 
     passed, failed = test(tests)
-    return passed, failed
+    return (passed, failed)
 
     
 if __name__ == "__main__":
@@ -135,7 +135,7 @@ if __name__ == "__main__":
         print("-"*8, "Passed tests:", len(passed), "-"*8)
         
     if failed:
-        print("-"*8, "Failed tests:", len(passed), "-"*8)
+        print("-"*8, "Failed tests:", len(failed), "-"*8)
         for t in failed:
             print(" "*4, t.path)
     else:
