@@ -1,6 +1,6 @@
 # Test header: 
-#@ name: 
-#@ description: 
+#@ name: Expression
+#@ description: Expression parsing tests
 
 # Simple
 pln 1;
