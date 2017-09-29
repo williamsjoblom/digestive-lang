@@ -139,8 +139,7 @@ Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->op->symbol == OperatorSymbol::DOT);
     
     int index = tupleAccessIndex(expr);
-    std::cout << "Found tuple member with index " << index << std::endl;
-        
+    
     Regs leftRegs = expr->left->generate(c);
 	
     if (expr->type.isTuple()) {
