@@ -1,2 +1,22 @@
 # Pit
-Tool for conducting regression tests
+Tool for conducting regression tests.
+
+A simple example of a test:
+```python
+# This is the test header which contains metadata for the test.
+# A metadata field starts with `#@`.
+# There are currently two available header fields: name and description.
+#@ name: pln
+#@ description: Tests the built-in pln function
+
+pln 42;
+pln 43;
+
+# This is the test footer which contains the expected stdout text.
+# Every expected line of output starts with a `#$`.
+# The test passes if the program outputs these expected lines.
+#$ 42
+#$ 43
+```
+
+Since all test information is treated as comments by the compiler these tests can also be run as regular scripts.
