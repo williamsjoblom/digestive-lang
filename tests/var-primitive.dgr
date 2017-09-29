@@ -1,0 +1,9 @@
+# Test header: 
+#@ name: primitive variable
+#@ description: 
+
+var x : i32 = 42;
+pln x;
+
+# Expected output: 
+#$ 42

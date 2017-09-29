@@ -1,0 +1,81 @@
+# Test header: 
+#@ name: Function tuple tests
+#@ description: Tests tuple arguments and returns
+
+# Simple passing
+func f(x : (i32, i32)) { pln x.0; pln x.1;}
+f((32, 64));
+
+
+# Simple passing and return
+func g(x : (i32, i32)) -> (i32, i32) { return x; }
+var x := g((8, 16));
+pln x.0; pln x.1;
+
+# Construct tuple and return
+func h(x : i32, y : i32) -> (i32, i32) { return (x, y); }
+var y := h(96, 13);
+pln y.0; pln y.1;
+
+
+# Nested passing
+func nested(x : ((i32, i32), i32)) {
+	pln x.0.0; pln x.0.1; pln x.1;
+}
+
+nested(((96, 2), 13));
+
+# Very nested passing
+func veryNested(x : (i32, ((i32, i32), i32))) {
+	pln x.0; pln x.1.0.0; pln x.1.0.1; pln x.1.1;
+}
+
+veryNested((77, ((88, 99), 100)));
+
+func nestedReturn() -> (i32, (i32, i32)) {
+	return (1, (2, 3));
+}
+
+pln nestedReturn().0;
+pln nestedReturn().1.0;
+pln nestedReturn().1.1;
+
+func veryNestedReturn() -> (i32, ((i32, i32), (i32, i32))) {
+	return (1, ((2, 3), (4, 5)));
+}
+
+pln veryNestedReturn().0;
+pln veryNestedReturn().1.0.0;
+pln veryNestedReturn().1.0.1;
+pln veryNestedReturn().1.1.0;
+pln veryNestedReturn().1.1.1;
+
+
+# Expected output: 
+#$ 32
+#$ 64
+
+#$ 8
+#$ 16
+
+#$ 96
+#$ 13
+
+#$ 96
+#$ 2
+#$ 13
+
+#$ 77
+#$ 88
+#$ 99
+#$ 100
+
+#$ 1
+#$ 2
+#$ 3
+
+#$ 1
+#$ 2
+#$ 3
+#$ 4
+#$ 5
