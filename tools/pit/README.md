@@ -1,6 +1,11 @@
 # Pit
 Tool for conducting regression tests.
 
+#### Usage
+`pit directory [directory ...]`
+This will run all tests with the `.dgr` extension present in given directories.
+
+#### Example
 A simple example of a test:
 ```python
 # This is the test header which contains metadata for the test.
