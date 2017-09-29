@@ -32,6 +32,7 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
     assert(resultRegs.size() == 1);
     X86Gp result = resultRegs[0];
 
+    X86Gp remainder;
     switch(expr->op->symbol) {
         case OperatorSymbol::PLUS:
             c.mov(result, left);
@@ -50,7 +51,14 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
             break;
         case OperatorSymbol::DIV:
             c.mov(result, left);
-            assert(false); // Not implemented.
+	    remainder = c.newInt32();
+	    c.mov(remainder, Imm(0));
+	    
+	    if (type.type.primitive == DPrimitiveKind::INTEGER)	    
+		c.idiv(remainder, result, right);
+	    else
+		c.div(remainder, result, right);
+            //assert(false); // Not implemented.
             break;
 
         case OperatorSymbol::EQ:
