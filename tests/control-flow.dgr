@@ -1,0 +1,37 @@
+# Test header: 
+#@ name: 
+#@ description: 
+
+if (1) {
+	pln 1;
+} else {
+	pln 0;
+}
+
+if (1)
+	pln 2;
+else
+	pln 0;
+
+
+if (1) pln 3;
+else pln 0;
+
+
+if (0) pln 0;
+else if (0) pln 0;
+else if (1) pln 4;
+
+
+if (1)
+	if (1)
+		if (1) {
+			pln 5;
+		}
+
+# Expected output: 
+#$ 1
+#$ 2
+#$ 3
+#$ 4
+#$ 5

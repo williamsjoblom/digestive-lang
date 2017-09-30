@@ -41,8 +41,11 @@ class TestResult:
         print("%s:" % self.test.path)
         for i in range(n):
             actual, expected = self.failed_lines[i]
-            print("%s%d: expected '%s', got '%s'." %
+            print("%s%d: expected '%s', got '%s'" %
                   (" "*4, i + 1, expected, actual))
+
+        if len(self.failed_lines) > n:
+            print(" "*4 + "and %d more omitted lines%s" % (len(self.failed_lines) - n, "..."))
 
 class Test:
     """
