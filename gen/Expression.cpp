@@ -28,7 +28,7 @@ namespace Generate {
         return regs;
     }
 
-    Regs expression(X86Compiler &c, VariableExpr* expr) {
+    Regs expression(X86Compiler &c, VariableExpr* expr) {	
 	return expr->declaration->bVar;
     }
 

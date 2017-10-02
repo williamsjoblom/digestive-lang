@@ -48,7 +48,7 @@ namespace Generate {
 
     X86Gp alloc(X86Compiler& c, size_t s);
 
-    Regs cast(X86Compiler& c, Expr* expr, DType& t);
+    Regs cast(X86Compiler& c, Expr* expr, DType& t, bool destructive=false);
     Regs typedRegister(X86Compiler& c, DType& t);
 
     Regs expression(X86Compiler& c, BinaryExpr* expr);

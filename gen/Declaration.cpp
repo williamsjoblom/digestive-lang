@@ -15,12 +15,12 @@
 namespace Generate {
 
     void variableDeclaration(X86Compiler &c, VariableDecl* decl) {
-        if (decl->value != nullptr) {
+	if (decl->value != nullptr) {
             decl->bVar = Generate::cast(c, decl->value, decl->type);
         } else {
             decl->bVar = Generate::typedRegister(c, decl->type);
         }
-
+	
 	// This is a reference type => move the newly generated values to the heap.
 	/*if (decl->type.ref) {
 	    X86Gp heapPtr = Generate::alloc(c, decl->type.byteSize());

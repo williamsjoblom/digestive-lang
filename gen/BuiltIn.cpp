@@ -34,6 +34,7 @@ namespace Generate {
             assert(false);
 
         call->setArg(0, arg[0]);
+	call->setInlineComment("pln");
     }
 
     
@@ -52,5 +53,4 @@ namespace Generate {
 
 	return ptr;
     }
-
 }
