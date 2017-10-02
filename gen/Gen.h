@@ -46,6 +46,7 @@ namespace Generate {
 
     void pln(X86Compiler& c, PlnStmt* stmt);
 
+    X86Gp alloc(X86Compiler& c, size_t s);
 
     Regs cast(X86Compiler& c, Expr* expr, DType& t);
     Regs typedRegister(X86Compiler& c, DType& t);

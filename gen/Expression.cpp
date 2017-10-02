@@ -106,8 +106,8 @@ namespace Generate {
 		c.mov(regs[actualIndex++], reg);
 	    }
 	}
-	
-        return regs;
+
+	return regs;
     }
 
 }

@@ -49,6 +49,11 @@ public:
     int sz;
 
     /**
+     * Is reference type?
+     */
+    bool ref;
+
+    /**
      * Label.
      * Used to refer to this type when inside a named tuple.
      */
@@ -69,19 +74,19 @@ public:
     /**
      * Generic constructor.
      */
-    DType(DKind kind, int sz);
+    DType(DKind kind, int sz, bool ref);
 
 
     /**
      * Primitive constructor.
      */
-    DType(DPrimitiveKind primitiveKind, int sz);
+    DType(DPrimitiveKind primitiveKind, int sz, bool ref=false);
 
 
     /**
      * Tuple constructor.
      */
-    DType(std::vector<DType>* tupleTypes);
+    DType(std::vector<DType>* tupleTypes, bool ref);
 
     /**
      * Destructor.

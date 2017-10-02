@@ -26,7 +26,8 @@ void TupleExpr::analyze(Scope *scope) {
         types->push_back(v->type);
     }
 
-    type = DType(types);
+    bool ref = false;
+    type = DType(types, ref);
 }
 
 bool TupleExpr::equals(const Node &other) const {

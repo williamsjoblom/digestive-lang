@@ -8,6 +8,7 @@
 #include "ast/type/Types.h"
 #include "ast/type/TupleType.h"
 #include "parse/ParseError.h"
+#include "globals.h"
 
 namespace Parse {
 
@@ -26,19 +27,27 @@ namespace Parse {
     };
 
     DType type(TokenQueue& tokens) {
+	bool ref = tokens.eat(AT);
+	
         Token t = tokens.top();
-        if (t.type == IDENTIFIER) {
+	if (t.type == IDENTIFIER) {
+	    if (ref) parseError(t, "Primitive reference types not allowed");
+	    
             auto p = symbolToType.find(t.value);
             if (p == symbolToType.end())
                 return NIL_TYPE;
 
             tokens.pop();
-            return p->second;
+	    
+	    DType type = p->second;
+	    return type;
         } else if (t.type == LPAR) {
             tokens.pop(); // Pop LPAR.
 	    
-            if(tokens.eat(RPAR)) // () = nil-type.
+            if(tokens.eat(RPAR)) { // () = nil-type.
+		if (ref) parseError(t, "nil reference types are not allowed");
                 return NIL_TYPE;
+	    }
 	    
             std::vector<DType>* types = new std::vector<DType>();
             while (tokens.top().type == IDENTIFIER || tokens.top().type == LPAR) {
@@ -69,13 +78,21 @@ namespace Parse {
 
             tokens.expect(RPAR); // Pop RPAR.
 
-	    //assert(types != nullptr);
-            if (types->size() == 0) return nullptr;
-            if (types->size() == 1) return (*types)[0];
+            if (types->size() == 0) {
+		if (ref) parseError(t, "nil reference types are not allowed");
+		return NIL_TYPE;
+	    }
 	    
-            return DType(types);
+            if (types->size() == 1) {
+		DType primitive = (*types)[0];
+		primitive.ref = ref;
+		return primitive;
+	    }
+
+            return DType(types, ref);
         }
 
+	if (ref) parseError(t, "nil reference types are not allowed");
         return NIL_TYPE; // Return NIL-type.
     }
 }

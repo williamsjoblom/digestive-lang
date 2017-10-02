@@ -8,6 +8,7 @@
 
 #include "ast/PlnStmt.h"
 #include "jit/BuiltIn.h"
+#include "gen/CallConv.h"
 
 #include "Gen.h"
 
@@ -19,6 +20,25 @@ namespace Generate {
         } else {
             decl->bVar = Generate::typedRegister(c, decl->type);
         }
+
+	// This is a reference type => move the newly generated values to the heap.
+	if (decl->type.ref) {
+	    X86Gp heapPtr = Generate::alloc(c, decl->type.byteSize());
+	    X86Mem heapMem = x86::ptr(heapPtr);
+	    
+	    std::vector<DType> flatType = flattenType(decl->type);
+	    int offset = 0;
+	    for (int i = 0; i < flatType.size(); i++) {
+		X86Gp reg = decl->bVar[i];
+		
+		heapMem.setOffset(offset);
+		c.mov(heapMem, reg);
+		
+		offset += flatType[i].byteSize();
+	    }
+
+	    decl->bVar = { heapPtr };
+	}
 	
         // Spill variables to stack
 	//for (X86Gp var : decl->bVar) {

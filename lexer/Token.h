@@ -38,6 +38,8 @@ enum TokenType {
     RIGHTARROW,
     DOT,
 
+    AT,
+
     END_OF_FILE,
 };
 
@@ -76,6 +78,8 @@ static std::map<std::string, TokenType> symbolToTokenType =
 
                 {"->", RIGHTARROW},
 		{".", DOT},
+
+		{"@", AT},
         };
 
 #endif //DIG_TOKEN_H

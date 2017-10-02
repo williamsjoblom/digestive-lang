@@ -100,7 +100,7 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 
 
 /**
- * 
+ * Returns index of tuple field.
  */
 int tupleAccessIndex(BinaryExpr* expr) {
     std::vector<DType> containedTypes = *expr->left->type.type.tuple;
@@ -130,6 +130,69 @@ int tupleAccessIndex(BinaryExpr* expr) {
     assert(false); // Should be caught during semantic analysis.
 }
 
+/**
+ * Generate value tuple.
+ */
+Regs valueTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
+    int index = tupleAccessIndex(expr);
+    Regs leftRegs = expr->left->generate(c);
+
+    if (expr->type.isTuple()) {
+	Regs result;
+	    
+	int size = neededRegisterCount(expr->type);
+	for (int i = 0; i < size; i++) {
+	    X86Gp source = leftRegs[index + i];
+	    X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
+	    c.mov(sink, source);
+		
+	    result.push_back(sink);
+	}
+	    
+	return result;
+    } else if(expr->type.isPrimitive()) {
+	X86Gp source = leftRegs[index];
+	X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
+	c.mov(sink, source);
+	return { sink };
+    } else {
+	assert(false);
+    }
+}
+
+Regs refTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
+    // Calculate actual memory offset.
+    int index = tupleAccessIndex(expr);
+    std::vector<DType> flatType = flattenType(expr->left->type);
+    int offset = 0;
+    for (int i = 0; i < index; i++) {
+	offset += flatType[i].byteSize();
+    }
+
+    Regs leftPtr = expr->left->generate(c);
+    assert(leftPtr.size() == 1);
+
+    X86Mem source = x86::ptr(leftPtr[0], offset);
+    Regs sink = Generate::typedRegister(c, expr->type);
+    
+    if (expr->type.isTuple()) {
+	int size = neededRegisterCount(expr->type);
+	
+	for (int i = 0; i < size; i++) {
+	    source.setOffset(offset);
+	    c.mov(sink[i], source);
+
+	    offset += flatType[index + i].byteSize();
+	}
+    } else if (expr->type.isPrimitive()) {
+	c.mov(sink[0], source);
+    } else {
+	assert(false);
+    }
+
+    return sink;
+}
+
 
 /*
  * Generate tuple access expression: (a, b, c).2
@@ -145,27 +208,12 @@ int tupleAccessIndex(BinaryExpr* expr) {
 Regs tupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     assert(expr->left->type.isTuple());
     assert(expr->op->symbol == OperatorSymbol::DOT);
-    
-    int index = tupleAccessIndex(expr);
-    
-    Regs leftRegs = expr->left->generate(c);
-	
-    if (expr->type.isTuple()) {
-	Regs result;
-	
-	int size = neededRegisterCount(expr->type);
-	for (int i = 0; i < size; i++) {
-	    X86Gp source = leftRegs[index + i];
-	    X86Gp sink = c.newSimilarReg<X86Gp>(source, "sink");
-	    c.mov(sink, source);
-	    
-	    result.push_back(sink);
-	}
 
-	return result;
+
+    if (expr->left->type.ref) {
+	return refTupleAccessExpr(c, expr);
     } else {
-	X86Gp reg = leftRegs[index];
-	return { reg };
+	return valueTupleAccessExpr(c, expr);
     }
 }
 

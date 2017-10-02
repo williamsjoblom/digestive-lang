@@ -36,4 +36,21 @@ namespace Generate {
         call->setArg(0, arg[0]);
     }
 
+    
+    /**
+     * Allocate.
+     * Returns register containing pointer to allocated memory.
+     */
+    X86Gp alloc(X86Compiler& c, size_t s) {
+	CCFuncCall* call = c.call(imm_ptr((void*) malloc),
+				  FuncSignature1<void*, size_t>(CallConv::kIdHostCDecl));
+	call->setArg(0, Imm(s));
+	call->setInlineComment("malloc()");
+	
+	X86Gp ptr = c.newIntPtr("Heap ptr");
+	call->setRet(0, ptr);
+
+	return ptr;
+    }
+
 }

@@ -12,20 +12,22 @@ DType::DType(const DType &o) {
    copy(o);
 }
 
-DType::DType(DKind kind, int sz) {
+DType::DType(DKind kind, int sz, bool ref) {
     this->kind = kind;
     this->sz = sz;
     this->label = "";
+    this->ref = ref;
 }
 
-DType::DType(DPrimitiveKind primitiveKind, int sz) {
+DType::DType(DPrimitiveKind primitiveKind, int sz, bool ref) {
     this->kind = DKind::PRIMITIVE;
     this->type.primitive = primitiveKind;
     this->sz = sz;
     this->label = "";
+    this->ref = ref;
 }
 
-DType::DType(std::vector<DType>* tupleTypes) {
+DType::DType(std::vector<DType>* tupleTypes, bool ref) {
     kind = DKind::TUPLE;
     type.tuple = tupleTypes;
 
@@ -33,6 +35,7 @@ DType::DType(std::vector<DType>* tupleTypes) {
     assert(tupleTypes != nullptr);
     for (DType t : *tupleTypes) sz += t.byteSize();
     this->label = "";
+    this->ref = ref;
 }
 
 
@@ -53,6 +56,7 @@ void DType::copy(const DType &o) {
     }
     sz = o.sz;
     label = o.label;
+    ref = o.ref;
 }
 
 bool DType::operator==(const DType &o) {
