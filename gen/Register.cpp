@@ -15,7 +15,9 @@ using namespace asmjit;
 namespace Generate {
 
     Regs typedRegister(X86Compiler& c, DType& type) {
-        if (type.isPrimitive()) {
+	if (type.ref) {
+	    return { c.newIntPtr() };
+	} else if (type.isPrimitive()) {
 
             switch (type.type.primitive) {
                 case DPrimitiveKind::INTEGER:

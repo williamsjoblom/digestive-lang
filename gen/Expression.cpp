@@ -41,8 +41,9 @@ namespace Generate {
 
         std::vector<X86Gp> args;
         for (unsigned int i = 0; i < expr->arguments->size(); i++) {
-            Regs a = expr->arguments->at(i)->generate(c);
-            //assert(a.size() == 1);
+	    DType argType = expr->declaration->parameters->at(i)->type;
+	    Regs a = Generate::cast(c, expr->arguments->at(i), argType);
+
 	    for (X86Gp arg : a)
 		args.push_back(arg);
         }

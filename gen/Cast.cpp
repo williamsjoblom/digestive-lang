@@ -91,6 +91,24 @@ namespace Generate {
             result = tupleCast(c, expr, type);
         else
             assert(false);
+
+	if (type.ref) {
+	    X86Gp heapPtr = Generate::alloc(c, type.byteSize());
+	    X86Mem heapMem = x86::ptr(heapPtr);
+	    
+	    std::vector<DType> flatType = flattenType(type);
+	    int offset = 0;
+	    for (int i = 0; i < flatType.size(); i++) {
+		heapMem.setOffset(offset);
+		c.mov(heapMem, result[i]);
+		
+		offset += flatType[i].byteSize();
+	    }
+
+	    std::cout << "Moving to heap" << std::endl;
+	    
+	    return { heapPtr };
+	}
 	
         return result;
     }

@@ -22,7 +22,7 @@ namespace Generate {
         }
 
 	// This is a reference type => move the newly generated values to the heap.
-	if (decl->type.ref) {
+	/*if (decl->type.ref) {
 	    X86Gp heapPtr = Generate::alloc(c, decl->type.byteSize());
 	    X86Mem heapMem = x86::ptr(heapPtr);
 	    
@@ -38,7 +38,7 @@ namespace Generate {
 	    }
 
 	    decl->bVar = { heapPtr };
-	}
+	    }*/
 	
         // Spill variables to stack
 	//for (X86Gp var : decl->bVar) {

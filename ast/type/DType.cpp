@@ -62,6 +62,7 @@ void DType::copy(const DType &o) {
 bool DType::operator==(const DType &o) {
     if (kind != o.kind) return false;
     if (sz != o.sz) return false;
+    if (ref != o.ref) return false;
 
     switch (kind) {
         case DKind::PRIMITIVE: return type.primitive == o.type.primitive;
