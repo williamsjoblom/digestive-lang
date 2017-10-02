@@ -135,6 +135,7 @@ int tupleAccessIndex(BinaryExpr* expr) {
  */
 Regs valueTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     int index = tupleAccessIndex(expr);
+    
     Regs leftRegs = expr->left->generate(c);
 
     if (expr->type.isTuple()) {
@@ -163,6 +164,7 @@ Regs valueTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 Regs refTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     // Calculate actual memory offset.
     int index = tupleAccessIndex(expr);
+    
     std::vector<DType> flatType = flattenType(expr->left->type);
     int offset = 0;
     for (int i = 0; i < index; i++) {

@@ -50,4 +50,27 @@ namespace Generate {
         assert(false);
     }
 
+
+    X86Mem constant(X86Compiler& c, DType& type, int64_t value, bool global) {
+	assert(type.isPrimitive());
+
+	int scope = global ? kConstScopeGlobal : kConstScopeLocal;
+	
+	switch (type.type.primitive) {
+	case DPrimitiveKind::INTEGER:
+	    if (type.byteSize() == 2) return c.newInt16Const(scope, (int16_t) value);
+	    if (type.byteSize() == 4) return c.newInt32Const(scope, (int32_t) value);
+	    if (type.byteSize() == 8) return c.newInt64Const(scope, (int64_t) value);
+	    break;
+	case DPrimitiveKind::NATURAL:
+	    if (type.byteSize() == 1) return c.newByteConst(scope, (uint8_t) value);
+	    if (type.byteSize() == 2) return c.newUInt16Const(scope, (uint16_t) value);
+	    if (type.byteSize() == 4) return c.newUInt32Const(scope, (uint32_t) value);
+	    if (type.byteSize() == 8) return c.newUInt64Const(scope, (uint64_t) value); 
+	    break;
+	case DPrimitiveKind::NIL:
+	    assert(false);
+	}
+    }
+
 }

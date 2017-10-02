@@ -31,6 +31,7 @@ X86Gp registerCast(X86Compiler& c, X86Gp reg, DType& regType, DType& targetType,
 	if (destructive) return result;
 	
 	X86Gp copy = c.newSimilarReg<X86Gp>(result, "copy");
+	c.mov(copy, result);
 	return copy;
     } else {
         // TODO: verify that these widening moves fully works as expected.

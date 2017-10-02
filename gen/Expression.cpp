@@ -24,7 +24,10 @@ namespace Generate {
     Regs expression(X86Compiler &c, IntegerLiteral* expr) {
         Regs regs = Generate::typedRegister(c, expr->type);
         assert(regs.size() == 1);
-        c.mov(regs[0], Imm(expr->value));
+	
+	X86Mem literal = Generate::constant(c, expr->type, expr->value);
+
+	c.mov(regs[0], literal);
         return regs;
     }
 

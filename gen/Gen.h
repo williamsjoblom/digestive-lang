@@ -50,6 +50,7 @@ namespace Generate {
 
     Regs cast(X86Compiler& c, Expr* expr, DType& t, bool destructive=false);
     Regs typedRegister(X86Compiler& c, DType& t);
+    X86Mem constant(X86Compiler& c, DType& type, int64_t value, bool global=false);
 
     Regs expression(X86Compiler& c, BinaryExpr* expr);
     Regs expression(X86Compiler& c, IntegerLiteral* expr);
