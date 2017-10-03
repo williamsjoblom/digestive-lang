@@ -11,6 +11,11 @@
 
 using namespace asmjit;
 
+/**
+ * Generate primitive assignment.
+ */
+X86Gp primitiveAssign(X86Compiler& c, BinaryExpr* expr) {
+}
 
 /*
  * Generate primitive primitive binary expression.
@@ -34,68 +39,84 @@ X86Gp primitiveBinaryExpr(X86Compiler &c, BinaryExpr* expr) {
 
     X86Gp remainder;
     switch(expr->op->symbol) {
-        case OperatorSymbol::PLUS:
-            c.mov(result, left);
-            c.add(result, right);
-            break;
-        case OperatorSymbol::MINUS:
-            c.mov(result, left);
-            c.sub(result, right);
-            break;
-        case OperatorSymbol::MUL:
-            c.mov(result, left);
-            if (type.type.primitive == DPrimitiveKind::INTEGER)
-                c.imul(result, right);
-            else
-                c.mul(result, right);
-            break;
-        case OperatorSymbol::DIV:
-            c.mov(result, left);
-	    remainder = c.newInt32();
-	    c.mov(remainder, Imm(0));
+    case OperatorSymbol::PLUS:
+	c.mov(result, left);
+	c.add(result, right);
+	break;
+    case OperatorSymbol::MINUS:
+	c.mov(result, left);
+	c.sub(result, right);
+	break;
+    case OperatorSymbol::MUL:
+	c.mov(result, left);
+	if (type.type.primitive == DPrimitiveKind::INTEGER)
+	    c.imul(result, right);
+	else
+	    c.mul(result, right);
+	break;
+    case OperatorSymbol::DIV:
+	c.mov(result, left);
+	remainder = c.newInt32();
+	c.mov(remainder, Imm(0));
 	    
-	    if (type.type.primitive == DPrimitiveKind::INTEGER)	    
-		c.idiv(remainder, result, right);
-	    else
-		c.div(remainder, result, right);
-            //assert(false); // Not implemented.
-            break;
-
-        case OperatorSymbol::EQ:
-            c.cmp(left, right);
-            c.sete(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        case OperatorSymbol::NOTEQ:
-            c.cmp(left, right);
-            c.setne(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        case OperatorSymbol::LESSEQ:
-            c.cmp(left, right);
-            c.setle(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        case OperatorSymbol::GREATEREQ:
-            c.cmp(left, right);
-            c.setge(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        case OperatorSymbol::LESS:
-            c.cmp(left, right);
-            c.setl(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        case OperatorSymbol::GREATER:
-            c.cmp(left, right);
-            c.setg(result.r8());
-            c.movzx(result, result.r8());
-            break;
-        default:
-            assert(false);
+	if (type.type.primitive == DPrimitiveKind::INTEGER)	    
+	    c.idiv(remainder, result, right);
+	else
+	    c.div(remainder, result, right);
+	break;
+	    
+    case OperatorSymbol::EQ:
+	c.cmp(left, right);
+	c.sete(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    case OperatorSymbol::NOTEQ:
+	c.cmp(left, right);
+	c.setne(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    case OperatorSymbol::LESSEQ:
+	c.cmp(left, right);
+	c.setle(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    case OperatorSymbol::GREATEREQ:
+	c.cmp(left, right);
+	c.setge(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    case OperatorSymbol::LESS:
+	c.cmp(left, right);
+	c.setl(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    case OperatorSymbol::GREATER:
+	c.cmp(left, right);
+	c.setg(result.r8());
+	c.movzx(result, result.r8());
+	break;
+    default:
+	assert(false);
     }
 
     return result;
+}
+
+
+Regs assignment(X86Compiler& c, BinaryExpr* expr) {
+    VariableExpr* variable = dynamic_cast<VariableExpr*>(expr->left);
+    assert(variable != nullptr); // Should be caught during semantic analysis.
+
+    Regs varRegs = variable->generate(c);
+    Regs valueRegs = Generate::cast(c, expr->right, variable->type);
+
+    assert(varRegs.size() <= valueRegs.size()); // Only shortening casts of tuples allowed.
+
+    for (int i = 0; i < varRegs.size(); i++) {
+	c.mov(varRegs[i], valueRegs[i]);
+    }
+    
+    return varRegs;
 }
 
 
@@ -225,7 +246,9 @@ namespace Generate {
      * Generate binary expression.
      */
     std::vector<X86Gp> expression(X86Compiler &c, BinaryExpr* expr) {
-        if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
+	if (expr->op->symbol == OperatorSymbol::ASSIGN) {
+	    return assignment(c, expr);
+	} else if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
             return { primitiveBinaryExpr(c, expr) };
         } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT) {
 	    return tupleAccessExpr(c, expr);

@@ -123,9 +123,31 @@ const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* r
     semanticError("Bad type conversion");
 }
 
+const DType resultingAssign(const Expr* left, Operator op, const Expr* right) {
+    if (left->type.isTuple() && right->type.isPrimitive())
+	semanticError("Cannot assign primitive to tuple");
+    if (left->type.isTuple() && right->type.isTuple()) {
+	std::vector<DType> leftTypes = *left->type.type.tuple;
+	std::vector<DType> rightTypes = *right->type.type.tuple;
+	if (leftTypes.size() > rightTypes.size())
+	    semanticError("Bad tuple assignment");
+	
+	for (int i = 0; i < leftTypes.size(); i++) {
+	    DType l = leftTypes[i];
+	    DType r = rightTypes[i];
+	    if (l != r) semanticError("Bad tuple assignment");
+	}
+	
+    }
+
+    return left->type;
+}
+
 const DType resultingType(Expr* left, Operator op, Expr* right) {
+    if (op.symbol == OperatorSymbol::ASSIGN) return resultingAssign(left, op, right);
+    
     if (left->type.isPrimitive() && right->type.isPrimitive()) return resultingPrimitive(left->type, op, right->type);
     if (left->type.isTuple()) return resultingTuplePrimitive(left, op, right);
-	
+
     semanticError("Bad type conversion");
 }

@@ -38,6 +38,8 @@ const std::map<std::string, OperatorSymbol> stringToSymbol =
                 {"*", OperatorSymbol::MUL},
                 {"/", OperatorSymbol::DIV},
 
+		{"=", OperatorSymbol::ASSIGN},
+
                 {"==", OperatorSymbol::EQ},
                 {"!=", OperatorSymbol::NOTEQ},
                 {"<=", OperatorSymbol::LESSEQ},
@@ -77,6 +79,15 @@ bool Operator::isUnary() {
     }
 }
 
+bool Operator::isRightAssociative() {
+    if (symbol == OperatorSymbol::ASSIGN) return true;
+    return false;
+}
+
+bool Operator::isLeftAssociative() {
+    return !isRightAssociative();
+}
+
 OperatorSymbol symbolFromString(std::string s) {
     return stringToSymbol.at(s);
 }
@@ -87,6 +98,8 @@ const std::string symbolToString(OperatorSymbol symbol) {
     case OperatorSymbol::MINUS: return "-";
     case OperatorSymbol::MUL: return "*";
     case OperatorSymbol::DIV: return "/";
+
+    case OperatorSymbol::ASSIGN: return "=";
 	
     case OperatorSymbol::EQ: return "==";
     case OperatorSymbol::NOTEQ: return "!=";
@@ -103,11 +116,16 @@ const std::string symbolToString(OperatorSymbol symbol) {
     assert(false);
 }
 
+
 int precedenceOf(OperatorSymbol symbol) {
     switch (symbol) {
+    case OperatorSymbol::ASSIGN:
+	return 1;
+	
     case OperatorSymbol::PLUS:
     case OperatorSymbol::MINUS:
 	return 10;
+	
     case OperatorSymbol::MUL:
     case OperatorSymbol::DIV:
 	return 20;

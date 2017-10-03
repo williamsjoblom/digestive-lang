@@ -14,6 +14,8 @@ enum class OperatorSymbol {
     MUL,
     DIV,
 
+    ASSIGN,
+
     EQ,
     NOTEQ,
     LESSEQ,
@@ -38,6 +40,8 @@ public:
 
     bool isBinary();
     bool isUnary();
+    bool isRightAssociative();
+    bool isLeftAssociative();
 
     void analyze(Scope* scope) { }
     virtual bool equals(const Node& other) const;

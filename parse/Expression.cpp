@@ -102,17 +102,18 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
                 output.push_back(token);
                 continue;
             }
-
+	    
             while (!stack.empty() && Operator::isOperator(stack.top().value)) {
                 Token top = stack.top();
                 Operator o2(top.value);
-
-                if(o1.precedence <= o2.precedence) {
-                    output.push_back(top);
-                    stack.pop();
-                } else {
+		
+		if ((o1.isLeftAssociative() && o1.precedence > o2.precedence) ||
+		    (o1.isRightAssociative() && o1.precedence <= o2.precedence)) {
                     break;
-                }
+		}
+
+		output.push_back(top);
+		stack.pop();
             }
 
             stack.push(token);
