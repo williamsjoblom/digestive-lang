@@ -1,4 +1,6 @@
-# TAC Operations (TACCode.h)
+# TAC Operations (TACC)
+
+Documentation for the three address code used as an intermediate representation. This intermediate representation allow easier implementation of backends for different CPU architectures and fancy optimizing transformations yielding blazing fast machine code.
 
 ## Arithmetics
 
@@ -13,6 +15,26 @@
 
 #### Divide `div <dest> <op1> <op2>`:
 `dest := op1 / op2`
+
+## Comparisons
+
+#### Compare Equal `cmpEQ <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 == op2` otherwise 0.
+
+#### Compare Not Equal `cmpNE <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 != op2` otherwise 0.
+
+#### Compare Greater `cmpG <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 > op2` otherwise 0.
+
+#### Compare Less `cmpL <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 < op2` otherwise 0.
+
+#### Compare Greater Equal `cmpGE <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 >= op2` otherwise 0.
+
+#### Compare Less Equal `cmpLE <dest> <op1> <op2>`
+Set `dest` to 1 if `op1 <= op2` otherwise 0.
 
 ## Branching
 
@@ -40,5 +62,3 @@ Jump to address specified by `op1` if `op2` is negative.
 
 #### Move `move <dest> <op1> _`:
 `dest := op1`
-
-
