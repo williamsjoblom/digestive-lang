@@ -52,10 +52,10 @@ Jump to address specified by `s0`.
 #### Jump Zero `jmpZ <s0> <s1> _`:
 Jump to address specified by `s0` if `s1` is zero.
 
-#### Jump Not Zero `jmpZ <s0> <s1> _`:
+#### Jump Not Zero `jmpNZ <s0> <s1> _`:
 Jump to address specified by `s0` if `s1` is not zero.
 
-#### Jump Negative `jmpZ <s0> <s1> _`:
+#### Jump Negative `jmpN <s0> <s1> _`:
 Jump to address specified by `s0` if `s1` is negative.
 
 ## Memory
