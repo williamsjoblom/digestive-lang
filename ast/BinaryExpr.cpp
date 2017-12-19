@@ -2,10 +2,11 @@
 // Created by wax on 12/15/16.
 //
 
-#include <gen/Gen.h>
-#include <semantic/TypeUtil.h>
+#include "gen/Gen.h"
+#include "semantic/TypeUtil.h"
 #include "util/PrettyPrint.h"
 #include "BinaryExpr.h"
+#include "irgen/BinaryExpr.h"
 
 BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
     this->left = left;
@@ -37,6 +38,10 @@ void BinaryExpr::dump(size_t indent) {
     right->dump(indent + 1);
 
     std::cout << ")";
+}
+
+TACOp BinaryExpr::generate(TACEnv& env) {
+    return Generate::binaryExpr(env, this);
 }
 
 Regs BinaryExpr::generate(X86Compiler &c) {

@@ -15,6 +15,8 @@ public:
 
     IntegerLiteral(int value);
 
+
+    TACOp generate(TACEnv& env);
     Regs generate(X86Compiler &c);
     bool equals(const Node& other) const;
     void dump(size_t indent);

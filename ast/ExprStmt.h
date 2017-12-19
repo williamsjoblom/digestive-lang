@@ -5,7 +5,7 @@
 #ifndef DIG_EXPRSTMT_H
 #define DIG_EXPRSTMT_H
 
-#include <util/PrettyPrint.h>
+#include "../util/PrettyPrint.h"
 #include "Expr.h"
 #include "Stmt.h"
 
@@ -16,6 +16,7 @@ public:
     ExprStmt(Expr* expression) { this->expression = expression; }
     ~ExprStmt() { delete expression; }
 
+    void generate(TACEnv& env) { expression->generate(env); };
     void generate(X86Compiler &c) { expression->generate(c); }
 
     void analyze(Scope* scope) { expression->analyze(scope); }

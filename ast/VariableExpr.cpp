@@ -20,6 +20,10 @@ void VariableExpr::dump(size_t indent) {
     std::cout << identifier << std::endl;
 }
 
+TACOp VariableExpr::generate(TACEnv& env) {
+    return TACOp();
+}
+
 Regs VariableExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }
