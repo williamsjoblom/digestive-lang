@@ -4,61 +4,61 @@ Documentation for the three address code used as an intermediate representation.
 
 ## Arithmetics
 
-#### Add `add <dest> <op1> <op2>`:
-`dest := op1 + op2`
+#### Add `add <s0> <s1> <d>`:
+`d := s0 + s1`
 
-#### Subtract `sub <dest> <op1> <op2>`:
-`dest := op1 - op2`
+#### Subtract `sub <s0> <s1> <d>`:
+`d := s0 - s1`
 
-#### Multiply `mul <dest> <op1> <op2>`:
-`dest := op1 * op2`
+#### Multiply `mul <s0> <s1> <d>`:
+`d := s0 * s1`
 
-#### Divide `div <dest> <op1> <op2>`:
-`dest := op1 / op2`
+#### Divide `div <s0> <s1> <d>`:
+`d := s0 / s1`
 
 ## Comparisons
 
-#### Compare Equal `cmpEQ <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 == op2` otherwise 0.
+#### Compare Equal `cmpEQ <s0> <s1> <d>`
+Set `d` to 1 if `s0 == s1` otherwise 0.
 
-#### Compare Not Equal `cmpNE <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 != op2` otherwise 0.
+#### Compare Not Equal `cmpNE <s0> <s1> <d>`
+Set `d` to 1 if `s0 != s1` otherwise 0.
 
-#### Compare Greater `cmpG <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 > op2` otherwise 0.
+#### Compare Greater `cmpG <s0> <s1> <d>`
+Set `d` to 1 if `s0 > s1` otherwise 0.
 
-#### Compare Less `cmpL <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 < op2` otherwise 0.
+#### Compare Less `cmpL <s0> <s1> <d>`
+Set `d` to 1 if `s0 < s1` otherwise 0.
 
-#### Compare Greater Equal `cmpGE <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 >= op2` otherwise 0.
+#### Compare Greater Equal `cmpGE <s0> <s1> <d>`
+Set `d` to 1 if `s0 >= s1` otherwise 0.
 
-#### Compare Less Equal `cmpLE <dest> <op1> <op2>`
-Set `dest` to 1 if `op1 <= op2` otherwise 0.
+#### Compare Less Equal `cmpLE <s0> <s1> <d>`
+Set `d` to 1 if `s0 <= s1` otherwise 0.
 
 ## Branching
 
-#### Set Argument `setArg <dest> <op1> _`:
-Set argument indexed by `dest` to `op1`.
+#### Set Argument `setArg <s0> _ <d>`:
+Set argument indexed by `d` to `s0`.
 
-#### Call `call _ <op1> _`:
-Jump to subroutine specified by `op1` (with args set by `setArg`).
+#### Call `call <s0> _  _`:
+Jump to subroutine specified by `s0` (with args set by `setArg`).
 
-#### Jump `jmp _ <op1> _`:
-Jump to address specified by `op1`.
+#### Jump `jmp <s0> _ _`:
+Jump to address specified by `s0`.
 
 ### Conditional Branching
 
-#### Jump Zero `jmpZ _ <op1> <op2>`:
-Jump to address specified by `op1` if `op2` is zero.
+#### Jump Zero `jmpZ <s0> <s1> _`:
+Jump to address specified by `s0` if `s1` is zero.
 
-#### Jump Not Zero `jmpZ _ <op1> <op2>`:
-Jump to address specified by `op1` if `op2` is not zero.
+#### Jump Not Zero `jmpZ <s0> <s1> _`:
+Jump to address specified by `s0` if `s1` is not zero.
 
-#### Jump Negative `jmpZ _ <op1> <op2>`:
-Jump to address specified by `op1` if `op2` is negative.
+#### Jump Negative `jmpZ <s0> <s1> _`:
+Jump to address specified by `s0` if `s1` is negative.
 
 ## Memory
 
-#### Move `move <dest> <op1> _`:
-`dest := op1`
+#### Move `move <s0> _`:
+`d := s0`
