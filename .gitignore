@@ -1,0 +1,8 @@
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+.idea/
+build/
+dig
+vtune/
+.gdb_history
