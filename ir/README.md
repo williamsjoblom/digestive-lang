@@ -17,7 +17,7 @@
 ## Branching
 
 #### Set Argument `setArg <dest> <op1> _`:
-Set argument indexed by `dest` to `op1`
+Set argument indexed by `dest` to `op1`.
 
 #### Call `call _ <op1> _`:
 Jump to subroutine specified by `op1` (with args set by `setArg`).
