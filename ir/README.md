@@ -46,7 +46,7 @@ Jump to subroutine specified by `s0` (with args set by `setArg`).
 
 #### Jump `jmp <s0> _ _`:
 Jump to address specified by `s0`.
-
+ 
 ### Conditional Branching
 
 #### Jump Zero `jmpZ <s0> <s1> _`:
@@ -60,5 +60,5 @@ Jump to address specified by `s0` if `s1` is negative.
 
 ## Memory
 
-#### Move `move <s0> _`:
+#### Move `move <s0> _ <d>`:
 `d := s0`
