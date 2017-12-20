@@ -6,15 +6,18 @@
 #define DIG_BLOCKEXPRESSION_H
 
 #include <vector>
+
 #include "Stmt.h"
+#include "ir/TACEnv.h"
 
 class BlockStmt : public Stmt {
 public:
     BlockStmt(std::vector<Stmt*> statements);
     ~BlockStmt();
 
-    virtual void generate(X86Compiler &c);
-
+    void generate(X86Compiler &c);
+    void generate(TACEnv& env);
+    
     void analyze(Scope* scope);
     virtual bool equals(const Node& other) const;
 

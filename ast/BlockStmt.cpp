@@ -3,8 +3,10 @@
 //
 
 #include <vector>
+
 #include "BlockStmt.h"
 #include "util/PrettyPrint.h"
+
 
 BlockStmt::BlockStmt(std::vector<Stmt*> statements) {
     this->statements = statements;
@@ -39,6 +41,11 @@ void BlockStmt::generate(X86Compiler &c) {
     }
 }
 
+void BlockStmt::generate(TACEnv& env) {
+    for (Stmt* stmt : statements)
+	stmt->generate(env);
+}
+
 bool BlockStmt::equals(const Node &other) const {
     const BlockStmt* o = dynamic_cast<const BlockStmt*>(&other);
     if (o == nullptr) return false;
@@ -46,11 +53,11 @@ bool BlockStmt::equals(const Node &other) const {
     if (o->statements.size() != statements.size()) return false;
 
     for (int i = 0; i < statements.size(); i++) {
-        Stmt* statement =  statements[i];
-        Stmt* otherStatement = o->statements[i];
+	Stmt* statement =  statements[i];
+	Stmt* otherStatement = o->statements[i];
 
-        if (*statement != *otherStatement) return false;
+	if (*statement != *otherStatement) return false;
     }
 
     return true;
-}
+    }

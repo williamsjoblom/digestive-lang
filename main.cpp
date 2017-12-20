@@ -21,7 +21,7 @@ bool verbose = false;
  */
 #ifndef TEST
 int main(int argc, char* argv[]) {
-    std::string source = argv[1];
+    std::string source = " { " + std::string(argv[1]) + " } ";
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     e->generate(env);
     
     env.dump();
-
+    
     return 0;
     // TACEnv env;
 
