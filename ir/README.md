@@ -62,3 +62,7 @@ Jump to address specified by `s0` if `s1` is negative.
 
 #### Move `move <s0> _ <d>`:
 `d := s0`
+
+#### Move and Cast `moveCast <s0> _ <d>`:
+`d := s0` where `s0` is casted to the type of `d`
+

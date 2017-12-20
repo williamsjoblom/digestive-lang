@@ -34,11 +34,12 @@ enum class TACC {
     jmpZ,
     jmpNZ,
     jmpN,
-    
+	
     /**
      * Move
      */
-    move,
+     move,
+     moveCast,
 };
 
 #endif

@@ -121,6 +121,14 @@ int precedenceOf(OperatorSymbol symbol) {
     switch (symbol) {
     case OperatorSymbol::ASSIGN:
 	return 1;
+
+    case OperatorSymbol::EQ:
+    case OperatorSymbol::NOTEQ:
+    case OperatorSymbol::LESSEQ:
+    case OperatorSymbol::GREATEREQ:
+    case OperatorSymbol::LESS:
+    case OperatorSymbol::GREATER:
+	return 5;
 	
     case OperatorSymbol::PLUS:
     case OperatorSymbol::MINUS:
@@ -129,15 +137,7 @@ int precedenceOf(OperatorSymbol symbol) {
     case OperatorSymbol::MUL:
     case OperatorSymbol::DIV:
 	return 20;
-	
-    case OperatorSymbol::EQ:
-    case OperatorSymbol::NOTEQ:
-    case OperatorSymbol::LESSEQ:
-    case OperatorSymbol::GREATEREQ:
-    case OperatorSymbol::LESS:
-    case OperatorSymbol::GREATER:
-	return 100;
-	
+		
     case OperatorSymbol::DOT:
 	return 500;
 	

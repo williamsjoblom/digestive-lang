@@ -5,25 +5,29 @@
 #ifndef DIG_VARIABLEDECL_H
 #define DIG_VARIABLEDECL_H
 
-#include <gen/Gen.h>
+#include "gen/Gen.h"
 #include "Decl.h"
 #include "Expr.h"
+#include "ir/TACEnv.h"
 
 class VariableDecl : public Decl {
 public:
     Expr* value;
     DType type;
     Regs bVar;
+    TACVar* irVar;
 
     VariableDecl(std::string identifier, DType type);
     VariableDecl(std::string identifier, DType type, Expr* value);
     ~VariableDecl();
 
-    virtual void generate(X86Compiler &c);
+    void generate(X86Compiler &c) override;
+    void generate(TACEnv& env) override;
 
-    void analyze(Scope* scope);
-    virtual bool equals(const Node& other) const;
-    void dump(size_t indent);
+    void analyze(Scope* scope) override;
+    virtual bool equals(const Node& other) const override;
+    void dump(size_t indent) override;
+   
 
     int stackSize() override;
 };
