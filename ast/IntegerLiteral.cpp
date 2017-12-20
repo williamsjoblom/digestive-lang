@@ -5,12 +5,17 @@
 
 #include "ast/type/Types.h"
 #include "IntegerLiteral.h"
+#include "irgen/Expr.h"
 #include "gen/Gen.h"
 
 
 IntegerLiteral::IntegerLiteral(int value) {
     this->value = value;
     this->type = I32_TYPE;
+}
+
+TACOp IntegerLiteral::generate(TACEnv& env) {
+    return Generate::integerLiteral(env, this);
 }
 
 Regs IntegerLiteral::generate(X86Compiler &c) {

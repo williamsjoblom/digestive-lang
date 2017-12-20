@@ -17,6 +17,7 @@ public:
     TupleExpr(std::vector<Expr*> values);
     ~TupleExpr();
 
+    TACOp generate(TACEnv& env);
     Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);

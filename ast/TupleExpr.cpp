@@ -14,6 +14,10 @@ TupleExpr::~TupleExpr() {
     for (Expr* v : values) delete v;
 }
 
+TACOp TupleExpr::generate(TACEnv& env) {
+    return TACOp();
+}
+
 Regs TupleExpr::generate(X86Compiler &c) {
     return Generate::expression(c, this);
 }

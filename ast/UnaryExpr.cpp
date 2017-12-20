@@ -39,6 +39,11 @@ void UnaryExpr::dump(size_t indent) {
     std::cout << ")";
 }
 
+
+TACOp UnaryExpr::generate(TACEnv& env) {
+    return TACOp();
+}
+
 std::vector<X86Gp> UnaryExpr::generate(X86Compiler& c) {
     return Generate::expression(c, this);
 }

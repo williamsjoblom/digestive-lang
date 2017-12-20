@@ -15,6 +15,7 @@ public:
 
     VariableExpr(std::string identifier);
 
+    virtual TACOp generate(TACEnv& env);
     virtual Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);

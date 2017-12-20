@@ -9,6 +9,7 @@
 
 #include "Node.h"
 #include "Analyzable.h"
+#include "ir/TACEnv.h"
 
 using namespace asmjit;
 
@@ -16,6 +17,7 @@ class Stmt : public Node {
 public:
     virtual void generate(X86Compiler &c) { };
 
+    virtual void generate(TACEnv& env) { };
     virtual void analyze(Scope* scope) = 0;
 };
 
