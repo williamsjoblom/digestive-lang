@@ -59,6 +59,13 @@ void TACEnv::bindLabel(TACLabel* label) {
 
 
 void TACEnv::bindLabel(TACLabel* label, TAC* tac) {
+    if (tac->label != nullptr) {
+	*label = *tac->label;
+	label = tac->label;
+    } else {
+	tac->label = label;
+    }
+    
     label->tac = tac;
 }
 
@@ -102,11 +109,14 @@ void TACEnv::dump() {
 	tac->dump(this);
 	std::cout << std::endl;
     }
-}
 
-
-void TACEnv::bindWaitingLabels(TAC* tac) {
     for (TACLabel* label : waitingLabels)
-	label->tac = tac;
-    waitingLabels.clear();
+	label->dump();
 }
+
+
+    void TACEnv::bindWaitingLabels(TAC* tac) {
+	for (TACLabel* label : waitingLabels)
+	    bindLabel(label, tac);
+	waitingLabels.clear();
+    }

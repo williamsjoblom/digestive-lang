@@ -36,6 +36,11 @@ public:
      */
     TACOp d;
 
+    /**
+     * Label at this instruction.
+     */
+    TACLabel* label;
+
     
     /**
      * Dump.

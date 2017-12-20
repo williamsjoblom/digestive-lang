@@ -27,7 +27,8 @@ const char* tacCodeToS[] = {
     "jmpNZ",
     "jmpN",
 
-    "move"
+    "move",
+    "moveCast"
 };
 
 
@@ -39,6 +40,7 @@ TAC::TAC(TACC op, TACOp& s0, TACOp& s1, TACOp& d) {
     this->s0 = s0;
     this->s1 = s1;
     this->d = d;
+    this->label = nullptr;
 }
 
 
@@ -47,6 +49,9 @@ TAC::TAC(TACC op, TACOp& s0, TACOp& s1, TACOp& d) {
  * Dump.
  */
 void TAC::dump(TACEnv* env, int indent) {
+    if (label != nullptr)
+	label->dump();
+    
     std::cout << tacCodeToS[(int) op] << " " << s0.toS(env) << " "
 	      << s1.toS(env) << " → " << d.toS(env);
 }

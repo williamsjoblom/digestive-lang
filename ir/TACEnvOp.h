@@ -1,6 +1,7 @@
 #ifndef DIG_TACENVOP_H
 #define DIG_TACENVOP_H
 
+#include <iostream>
 #include <string>
 
 #include "TACType.h"
@@ -16,6 +17,8 @@ struct TACLabel {
     int id;
     TAC* tac;
     std::string name;
+
+    void dump() { std::cout << name << ":" << std::endl; };
 };
 
 
