@@ -9,14 +9,14 @@
 #include "lexer/TokenQueue.h"
 
 /*
- * func <ID>([<DECL>[, <DECL>]*]?) -> <TYPE>  <BLOCK>
+ * fun <ID>([<DECL>[, <DECL>]*]?) -> <TYPE>  <BLOCK>
  *
  */
 
 namespace Parse {
 
     FunctionDecl* function(TokenQueue& tokens) {
-        if (!tokens.eatIdentifier("func")) return nullptr;
+        if (!tokens.eatIdentifier("fun")) return nullptr;
 
         Token identifier = tokens.expect(IDENTIFIER);
         std::vector<VariableDecl*>* parameters = Parse::parameterList(tokens);
