@@ -23,7 +23,7 @@ public:
     void analyze(Scope* scope);
 
     void generate(X86Compiler &c);
-    void generate(TACEnv& env);
+    void generate(TACFun* env);
     
     virtual bool equals(const Node& other) const;
 

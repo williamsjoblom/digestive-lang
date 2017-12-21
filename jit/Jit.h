@@ -23,9 +23,6 @@ public:
 private:
     JitRuntime runtime;
     ProgramType program;
-
-
-    std::string readFile(std::string path);
 };
 
 

@@ -26,12 +26,12 @@ void VariableExpr::dump(size_t indent) {
 }
 
 
-TACOp VariableExpr::generate(TACEnv& env) {
+TACOp VariableExpr::generate(TACFun* env) {
     return Generate::variable(env, this);
 }
 
 
-Regs VariableExpr::generate(X86Compiler &c) {
+Regs VariableExpr::generate(X86Compiler& c) {
     return Generate::expression(c, this);
 }
 

@@ -15,6 +15,8 @@ TACType::TACType(DType& type) {
 	kind = TACKind::SIGNED; break;
     case DPrimitiveKind::NATURAL:
 	kind = TACKind::UNSIGNED; break;
+    case DPrimitiveKind::NIL:
+	kind = TACKind::PTR; break;
     default:
 	assert(false);
     }

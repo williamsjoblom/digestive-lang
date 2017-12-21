@@ -15,7 +15,7 @@ Unit::~Unit() {
     for(FunctionDecl* function : functions) delete function;
 }
 
-void Unit::analyze(Scope *scope) {
+void Unit::analyze(Scope* scope) {
     Scope* innerScope = new Scope(scope);
 
     for (FunctionDecl* func : functions) {
@@ -33,8 +33,8 @@ void Unit::dump(size_t indent) {
     statements->dump(indent);
 }
 
-void Unit::generate(X86Compiler &c) {
-    assert(false); // Use Generate::program(...).
+void Unit::generate(X86Compiler& c) {
+    assert(false); // Depricated: use Generate::program(...).
 }
 
 bool Unit::equals(const Node &other) const {

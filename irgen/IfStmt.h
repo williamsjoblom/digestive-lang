@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ir/TACEnv.h"
+#include "ir/TACFun.h"
 #include "ast/IfStmt.h"
 
 namespace Generate {
-    void ifStmt(TACEnv& env, IfStmt* stmt);
+    void ifStmt(TACFun* env, IfStmt* stmt);
 }
 

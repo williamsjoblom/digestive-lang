@@ -4,6 +4,7 @@
 
 #include "UnaryExpr.h"
 #include "gen/Gen.h"
+#include "ir/TACOp.h"
 
 UnaryExpr::UnaryExpr(Operator* op, Expr* expr) {
     this->op = op;
@@ -40,7 +41,8 @@ void UnaryExpr::dump(size_t indent) {
 }
 
 
-TACOp UnaryExpr::generate(TACEnv& env) {
+TACOp UnaryExpr::generate(TACFun* env) {
+    assert(false);
     return TACOp();
 }
 

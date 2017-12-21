@@ -20,13 +20,14 @@
 #include "lexer/Lexer.h"
 #include "JitContext.h"
 #include "Backtrace.h"
+#include "util/File.h"
+
 
 struct sigaction sa;
 void signal_handler(int sig, siginfo_t* info, void* ptr);
 
 Jit::Jit() {
     program = nullptr;
-
 
     sa.sa_sigaction = signal_handler;
     sigemptyset (&sa.sa_mask);
@@ -42,7 +43,7 @@ Jit::~Jit() {
 }
 
 bool Jit::load(std::string path) {
-    std::string source = readFile(path);
+    std::string source = readSourceFile(path);
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
@@ -70,7 +71,7 @@ bool Jit::reload(std::string path) {
 
     try {
         std::cout << "Reloading '" << path << "'"<< std::endl;
-        std::string source = readFile(path);
+        std::string source = readSourceFile(path);
 
         Lexer lexer;
         TokenQueue tokens = lexer.lex(source);
@@ -153,20 +154,6 @@ bool Jit::reload(std::string path) {
     }
 
     return true;
-}
-
-std::string Jit::readFile(std::string path) {
-    std::ifstream t(path);
-    std::stringstream buffer;
-
-    if (!t.is_open()) {
-        std::cout << "Failed to open file: " << path << std::endl;
-        throw 1;
-    }
-
-    buffer << t.rdbuf();
-
-    return buffer.str();
 }
 
 int Jit::run() {

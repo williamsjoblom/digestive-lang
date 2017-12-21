@@ -40,7 +40,7 @@ void BinaryExpr::dump(size_t indent) {
     std::cout << ")";
 }
 
-TACOp BinaryExpr::generate(TACEnv& env) {
+TACOp BinaryExpr::generate(TACFun* env) {
     return Generate::binaryExpr(env, this);
 }
 

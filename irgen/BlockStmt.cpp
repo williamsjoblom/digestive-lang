@@ -1,7 +1,6 @@
 
 #include "BlockStmt.h"
 
-
-void Generate::blockStmt(TACEnv& env, BlockStmt* stmt) {
-    for (stmt->)
-	}
+void Generate::blockStmt(TACFun* env, BlockStmt* stmt) {
+    for (Stmt* s : stmt->statements) s->generate(env);
+}

@@ -8,16 +8,16 @@
 #include "Base.h"
 
 #include "ast/TupleExpr.h"
-#include <ast/LoopStmt.h>
-#include <ast/PlnStmt.h>
-#include <ast/IfStmt.h>
-#include <ast/UnaryExpr.h>
-#include <ast/IntegerLiteral.h>
+#include "ast/LoopStmt.h"
+#include "ast/PlnStmt.h"
+#include "ast/IfStmt.h"
+#include "ast/UnaryExpr.h"
+#include "ast/IntegerLiteral.h"
 #include "ast/FunctionCall.h"
 #include "asmjit/asmjit.h"
 #include "ast/VariableExpr.h"
 #include "ast/ReturnStmt.h"
-#include <ast/Unit.h>
+#include "ast/Unit.h"
 #include "ast/BinaryExpr.h"
 #include "ast/Literal.h"
 #include "ast/Expr.h"
@@ -42,7 +42,7 @@ namespace Generate {
     void function(X86Compiler &c, FunctionDecl* func); // Deprecated
     void* function(JitRuntime* runtime, FunctionDecl* func);
 
-    void variableDeclaration(X86Compiler &c, VariableDecl* decl);
+    void variableDeclaration(X86Compiler& c, VariableDecl* decl);
 
     void pln(X86Compiler& c, PlnStmt* stmt);
 

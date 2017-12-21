@@ -5,7 +5,7 @@
 #ifndef DIG_UNIT_H
 #define DIG_UNIT_H
 
-
+#include "BlockStmt.h"
 #include "FunctionDecl.h"
 
 class Unit : public Node {

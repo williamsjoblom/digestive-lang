@@ -7,7 +7,7 @@
 /*
  * Generate primitive primitive binary expression.
  */
-TACOp primitiveBinaryExpr(TACEnv& env, BinaryExpr* expr) {
+TACOp primitiveBinaryExpr(TACFun* env, BinaryExpr* expr) {
     DType& type = expr->type;
     assert(!type.isNilType());
 
@@ -15,38 +15,38 @@ TACOp primitiveBinaryExpr(TACEnv& env, BinaryExpr* expr) {
     TACOp s1 = expr->right->generate(env);
     
     TACType dT = TACType(type);
-    TACOp d = env.newVar(dT);
+    TACOp d = env->newVar(dT);
 
     switch(expr->op->symbol) {
     case OperatorSymbol::PLUS:
-	env.add(TACC::add, s0, s1, d);
+	env->add(TACC::add, s0, s1, d);
 	break;
     case OperatorSymbol::MINUS:
-	env.add(TACC::sub, s0, s1, d);
+	env->add(TACC::sub, s0, s1, d);
 	break;
     case OperatorSymbol::MUL:
-	env.add(TACC::mul, s0, s1, d);
+	env->add(TACC::mul, s0, s1, d);
 	break;
     case OperatorSymbol::DIV:
-	env.add(TACC::div, s0, s1, d);
+	env->add(TACC::div, s0, s1, d);
 	break;
     case OperatorSymbol::EQ:
-	env.add(TACC::cmpEQ, s0, s1, d);
+	env->add(TACC::cmpEQ, s0, s1, d);
 	break;
     case OperatorSymbol::NOTEQ:
-	env.add(TACC::cmpNE, s0, s1, d);
+	env->add(TACC::cmpNE, s0, s1, d);
 	break;
     case OperatorSymbol::LESSEQ:
-	env.add(TACC::cmpLE, s0, s1, d);
+	env->add(TACC::cmpLE, s0, s1, d);
 	break;
     case OperatorSymbol::GREATEREQ:
-	env.add(TACC::cmpGE, s0, s1, d);
+	env->add(TACC::cmpGE, s0, s1, d);
 	break;
     case OperatorSymbol::LESS:
-	env.add(TACC::cmpL, s0, s1, d);
+	env->add(TACC::cmpL, s0, s1, d);
 	break;
     case OperatorSymbol::GREATER:
-	env.add(TACC::cmpG, s0, s1, d);
+	env->add(TACC::cmpG, s0, s1, d);
 	break;
     default:
 	assert(false);
@@ -107,12 +107,12 @@ int tupleFlatAccessIndex(BinaryExpr* expr) {
 /**
  * Generate value tuple.
  */
-TACOp valueTupleAccessExpr(TACEnv& env, BinaryExpr* expr) {
+TACOp valueTupleAccessExpr(TACFun* env, BinaryExpr* expr) {
     TACType indexType = TACType(TACKind::UNSIGNED, 4);
     int index = tupleFlatAccessIndex(expr);
     
     TACOp tuple = expr->left->generate(env);
-    TACOp indexOperand = env.newImm(indexType, index);
+    TACOp indexOperand = env->newImm(indexType, index);
             
     if (expr->type.isTuple()) {
         assert(false);
@@ -182,18 +182,18 @@ TACOp valueTupleAccessExpr(TACEnv& env, BinaryExpr* expr) {
 // }
 
 namespace Generate {
-    TACOp binaryExpr(TACEnv& env, BinaryExpr* expr) {
+    TACOp binaryExpr(TACFun* env, BinaryExpr* expr) {
 	if (expr->op->symbol == OperatorSymbol::ASSIGN) {
 	    assert(false);
 	    //return assignment(c, expr);
 	} else if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
-            return primitiveBinaryExpr(env, expr);
-        } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT) {
+	    return primitiveBinaryExpr(env, expr);
+	} else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT) {
 	    //return tupleAccessExpr(c, expr);
 	}
 	
-        // Not returning before this point should have resulted in a semantic error during analysis of the binary expr.
-        assert(false);
+	// Not returning before this point should have resulted in a semantic error during analysis of the binary expr.
+	assert(false);
     }
 
 }

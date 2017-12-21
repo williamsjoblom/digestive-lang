@@ -12,16 +12,19 @@
 #include "ast/type/Type.h"
 #include "Node.h"
 
-#include "ir/TACEnv.h"
-#include "ir/TACOp.h"
-
 using namespace asmjit;
+
+/**
+ * Forward declarations.
+ */
+class TACOp;
+class TACFun;
 
 class Expr : public Node {
 public:
     DType type;
 
-    virtual TACOp generate(TACEnv& env) = 0; 
+    virtual TACOp generate(TACFun* env) = 0; 
     virtual Regs generate(X86Compiler &c) = 0;
 };
 

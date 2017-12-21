@@ -1,11 +1,12 @@
 #ifndef DIG_IRGEN_PROGRAM_H
 #define DIG_IRGEN_PROGRAM_H
 
-#include "ir/TACEnv.h"
+#include "ir/TACProgram.h"
+#include "ir/TACFun.h"
 #include "ast/Unit.h"
 
 namespace Generate {
-    void unit(TACEnv& env, Unit* unit);
+    void unit(TACProgram& program, Unit* unit);
 }
 
 #endif

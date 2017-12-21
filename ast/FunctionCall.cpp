@@ -5,6 +5,8 @@
 #include <util/PrettyPrint.h>
 #include <gen/Gen.h>
 #include "FunctionCall.h"
+#include "ir/TACOp.h"
+#include "irgen/FunctionCall.h"
 
 FunctionCall::FunctionCall(std::string identifier, std::vector<Expr*>* arguments) {
     this->identifier = identifier;
@@ -40,8 +42,8 @@ void FunctionCall::analyze(Scope* scope) {
 }
 
 
-TACOp FunctionCall::generate(TACEnv& env) {
-    return TACOp();
+TACOp FunctionCall::generate(TACFun* fun) {
+    return Generate::functionCall(fun, this);
 }
 
 std::vector<X86Gp> FunctionCall::generate(X86Compiler &c) {

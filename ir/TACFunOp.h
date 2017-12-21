@@ -5,6 +5,8 @@
 #include <string>
 
 #include "TACType.h"
+#include "util/PrettyPrint.h"
+#include "util/Colors.h"
 
 class TAC;
 class TACOp;
@@ -18,7 +20,9 @@ struct TACLabel {
     TAC* tac;
     std::string name;
 
-    void dump() { std::cout << name << ":" << std::endl; };
+    void dump(int indent) {
+	printIndent(indent);
+	std::cout << UNDL(<< name <<) << ":" << std::endl; };
 };
 
 

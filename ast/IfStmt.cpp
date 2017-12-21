@@ -35,7 +35,7 @@ IfStmt::~IfStmt() {
 }
 
 
-void IfStmt::analyze(Scope *scope) {
+void IfStmt::analyze(Scope* scope) {
     condition->analyze(scope);
 
     Scope* ifScope = new Scope(scope);
@@ -65,7 +65,7 @@ void IfStmt::dump(size_t indent) {
 }
 
 
-bool IfStmt::equals(const Node &other) const {
+bool IfStmt::equals(const Node& other) const {
     const IfStmt* o = dynamic_cast<const IfStmt*>(&other);
     if (o == nullptr) return false;
 
@@ -77,11 +77,11 @@ bool IfStmt::equals(const Node &other) const {
 }
 
 
-void IfStmt::generate(X86Compiler &c) {
+void IfStmt::generate(X86Compiler& c) {
     Generate::ifStmt(c, this);
 }
 
 
-void IfStmt::generate(TACEnv& env) {
+void IfStmt::generate(TACFun* env) {
     Generate::ifStmt(env, this);
 };

@@ -11,8 +11,9 @@
 #include "lexer/Lexer.h"
 #include "interactive/Interactive.h"
 
-#include "ast/Stmt.h"
-#include "ir/TACEnv.h"
+#include "ir/TACProgram.h"
+#include "irgen/Program.h"
+#include "util/File.h"
 
 bool verbose = false;
 
@@ -20,40 +21,7 @@ bool verbose = false;
  * Main.
  */
 #ifndef TEST
-int main(int argc, char* argv[]) {
-    std::string source = " { " + std::string(argv[1]) + " } ";
-
-    Lexer lexer;
-    TokenQueue tokens = lexer.lex(source);
-
-    Stmt* e = Parse::statement(tokens);
-    Scope s;
-    e->analyze(&s);
-
-    TACEnv env;
-    e->generate(env);
-    
-    env.dump();
-    
-    return 0;
-    // TACEnv env;
-
-    // TACType t0 = TACType(TACKind::UNSIGNED, 4);
-    // auto v0 = env.newVar(t0);
-
-    // TACType t1 = TACType(TACKind::UNSIGNED, 4);
-    // auto v1 = env.newVar(t0);
-
-    // TACType t2 = TACType(TACKind::UNSIGNED, 4);
-    // auto v2 = env.newVar(t0);
-    
-    // env.add(TACC::add, v0, v1, v2);
-    // env.add(TACC::div, v0, v1, v2);
-    
-    // env.dump();
-    
-    // return 0;
-    
+int main(int argc, char* argv[]) {    
     std::string path = "/home/wax/test.dg";
     
     for (int i = 1; i < argc; i++) {
@@ -61,6 +29,27 @@ int main(int argc, char* argv[]) {
 	if (arg == "-v") verbose = true;
 	else if (i == argc - 1) path = arg;
     }
+    
+    // -----------------------
+
+    TACProgram program;
+
+    std::string source = readSourceFile(path);
+    
+    Lexer lexer;
+    TokenQueue tokens = lexer.lex(source);
+
+    auto root = Parse::unit(tokens);
+    
+    Scope rootScope;
+    root->analyze(&rootScope);
+    
+    Generate::unit(program, root);
+
+    program.dump();
+
+    return 0;
+
     
     Jit jit;
     Interactive::start(&jit);

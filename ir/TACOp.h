@@ -3,23 +3,27 @@
 
 #include <string>
 
-#include "TACEnvOp.h"
+//#include "TACFun.h"
+#include "TACFunOp.h"
 #include "TACType.h"
+#include "ast/FunctionDecl.h"
 
-class TACEnv;
+class TACFun;
 
 /**
  * Three address operand kind.
  */
 enum TACOpKind {
-    VARIABLE,
     IMMEDIATE,
+    FUNCTION,
+    VARIABLE,
     LABEL,
 };
 
 
 union TACOpData {
     unsigned long immValue;
+    int functionId;
     int labelId;
     int varId;
 };
@@ -48,7 +52,8 @@ public:
 
     /**
      * Ignore.
-     * True if this operand is unused.
+     * True if this operand is unused. Automatically set when using
+     * default constructor.
      */
     bool ignore;
 
@@ -70,11 +75,17 @@ public:
      */
     TACOp(TACVar* var);
 
+
+    /**
+     * Function constructor.
+     */
+    TACOp(FunctionDecl* fun);
+
     
     /**
      * To string.
      */
-    std::string toS(TACEnv* env) const;
+    std::string toS(TACFun* fun) const;
 };
 
 #endif

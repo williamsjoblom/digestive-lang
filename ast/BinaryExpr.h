@@ -19,7 +19,7 @@ public:
     BinaryExpr(Expr* left, Operator* op, Expr* right);
     ~BinaryExpr();
 
-    TACOp generate(TACEnv& env);
+    TACOp generate(TACFun* env);
     virtual Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);

@@ -38,11 +38,15 @@ Set `d` to 1 if `s0 <= s1` otherwise 0.
 
 ## Branching
 
-#### Set Argument `setArg <s0> _ <d>`:
-Set argument indexed by `d` to `s0`.
+#### Set Argument `setArg <s0> <s1> _`:
+Set argument indexed by `s0` to `s1`.
 
-#### Call `call <s0> _  _`:
+#### Call `call <s0> _  <d>`:
 Jump to subroutine specified by `s0` (with args set by `setArg`).
+The return value will end up in `d`.
+
+#### Return `ret <s0> _ _`:
+Return `s0` from subroutine.
 
 #### Jump `jmp <s0> _ _`:
 Jump to address specified by `s0`.
@@ -63,6 +67,6 @@ Jump to address specified by `s0` if `s1` is negative.
 #### Move `move <s0> _ <d>`:
 `d := s0`
 
-#### Move and Cast `moveCast <s0> _ <d>`:
+#### Move and Cast `cast <s0> _ <d>`:
 `d := s0` where `s0` is casted to the type of `d`
 

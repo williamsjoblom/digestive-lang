@@ -2,7 +2,9 @@
 
 #include <iostream>
 
-#include "TACEnv.h"
+#include "TACFun.h"
+#include "util/PrettyPrint.h"
+#include "util/Colors.h"
 
 const char* tacCodeToS[] = {    
     "add",
@@ -21,6 +23,7 @@ const char* tacCodeToS[] = {
 
     "setArg",
     "call",
+    "ret",
     "jmp",
 
     "jmpZ",
@@ -28,7 +31,7 @@ const char* tacCodeToS[] = {
     "jmpN",
 
     "move",
-    "moveCast"
+    "cast"
 };
 
 
@@ -48,10 +51,13 @@ TAC::TAC(TACC op, TACOp& s0, TACOp& s1, TACOp& d) {
 /**
  * Dump.
  */
-void TAC::dump(TACEnv* env, int indent) {
+void TAC::dump(TACFun* env, int indent) {
     if (label != nullptr)
-	label->dump();
-    
-    std::cout << tacCodeToS[(int) op] << " " << s0.toS(env) << " "
-	      << s1.toS(env) << " → " << d.toS(env);
+	label->dump(indent);
+
+    printIndent(indent);
+    std::cout << KBLU << BOLD(<< tacCodeToS[(int) op] <<) << " "
+	      << KGRN << s0.toS(env) << " "
+	      << KGRN << s1.toS(env) << " "
+	      << KRED << d.toS(env) << RST;
 }

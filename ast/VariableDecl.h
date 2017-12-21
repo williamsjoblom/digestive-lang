@@ -7,8 +7,12 @@
 
 #include "gen/Gen.h"
 #include "Decl.h"
-#include "Expr.h"
-#include "ir/TACEnv.h"
+
+/**
+ * Forward declarations.
+ */
+class Expr;
+class TACVar;
 
 class VariableDecl : public Decl {
 public:
@@ -21,8 +25,8 @@ public:
     VariableDecl(std::string identifier, DType type, Expr* value);
     ~VariableDecl();
 
-    void generate(X86Compiler &c) override;
-    void generate(TACEnv& env) override;
+    void generate(X86Compiler& c) override;
+    void generate(TACFun* env) override;
 
     void analyze(Scope* scope) override;
     virtual bool equals(const Node& other) const override;

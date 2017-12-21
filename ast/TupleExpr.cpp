@@ -5,6 +5,7 @@
 #include "TupleExpr.h"
 #include "gen/Gen.h"
 #include "semantic/SemanticError.h"
+#include "ir/TACOp.h"
 
 TupleExpr::TupleExpr(std::vector<Expr *> values) {
     this->values = values;
@@ -14,7 +15,8 @@ TupleExpr::~TupleExpr() {
     for (Expr* v : values) delete v;
 }
 
-TACOp TupleExpr::generate(TACEnv& env) {
+TACOp TupleExpr::generate(TACFun* env) {
+    assert(false);
     return TACOp();
 }
 

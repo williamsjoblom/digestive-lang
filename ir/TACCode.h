@@ -28,6 +28,7 @@ enum class TACC {
      */
     setArg,
     call,
+    ret,
     jmp,
 
     /* Conditional branch */
@@ -39,7 +40,7 @@ enum class TACC {
      * Move
      */
      move,
-     moveCast,
+     cast,
 };
 
 #endif

@@ -6,35 +6,51 @@
 #include <vector>
 
 #include "TACOp.h"
-#include "TACEnvOp.h"
+#include "TACFunOp.h"
 
 /**
- * Forward declaration.
+ * Forward declarations.
  */
 class TAC;
+class FunctionDecl;
+class TACProgram;
+
 
 /**
- * Three address code environment.
+ * Three address code function.
  */
-class TACEnv {
+class TACFun {
 public:
+    /**
+     * Parent program.
+     */
+    TACProgram* parent;
+    
+    /**
+     * Function identifier.
+     */
+    std::string identifier;
+
+    /**
+     * Function id.
+     * Used when calling function.
+     */
+    int id;
+
+    /**
+     * Parameters.
+     */
+    std::vector<TACVar*> parameters;
     
     /**
      * Program.
      */
-    std::vector<TAC*> program;
+    std::vector<TAC*> instr;
     
     /**
      * Labels.
      */
     std::vector<TACLabel*> labels;
-
-    /**
-     * Labels waiting to be bound to next instruction.
-     * (When bind is called without an explicit instruction labels 
-     *  end up here before being bound to the next instruction added.)
-     */
-    std::vector<TACLabel*> waitingLabels;
 
     /**
      * Variables.
@@ -43,15 +59,21 @@ public:
 
     
     /**
-     * Constructor.
+     * Entry point constructor.
      */
-    TACEnv();
+    TACFun(TACProgram* parent, int id);
+
+    
+    /**
+     * Function constructor.
+     */
+    TACFun(TACProgram* parent, int id, FunctionDecl* decl);
 
     
     /**
      * Destructor.
      */
-    ~TACEnv();
+    ~TACFun();
 
     
     /**
@@ -89,6 +111,10 @@ public:
      */
     TACVar* newVar(TACType& type, std::string name="");
 
+    /**
+     * Create new variable.
+     */
+    TACVar* newParam(TACType& type, std::string name="");
     
     /**
      * Get variable with id.
@@ -109,11 +135,18 @@ public:
     
 private:
     /**
+     * Labels waiting to be bound to next instruction.
+     * (When bind is called without an explicit instruction labels 
+     *  end up here before being bound to the next instruction added.)
+     */
+    std::vector<TACLabel*> waitingLabels;
+
+    
+    /**
      * Bind and remove all labels in 'waitingLabels' to
      * given instruction.
      */
     inline void bindWaitingLabels(TAC* tac);
-    
 };
 
 #endif

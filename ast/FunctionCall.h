@@ -17,7 +17,7 @@ public:
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
     ~FunctionCall();
 
-    TACOp generate(TACEnv& env);
+    TACOp generate(TACFun* env);
     Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);

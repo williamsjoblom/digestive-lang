@@ -8,7 +8,8 @@
 #include <vector>
 
 #include "Stmt.h"
-#include "ir/TACEnv.h"
+
+class TACFun;
 
 class BlockStmt : public Stmt {
 public:
@@ -16,7 +17,7 @@ public:
     ~BlockStmt();
 
     void generate(X86Compiler &c);
-    void generate(TACEnv& env);
+    void generate(TACFun* env);
     
     void analyze(Scope* scope);
     virtual bool equals(const Node& other) const;

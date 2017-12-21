@@ -57,8 +57,8 @@ void VariableDecl::generate(X86Compiler &c) {
 }
 
 
-void VariableDecl::generate(TACEnv& env) {
-    Generate::variableDeclaration(env, this);
+void VariableDecl::generate(TACFun* fun) {
+    Generate::variableDeclaration(fun, this);
 }
 
 

@@ -1,9 +1,8 @@
-#ifndef DIG_TAC_H
-#define DIG_TAC_H
+#pragma once
 
 #include "TACOp.h"
 #include "TACCode.h"
-#include "TACEnv.h"
+#include "TACFun.h"
 
 
 /**
@@ -45,7 +44,5 @@ public:
     /**
      * Dump.
      */
-    void dump(TACEnv* env, int indent=0);
+    void dump(TACFun* env, int indent=0);
 };
-
-#endif

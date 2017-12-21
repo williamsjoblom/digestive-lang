@@ -6,14 +6,18 @@
 #include <ast/type/Types.h>
 #include "util/PrettyPrint.h"
 #include "ReturnStmt.h"
+#include "irgen/Return.h"
+
 
 ReturnStmt::ReturnStmt(Expr* expression) {
     this->expression = expression;
 }
 
+
 ReturnStmt::~ReturnStmt() {
     delete expression;
 }
+
 
 void ReturnStmt::dump(size_t indent) {
     printIndent(indent);
@@ -21,6 +25,7 @@ void ReturnStmt::dump(size_t indent) {
     expression->dump(indent);
     std::cout << std::endl;
 }
+
 
 void ReturnStmt::analyze(Scope* scope) {
     expression->analyze(scope);
@@ -31,9 +36,16 @@ void ReturnStmt::analyze(Scope* scope) {
         returnType = N8_TYPE; // No function context <=> returns exit code.
 }
 
+
 void ReturnStmt::generate(X86Compiler &c) {
     Generate::statement(c, this);
 }
+
+
+void ReturnStmt::generate(TACFun* fun) {
+    Generate::returnStmt(fun, this);
+}
+
 
 bool ReturnStmt::equals(const Node &other) const {
     const ReturnStmt* o = dynamic_cast<const ReturnStmt*>(&other);

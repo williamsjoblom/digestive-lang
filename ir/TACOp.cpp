@@ -3,8 +3,8 @@
 #include <sstream>
 #include <assert.h>
 
-#include "TACEnv.h"
-
+#include "TACFun.h"
+#include "TACProgram.h"
 
 TACOp::TACOp(bool used) {
     ignore = !used;
@@ -27,26 +27,36 @@ TACOp::TACOp(TACVar* var) {
     ignore = false;
 }
 
+
+TACOp::TACOp(FunctionDecl* fun) {
+    kind = FUNCTION;
+    data.functionId = fun->irId;
+    type = TACType(TACKind::UNSIGNED, 4);
+    ignore = false;
+}
+
+
 /**
  * To string.
  */
-std::string TACOp::toS(TACEnv* env) const {
+std::string TACOp::toS(TACFun* fun) const {
     if (ignore) return "_";
     
     std::stringstream ss;
 
-    
-    
     if (kind == IMMEDIATE) {
 	ss << "(" << type.toS() << ")";
 	ss << std::hex << data.immValue;
     } else if (kind == VARIABLE) {
 	ss << "(" << type.toS() << ")";
-	std::string name = env->var(data.varId)->name;
+	std::string name = fun->var(data.varId)->name;
 	ss << name;
     } else if (kind == LABEL) {
-	std::string name = env->label(data.labelId)->name;
+	std::string name = fun->label(data.labelId)->name;
 	ss << name;
+    } else if (kind == FUNCTION) {
+	TACFun* callee = fun->parent->funFromId(data.functionId);
+	ss << UNDL(<< callee->identifier <<);
     }
 
     return ss.str();

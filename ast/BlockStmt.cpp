@@ -41,7 +41,7 @@ void BlockStmt::generate(X86Compiler &c) {
     }
 }
 
-void BlockStmt::generate(TACEnv& env) {
+void BlockStmt::generate(TACFun* env) {
     for (Stmt* stmt : statements)
 	stmt->generate(env);
 }

@@ -14,15 +14,15 @@ IntegerLiteral::IntegerLiteral(int value) {
     this->type = I32_TYPE;
 }
 
-TACOp IntegerLiteral::generate(TACEnv& env) {
+TACOp IntegerLiteral::generate(TACFun* env) {
     return Generate::integerLiteral(env, this);
 }
 
-Regs IntegerLiteral::generate(X86Compiler &c) {
+Regs IntegerLiteral::generate(X86Compiler& c) {
     return Generate::expression(c, this);
 }
 
-bool IntegerLiteral::equals(const Node &other) const {
+bool IntegerLiteral::equals(const Node& other) const {
     const IntegerLiteral* o = dynamic_cast<const IntegerLiteral*>(&other);
     if (o == nullptr) return false;
 
