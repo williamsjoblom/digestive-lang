@@ -12,8 +12,11 @@
 #include "interactive/Interactive.h"
 
 #include "ir/TACProgram.h"
-#include "irgen/Program.h"
+#include "genir/Program.h"
 #include "util/File.h"
+#include "genasm/TACCompiler.h"
+
+#include <asmjit/asmjit.h>
 
 bool verbose = false;
 
@@ -30,8 +33,6 @@ int main(int argc, char* argv[]) {
 	else if (i == argc - 1) path = arg;
     }
     
-    // -----------------------
-
     TACProgram program;
 
     std::string source = readSourceFile(path);
@@ -43,13 +44,38 @@ int main(int argc, char* argv[]) {
     
     Scope rootScope;
     root->analyze(&rootScope);
-    
-    Generate::unit(program, root);
 
+    std::clock_t genir_t0 = std::clock();
+
+    Generate::unit(program, root);
+    
+    std::clock_t genir_t1 = std::clock();
+    double genir_dt = double(genir_t1 - genir_t0) / (CLOCKS_PER_SEC / 1000);
+
+    std::cout << "IR generation in " << genir_dt << "ms" << std::endl;
+    
     program.dump();
+
+    TACCompiler tc;
+    JitRuntime rt;
+    tc.compile(rt, program);
 
     return 0;
 
+    // -----------------------
+
+    JitRuntime rt0;
+    CodeHolder code;
+    code.init(rt0.getCodeInfo());
+    X86Compiler c(&code);
+
+    Operand o = c.newInt16();
+
+    std::cout << o.isReg() << std::endl;
+
+    return 0;
+    
+    // ---------------------------   
     
     Jit jit;
     Interactive::start(&jit);

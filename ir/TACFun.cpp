@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <type_traits>
 
 #include "TACFunOp.h"
 #include "ast/FunctionDecl.h"
@@ -16,6 +17,7 @@ TACFun::TACFun(TACProgram* parent, int id) {
     this->id = id;
 
     parameters = std::vector<TACVar*>();
+    returnType = TACType(TACKind::SIGNED, 4);
     instr = std::vector<TAC*>();
     labels = std::vector<TACLabel*>();
     variables = std::vector<TACVar*>();
@@ -30,6 +32,8 @@ TACFun::TACFun(TACProgram* parent, int id, FunctionDecl* decl) : TACFun(parent, 
 	TACVar* var = newParam(t);
 	param->irVar = var;
     }
+
+    returnType = decl->returnType;
 }
 
 
@@ -114,6 +118,12 @@ TACVar* TACFun::newVar(TACType& type, std::string name) {
 
 
 TACVar* TACFun::newParam(TACType& type, std::string name) {
+    if (name.empty()) {
+	std::stringstream ss;
+	ss << "P#" << parameters.size();
+	name = ss.str();
+    }
+    
     TACVar* var = newVar(type, name);
     parameters.push_back(var);
     return var;
@@ -133,6 +143,41 @@ TACOp TACFun::newImm(TACType& type, unsigned long value) {
 
     return op;
 }
+
+
+template<typename T>
+TACOp TACFun::newImm(T value) {
+    TACKind kind;
+    if (std::is_integral<T>::value) {
+	if (std::is_signed<T>::value)
+	    kind = TACKind::SIGNED;
+	else
+	    kind = TACKind::UNSIGNED;
+    } else if (std::is_pointer<T>::value) {
+	kind = TACKind::PTR;
+    } else {
+	assert(false);
+    }
+
+    TACType t(kind, sizeof(T));
+    return newImm(t, (unsigned long) value);
+}
+
+
+/**
+ * Explicit template instansiation.
+ */
+template TACOp TACFun::newImm(char);
+template TACOp TACFun::newImm(short);
+template TACOp TACFun::newImm(int);
+template TACOp TACFun::newImm(long);
+
+template TACOp TACFun::newImm(unsigned char);
+template TACOp TACFun::newImm(unsigned short);
+template TACOp TACFun::newImm(unsigned int);
+template TACOp TACFun::newImm(unsigned long);
+
+template TACOp TACFun::newImm<void*>(void*);
 
 
 void TACFun::dump() {

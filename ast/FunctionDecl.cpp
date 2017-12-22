@@ -4,12 +4,12 @@
 
 #include "FunctionDecl.h"
 
-#include "irgen/Function.h"
+#include "genir/Function.h"
 #include "util/PrettyPrint.h"
 #include "gen/Gen.h"
 
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                           DType returnType, bool dumpAssembly) : Decl(identifier) {
+                           DType returnType, bool dumpAssembly, bool dumpIr) : Decl(identifier) {
     this->parameters = parameters;
     this->body = body;
     this->bHandleIndex = -1;
@@ -17,6 +17,7 @@ FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* p
     this->irId = -1;
     this->returnType = returnType;
     this->dumpAssembly = dumpAssembly;
+    this->dumpIr = dumpIr;
 
     this->baPrototype = nullptr;
 }

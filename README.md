@@ -98,10 +98,3 @@ Since this function only takes a single element tuple it can be called with (`f(
 fun f(x : i32, y : i32) { pln x + y; }
 ```
 Theoretically this function only takes a single argument (which in this case is a tuple of type `(i32, i32)`). Since the argument is a tuple with more than one element paranthesis can not be omitted when calling it!
-
-
-
-
-
-
-

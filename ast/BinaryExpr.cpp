@@ -6,7 +6,7 @@
 #include "semantic/TypeUtil.h"
 #include "util/PrettyPrint.h"
 #include "BinaryExpr.h"
-#include "irgen/BinaryExpr.h"
+#include "genir/BinaryExpr.h"
 
 BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
     this->left = left;

@@ -1,5 +1,4 @@
-#ifndef DIG_TACTYPE_H
-#define DIG_TACTYPE_H
+#pragma once
 
 #include <string>
 
@@ -27,10 +26,13 @@ public:
     TACType(DType& type);
     TACType(TACKind kind, int byteSize);
     
-    inline bool isSigned();
-    inline bool isUnsigned();
+    bool isSigned();
+    bool isUnsigned();
+
+    /**
+     * Return asmjit typeid of this type.
+     */
+    int asmjitId();
 
     std::string toS() const;
 };
-
-#endif

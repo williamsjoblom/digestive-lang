@@ -6,8 +6,8 @@
 
 #include "gen/Gen.h"
 #include "util/PrettyPrint.h"
-#include "irgen/Expr.h"
-
+#include "genir/Expr.h"
+#include "ir/TACFun.h"
 
 VariableExpr::VariableExpr(std::string identifier) {
     this->identifier = identifier;

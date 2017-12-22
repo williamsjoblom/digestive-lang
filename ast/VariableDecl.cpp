@@ -5,7 +5,7 @@
 #include "util/PrettyPrint.h"
 #include "gen/Gen.h"
 #include "VariableDecl.h"
-#include "irgen/VariableDecl.h"
+#include "genir/VariableDecl.h"
 
 
 VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier) {

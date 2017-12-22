@@ -10,13 +10,31 @@
 #include "BlockStmt.h"
 #include "VariableDecl.h"
 
+/**
+ * Function declaration.
+ */
 class FunctionDecl : public Decl {
 public:
+    /**
+     * Parameters.
+     */
     std::vector<VariableDecl*>* parameters;
+    
+    /**
+     * Function body.
+     */
     BlockStmt* body;
+    
+    /**
+     * Return type.
+     */
     DType returnType;
 
-
+    /**
+     * Print IR after IR generation.
+     */
+    bool dumpIr;
+    
     /**
      * Print assembly after code generation.
      */
@@ -46,7 +64,7 @@ public:
      * Constructor.
      */
     FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                 DType returnType, bool dumpAssembly=false);
+                 DType returnType, bool dumpAssembly=false, bool dumpIr=false);
     /**
      * Destructor.
      */

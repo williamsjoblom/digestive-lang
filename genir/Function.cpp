@@ -8,4 +8,6 @@ void Generate::function(TACFun* fun, FunctionDecl* decl) {
     fun->add(TACC::ret, fun->newImm(implicitReturnType, 0), TACOp(), TACOp());
 
     decl->irId = fun->id;
+
+    if (decl->dumpIr) fun->dump();
 }

@@ -6,7 +6,7 @@
 #include <gen/Gen.h>
 #include "FunctionCall.h"
 #include "ir/TACOp.h"
-#include "irgen/FunctionCall.h"
+#include "genir/FunctionCall.h"
 
 FunctionCall::FunctionCall(std::string identifier, std::vector<Expr*>* arguments) {
     this->identifier = identifier;

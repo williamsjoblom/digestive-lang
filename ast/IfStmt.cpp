@@ -7,7 +7,7 @@
 #include "util/PrettyPrint.h"
 #include "gen/Gen.h"
 #include "IfStmt.h"
-#include "irgen/IfStmt.h"
+#include "genir/IfStmt.h"
 
 
 IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) {

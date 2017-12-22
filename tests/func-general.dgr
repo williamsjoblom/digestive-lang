@@ -5,6 +5,7 @@
 fun f() { } # Empty functions should be allowed.
 fun g() -> i32 { return 123; } # Simple primitive return.
 
+f();
 pln g();
 
 # Expected output: 

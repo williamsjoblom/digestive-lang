@@ -9,7 +9,6 @@
 namespace BuiltIn {
     template <typename T>
     void pln(T i);
-
 }
 
 

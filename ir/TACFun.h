@@ -41,6 +41,11 @@ public:
      * Parameters.
      */
     std::vector<TACVar*> parameters;
+
+    /**
+     * Return type.
+     */
+    TACType returnType;
     
     /**
      * Program.
@@ -110,11 +115,13 @@ public:
      * Create new variable.
      */
     TACVar* newVar(TACType& type, std::string name="");
-
+    
+    
     /**
      * Create new variable.
      */
     TACVar* newParam(TACType& type, std::string name="");
+
     
     /**
      * Get variable with id.
@@ -127,6 +134,13 @@ public:
      */
     TACOp newImm(TACType& type, unsigned long value);
     
+    
+    /**
+     * New generic immediate.
+     */
+    template<typename T>
+    TACOp newImm(T value);
+
     
     /**
      * Dump.

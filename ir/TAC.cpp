@@ -31,7 +31,10 @@ const char* tacCodeToS[] = {
     "jmpN",
 
     "move",
-    "cast"
+    "cast",
+    "salloc",
+    "tupTo",
+    "tupFrom"
 };
 
 

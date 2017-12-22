@@ -6,7 +6,7 @@
 #include <ast/type/Types.h>
 #include "util/PrettyPrint.h"
 #include "ReturnStmt.h"
-#include "irgen/Return.h"
+#include "genir/Return.h"
 
 
 ReturnStmt::ReturnStmt(Expr* expression) {

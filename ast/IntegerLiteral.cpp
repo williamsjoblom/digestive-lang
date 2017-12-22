@@ -5,8 +5,9 @@
 
 #include "ast/type/Types.h"
 #include "IntegerLiteral.h"
-#include "irgen/Expr.h"
+#include "genir/Expr.h"
 #include "gen/Gen.h"
+#include "ir/TACFun.h"
 
 
 IntegerLiteral::IntegerLiteral(int value) {

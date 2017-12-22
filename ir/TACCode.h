@@ -30,7 +30,7 @@ enum class TACC {
     call,
     ret,
     jmp,
-
+    
     /* Conditional branch */
     jmpZ,
     jmpNZ,
@@ -39,8 +39,13 @@ enum class TACC {
     /**
      * Move
      */
-     move,
-     cast,
+    move,
+    cast,
+    salloc,
+
+    /* Tuple manipulation */
+    tupTo,
+    tupFrom
 };
 
 #endif

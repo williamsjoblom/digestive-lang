@@ -46,7 +46,7 @@ std::string TACOp::toS(TACFun* fun) const {
 
     if (kind == IMMEDIATE) {
 	ss << "(" << type.toS() << ")";
-	ss << std::hex << data.immValue;
+	ss << "0x" << std::uppercase << std::hex << data.immValue;
     } else if (kind == VARIABLE) {
 	ss << "(" << type.toS() << ")";
 	std::string name = fun->var(data.varId)->name;
