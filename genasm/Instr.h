@@ -3,6 +3,7 @@
 #include <asmjit/asmjit.h>
 
 #include "TACCompiler.h"
+#include "InstrEnv.h"
 
 using namespace asmjit;
 
@@ -12,11 +13,11 @@ using namespace asmjit;
 class TAC;
 class TACOp;
 
-
+    
 /**
  * Generate instruction.
  */
-void generateInstr(TACCompiler* tc, X86Compiler& c, TAC* instr);
+void generateInstr(InstrEnv& e, TAC* instr);
 
 
 /**

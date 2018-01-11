@@ -30,6 +30,6 @@ void Generate::pln(TACFun* fun, PlnStmt* stmt) {
     TACOp ptrOp = fun->newImm<void*>(ptr);
     TACOp arg = stmt->expression->generate(fun);
 
-    fun->add(TACC::setArg, fun->newImm<int>(0), arg, TACOp());
+    fun->add(TACC::pushArg, arg, TACOp(), TACOp());
     fun->add(TACC::call, ptrOp, TACOp(), TACOp());
 }

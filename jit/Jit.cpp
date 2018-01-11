@@ -1,7 +1,3 @@
-//
-// Created by wax on 1/30/17.
-//
-
 #include "Jit.h"
 
 #include <fstream>
@@ -12,7 +8,6 @@
 #include <signal.h>
 #include <bits/siginfo.h>
 #include <sys/ucontext.h>
-#include <util/Colors.h>
 
 #include "globals.h"
 #include "gen/Gen.h"
@@ -21,10 +16,12 @@
 #include "JitContext.h"
 #include "Backtrace.h"
 #include "util/File.h"
+#include "util/Colors.h"
 
 
 struct sigaction sa;
 void signal_handler(int sig, siginfo_t* info, void* ptr);
+
 
 Jit::Jit() {
     program = nullptr;
@@ -37,10 +34,12 @@ Jit::Jit() {
     sigaction(SIGSEGV, &sa, NULL);
 }
 
+
 Jit::~Jit() {
     runtime.release((void*) program);
     delete JitContext::root;
 }
+
 
 bool Jit::load(std::string path) {
     std::string source = readSourceFile(path);

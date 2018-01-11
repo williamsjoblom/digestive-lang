@@ -41,11 +41,11 @@ Set `d` to 1 if `s0 <= s1` otherwise 0.
 
 ## Branching
 
-#### Set Argument `setArg <s0> <s1> _`:
-Set argument indexed by `s0` to `s1`.
+#### Push Argument `pushArg <s0> _ _`:
+Push argument `s0`.
 
 #### Call `call <s0> _  <d>`:
-Jump to subroutine specified by `s0` (with args set by `setArg`).
+Jump to subroutine specified by `s0` (with args set by `Arg`).
 The return value will end up in `d`.
 
 #### Return `ret <s0> _ _`:

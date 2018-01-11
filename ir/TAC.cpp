@@ -20,8 +20,7 @@ const char* tacCodeToS[] = {
     "cmpGE",
     "cmpLE",
     
-
-    "setArg",
+    "pushArg",
     "call",
     "ret",
     "jmp",

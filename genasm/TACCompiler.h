@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <vector>
 #include <asmjit/asmjit.h>
 
 #include "ir/TACProgram.h"
@@ -21,6 +22,11 @@ public:
      * Variable id to register.
      */
     std::map<int, X86Gp> varToReg;
+    
+    /**
+     * Pushed arguments.
+     */
+    std::vector<TACOp> pushedArgs;
 
     
     /**
@@ -39,5 +45,5 @@ private:
     /**
      * Compile function.
      */
-    void compileFun(JitRuntime& runtime, TACFun* fun);
+    void* compileFun(JitRuntime& runtime, TACFun* fun);
 };

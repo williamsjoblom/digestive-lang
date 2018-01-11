@@ -26,7 +26,7 @@ enum class TACC {
     /**
      * Branch
      */
-    setArg,
+    pushArg,
     call,
     ret,
     jmp,

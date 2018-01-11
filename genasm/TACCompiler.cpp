@@ -10,12 +10,14 @@ TACCompiler::TACCompiler() {
 
 
 ProgramType TACCompiler::compile(JitRuntime& runtime, TACProgram& program) {
-    for (TACFun* fun : program.functions)
-	compileFun(runtime, fun);
+    std::vector<void*> funPtrs;
+    for (TACFun* fun : program.functions) {	
+	void* funPtr = compileFun(runtime, fun);
+	funPtrs.push_back(funPtr);
+    }
 
-    compileFun(runtime, program.entry);
-
-    return nullptr;
+    void* entryPtr = compileFun(runtime, program.entry);
+    return (ProgramType) entryPtr;
 }
 
 
@@ -31,7 +33,19 @@ FuncSignatureX createSignature(TACFun* fun) {
 }
 
 
-void TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
+/**
+ * Bind labels present at the current instruction.
+ * TODO: Binding labels currently O(m*n). We can do better!
+ */
+void bindLabelsAtPoint(TACFun* fun, InstrEnv& e, TAC* instr) {
+    for (TACLabel* tacLabel : fun->labels) {
+	if (tacLabel->tac == instr)
+	    e.c.bind(e.label(tacLabel->id));
+    }
+}
+
+
+void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     CodeHolder code;
     StringLogger logger;
     ErrHandler handler;
@@ -43,18 +57,29 @@ void TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     FuncSignatureX signature = createSignature(fun);
     CCFunc* f = c.addFunc(signature);
     f->getFrameInfo().enablePreservedFP();
-    
+
+    InstrEnv e(this, c, fun);
+	
     for (int i = 0; i < fun->parameters.size(); i++) {
-	X86Gp reg = generateVar(this, c, fun->parameters[i]);
+	TACOp param = fun->parameters[i];
+	X86Gp reg = generateVar(e, param);
 	c.setArg(i, reg);
     }
 
     for (TAC* instr : fun->instr) {
-	generateInstr(this, c, instr);
+	bindLabelsAtPoint(fun, e, instr);
+	    
+	e.setContext(instr);
+	generateInstr(e, instr);
     }
-
+	
     c.endFunc();
     c.finalize();
+
+    void* funPtr;
+    runtime.add(&funPtr, &code);
     
     std::cout << std::endl << fun->identifier << "(): " << std::endl << logger.getString() << std::endl;
+
+    return funPtr;
 }

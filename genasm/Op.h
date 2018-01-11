@@ -9,12 +9,18 @@
 	)
 
 /**
+ * Forward declarations.
+ */
+class InstrEnv;
+
+
+/**
  * Generate variable.
  */
-X86Gp generateVar(TACCompiler* tc, X86Compiler& c, TACOp var);
+X86Gp generateVar(InstrEnv& e, TACOp& var);
 
 
 /**
  * Generate operand.
  */
-Operand generateOperand(TACCompiler* tc, X86Compiler& c, TACOp op);
+Operand generateOperand(InstrEnv& e, TACOp& op);

@@ -51,15 +51,23 @@ int main(int argc, char* argv[]) {
     
     std::clock_t genir_t1 = std::clock();
     double genir_dt = double(genir_t1 - genir_t0) / (CLOCKS_PER_SEC / 1000);
-
     std::cout << "IR generation in " << genir_dt << "ms" << std::endl;
     
     program.dump();
 
     TACCompiler tc;
     JitRuntime rt;
-    tc.compile(rt, program);
 
+    std::clock_t genasm_t0 = std::clock();
+    
+    ProgramType p = tc.compile(rt, program);
+
+    std::clock_t genasm_t1 = std::clock();
+    double genasm_dt = double(genasm_t1 - genasm_t0) / (CLOCKS_PER_SEC / 1000);
+    std::cout << "IR compilation in " << genasm_dt << "ms" << std::endl;
+
+    std::cout << p() << std::endl;
+    
     return 0;
 
     // -----------------------
