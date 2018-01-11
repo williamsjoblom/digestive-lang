@@ -243,8 +243,6 @@ GENERATE(call, e) {
 	}
     } else if(e._s0.kind == TACOpKind::FUNCTION) {
 	X86Gp handle = e.c.newGpd();
-	e.c.emit(X86Inst::kIdMov, handle,
-		 imm_ptr(JitContext::handles + e._s0.data.functionId));
 	funcCall = e.c.call(x86::ptr((uint64_t)(JitContext::handles + e._s0.data.functionId)), signature);
     } else {
 	assert(false);
