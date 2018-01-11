@@ -10,7 +10,10 @@ void Generate::unit(TACProgram& program, Unit* unit) {
 	program.functions.push_back(funcEnv);
     }
 
-    TACFun* entryEnv = new TACFun(&program, 0);
-    unit->statements->generate(entryEnv);
-    program.entry = entryEnv;
+    TACFun* entryFun = new TACFun(&program, 0);
+    unit->statements->generate(entryFun);
+    entryFun->add(TACC::ret, entryFun->newImm<int>(0), TACOp(), TACOp());
+
+    
+    program.entry = entryFun;
 }

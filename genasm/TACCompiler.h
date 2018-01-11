@@ -17,12 +17,7 @@ typedef int (*ProgramType)(void);
  * Three address code compiler.
  */
 class TACCompiler {
-public:
-    /**
-     * Variable id to register.
-     */
-    std::map<int, X86Gp> varToReg;
-    
+public:    
     /**
      * Pushed arguments.
      */

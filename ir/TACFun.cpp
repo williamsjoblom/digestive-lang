@@ -59,9 +59,8 @@ TAC* TACFun::add(TACC opcode, TACOp s0, TACOp s1, TACOp d) {
 
 TACLabel* TACFun::newLabel(std::string name) {
     TACLabel* label = new TACLabel();
-    labels.push_back(label);
-
-    label->id = labels.size() - 1;
+    
+    label->id = labels.size();
     label->tac = nullptr;
     
     if (name.empty()) {
@@ -71,6 +70,8 @@ TACLabel* TACFun::newLabel(std::string name) {
     } else {
 	label->name = name;
     }
+
+    labels.push_back(label);
     
     return label;
 }

@@ -27,6 +27,11 @@ public:
     X86Compiler& c;
 
     /**
+     * Variable id to register.
+     */
+    std::map<int, X86Gp> varToReg;
+
+    /**
      * Labels
      */
     std::vector<Label> labels;

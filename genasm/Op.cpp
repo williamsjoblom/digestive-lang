@@ -19,13 +19,13 @@ Imm generateImm(InstrEnv& e, TACOp& imm) {
 X86Gp generateVar(InstrEnv& e, TACOp& var) {
     int varId = var.data.varId;
     
-    auto it = e.tc->varToReg.find(varId);
-    if (it == e.tc->varToReg.end()) {
+    auto it = e.varToReg.find(varId);
+    if (it == e.varToReg.end()) {
 	X86Gp reg = e.c.newGpReg(var.type.asmjitId());
-	e.tc->varToReg[varId] = reg;
+	e.varToReg[varId] = reg;
 	return reg;
     } else {
-	return e.tc->varToReg[varId];
+	return e.varToReg[varId];
     }
 }
 

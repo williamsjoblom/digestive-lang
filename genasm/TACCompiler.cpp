@@ -3,6 +3,7 @@
 #include "Instr.h"
 #include "Op.h"
 #include "gen/ErrHandler.h"
+#include "jit/JitContext.h"
 
 TACCompiler::TACCompiler() {
     
@@ -10,13 +11,20 @@ TACCompiler::TACCompiler() {
 
 
 ProgramType TACCompiler::compile(JitRuntime& runtime, TACProgram& program) {
+    JitContext::allocateHandles(program.functions.size() + 1);
+    
+    void* entryPtr = compileFun(runtime, program.entry);
+
     std::vector<void*> funPtrs;
-    for (TACFun* fun : program.functions) {	
+    for (TACFun* fun : program.functions) {
 	void* funPtr = compileFun(runtime, fun);
 	funPtrs.push_back(funPtr);
     }
-
-    void* entryPtr = compileFun(runtime, program.entry);
+    
+    JitContext::addHandle(entryPtr);
+    for (void* funPtr : funPtrs)
+	JitContext::addHandle(funPtr);
+    
     return (ProgramType) entryPtr;
 }
 
@@ -34,14 +42,11 @@ FuncSignatureX createSignature(TACFun* fun) {
 
 
 /**
- * Bind labels present at the current instruction.
- * TODO: Binding labels currently O(m*n). We can do better!
+ * Bind label present at the current instruction.
  */
-void bindLabelsAtPoint(TACFun* fun, InstrEnv& e, TAC* instr) {
-    for (TACLabel* tacLabel : fun->labels) {
-	if (tacLabel->tac == instr)
-	    e.c.bind(e.label(tacLabel->id));
-    }
+void bindLabelAtPoint(TACFun* fun, InstrEnv& e, TAC* instr) {
+    if (instr->label != nullptr)
+	e.c.bind(e.label(instr->label->id));
 }
 
 
@@ -59,7 +64,9 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     f->getFrameInfo().enablePreservedFP();
 
     InstrEnv e(this, c, fun);
-	
+
+    std::cout << "label count: " << e.labels.size() << std::endl;
+
     for (int i = 0; i < fun->parameters.size(); i++) {
 	TACOp param = fun->parameters[i];
 	X86Gp reg = generateVar(e, param);
@@ -67,18 +74,18 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     }
 
     for (TAC* instr : fun->instr) {
-	bindLabelsAtPoint(fun, e, instr);
+	bindLabelAtPoint(fun, e, instr);
 	    
 	e.setContext(instr);
 	generateInstr(e, instr);
     }
-	
+    
     c.endFunc();
     c.finalize();
 
     void* funPtr;
     runtime.add(&funPtr, &code);
-    
+
     std::cout << std::endl << fun->identifier << "(): " << std::endl << logger.getString() << std::endl;
 
     return funPtr;
