@@ -2,6 +2,9 @@
 
 Documentation for the three address code used as an intermediate representation. This intermediate representation allow easier implementation of backends for different CPU architectures and fancy optimizing transformations yielding blazing fast machine code.
 
+
+Since a lot of the semantics in Digestive are centered around the use of tuples there are several instructions designated for tuple manipulations.
+
 ## Arithmetics
 
 #### Add `add <s0> <s1> <d>`:
@@ -38,11 +41,15 @@ Set `d` to 1 if `s0 <= s1` otherwise 0.
 
 ## Branching
 
-#### Set Argument `setArg <s0> _ <d>`:
-Set argument indexed by `d` to `s0`.
+#### Push Argument `pushArg <s0> _ _`:
+Push argument `s0`.
 
-#### Call `call <s0> _  _`:
-Jump to subroutine specified by `s0` (with args set by `setArg`).
+#### Call `call <s0> _  <d>`:
+Jump to subroutine specified by `s0` (with args set by `Arg`).
+The return value will end up in `d`.
+
+#### Return `ret <s0> _ _`:
+Return `s0` from subroutine.
 
 #### Jump `jmp <s0> _ _`:
 Jump to address specified by `s0`.
@@ -62,3 +69,19 @@ Jump to address specified by `s0` if `s1` is negative.
 
 #### Move `move <s0> _ <d>`:
 `d := s0`
+
+#### Move and Cast `cast <s0> _ <d>`:
+`d := s0` where `s0` is casted to the type of `d`
+
+#### Allocate stack `salloc <s0> _ <d>`:
+Allocate `s0` bytes of stack memory (`s0` must be an immediate operand).
+A pointer to the allocated memory is put in `d`.
+Used for allocating tuples.
+
+### Tuple Manipulation
+
+#### Move to tuple `tupTo <s0> <s1> <d>`:
+`d + s1 := s0` where `d` is a (tuple) pointer and `s1` and integral immediate operand.
+
+#### Move from tuple `tupFrom <s0> <s1> <d>`:
+`d := s0 + s1` where `s0` is a (tuple) pointer and `s1` and integral immediate operand.

@@ -1,13 +1,13 @@
 # Test header:
 #@ description: single argument function call
 
-func b(x : n16) { pln x; }
-func c(x : n32) { pln x; }
-func d(x : n64) { pln x; }
+fun b(x : n16) { pln x; }
+fun c(x : n32) { pln x; }
+fun d(x : n64) { pln x; }
 
-func e(x : i16) { pln x; }
-func f(x : i32) { pln x; }
-func g(x : i64) { pln x; }
+fun e(x : i16) { pln x; }
+fun f(x : i32) { pln x; }
+fun g(x : i64) { pln x; }
 
 b(2);
 c(3);

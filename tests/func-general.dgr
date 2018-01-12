@@ -2,9 +2,10 @@
 #@ name: General function tests
 #@ description: 
 
-func f() { } # Empty functions should be allowed.
-func g() -> i32 { return 123; } # Simple primitive return.
+fun f() { } # Empty functions should be allowed.
+fun g() -> i32 { return 123; } # Simple primitive return.
 
+f();
 pln g();
 
 # Expected output: 

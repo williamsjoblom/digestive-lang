@@ -9,14 +9,14 @@
 #include "lexer/TokenQueue.h"
 
 /*
- * func <ID>([<DECL>[, <DECL>]*]?) -> <TYPE>  <BLOCK>
+ * fun <ID>([<DECL>[, <DECL>]*]?) -> <TYPE>  <BLOCK>
  *
  */
 
 namespace Parse {
 
     FunctionDecl* function(TokenQueue& tokens) {
-        if (!tokens.eatIdentifier("func")) return nullptr;
+        if (!tokens.eatIdentifier("fun")) return nullptr;
 
         Token identifier = tokens.expect(IDENTIFIER);
         std::vector<VariableDecl*>* parameters = Parse::parameterList(tokens);
@@ -29,12 +29,17 @@ namespace Parse {
         }
 
         bool dumpAssembly = false;
+	bool dumpIr = false;
         while (tokens.top().type == TokenType::IDENTIFIER) {
-            if (tokens.top().value == "dumpasm") {
-                tokens.pop();
-                dumpAssembly = true;
-            }
-        }
+	    std::string value = tokens.top().value;
+	    if (value == "dumpasm") {
+		tokens.pop();
+		dumpAssembly = true;
+	    } else if (value == "dumpir") {
+		tokens.pop();
+		dumpIr = true;
+	    }
+	}
 
 	BlockStmt* body = Parse::block(tokens);
         if (body == nullptr) {
@@ -43,7 +48,7 @@ namespace Parse {
         }
 
 
-        return new FunctionDecl(identifier.value, parameters, body, returnType, dumpAssembly);
+        return new FunctionDecl(identifier.value, parameters, body, returnType, dumpAssembly, dumpIr);
     }
 
     VariableDecl* parameter(TokenQueue& tokens) {

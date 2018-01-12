@@ -3,9 +3,12 @@
 //
 
 #include <assert.h>
-#include <util/PrettyPrint.h>
-#include <gen/Gen.h>
+
+#include "util/PrettyPrint.h"
+#include "gen/Gen.h"
 #include "IfStmt.h"
+#include "genir/IfStmt.h"
+
 
 IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) {
     assert(ifBlock != nullptr);
@@ -15,6 +18,7 @@ IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) {
     this->elseBlock = nullptr;
 }
 
+
 IfStmt::IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock) {
     assert(ifBlock != nullptr);
 
@@ -23,13 +27,15 @@ IfStmt::IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock) {
     this->elseBlock = elseBlock;
 }
 
+
 IfStmt::~IfStmt() {
     delete condition;
     delete ifBlock;
     if (elseBlock != nullptr) delete elseBlock;
 }
 
-void IfStmt::analyze(Scope *scope) {
+
+void IfStmt::analyze(Scope* scope) {
     condition->analyze(scope);
 
     Scope* ifScope = new Scope(scope);
@@ -40,6 +46,7 @@ void IfStmt::analyze(Scope *scope) {
         elseBlock->analyze(elseScope);
     }
 }
+
 
 void IfStmt::dump(size_t indent) {
     printIndent(indent);
@@ -57,7 +64,8 @@ void IfStmt::dump(size_t indent) {
     }
 }
 
-bool IfStmt::equals(const Node &other) const {
+
+bool IfStmt::equals(const Node& other) const {
     const IfStmt* o = dynamic_cast<const IfStmt*>(&other);
     if (o == nullptr) return false;
 
@@ -68,6 +76,12 @@ bool IfStmt::equals(const Node &other) const {
     return *o->condition == *condition && *o->ifBlock == *ifBlock && *o->elseBlock == *elseBlock;
 }
 
-void IfStmt::generate(X86Compiler &c) {
+
+void IfStmt::generate(X86Compiler& c) {
     Generate::ifStmt(c, this);
 }
+
+
+void IfStmt::generate(TACFun* env) {
+    Generate::ifStmt(env, this);
+};

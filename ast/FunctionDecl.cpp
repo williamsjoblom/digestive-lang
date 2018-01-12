@@ -2,18 +2,22 @@
 // Created by wax on 12/14/16.
 //
 
-#include "util/PrettyPrint.h"
-#include "gen/Gen.h"
 #include "FunctionDecl.h"
 
+#include "genir/Function.h"
+#include "util/PrettyPrint.h"
+#include "gen/Gen.h"
+
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                           DType returnType, bool dumpAssembly) : Decl(identifier) {
+                           DType returnType, bool dumpAssembly, bool dumpIr) : Decl(identifier) {
     this->parameters = parameters;
     this->body = body;
     this->bHandleIndex = -1;
     this->codeSize = -1;
+    this->irId = -1;
     this->returnType = returnType;
     this->dumpAssembly = dumpAssembly;
+    this->dumpIr = dumpIr;
 
     this->baPrototype = nullptr;
 }
@@ -46,42 +50,46 @@ void FunctionDecl::generate(X86Compiler &c) {
     Generate::function(c, this);
 }
 
+void FunctionDecl::generate(TACFun* env) {
+    Generate::function(env, this);
+}
+
 bool FunctionDecl::equals(const Node &other) const {
     const FunctionDecl* o = dynamic_cast<const FunctionDecl*>(&other);
     if (o == nullptr) return false;
 
     return matchesSignature(*o) && *body == *o->body;
-}
-
-bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
-    if (other.parameters->size() != parameters->size()) return false;
-
-    for (int i = 0; i < parameters->size(); i++) {
-        VariableDecl* parameter = (*parameters)[i];
-        VariableDecl* otherParameter = (*other.parameters)[i];
-
-        if (*parameter != *otherParameter) return false;
     }
 
-    return Decl::equals(other);
-}
+    bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
+	if (other.parameters->size() != parameters->size()) return false;
+
+	for (int i = 0; i < parameters->size(); i++) {
+	    VariableDecl* parameter = (*parameters)[i];
+	    VariableDecl* otherParameter = (*other.parameters)[i];
+
+	    if (*parameter != *otherParameter) return false;
+	}
+
+	return Decl::equals(other);
+    }
 
 
-int FunctionDecl::stackSize() {
-    return sizeof(void*);
-}
+    int FunctionDecl::stackSize() {
+	return sizeof(void*);
+    }
 
 
 /**
  * Add single parameter to function prototype.
  */
-int addParamToPrototype(DType type, FuncSignatureX* prototype) {
-    int count = 0;
+    int addParamToPrototype(DType type, FuncSignatureX* prototype) {
+	int count = 0;
     
-    if (type.isPrimitive()) {
-	prototype->addArg(TypeIdOf<int>::kTypeId);
-	count++;
-    } else if (type.isTuple()) {
+	if (type.isPrimitive()) {
+	    prototype->addArg(TypeIdOf<int>::kTypeId);
+	    count++;
+	} else if (type.isTuple()) {
 	for (int i = 0; i < type.type.tuple->size(); i++) {
 	    addParamToPrototype(type.type.tuple->at(i), prototype);
 	    count++;

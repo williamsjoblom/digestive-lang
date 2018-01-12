@@ -5,9 +5,10 @@
 #ifndef DIG_TUPLEEXPR_H
 #define DIG_TUPLEEXPR_H
 
-
-#include <gen/Base.h>
+#include "gen/Base.h"
 #include "Expr.h"
+
+class TACFun;
 
 class TupleExpr : public Expr {
 public:
@@ -17,7 +18,8 @@ public:
     TupleExpr(std::vector<Expr*> values);
     ~TupleExpr();
 
-    Regs generate(X86Compiler &c);
+    TACOp generate(TACFun* fun);
+    Regs generate(X86Compiler& c);
 
     void analyze(Scope* scope);
 

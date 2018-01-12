@@ -27,6 +27,10 @@ enum TokenType {
     RBRACK,
     LPAR,
     RPAR,
+    // Argument list parantheses.
+    // Replaces regular paranthesis during infix to postfix parsing.
+    LARGPAR,
+    RARGPAR,
 
     EQ,
     NOTEQ,

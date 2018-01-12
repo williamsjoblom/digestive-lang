@@ -1,10 +1,10 @@
-//
-// Created by wax on 1/31/17.
-//
+#include "LoopStmt.h"
 
 #include <assert.h>
-#include <gen/Gen.h>
-#include "LoopStmt.h"
+
+#include "gen/Gen.h"
+#include "genir/LoopStmt.h"
+
 
 LoopStmt::LoopStmt(Expr* condition, Stmt* body) {
     this->condition = condition;
@@ -21,6 +21,10 @@ LoopStmt::~LoopStmt() {
 
 void LoopStmt::generate(X86Compiler& c) {
     Generate::loop(c, this);
+}
+
+void LoopStmt::generate(TACFun* env) {
+    Generate::loopStmt(env, this);
 }
 
 void LoopStmt::analyze(Scope* scope) {

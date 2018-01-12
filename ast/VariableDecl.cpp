@@ -2,23 +2,28 @@
 // Created by wax on 12/14/16.
 //
 
-#include <util/PrettyPrint.h>
-#include <gen/Gen.h>
+#include "util/PrettyPrint.h"
+#include "gen/Gen.h"
 #include "VariableDecl.h"
+#include "genir/VariableDecl.h"
+
 
 VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier) {
     this->value = nullptr;
     this->type = type;
 }
 
+
 VariableDecl::VariableDecl(std::string identifier, const DType type, Expr* value) : Decl(identifier) {
     this->value = value;
     this->type = type;
 }
 
+
 VariableDecl::~VariableDecl() {
     delete value;
 }
+
 
 void VariableDecl::analyze(Scope* scope) {
     scope->declare(this);
@@ -34,6 +39,7 @@ void VariableDecl::analyze(Scope* scope) {
     }
 }
 
+
 void VariableDecl::dump(size_t indent) {
     printIndent(indent);
     std::cout << "var " << identifier;
@@ -45,9 +51,16 @@ void VariableDecl::dump(size_t indent) {
     std::cout << std::endl;
 }
 
+
 void VariableDecl::generate(X86Compiler &c) {
     Generate::variableDeclaration(c, this);
 }
+
+
+void VariableDecl::generate(TACFun* fun) {
+    Generate::variableDeclaration(fun, this);
+}
+
 
 bool VariableDecl::equals(const Node &other) const {
     const VariableDecl* o = dynamic_cast<const VariableDecl*>(&other);
@@ -59,6 +72,7 @@ bool VariableDecl::equals(const Node &other) const {
 
     return *o->value == *value && Decl::equals(other);
 }
+
 
 int VariableDecl::stackSize() {
     // FIXME: read actual stack size from type.

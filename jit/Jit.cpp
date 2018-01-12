@@ -1,7 +1,3 @@
-//
-// Created by wax on 1/30/17.
-//
-
 #include "Jit.h"
 
 #include <fstream>
@@ -12,7 +8,6 @@
 #include <signal.h>
 #include <bits/siginfo.h>
 #include <sys/ucontext.h>
-#include <util/Colors.h>
 
 #include "globals.h"
 #include "gen/Gen.h"
@@ -20,13 +15,19 @@
 #include "lexer/Lexer.h"
 #include "JitContext.h"
 #include "Backtrace.h"
+#include "util/File.h"
+#include "util/Colors.h"
+#include "genasm/TACCompiler.h"
+#include "genir/Program.h"
+#include "genir/Function.h"
+
 
 struct sigaction sa;
 void signal_handler(int sig, siginfo_t* info, void* ptr);
 
+
 Jit::Jit() {
     program = nullptr;
-
 
     sa.sa_sigaction = signal_handler;
     sigemptyset (&sa.sa_mask);
@@ -36,26 +37,32 @@ Jit::Jit() {
     sigaction(SIGSEGV, &sa, NULL);
 }
 
+
 Jit::~Jit() {
     runtime.release((void*) program);
     delete JitContext::root;
 }
 
+
 bool Jit::load(std::string path) {
-    std::string source = readFile(path);
+    std::string source = readSourceFile(path);
 
     Lexer lexer;
     TokenQueue tokens = lexer.lex(source);
-
+    
     try {
-        JitContext::root = Parse::unit(tokens);
-        Scope fileScope;
-        JitContext::root->analyze(&fileScope);
+	Unit* root = Parse::unit(tokens);
+	JitContext::root = root;
+	Scope fileScope;
+	root->analyze(&fileScope);
+	
+        allocateHandles(root->functionCount() + 1);
+	
+	Generate::unit(ir, root);
 
-        allocateHandles(JitContext::root->functionCount());
-
-        program = Generate::program(&runtime, JitContext::root);
-
+	TACCompiler tc;
+	program = tc.compile(runtime, ir);
+     
 	if (verbose) JitContext::dumpHandles();
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
@@ -65,12 +72,13 @@ bool Jit::load(std::string path) {
     return true;
 }
 
+
 bool Jit::reload(std::string path) {
     Scope* fileScope = new Scope();
 
     try {
         std::cout << "Reloading '" << path << "'"<< std::endl;
-        std::string source = readFile(path);
+        std::string source = readSourceFile(path);
 
         Lexer lexer;
         TokenQueue tokens = lexer.lex(source);
@@ -82,10 +90,10 @@ bool Jit::reload(std::string path) {
         int added = 0;
 
 	if (verbose)
-	    std::cout << "Parsed " << newRoot->functions.size() << " functions" << std::endl;
+	    std::cout << "Parsed " << newRoot->functions.size() << " function(s)" << std::endl;
         
         // TODO: O(N^2), will be slow for large files later on! Also not very pretty!
-        // (Use some neat tree or map structure for storing functions instead for less expensive lookup)
+        // (Use some neat tree or map structure for storing functions for less expensive lookup)
         for (FunctionDecl* newFunction : newRoot->functions) {
             bool addFunction = true;
 
@@ -93,17 +101,21 @@ bool Jit::reload(std::string path) {
                 FunctionDecl* oldFunction = JitContext::root->functions[i];
 
                 if (*newFunction == *oldFunction) {                        // Function not updated
-                    newFunction->bHandleIndex = oldFunction->bHandleIndex;
+                    newFunction->irId = oldFunction->irId;
                     addFunction = false;
                     break;
 
                 } else if (newFunction->matchesSignature(*oldFunction)) {  // Function body updated.
-                    newFunction->bHandleIndex = oldFunction->bHandleIndex;
+		    newFunction->irId = oldFunction->irId;
 
-                    void* ptr = Generate::function(&runtime, newFunction);
-                    JitContext::setHandle(newFunction->bHandleIndex, ptr);
+		    TACFun* fun = new TACFun(&ir, oldFunction->irId, newFunction);
+		    Generate::function(fun, newFunction);
+		    TACCompiler tc;
+		    void* ptr = tc.compileFun(runtime, fun);
+		    
+		    JitContext::setHandle(newFunction->irId, ptr);
 
-                    JitContext::root->functions[i] = newFunction;
+		    JitContext::root->functions[i] = newFunction;
                     runtime.release((void*) oldFunction);
                     updated++;
                     addFunction = false;
@@ -112,19 +124,10 @@ bool Jit::reload(std::string path) {
             }
 
             if (addFunction) {
-
-                unsigned int handleCount = JitContext::handleCount;
-
-                void** handles = new void*[handleCount + 1];
-
-                for(int i = 0; i < handleCount; i++) {
-                    handles[i] = JitContext::handles[i];
-                }
-
-                newFunction->bHandleIndex = JitContext::handleCount;
-                void* ptr = Generate::function(&runtime, newFunction);
+		newFunction->irId = JitContext::handleCount;
+		void* ptr = Generate::function(&runtime, newFunction);
                 unsigned int index = JitContext::addHandle(ptr);
-                assert(newFunction->bHandleIndex == index);
+                assert(newFunction->irId == index);
 
                 JitContext::root->functions.push_back(newFunction);
 
@@ -136,8 +139,8 @@ bool Jit::reload(std::string path) {
 	    std::cout << "New function handles: ";
 	    for (FunctionDecl* newFunction : newRoot->functions) {
 		std::cout << "[" << newFunction->identifier
-			  << " [" << newFunction->bHandleIndex << "]"
-			  << "=" << JitContext::handles[newFunction->bHandleIndex]
+			  << " [" << newFunction->irId << "]"
+			  << "=" << JitContext::handles[newFunction->irId]
 			  << "] ";
 	    }
 
@@ -153,20 +156,6 @@ bool Jit::reload(std::string path) {
     }
 
     return true;
-}
-
-std::string Jit::readFile(std::string path) {
-    std::ifstream t(path);
-    std::stringstream buffer;
-
-    if (!t.is_open()) {
-        std::cout << "Failed to open file: " << path << std::endl;
-        throw 1;
-    }
-
-    buffer << t.rdbuf();
-
-    return buffer.str();
 }
 
 int Jit::run() {

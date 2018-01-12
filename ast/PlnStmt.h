@@ -1,14 +1,12 @@
-//
-// Created by wax on 12/16/16.
-//
-
-#ifndef DIG_PLNSTMT_H
-#define DIG_PLNSTMT_H
-
+#pragma once
 
 #include "Stmt.h"
 #include "Expr.h"
 
+
+/**
+ * Print line statement.
+ */
 class PlnStmt : public Stmt {
 public:
     Expr* expression;
@@ -16,13 +14,11 @@ public:
     PlnStmt(Expr* expression);
     ~PlnStmt();
 
-    void analyze(Scope* scope);
+    void analyze(Scope* scope) override;
 
     void generate(X86Compiler& c) override;
+    void generate(TACFun* fun) override;
 
-    virtual bool equals(const Node& other) const;
-    void dump(size_t indent);
+    virtual bool equals(const Node& other) const override;
+    void dump(size_t indent) override;
 };
-
-
-#endif //DIG_PLNSTMT_H

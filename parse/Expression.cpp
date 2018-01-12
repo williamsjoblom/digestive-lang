@@ -27,15 +27,16 @@ namespace Parse {
     Expr* expression(TokenQueue& tokens) {
         std::vector<Token> rpn = shuntingYard(tokens);
         TokenQueue rpnQueue(rpn);
-        Expr* expr = rpnToExpr(rpnQueue);
+	Expr* expr = rpnToExpr(rpnQueue);
         return expr;
     }
 
+    
     std::vector<Expr*>* argumentList(TokenQueue& tokens) {
-        if (!tokens.eat(LPAR)) return nullptr;
+        if (!tokens.eat(LARGPAR)) return nullptr;
         std::vector<Expr*>* arguments = new std::vector<Expr*>();
 
-        if (tokens.top().type != RPAR) {
+        if (tokens.top().type != RARGPAR) {
             bool hasArg = true;
             while (hasArg) {
                 arguments->push_back(Parse::expression(tokens));
@@ -43,21 +44,28 @@ namespace Parse {
             }
         }
 
-        tokens.expect(RPAR);
+        tokens.expect(RARGPAR);
 
         return arguments;
     }
-
 }
 
+
+/**
+ * Throw a mismatched paranthesis error.
+ */
 void mismatchedParenthesis(Token token) {
     parseError(token, "Mismatched parenthesis in expression");
 }
 
 
 /**
- * Heavily modified implementation of the shunting yard algorithm.
+ * Transform infix expression to postfix.
+ *
+ * A heavily modified implementation of the shunting yard algorithm.
  * Modified to support unary operators, variable argument function calls and tuples.
+ * Currently a mess (although a functional mess) and will have to be reworked at 
+ * some point, preferably using more of a data-oriented approach.
  */
 std::vector<Token> shuntingYard(TokenQueue& tokens) {
     std::vector<Token> output;
@@ -72,25 +80,36 @@ std::vector<Token> shuntingYard(TokenQueue& tokens) {
 
         if(token.type == SEMICOL) break;
         if(token.type == COMMA && parDepth == 0) break;
-        if(token.type == RPAR && parDepth == 0) break;
-
+        if(token.type == RPAR && parDepth == 0) break;	
+	if(token.type == RARGPAR && parDepth == 0) break;
+	
         tokens.pop();
 
         if (token.type == NUMBER) {
             output.push_back(token);
             expectUnary = false;
         } else if(token.type == IDENTIFIER) {
-            if(tokens.top().type == LPAR) { // Function call
-                output.push_back(token);
-
-                int oldParDepth = parDepth;
+	    if(tokens.top().type == LPAR) { // Function call
+		output.push_back(token);
+		
+		Token leftArgPar(tokens.pop());
+		leftArgPar.type = TokenType::LARGPAR;
+		output.push_back(leftArgPar);
+		
+		int oldParDepth = parDepth - 1;
                 do {
                     if (tokens.top().type == LPAR) parDepth++;
                     if (tokens.top().type == RPAR) parDepth--;
                     output.push_back(tokens.pop());
                 } while (parDepth > oldParDepth);
+		parDepth = oldParDepth;
 
-            } else { // Variable
+		// Replace the ending parenthesis with an arglist paranthesis.
+		Token rightArgPar(output.back());
+		rightArgPar.type = TokenType::RARGPAR;
+		output.pop_back();
+		output.push_back(rightArgPar);
+	    } else { // Variable
                 output.push_back(token);
             }
 

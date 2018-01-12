@@ -1,9 +1,4 @@
-//
-// Created by wax on 2/22/17.
-//
-
-#ifndef DIG_TYPES_H
-#define DIG_TYPES_H
+#pragma once
 
 #include "Type.h"
 #include "PrimitiveType.h"
@@ -30,7 +25,3 @@ const PrimitiveType NAT8TYPE = PrimitiveType(PrimitiveKind::NATURAL, 1);
 const PrimitiveType NAT16TYPE = PrimitiveType(PrimitiveKind::NATURAL, 2);
 const PrimitiveType NAT32TYPE = PrimitiveType(PrimitiveKind::NATURAL, 4);
 const PrimitiveType NAT64TYPE = PrimitiveType(PrimitiveKind::NATURAL, 8);
-
-
-
-#endif //DIG_TYPES_H

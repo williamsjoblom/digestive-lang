@@ -5,7 +5,9 @@
 
 #include "ast/type/Types.h"
 #include "IntegerLiteral.h"
+#include "genir/Expr.h"
 #include "gen/Gen.h"
+#include "ir/TACFun.h"
 
 
 IntegerLiteral::IntegerLiteral(int value) {
@@ -13,11 +15,15 @@ IntegerLiteral::IntegerLiteral(int value) {
     this->type = I32_TYPE;
 }
 
-Regs IntegerLiteral::generate(X86Compiler &c) {
+TACOp IntegerLiteral::generate(TACFun* env) {
+    return Generate::integerLiteral(env, this);
+}
+
+Regs IntegerLiteral::generate(X86Compiler& c) {
     return Generate::expression(c, this);
 }
 
-bool IntegerLiteral::equals(const Node &other) const {
+bool IntegerLiteral::equals(const Node& other) const {
     const IntegerLiteral* o = dynamic_cast<const IntegerLiteral*>(&other);
     if (o == nullptr) return false;
 

@@ -22,8 +22,9 @@ public:
 
     void analyze(Scope* scope);
 
-    virtual void generate(X86Compiler &c);
-
+    void generate(X86Compiler &c);
+    void generate(TACFun* env);
+    
     virtual bool equals(const Node& other) const;
 
     void dump(size_t indent);

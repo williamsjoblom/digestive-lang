@@ -18,6 +18,7 @@ public:
     UnaryExpr(Operator* op, Expr* expr);
     ~UnaryExpr();
 
+    TACOp generate(TACFun* env);
     Regs generate(X86Compiler &c);
 
     void analyze(Scope* scope);

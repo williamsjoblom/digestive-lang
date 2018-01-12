@@ -25,6 +25,7 @@ namespace Parse {
 
             return new Unit(statements, functions);
         } catch(int e) {
+	    // AST clean-up.
             for (Stmt* stmt : statements)
                 delete stmt;
 

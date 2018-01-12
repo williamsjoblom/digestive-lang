@@ -17,11 +17,12 @@ public:
     ReturnStmt(Expr* expression);
     ~ReturnStmt();
 
-    virtual void generate(X86Compiler &c);
+    void generate(X86Compiler& c) override;
+    void generate(TACFun* fun) override;
 
-    void analyze(Scope* scope);
-    virtual bool equals(const Node& other) const;
-    void dump(size_t indent);
+    void analyze(Scope* scope) override;
+    virtual bool equals(const Node& other) const override;
+    void dump(size_t indent) override;
 };
 
 

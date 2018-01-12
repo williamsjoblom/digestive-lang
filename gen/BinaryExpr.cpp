@@ -123,7 +123,7 @@ Regs assignment(X86Compiler& c, BinaryExpr* expr) {
 /**
  * Returns index of tuple field.
  */
-int tupleAccessIndex(BinaryExpr* expr) {
+int tupleFlatAccessIndex(BinaryExpr* expr) {
     std::vector<DType> containedTypes = *expr->left->type.type.tuple;
     
     IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
@@ -155,7 +155,7 @@ int tupleAccessIndex(BinaryExpr* expr) {
  * Generate value tuple.
  */
 Regs valueTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
-    int index = tupleAccessIndex(expr);
+    int index = tupleFlatAccessIndex(expr);
     
     Regs leftRegs = expr->left->generate(c);
 
@@ -184,7 +184,7 @@ Regs valueTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
 
 Regs refTupleAccessExpr(X86Compiler& c, BinaryExpr* expr) {
     // Calculate actual memory offset.
-    int index = tupleAccessIndex(expr);
+    int index = tupleFlatAccessIndex(expr);
     
     std::vector<DType> flatType = flattenType(expr->left->type);
     int offset = 0;

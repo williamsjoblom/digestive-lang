@@ -6,15 +6,18 @@
  */
 //#define TEST
 
-#ifdef TEST
-#define CATCH_CONFIG_MAIN
-#endif
-#include <catch.hpp>
-
 #include "globals.h"
+#include "util/BuildTimestamp.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
 #include "interactive/Interactive.h"
+
+#include "ir/TACProgram.h"
+#include "genir/Program.h"
+#include "util/File.h"
+#include "genasm/TACCompiler.h"
+
+#include <asmjit/asmjit.h>
 
 bool verbose = false;
 
@@ -30,6 +33,11 @@ int main(int argc, char* argv[]) {
 	if (arg == "-v") verbose = true;
 	else if (i == argc - 1) path = arg;
     }
+
+    if (verbose) {
+	std::cout << " digestive " << version
+		  << ", " << buildTimestamp() << std::endl;
+    }
     
     Jit jit;
     Interactive::start(&jit);
@@ -37,6 +45,7 @@ int main(int argc, char* argv[]) {
     std::clock_t compile_t0 = std::clock();
 
     bool loaded = jit.load(path);
+    
     
     std::clock_t compile_t1 = std::clock();
     double compile_dt = double(compile_t1 - compile_t0) / (CLOCKS_PER_SEC / 1000);
@@ -57,10 +66,9 @@ int main(int argc, char* argv[]) {
 	if (verbose)
 	    std::cout << "Completed in " << run_dt << " ms" << std::endl;
 	
-        return result;
+	return result;
     }
     
     return -1;
 }
 #endif
-
