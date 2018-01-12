@@ -8,5 +8,6 @@ void Generate::function(TACFun* fun, FunctionDecl* decl) {
 
     decl->irId = fun->id;
 
+    fun->dumpAssembly = decl->dumpAssembly;
     if (decl->dumpIr) fun->dump();
 }

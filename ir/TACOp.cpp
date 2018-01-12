@@ -55,7 +55,7 @@ std::string TACOp::toS(TACFun* fun) const {
 	std::string name = fun->label(data.labelId)->name;
 	ss << name;
     } else if (kind == FUNCTION) {
-	TACFun* callee = fun->parent->funFromId(data.functionId);
+	TACFun* callee = fun->parent->fun(data.functionId);
 	ss << UNDL(<< callee->identifier <<);
     }
 

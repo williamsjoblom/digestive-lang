@@ -36,7 +36,7 @@ public:
     /**
      * Get TACFun from id.
      */
-    TACFun* funFromId(int id);
+    TACFun* fun(int id);
 
     
     /**

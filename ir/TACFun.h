@@ -62,6 +62,11 @@ public:
      */
     std::vector<TACVar*> variables;
 
+    /**
+     * Dump assembly.
+     */
+    bool dumpAssembly = false;
+
     
     /**
      * Entry point constructor.

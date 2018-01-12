@@ -16,7 +16,7 @@ TACProgram::~TACProgram() {
 }
 
 
-TACFun* TACProgram::funFromId(int id) {
+TACFun* TACProgram::fun(int id) {
     if (id == 0) return entry;
     return functions.at(id - 1);
 }

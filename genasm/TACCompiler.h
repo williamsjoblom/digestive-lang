@@ -35,8 +35,6 @@ public:
      */
     ProgramType compile(JitRuntime& runtime, TACProgram& program);
 
-    
-private:
     /**
      * Compile function.
      */

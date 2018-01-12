@@ -7,6 +7,7 @@
 //#define TEST
 
 #include "globals.h"
+#include "util/BuildTimestamp.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
 #include "interactive/Interactive.h"
@@ -24,7 +25,7 @@ bool verbose = false;
  * Main.
  */
 #ifndef TEST
-int main(int argc, char* argv[]) {    
+int main(int argc, char* argv[]) {
     std::string path = "/home/wax/test.dg";
     
     for (int i = 1; i < argc; i++) {
@@ -32,58 +33,11 @@ int main(int argc, char* argv[]) {
 	if (arg == "-v") verbose = true;
 	else if (i == argc - 1) path = arg;
     }
-    
-    TACProgram program;
 
-    std::string source = readSourceFile(path);
-    
-    Lexer lexer;
-    TokenQueue tokens = lexer.lex(source);
-
-    auto root = Parse::unit(tokens);
-    
-    Scope rootScope;
-    root->analyze(&rootScope);
-
-    std::clock_t genir_t0 = std::clock();
-
-    Generate::unit(program, root);
-    
-    std::clock_t genir_t1 = std::clock();
-    double genir_dt = double(genir_t1 - genir_t0) / (CLOCKS_PER_SEC / 1000);
-    std::cout << "IR generation in " << genir_dt << "ms" << std::endl;
-    
-    program.dump();
-
-    TACCompiler tc;
-    JitRuntime rt;
-
-    std::clock_t genasm_t0 = std::clock();
-    
-    ProgramType p = tc.compile(rt, program);
-
-    std::clock_t genasm_t1 = std::clock();
-    double genasm_dt = double(genasm_t1 - genasm_t0) / (CLOCKS_PER_SEC / 1000);
-    std::cout << "IR compilation in " << genasm_dt << "ms" << std::endl;
-
-    std::cout << p() << std::endl;
-    
-    return 0;
-
-    // -----------------------
-
-    JitRuntime rt0;
-    CodeHolder code;
-    code.init(rt0.getCodeInfo());
-    X86Compiler c(&code);
-
-    Operand o = c.newInt16();
-
-    std::cout << o.isReg() << std::endl;
-
-    return 0;
-    
-    // ---------------------------   
+    if (verbose) {
+	std::cout << " digestive " << version
+		  << ", " << buildTimestamp() << std::endl;
+    }
     
     Jit jit;
     Interactive::start(&jit);
@@ -112,7 +66,7 @@ int main(int argc, char* argv[]) {
 	if (verbose)
 	    std::cout << "Completed in " << run_dt << " ms" << std::endl;
 	
-        return result;
+	return result;
     }
     
     return -1;

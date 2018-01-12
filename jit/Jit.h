@@ -1,14 +1,11 @@
-//
-// Created by wax on 1/30/17.
-//
-
-#ifndef DIG_JIT_H
-#define DIG_JIT_H
+#pragma once
 
 #include <string>
 
 #include "ast/Unit.h"
 #include "gen/Gen.h"
+#include "ir/TACProgram.h"
+
 
 class Jit {
 public:
@@ -22,8 +19,6 @@ public:
     void allocateHandles(unsigned int functionCount);
 private:
     JitRuntime runtime;
+    TACProgram ir;
     ProgramType program;
 };
-
-
-#endif //DIG_JIT_H

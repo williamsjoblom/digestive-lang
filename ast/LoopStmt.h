@@ -17,13 +17,14 @@ public:
     LoopStmt(Expr* condition, Stmt* body);
     ~LoopStmt();
 
-    virtual void generate(X86Compiler &c);
+    void generate(X86Compiler &c) override;
+    void generate(TACFun* env) override;
 
-    void analyze(Scope* scope);
+    void analyze(Scope* scope) override;
 
-    virtual bool equals(const Node& other) const;
+    virtual bool equals(const Node& other) const override;
 
-    void dump(size_t indent);
+    void dump(size_t indent) override;
 };
 
 

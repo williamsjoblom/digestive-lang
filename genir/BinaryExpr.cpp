@@ -72,6 +72,21 @@ TACOp primitiveBinaryExpr(TACFun* fun, BinaryExpr* expr) {
 // }
 
 
+TACOp assignment(TACFun* fun, BinaryExpr* expr) {
+    VariableExpr* variable = dynamic_cast<VariableExpr*>(expr->left);
+    assert(variable != nullptr); // Should be caught during semantic analysis.
+
+    //Regs varRegs = variable->generate(c);
+    //Regs valueRegs = Generate::cast(c, expr->right, variable->type);
+
+    TACOp var = variable->generate(fun);
+    TACOp value = expr->right->generate(fun);
+
+    fun->add(TACC::cast, value, TACOp(), var);
+    
+    return value;
+}
+
 /**
  * Returns actual accessed index from a tuple access.
  */
@@ -135,7 +150,7 @@ TACOp tupleAccessExpr(TACFun* fun, BinaryExpr* expr) {
 
 TACOp Generate::binaryExpr(TACFun* fun, BinaryExpr* expr) {
     if (expr->op->symbol == OperatorSymbol::ASSIGN) {
-	assert(false);
+        return assignment(fun, expr);
     } else if (expr->left->type.isPrimitive() && expr->right->type.isPrimitive()) {
 	return primitiveBinaryExpr(fun, expr);
     } else if (expr->left->type.isTuple() && expr->op->symbol == OperatorSymbol::DOT) {

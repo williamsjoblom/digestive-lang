@@ -3,8 +3,8 @@
 //
 
 #include <asmjit/asmjit.h>
-#include <ast/VariableExpr.h>
-#include <assert.h>
+#include "ast/VariableExpr.h"
+
 #include <ast/VariableDecl.h>
 #include <ast/FunctionCall.h>
 #include <ast/FunctionDecl.h>

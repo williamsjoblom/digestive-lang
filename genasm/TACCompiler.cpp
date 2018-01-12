@@ -4,15 +4,12 @@
 #include "Op.h"
 #include "gen/ErrHandler.h"
 #include "jit/JitContext.h"
+#include "util/Colors.h"
 
-TACCompiler::TACCompiler() {
-    
-}
+TACCompiler::TACCompiler() { }
 
 
 ProgramType TACCompiler::compile(JitRuntime& runtime, TACProgram& program) {
-    JitContext::allocateHandles(program.functions.size() + 1);
-    
     void* entryPtr = compileFun(runtime, program.entry);
 
     std::vector<void*> funPtrs;
@@ -29,6 +26,9 @@ ProgramType TACCompiler::compile(JitRuntime& runtime, TACProgram& program) {
 }
 
 
+/**
+ * Create asmjit function signature from TACFun.
+ */
 FuncSignatureX createSignature(TACFun* fun) {
     FuncSignatureX signature(CallConv::kIdHostCDecl);
     signature.setRet(fun->returnType.asmjitId());
@@ -45,15 +45,23 @@ FuncSignatureX createSignature(TACFun* fun) {
  * Bind label present at the current instruction.
  */
 void bindLabelAtPoint(TACFun* fun, InstrEnv& e, TAC* instr) {
-    if (instr->label != nullptr)
-	e.c.bind(e.label(instr->label->id));
+    if (instr->label != nullptr) {
+	TACLabel* tacLabel = instr->label;
+	Label asmLabel = e.label(tacLabel->id);
+	e.c.bind(asmLabel);
+    }
 }
 
 
 void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     CodeHolder code;
-    StringLogger logger;
     ErrHandler handler;
+   
+    StringLogger logger;
+    logger.setIndentation("    ");
+    logger.addOptions(StringLogger::kOptionHexImmediate);
+    logger.addOptions(StringLogger::kOptionImmExtended);
+    
     code.init(runtime.getCodeInfo());
     code.setLogger(&logger);
     code.setErrorHandler(&handler);
@@ -64,8 +72,6 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     f->getFrameInfo().enablePreservedFP();
 
     InstrEnv e(this, c, fun);
-
-    std::cout << "label count: " << e.labels.size() << std::endl;
 
     for (int i = 0; i < fun->parameters.size(); i++) {
 	TACOp param = fun->parameters[i];
@@ -86,7 +92,10 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     void* funPtr;
     runtime.add(&funPtr, &code);
 
-    std::cout << std::endl << fun->identifier << "(): " << std::endl << logger.getString() << std::endl;
-
+    if (fun->dumpAssembly) {
+	std::cout << UNDL(<< BOLD(<< fun->identifier <<) <<)
+		  << ":" << std::endl;
+	std::cout << logger.getString();
+    }
     return funPtr;
 }

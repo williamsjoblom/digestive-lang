@@ -332,6 +332,61 @@ GENERATE(cast, e) {
     e.c.emit(X86Inst::kIdMov, d, s0);
 }
 
+GENERATE(salloc, e) {
+    assert(e._s0.kind == TACOpKind::IMMEDIATE);
+    
+    Operand d = generateOperand(e, e._d);
+    assert(d.isRegOrMem());
+    
+    unsigned int sz = e._s0.data.immValue;
+    const int align = 4;
+    X86Mem stackMem = e.c.newStack(sz, align);
+
+    e.c.emit(X86Inst::kIdLea, d, stackMem);
+}
+
+GENERATE(tupTo, e) {
+    assert(e._s1.kind == TACOpKind::IMMEDIATE);
+    Operand base = generateOperand(e, e._d);
+    uint64_t offset = e._s1.data.immValue;
+    Operand value = generateOperand(e, e._s0);
+    assert(base.isRegOrMem());
+
+    X86Mem ptr;
+    if (base.isReg()) {
+	X86Gp baseReg = base.as<X86Gp>();
+	ptr = X86Mem(baseReg, offset, e._s0.type.byteSize);
+    } else if (base.isMem()) {
+	ptr = base.as<X86Mem>();
+	ptr.setOffset(offset);
+    } else {
+	assert(false);
+    }
+
+	e.c.emit(X86Inst::kIdMov, ptr, value);
+}
+
+GENERATE(tupFrom, e) {
+    assert(e._s1.kind == TACOpKind::IMMEDIATE);
+    Operand base = generateOperand(e, e._s0);
+    uint64_t offset = e._s1.data.immValue;
+    Operand d = generateOperand(e, e._d);
+    assert(d.isRegOrMem());
+
+    X86Mem ptr;
+    if (base.isReg()) {
+	X86Gp baseReg = base.as<X86Gp>();
+	ptr = X86Mem(baseReg, offset, e._s0.type.byteSize);
+    } else if (base.isMem()) {
+	ptr = base.as<X86Mem>();
+	ptr.setOffset(offset);
+    } else {
+	assert(false);
+    }
+
+    e.c.emit(X86Inst::kIdMov, d, ptr);
+}
+
 
 void generateInstr(InstrEnv& e, TAC* instr) {    
     // TODO: turn this (at least soon to be) massive switch
@@ -357,7 +412,11 @@ void generateInstr(InstrEnv& e, TAC* instr) {
     case TACC::jmpZ:  EMIT(jmpZ, e); break;	
     case TACC::jmpNZ: EMIT(jmpNZ, e); break;
 
+    case TACC::move: assert(false); break;
     case TACC::cast: EMIT(cast, e); break;
+    case TACC::salloc: EMIT(salloc, e); break;
+    case TACC::tupTo: EMIT(tupTo, e); break;
+    case TACC::tupFrom: EMIT(tupFrom, e); break;
 	
     default: assert(false); // Not implemented.
     }

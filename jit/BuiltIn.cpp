@@ -13,6 +13,7 @@ namespace BuiltIn {
     template <typename T>
     void pln(T i) {
         std::cout << i << std::endl;
+	usleep(250 * 1000);
     }
 
     template void pln(short);
