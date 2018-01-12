@@ -1,0 +1,47 @@
+# Test header: 
+#@ name: Comparison
+#@ description: Tests comparison operators.
+
+var r : i32;
+
+### Signed-signed comparisons:
+### ==
+r = 1 == 2; pln r;
+#$ 0
+r = 1 == 1; pln r;
+#$ 1
+
+### >
+r = 1 > 2; pln r;
+#$ 0
+r = 2 > 1; pln r;
+#$ 1
+
+
+### <
+r = 1 < 2; pln r;
+#$ 1
+r = 2 < 1; pln r;
+#$ 0
+
+
+### >=
+r = 1 >= 2; pln r;
+#$ 0
+
+r = 2 >= 1; pln r;
+#$ 1
+
+r = 1 >= 1; pln r;
+#$ 1
+
+
+### >=
+r = 1 <= 2; pln r;
+#$ 1
+
+r = 2 <= 1; pln r;
+#$ 0
+
+r = 1 <= 1; pln r;
+#$ 1
