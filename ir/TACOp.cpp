@@ -9,6 +9,7 @@
 TACOp::TACOp(bool used) {
     ignore = !used;
     type = TACType(TACKind::PTR, 0);
+    offset = 0;
 }
 
 
@@ -17,6 +18,7 @@ TACOp::TACOp(TACLabel* label) {
     data.labelId = label->id;
     type = TACType(TACKind::PTR, sizeof(void*));
     ignore = false;
+    offset = 0;
 }
 
 
@@ -25,6 +27,7 @@ TACOp::TACOp(TACVar* var) {
     data.labelId = var->id;
     type = var->type;
     ignore = false;
+    offset = 0;
 }
 
 
@@ -33,6 +36,7 @@ TACOp::TACOp(FunctionDecl* fun) {
     data.functionId = fun->irId;
     type = TACType(TACKind::UNSIGNED, 4);
     ignore = false;
+    offset = 0;
 }
 
 
@@ -43,6 +47,10 @@ std::string TACOp::toS(TACFun* fun) const {
     if (ignore) return "_";
     
     std::stringstream ss;
+
+    if (type.ref) {
+	ss << "&";
+    }
 
     if (kind == IMMEDIATE) {
 	ss << "(" << type.toS() << ")";
@@ -59,5 +67,11 @@ std::string TACOp::toS(TACFun* fun) const {
 	ss << UNDL(<< callee->identifier <<);
     }
 
+    if (offset > 0) {
+	ss << " + " << offset;
+    } else if (offset < 0) {
+	ss << " - " << -offset;
+    }
+    
     return ss.str();
 }

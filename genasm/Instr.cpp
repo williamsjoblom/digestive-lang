@@ -250,13 +250,21 @@ GENERATE(call, e) {
 
     // Add pushed arguments to call.
     for (int i = 0; i < e.tc->pushedArgs.size(); i++) {
-	Operand arg = generateOperand(e, e.tc->pushedArgs[i]);
-	if (arg.isImm())
+	TACOp tacArg = e.tc->pushedArgs[i];
+	Operand arg = generateOperand(e, tacArg, true);
+	
+	if (arg.isImm()) {
 	    funcCall->setArg(i, arg.as<Imm>());
-	else if (arg.isReg())
+	} else if (arg.isReg()) {
 	    funcCall->setArg(i, arg.as<X86Gp>());
-	else
+	} else if (arg.isMem()) {
+	    int typeId = e.tc->pushedArgs[i].type.asmjitId();
+	    X86Gp argReg = e.c.newGpReg(typeId);
+	    e.c.mov(argReg, arg.as<X86Mem>());
+	    funcCall->setArg(i, argReg);
+	} else {
 	    assert(false); // Not implemented.
+	}
     }
 
     // Set return.
@@ -323,7 +331,9 @@ GENERATE(jmpNZ, e) {
 }
 
 GENERATE(cast, e) {
-    Operand s0 = generateOperand(e, e._s0);
+    bool dereference = e._s0.type.ref && !e._d.type.ref;
+
+    Operand s0 = generateOperand(e, e._s0, dereference);
     Operand d = generateOperand(e, e._d);
 
     // NOTES:
@@ -332,11 +342,18 @@ GENERATE(cast, e) {
     e.c.emit(X86Inst::kIdMov, d, s0);
 }
 
+GENERATE(eaddr, e) {
+    Operand s0 = generateOperand(e, e._s0);
+    Operand d = generateOperand(e, e._d);
+
+    e.c.emit(X86Inst::kIdLea, d, s0);
+}
+
 GENERATE(salloc, e) {
     assert(e._s0.kind == TACOpKind::IMMEDIATE);
-    
+
     Operand d = generateOperand(e, e._d);
-    assert(d.isRegOrMem());
+    assert(d.isReg());
     
     unsigned int sz = e._s0.data.immValue;
     const int align = 4;
@@ -363,7 +380,7 @@ GENERATE(tupTo, e) {
 	assert(false);
     }
 
-	e.c.emit(X86Inst::kIdMov, ptr, value);
+    e.c.emit(X86Inst::kIdMov, ptr, value);
 }
 
 GENERATE(tupFrom, e) {
@@ -385,6 +402,10 @@ GENERATE(tupFrom, e) {
     }
 
     e.c.emit(X86Inst::kIdMov, d, ptr);
+}
+
+GENERATE(trap, e) {
+    e.c.int3();
 }
 
 
@@ -414,9 +435,12 @@ void generateInstr(InstrEnv& e, TAC* instr) {
 
     case TACC::move: assert(false); break;
     case TACC::cast: EMIT(cast, e); break;
+    case TACC::eaddr: EMIT(cast, e); break;
     case TACC::salloc: EMIT(salloc, e); break;
     case TACC::tupTo: EMIT(tupTo, e); break;
     case TACC::tupFrom: EMIT(tupFrom, e); break;
+
+    case TACC::trap: EMIT(trap, e); break;
 	
     default: assert(false); // Not implemented.
     }

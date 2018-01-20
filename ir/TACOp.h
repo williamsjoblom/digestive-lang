@@ -57,6 +57,11 @@ public:
      */
     bool ignore;
 
+    /**
+     * Memory offset.
+     */
+    long offset;
+
     
     /**
      * Default constructor.

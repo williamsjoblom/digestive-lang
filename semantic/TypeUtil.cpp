@@ -79,7 +79,7 @@ const DType resultingPrimitive(const DType& left, Operator op, const DType& righ
     assert(left.isPrimitive() && right.isPrimitive());
 
     if (left.type.primitive == DPrimitiveKind::NIL || right.type.primitive == DPrimitiveKind::NIL)
-        semanticError("Nil types cannot be directly used directly");
+        semanticError("Nil types cannot be part of expressions");
 
     int sz = std::max(left.byteSize(), right.byteSize());
     DPrimitiveKind kind;
@@ -102,8 +102,10 @@ const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* r
 	if (literal != nullptr) {
 	    int i = literal->value;
 	    if (i >= tupleTypes.size()) semanticError("Tuple index out of bounds");
-	    
-	    return tupleTypes[i];
+
+	    DType type = tupleTypes[i];
+	    type.ref = true;
+	    return type;
 	}
 
 	const VariableExpr* label = dynamic_cast<const VariableExpr*>(right);
@@ -111,7 +113,10 @@ const DType resultingTuplePrimitive(const Expr* left, Operator op, const Expr* r
 	    std::string identifier = label->identifier;
 
 	    for (DType type : tupleTypes) {
-		if (type.label == identifier) return type;
+		if (type.label == identifier) {
+		    type.ref = true;
+		    return type;
+		}
 	    }
 
 	    semanticError("No such tuple member");

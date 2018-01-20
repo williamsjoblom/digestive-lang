@@ -87,12 +87,25 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     }
     
     c.endFunc();
+
+    // Make asm virtreg naming consistent with IR if asm is to be printed.
+    if (fun->dumpAssembly) {
+	for (auto it = e.varToReg.begin(); it != e.varToReg.end(); it++) {
+	    int id = it->first;
+	    X86Gp reg = it->second;
+	
+	    std::string name = fun->var(id)->name;
+	    c.rename(reg, name.c_str());
+	}
+
+    }
+    
     c.finalize();
 
     void* funPtr;
     runtime.add(&funPtr, &code);
 
-    if (fun->dumpAssembly) {
+    if (fun->dumpAssembly) {	
 	std::cout << UNDL(<< BOLD(<< fun->identifier <<) <<)
 		  << ":" << std::endl;
 	std::cout << logger.getString();

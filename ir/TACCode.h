@@ -41,11 +41,17 @@ enum class TACC {
      */
     move,
     cast,
+    eaddr,
     salloc,
 
     /* Tuple manipulation */
     tupTo,
-    tupFrom
+    tupFrom,
+
+    /**
+     * Debugging
+     */
+    trap,
 };
 
 #endif

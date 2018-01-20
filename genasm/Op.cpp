@@ -38,7 +38,10 @@ Label generateLabel(InstrEnv& e, TACOp& label) {
 }
 
 
-Operand generateOperand(InstrEnv& e, TACOp& op) {
+/**
+ * Generate operand without offset.
+ */
+Operand generateValue(InstrEnv& e, TACOp& op) {
     switch (op.kind) {
     case TACOpKind::VARIABLE:
 	return generateVar(e, op);
@@ -50,3 +53,30 @@ Operand generateOperand(InstrEnv& e, TACOp& op) {
 	assert(false); // Not implemented.
     }
 }
+
+
+/**
+ * Generate pointer dereference.
+ */
+X86Mem generateDereference(InstrEnv& e, TACOp& op) {
+    if (op.kind == TACOpKind::IMMEDIATE) {
+	return x86::ptr(op.data.immValue + op.offset);
+    } else if (op.kind == TACOpKind::VARIABLE) {
+	X86Gp base = generateValue(e, op).as<X86Gp>();
+	return x86::ptr(base, op.offset);
+    } else if (op.kind == TACOpKind::LABEL) {
+	Label base = generateValue(e, op).as<Label>();
+	return x86::ptr(base, op.offset);
+    } else {
+	assert(false);
+    }
+}
+
+
+Operand generateOperand(InstrEnv& e, TACOp& op, bool tryDereference) {
+    if (tryDereference && op.type.ref)
+	return generateDereference(e, op);
+    else
+	return generateValue(e, op);
+}
+

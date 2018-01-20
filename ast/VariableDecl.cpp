@@ -36,6 +36,7 @@ void VariableDecl::analyze(Scope* scope) {
     assert(!this->type.isNilType() || this->value != nullptr);
     if (this->type.isNilType()) {
         this->type = this->value->type; // Infer type from value.
+	this->type.ref = false;
     }
 }
 

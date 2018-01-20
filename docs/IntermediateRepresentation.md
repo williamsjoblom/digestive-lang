@@ -73,6 +73,9 @@ Jump to address specified by `s0` if `s1` is negative.
 #### Move and Cast `cast <s0> _ <d>`:
 `d := s0` where `s0` is casted to the type of `d`
 
+#### Effective address `eaddr <s0> _ <d>`:
+Set `d` to the effective address of `s0`.
+
 #### Allocate stack `salloc <s0> _ <d>`:
 Allocate `s0` bytes of stack memory (`s0` must be an immediate operand).
 A pointer to the allocated memory is put in `d`.
@@ -85,3 +88,8 @@ Used for allocating tuples.
 
 #### Move from tuple `tupFrom <s0> <s1> <d>`:
 `d := s0 + s1` where `s0` is a (tuple) pointer and `s1` and integral immediate operand.
+
+## Debugging
+
+#### Trap `trap _ _ _`:
+Debugger breakpoint (INT 3 on x86).

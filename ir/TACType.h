@@ -21,10 +21,11 @@ class TACType {
 public:
     TACKind kind;
     int byteSize;
+    bool ref;
     
     TACType();
     TACType(DType& type);
-    TACType(TACKind kind, int byteSize);
+    TACType(TACKind kind, int byteSize, bool ref=false);
     
     bool isSigned();
     bool isUnsigned();

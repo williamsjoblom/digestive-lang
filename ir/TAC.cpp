@@ -31,9 +31,12 @@ const char* tacCodeToS[] = {
 
     "move",
     "cast",
+    "eaddr",
     "salloc",
     "tupTo",
-    "tupFrom"
+    "tupFrom",
+
+    "trap"
 };
 
 

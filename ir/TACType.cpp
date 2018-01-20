@@ -8,7 +8,10 @@ TACType::TACType() { }
 
 
 TACType::TACType(DType& type) {
-    if (type.isPrimitive()) {
+    if (type.isTuple()) {
+	kind = TACKind::PTR;
+	byteSize = sizeof(void*);
+    } else if (type.isPrimitive()) {
 	switch (type.type.primitive) {
 	case DPrimitiveKind::INTEGER:
 	    kind = TACKind::SIGNED; break;
@@ -21,18 +24,18 @@ TACType::TACType(DType& type) {
 	}
 	
 	byteSize = type.byteSize();
-    } else if (type.isTuple()) {
-	kind = TACKind::PTR;
-	byteSize = sizeof(void*);
     } else {
 	assert(false);
     }
+
+    ref = type.ref;
 }
 
 
-TACType::TACType(TACKind kind, int byteSize) {
+TACType::TACType(TACKind kind, int byteSize, bool ref) {
     this->kind = kind;
     this->byteSize = byteSize;
+    this->ref = ref;
 }
 
 
@@ -71,16 +74,16 @@ int TACType::asmjitId() {
 }
 
 
-    std::string TACType::toS() const {
-	std::stringstream ss;
-	switch (kind) {
-	case PTR: ss << "p"; break;
-	case SIGNED: ss << "i"; break;
-	case UNSIGNED: ss << "u"; break;
-	default: assert(false);
-	}
-
-	ss << byteSize * 8;
-    
-	return ss.str();
+std::string TACType::toS() const {
+    std::stringstream ss;
+    switch (kind) {
+    case PTR: ss << "p"; break;
+    case SIGNED: ss << "i"; break;
+    case UNSIGNED: ss << "u"; break;
+    default: assert(false);
     }
+
+    ss << byteSize * 8;
+    
+    return ss.str();
+}

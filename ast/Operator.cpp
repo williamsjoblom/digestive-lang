@@ -119,8 +119,10 @@ const std::string symbolToString(OperatorSymbol symbol) {
 
 int precedenceOf(OperatorSymbol symbol) {
     switch (symbol) {
-    case OperatorSymbol::ASSIGN:
+    case OperatorSymbol::DOT:
 	return 1;
+    case OperatorSymbol::ASSIGN:
+	return 2;
 
     case OperatorSymbol::EQ:
     case OperatorSymbol::NOTEQ:
@@ -137,10 +139,7 @@ int precedenceOf(OperatorSymbol symbol) {
     case OperatorSymbol::MUL:
     case OperatorSymbol::DIV:
 	return 20;
-		
-    case OperatorSymbol::DOT:
-	return 500;
-	
+			
     case OperatorSymbol::NOT_AN_OPERATOR:
 	return -1;
     }

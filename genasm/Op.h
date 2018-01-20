@@ -23,4 +23,4 @@ X86Gp generateVar(InstrEnv& e, TACOp& var);
 /**
  * Generate operand.
  */
-Operand generateOperand(InstrEnv& e, TACOp& op);
+Operand generateOperand(InstrEnv& e, TACOp& op, bool tryDereference=false);

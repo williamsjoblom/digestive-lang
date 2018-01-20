@@ -27,9 +27,22 @@ void Generate::pln(TACFun* fun, PlnStmt* stmt) {
     else
 	assert(false);
 
-    TACOp ptrOp = fun->newImm<void*>(ptr);
-    TACOp arg = stmt->expression->generate(fun);
+    TACOp funPtr = fun->newImm<void*>(ptr);
 
-    fun->add(TACC::pushArg, arg, TACOp(), TACOp());
-    fun->add(TACC::call, ptrOp, TACOp(), TACOp());
+    Expr* astArg = stmt->expression;
+    TACOp arg = astArg->generate(fun);
+    
+    if (arg.type.ref) {
+	// Dereference argument before passing.
+	TACType derefType = astArg->type;
+	derefType.ref = false;
+	    
+	TACVar* derefArg = fun->newVar(derefType);
+	fun->add(TACC::cast, arg, TACOp(), derefArg);
+	fun->add(TACC::pushArg, derefArg, TACOp(), TACOp());
+    } else {
+	fun->add(TACC::pushArg, arg, TACOp(), TACOp());
+    }
+    
+    fun->add(TACC::call, funPtr, TACOp(), TACOp());
 }
