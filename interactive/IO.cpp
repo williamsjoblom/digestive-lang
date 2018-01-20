@@ -18,13 +18,13 @@ namespace IO {
 
     bool init() {
         std::string path = getWorkingDir();
-        std::string inPath  = path + "/in";
+        std::string inPath = path + "/interact";
 
         in.open(inPath);
 
         if (in.fail()) {
 	    if (verbose)
-		std::cout << "Could not open file 'in': " << std::strerror(errno) << std::endl;
+		std::cout << "Could not open FIFO '" << inPath << "': " << std::strerror(errno) << std::endl;
             return false;
         }
 
