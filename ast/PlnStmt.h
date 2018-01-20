@@ -16,7 +16,6 @@ public:
 
     void analyze(Scope* scope) override;
 
-    void generate(X86Compiler& c) override;
     void generate(TACFun* fun) override;
 
     virtual bool equals(const Node& other) const override;

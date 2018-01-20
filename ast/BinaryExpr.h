@@ -1,14 +1,7 @@
-//
-// Created by wax on 12/15/16.
-//
-
-#ifndef DIG_BINARYEXPR_H
-#define DIG_BINARYEXPR_H
-
+#pragma once
 
 #include "Expr.h"
 #include "Operator.h"
-#include "gen/Base.h"
 
 class BinaryExpr : public Expr {
 public:
@@ -19,8 +12,7 @@ public:
     BinaryExpr(Expr* left, Operator* op, Expr* right);
     ~BinaryExpr();
 
-    TACOp generate(TACFun* env);
-    virtual Regs generate(X86Compiler &c);
+    TACOp generate(TACFun* fun) override;
 
     void analyze(Scope* scope);
 
@@ -28,6 +20,3 @@ public:
 
     void dump(size_t indent);
 };
-
-
-#endif //DIG_BINARYEXPR_H

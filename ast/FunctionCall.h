@@ -6,7 +6,6 @@
 #define DIG_FUNCTIONCALL_H
 
 #include "Expr.h"
-#include "gen/Base.h"
 
 class FunctionCall : public Expr {
 public:
@@ -17,9 +16,8 @@ public:
     FunctionCall(std::string identifier, std::vector<Expr*>* arguments);
     ~FunctionCall();
 
-    TACOp generate(TACFun* env);
-    Regs generate(X86Compiler &c);
-
+    TACOp generate(TACFun* fun);
+    
     void analyze(Scope* scope);
 
     bool equals(const Node& other) const;

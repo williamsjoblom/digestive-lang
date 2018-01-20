@@ -17,7 +17,6 @@ public:
     ReturnStmt(Expr* expression);
     ~ReturnStmt();
 
-    void generate(X86Compiler& c) override;
     void generate(TACFun* fun) override;
 
     void analyze(Scope* scope) override;

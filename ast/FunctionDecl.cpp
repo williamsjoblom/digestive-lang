@@ -6,7 +6,6 @@
 
 #include "genir/Function.h"
 #include "util/PrettyPrint.h"
-#include "gen/Gen.h"
 
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
                            DType returnType, bool dumpAssembly, bool dumpIr) : Decl(identifier) {
@@ -44,10 +43,6 @@ void FunctionDecl::dump(size_t indent) {
     printIndent(indent);
     std::cout << "func " << identifier << std::endl;
     body->dump(indent + 1);
-}
-
-void FunctionDecl::generate(X86Compiler &c) {
-    Generate::function(c, this);
 }
 
 void FunctionDecl::generate(TACFun* env) {

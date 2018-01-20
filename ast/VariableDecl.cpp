@@ -3,9 +3,9 @@
 //
 
 #include "util/PrettyPrint.h"
-#include "gen/Gen.h"
 #include "VariableDecl.h"
 #include "genir/VariableDecl.h"
+#include "ast/Expr.h"
 
 
 VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier) {
@@ -50,11 +50,6 @@ void VariableDecl::dump(size_t indent) {
     value->dump(indent + 1);
 
     std::cout << std::endl;
-}
-
-
-void VariableDecl::generate(X86Compiler &c) {
-    Generate::variableDeclaration(c, this);
 }
 
 

@@ -73,7 +73,6 @@ public:
     /**
      * Generate.
      */
-    void generate(X86Compiler& c) override;
     void generate(TACFun* env) override;
 
     /**

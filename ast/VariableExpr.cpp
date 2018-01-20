@@ -1,10 +1,5 @@
-//
-// Created by wax on 12/15/16.
-//
-
 #include "VariableExpr.h"
 
-#include "gen/Gen.h"
 #include "util/PrettyPrint.h"
 #include "genir/Expr.h"
 #include "ir/TACFun.h"
@@ -28,11 +23,6 @@ void VariableExpr::dump(size_t indent) {
 
 TACOp VariableExpr::generate(TACFun* env) {
     return Generate::variable(env, this);
-}
-
-
-Regs VariableExpr::generate(X86Compiler& c) {
-    return Generate::expression(c, this);
 }
 
 

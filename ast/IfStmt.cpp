@@ -1,12 +1,8 @@
-//
-// Created by wax on 12/20/16.
-//
+#include "IfStmt.h"
 
 #include <assert.h>
 
 #include "util/PrettyPrint.h"
-#include "gen/Gen.h"
-#include "IfStmt.h"
 #include "genir/IfStmt.h"
 
 
@@ -74,11 +70,6 @@ bool IfStmt::equals(const Node& other) const {
     if (o->elseBlock != nullptr && elseBlock == nullptr) return false;
 
     return *o->condition == *condition && *o->ifBlock == *ifBlock && *o->elseBlock == *elseBlock;
-}
-
-
-void IfStmt::generate(X86Compiler& c) {
-    Generate::ifStmt(c, this);
 }
 
 

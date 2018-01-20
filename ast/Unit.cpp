@@ -2,8 +2,7 @@
 // Created by wax on 1/24/17.
 //
 
-#include <jit/JitContext.h>
-#include "gen/Gen.h"
+#include "jit/JitContext.h"
 
 Unit::Unit(std::vector<Stmt*> statements, std::vector<FunctionDecl*> functions) {
     this->statements = new BlockStmt(statements);
@@ -31,10 +30,6 @@ void Unit::dump(size_t indent) {
     }
 
     statements->dump(indent);
-}
-
-void Unit::generate(X86Compiler& c) {
-    assert(false); // Depricated: use Generate::program(...).
 }
 
 bool Unit::equals(const Node &other) const {

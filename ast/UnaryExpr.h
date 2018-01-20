@@ -8,7 +8,7 @@
 
 #include "Expr.h"
 #include "Operator.h"
-#include "gen/Base.h"
+
 
 class UnaryExpr : public Expr {
 public:
@@ -18,14 +18,13 @@ public:
     UnaryExpr(Operator* op, Expr* expr);
     ~UnaryExpr();
 
-    TACOp generate(TACFun* env);
-    Regs generate(X86Compiler &c);
+    TACOp generate(TACFun* env) override;
 
-    void analyze(Scope* scope);
+    void analyze(Scope* scope) override;
 
-    bool equals(const Node& other) const;
+    bool equals(const Node& other) const override;
 
-    void dump(size_t indent);
+    void dump(size_t indent) override;
 };
 
 

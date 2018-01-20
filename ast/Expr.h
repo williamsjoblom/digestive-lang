@@ -8,7 +8,6 @@
 #include <asmjit/asmjit.h>
 
 #include "type/DType.h"
-#include "gen/Base.h"
 #include "ast/type/Type.h"
 #include "Node.h"
 
@@ -25,7 +24,6 @@ public:
     DType type;
 
     virtual TACOp generate(TACFun* env) = 0; 
-    virtual Regs generate(X86Compiler &c) = 0;
 };
 
 

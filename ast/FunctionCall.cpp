@@ -1,22 +1,21 @@
-//
-// Created by wax on 12/15/16.
-//
-
-#include <util/PrettyPrint.h>
-#include <gen/Gen.h>
 #include "FunctionCall.h"
+
+#include "util/PrettyPrint.h"
 #include "ir/TACOp.h"
 #include "genir/FunctionCall.h"
+
 
 FunctionCall::FunctionCall(std::string identifier, std::vector<Expr*>* arguments) {
     this->identifier = identifier;
     this->arguments = arguments;
 }
 
+
 FunctionCall::~FunctionCall() {
     for (Expr* argument : *arguments) delete argument;
     delete arguments;
 }
+
 
 void FunctionCall::dump(size_t indent) {
     std::cout << identifier << "(";
@@ -29,6 +28,7 @@ void FunctionCall::dump(size_t indent) {
 
     std::cout << ")";
 }
+
 
 void FunctionCall::analyze(Scope* scope) {
     declaration = scope->resolveFunction(identifier);
@@ -46,9 +46,6 @@ TACOp FunctionCall::generate(TACFun* fun) {
     return Generate::functionCall(fun, this);
 }
 
-std::vector<X86Gp> FunctionCall::generate(X86Compiler &c) {
-    return Generate::expression(c, this);
-}
 
 bool FunctionCall::equals(const Node &other) const {
     const FunctionCall* o = dynamic_cast<const FunctionCall*>(&other);

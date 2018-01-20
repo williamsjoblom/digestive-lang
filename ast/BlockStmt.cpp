@@ -35,12 +35,6 @@ void BlockStmt::dump(size_t indent) {
     std::cout << "}" << std::endl;
 }
 
-void BlockStmt::generate(X86Compiler &c) {
-    for (Stmt* stmt : statements) {
-        stmt->generate(c);
-    }
-}
-
 void BlockStmt::generate(TACFun* env) {
     for (Stmt* stmt : statements)
 	stmt->generate(env);

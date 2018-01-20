@@ -1,11 +1,7 @@
-//
-// Created by wax on 12/15/16.
-//
-
-#include <gen/Gen.h>
-#include <ast/type/Types.h>
-#include "util/PrettyPrint.h"
 #include "ReturnStmt.h"
+
+#include "ast/type/Types.h"
+#include "util/PrettyPrint.h"
 #include "genir/Return.h"
 
 
@@ -34,11 +30,6 @@ void ReturnStmt::analyze(Scope* scope) {
         returnType = scope->functionContext->returnType;
     else
         returnType = N8_TYPE; // No function context <=> returns exit code.
-}
-
-
-void ReturnStmt::generate(X86Compiler &c) {
-    Generate::statement(c, this);
 }
 
 

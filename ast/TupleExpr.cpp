@@ -3,7 +3,6 @@
 //
 
 #include "TupleExpr.h"
-#include "gen/Gen.h"
 #include "semantic/SemanticError.h"
 #include "ir/TACOp.h"
 #include "genir/Expr.h"
@@ -21,11 +20,6 @@ TupleExpr::~TupleExpr() {
 
 TACOp TupleExpr::generate(TACFun* fun) {
     return Generate::tuple(fun, this);
-}
-
-
-Regs TupleExpr::generate(X86Compiler &c) {
-    return Generate::expression(c, this);
 }
 
 

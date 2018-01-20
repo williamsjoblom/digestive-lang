@@ -16,8 +16,6 @@ public:
     Unit(std::vector<Stmt*> statements, std::vector<FunctionDecl*> functions);
     ~Unit();
 
-    virtual void generate(X86Compiler &c);
-
     void analyze(Scope* scope);
     virtual bool equals(const Node& other) const;
     void dump(size_t indent);

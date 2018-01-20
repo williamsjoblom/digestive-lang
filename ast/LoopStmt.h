@@ -1,10 +1,4 @@
-//
-// Created by wax on 1/31/17.
-//
-
-#ifndef DIG_LOOPSTMT_H
-#define DIG_LOOPSTMT_H
-
+#pragma once
 
 #include "Expr.h"
 #include "Stmt.h"
@@ -17,8 +11,7 @@ public:
     LoopStmt(Expr* condition, Stmt* body);
     ~LoopStmt();
 
-    void generate(X86Compiler &c) override;
-    void generate(TACFun* env) override;
+    void generate(TACFun* fun) override;
 
     void analyze(Scope* scope) override;
 
@@ -27,5 +20,3 @@ public:
     void dump(size_t indent) override;
 };
 
-
-#endif //DIG_LOOPSTMT_H

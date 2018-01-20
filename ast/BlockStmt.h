@@ -1,9 +1,4 @@
-//
-// Created by wax on 12/14/16.
-//
-
-#ifndef DIG_BLOCKEXPRESSION_H
-#define DIG_BLOCKEXPRESSION_H
+#pragma once
 
 #include <vector>
 
@@ -16,8 +11,7 @@ public:
     BlockStmt(std::vector<Stmt*> statements);
     ~BlockStmt();
 
-    void generate(X86Compiler &c);
-    void generate(TACFun* env);
+    void generate(TACFun* fun);
     
     void analyze(Scope* scope);
     virtual bool equals(const Node& other) const;
@@ -27,6 +21,3 @@ public:
 private:
     std::vector<Stmt*> statements;
 };
-
-
-#endif //DIG_BLOCKEXPRESSION_H

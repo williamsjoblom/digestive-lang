@@ -18,7 +18,6 @@ public:
     ~ExprStmt() { delete expression; }
 
     void generate(TACFun* env) { expression->generate(env); };
-    void generate(X86Compiler &c) { expression->generate(c); }
 
     void analyze(Scope* scope) { expression->analyze(scope); }
 

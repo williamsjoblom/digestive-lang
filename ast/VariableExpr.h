@@ -5,7 +5,6 @@
 #ifndef DIG_VARIABLEEXPR_H
 #define DIG_VARIABLEEXPR_H
 
-#include "gen/Base.h"
 #include "Expr.h"
 
 class VariableExpr : public Expr {
@@ -15,14 +14,13 @@ public:
 
     VariableExpr(std::string identifier);
 
-    virtual TACOp generate(TACFun* env);
-    virtual Regs generate(X86Compiler& c);
+    virtual TACOp generate(TACFun* env) override;
 
-    void analyze(Scope* scope);
+    void analyze(Scope* scope) override;
 
-    virtual bool equals(const Node& other) const;
+    virtual bool equals(const Node& other) const override;
 
-    void dump(size_t indent);
+    void dump(size_t indent) override;
 
 };
 

@@ -2,9 +2,9 @@
 
 #include "Instr.h"
 #include "Op.h"
-#include "gen/ErrHandler.h"
 #include "jit/JitContext.h"
 #include "util/Colors.h"
+#include "genasm/ErrHandler.h"
 
 TACCompiler::TACCompiler() { }
 
