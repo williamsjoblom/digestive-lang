@@ -39,7 +39,7 @@ echo reload ~/test.dg > interact # Tell the compiler VM to apply your source cha
 # The running program will now have the recent source changes applied!
 ```
 
-One limitation is that only function addition and changes will be incorporated in the running program when reloading a source file. This means that top-level changes to the program will not be incorporated when reloading.
+One limitation is that only function additions and changes will be incorporated in the running program when reloading a source file. This means that top-level changes to the program will not be incorporated when reloading.
 
 
 ## Language
