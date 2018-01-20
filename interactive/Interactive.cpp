@@ -38,12 +38,11 @@ namespace Interactive {
 
         bool status = false;
 
-        while (true) {
+        while (true) {	    
             std::string s;
-
             std::getline(IO::in, s);
 
-            evaluate(jit, s);
+	    evaluate(jit, s);
 
             if (IO::in.eof()) IO::in.clear();
         }

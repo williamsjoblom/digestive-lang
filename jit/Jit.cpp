@@ -123,16 +123,19 @@ bool Jit::reload(std::string path) {
             }
 
             if (addFunction) {
-		assert(false);
+		newFunction->irId = JitContext::handleCount;
 		
-		// newFunction->irId = JitContext::handleCount;
-		// void* ptr = Generate::function(&runtime, newFunction);
-                // unsigned int index = JitContext::addHandle(ptr);
-                // assert(newFunction->irId == index);
+		TACFun* fun = new TACFun(&ir, newFunction->irId, newFunction);
+		Generate::function(fun, newFunction);
+		TACCompiler tc;
+		void* ptr = tc.compileFun(runtime, fun);
+		
+                unsigned int index = JitContext::addHandle(ptr);
+                assert(newFunction->irId == index);
 
-                // JitContext::root->functions.push_back(newFunction);
+                JitContext::root->functions.push_back(newFunction);
 
-                // added++;
+                added++;
             }
         }
 
