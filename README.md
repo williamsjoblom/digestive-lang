@@ -24,6 +24,24 @@ printTriple(triple);
 ```
 Example that prints the values of a tuple.
 
+### Interaction
+One key features is the ability to reload code at runtime. Such interaction with the compiler VM is done by writing commands to a named pipe called `interact` located in the current working directory.
+
+#### Example
+```shell
+mkfifo interact # Create named pipe for talking to the compiler VM.
+dg ~/test.dg    # Run your program (assuming 'dg' is the compiler executable).
+
+nano ~/test.dg  # Make changes to the source of the running program...
+
+echo reload ~/test.dg > interact # Tell the compiler VM to apply your source changes to the running program.
+
+# The running program will now have the recent source changes applied!
+```
+
+One limitation is that only function addition and changes will be incorporated in the running program when reloading a source file. This means that top-level changes to the program will not be incorporated when reloading.
+
+
 ## Language
 
 ### Types
