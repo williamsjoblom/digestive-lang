@@ -54,7 +54,7 @@ void emitPrimitivePln(TACFun* fun, PlnStmt* stmt) {
     if (arg.type.ref) {
 	// Dereference argument before passing.
 	TACType derefType = astArg->type;
-	derefType.ref = true;
+	derefType.ref = false;
 	    
 	TACVar* derefArg = fun->newVar(derefType);
 	fun->add(TACC::cast, arg, TACOp(), derefArg);

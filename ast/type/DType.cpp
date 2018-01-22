@@ -47,6 +47,15 @@ int DType::byteSize() const {
     return sz;
 }
 
+
+int DType::stackSize() const {
+    if (isTuple())
+	return sizeof(void*);
+    else
+	return sz;
+}
+
+
 void DType::copy(const DType &o) {
     kind = o.kind;
     switch (kind) {

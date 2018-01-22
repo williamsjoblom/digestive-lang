@@ -350,7 +350,7 @@ GENERATE(cast, e) {
 }
 
 GENERATE(eaddr, e) {
-    Operand s0 = generateOperand(e, e._s0);
+    Operand s0 = generateOperand(e, e._s0, true);
     Operand d = generateOperand(e, e._d);
 
     e.c.emit(X86Inst::kIdLea, d, s0);
@@ -442,7 +442,7 @@ void generateInstr(InstrEnv& e, TAC* instr) {
 
     case TACC::move: assert(false); break;
     case TACC::cast: EMIT(cast, e); break;
-    case TACC::eaddr: EMIT(cast, e); break;
+    case TACC::eaddr: EMIT(eaddr, e); break;
     case TACC::salloc: EMIT(salloc, e); break;
     case TACC::tupTo: EMIT(tupTo, e); break;
     case TACC::tupFrom: EMIT(tupFrom, e); break;

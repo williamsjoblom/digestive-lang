@@ -93,8 +93,13 @@ public:
      */
     ~DType();
 
+    /**
+     * Total type size.
+     */
     int byteSize() const;
 
+    int stackSize() const;
+    
     inline bool isNilType() const { return kind == DKind::PRIMITIVE && type.primitive == DPrimitiveKind::NIL; }
     inline bool isPrimitive() const { return kind == DKind::PRIMITIVE; }
     inline bool isTuple() const { return kind == DKind::TUPLE; }

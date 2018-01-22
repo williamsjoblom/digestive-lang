@@ -87,13 +87,15 @@ namespace BuiltIn {
 	    for (int i = 0; i < tupleTypes->size(); i++) {
 		DType innerType = tupleTypes->at(i);
 		void* innerPtr = (char*)ptr + offset;
-		if (innerType.ref)
+		if (innerType.ref) {
 		    innerPtr = *((void**) innerPtr);
-	    
+		}
+		
+		
 		printTuple(innerType, innerPtr);
 	    
-		offset += innerType.byteSize();
-
+		offset += innerType.stackSize();
+		
 		if (i < tupleTypes->size() - 1)
 		    std::cout << ", ";
 	    }
