@@ -102,7 +102,6 @@ void nativeCmp(InstrEnv& e) {
 	e.c.emit(X86Inst::kIdMov, s0Reg, s0);
 	s0 = s0Reg;
     }
-
     
     e.c.emit(X86Inst::kIdCmp, s0, s1);
 }
@@ -118,12 +117,12 @@ GENERATE(cmpEQ, e) {
 	if (e._s0.data.immValue == e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    } else {
+    	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSete, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSete, d);
 }
 
 GENERATE(cmpNE, e) {    
@@ -136,12 +135,12 @@ GENERATE(cmpNE, e) {
 	if (e._s0.data.immValue != e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    }  else {
+    	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSetne, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSetne, d);
 }
 
 GENERATE(cmpG, e) {    
@@ -154,12 +153,12 @@ GENERATE(cmpG, e) {
 	if (e._s0.data.immValue > e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    } else {
+    	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSetg, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSetg, d);
 }
 
 GENERATE(cmpL, e) {    
@@ -172,12 +171,12 @@ GENERATE(cmpL, e) {
 	if (e._s0.data.immValue < e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    } else {
+    	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSetl, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSetl, d);
 }
 
 GENERATE(cmpGE, e) {    
@@ -190,12 +189,12 @@ GENERATE(cmpGE, e) {
 	if (e._s0.data.immValue >= e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    } else {
+	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSetge, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSetge, d);
 }
 
 GENERATE(cmpLE, e) {    
@@ -208,12 +207,12 @@ GENERATE(cmpLE, e) {
 	if (e._s0.data.immValue <= e._s1.data.immValue)
 	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
 	else
-	    e.c.emit(X86Inst::kIdMov, d, Imm(1));
+	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
+    } else {
+	nativeCmp(e);
+	e.c.emit(X86Inst::kIdXor, d, d);
+	e.c.emit(X86Inst::kIdSetle, d);
     }
-    
-    nativeCmp(e);
-    e.c.emit(X86Inst::kIdXor, d, d);
-    e.c.emit(X86Inst::kIdSetle, d);
 }
 
 
