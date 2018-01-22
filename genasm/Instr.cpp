@@ -103,6 +103,7 @@ void nativeCmp(InstrEnv& e) {
 	s0 = s0Reg;
     }
 
+    
     e.c.emit(X86Inst::kIdCmp, s0, s1);
 }
 
@@ -121,6 +122,7 @@ GENERATE(cmpEQ, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSete, d);
 }
 
@@ -138,6 +140,7 @@ GENERATE(cmpNE, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSetne, d);
 }
 
@@ -155,6 +158,7 @@ GENERATE(cmpG, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSetg, d);
 }
 
@@ -172,6 +176,7 @@ GENERATE(cmpL, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSetl, d);
 }
 
@@ -189,6 +194,7 @@ GENERATE(cmpGE, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSetge, d);
 }
 
@@ -206,6 +212,7 @@ GENERATE(cmpLE, e) {
     }
     
     nativeCmp(e);
+    e.c.emit(X86Inst::kIdXor, d, d);
     e.c.emit(X86Inst::kIdSetle, d);
 }
 
