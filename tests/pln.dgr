@@ -2,6 +2,13 @@
 #@ description: print line
 
 pln 42;
-
-# Expected output:
 #$ 42
+
+pln (1, 2, 3);
+#$ (1, 2, 3)
+pln ((1, 2, 3), (1, 2, 3));
+#$ ((1, 2, 3), (1, 2, 3))
+
+var named : (one : i32, two : i32, three : i32) = (1, 2, 3);
+pln named;
+#$ (one: 1, two: 2, three: 3)

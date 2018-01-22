@@ -18,7 +18,7 @@ PlnStmt::~PlnStmt() {
 void PlnStmt::analyze(Scope* scope) {
     expression->analyze(scope);
     if (!expression->type.isPrimitive())
-	semanticError("pln function only takes primitive type arguments");
+	;//semanticError("pln function only takes primitive type arguments");
 }
 
 

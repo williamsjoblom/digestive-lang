@@ -103,13 +103,13 @@ TACOp tupleAccess(TACFun* fun, BinaryExpr* expr) {
     unsigned long offset = tupleAccessOffset(expr);
     
     TACOp tuplePtr = expr->left->generate(fun);
-
     tuplePtr.offset = offset;
     tuplePtr.type.ref = true;
     
-    if (tuplePtr.type.ref) { // Nested tuple, calculate new ptr.
+    if (!expr->type.ref) { // Nested tuple, calculate new ptr.
 	TACType type(tupleType->at(index));
 	TACOp indirectPtr = fun->newVar(type);
+	indirectPtr.type.ref = true;
 	
 	fun->add(TACC::eaddr, tuplePtr, TACOp(), indirectPtr);
 	return indirectPtr;

@@ -31,7 +31,7 @@ void TupleExpr::analyze(Scope *scope) {
         types->push_back(v->type);
     }
 
-    bool ref = false;
+    bool ref = true;
     type = DType(types, ref);
 }
 

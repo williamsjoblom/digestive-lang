@@ -26,7 +26,7 @@ public:
     TACType();
     TACType(DType& type);
     TACType(TACKind kind, int byteSize, bool ref=false);
-    
+
     bool isSigned();
     bool isUnsigned();
 

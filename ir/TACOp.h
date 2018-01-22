@@ -86,6 +86,11 @@ public:
      */
     TACOp(FunctionDecl* fun);
 
+    inline bool isImmediate() { return kind == TACOpKind::IMMEDIATE; }
+    inline bool isFunction() { return kind == TACOpKind::FUNCTION; }
+    inline bool isVariable() { return kind == TACOpKind::VARIABLE; }
+    inline bool isLabel() { return kind == TACOpKind::LABEL; }
+
     
     /**
      * To string.

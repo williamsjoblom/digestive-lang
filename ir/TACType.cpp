@@ -6,7 +6,6 @@
 
 TACType::TACType() { }
 
-
 TACType::TACType(DType& type) {
     if (type.isTuple()) {
 	kind = TACKind::PTR;

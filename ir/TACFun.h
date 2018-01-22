@@ -114,12 +114,6 @@ public:
      * Bind label to instruction.
      */
     void bindLabel(TACLabel* label, TAC* tac);
-
-
-    /**
-     * Create new variable.
-     */
-    TACVar* newVar(TACType& type, std::string name="");
     
     
     /**
@@ -129,15 +123,21 @@ public:
 
     
     /**
-     * Get variable with id.
+     * Create new variable.
      */
-    TACVar* var(int id);
+    TACVar* newVar(TACType& type, std::string name="");
 
 
     /**
      * New immediate.
      */
     TACOp newImm(TACType& type, unsigned long value);
+
+    /**
+     * New generic variable.
+     */
+    template<typename T>
+    TACOp newVar(std::string name="");
     
     
     /**
@@ -145,6 +145,12 @@ public:
      */
     template<typename T>
     TACOp newImm(T value);
+
+    
+    /**
+     * Get variable with id.
+     */
+    TACVar* var(int id);
 
     
     /**

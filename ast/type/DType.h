@@ -82,7 +82,7 @@ public:
      */
     DType(DPrimitiveKind primitiveKind, int sz, bool ref=false);
 
-
+    
     /**
      * Tuple constructor.
      */

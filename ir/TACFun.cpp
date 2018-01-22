@@ -146,8 +146,11 @@ TACOp TACFun::newImm(TACType& type, unsigned long value) {
 }
 
 
+/**
+ * Construct generic TACType.
+ */
 template<typename T>
-TACOp TACFun::newImm(T value) {
+TACType toTACType() {
     TACKind kind;
     if (std::is_integral<T>::value) {
 	if (std::is_signed<T>::value)
@@ -160,7 +163,20 @@ TACOp TACFun::newImm(T value) {
 	assert(false);
     }
 
-    TACType t(kind, sizeof(T));
+    return TACType(kind, sizeof(T));
+}
+
+
+template<typename T>
+TACOp TACFun::newVar(std::string name) {
+    TACType t = toTACType<T>();
+    return newVar(t, name);
+}
+
+
+template<typename T>
+TACOp TACFun::newImm(T value) {
+    TACType t = toTACType<T>();
     return newImm(t, (unsigned long) value);
 }
 
@@ -172,13 +188,33 @@ template TACOp TACFun::newImm(char);
 template TACOp TACFun::newImm(short);
 template TACOp TACFun::newImm(int);
 template TACOp TACFun::newImm(long);
-
 template TACOp TACFun::newImm(unsigned char);
 template TACOp TACFun::newImm(unsigned short);
 template TACOp TACFun::newImm(unsigned int);
 template TACOp TACFun::newImm(unsigned long);
+template TACOp TACFun::newImm(void*);
 
-template TACOp TACFun::newImm<void*>(void*);
+
+template TACOp TACFun::newVar<char>(std::string);
+template TACOp TACFun::newVar<short>(std::string);
+template TACOp TACFun::newVar<int>(std::string);
+template TACOp TACFun::newVar<long>(std::string);
+template TACOp TACFun::newVar<unsigned char>(std::string);
+template TACOp TACFun::newVar<unsigned short>(std::string);
+template TACOp TACFun::newVar<unsigned int>(std::string);
+template TACOp TACFun::newVar<unsigned long>(std::string);
+template TACOp TACFun::newVar<void*>(std::string);
+
+
+template TACType toTACType<char>();
+template TACType toTACType<short>();
+template TACType toTACType<int>();
+template TACType toTACType<long>();
+template TACType toTACType<unsigned char>();
+template TACType toTACType<unsigned short>();
+template TACType toTACType<unsigned int>();
+template TACType toTACType<unsigned long>();
+template TACType toTACType<void*>();
 
 
 void TACFun::dump() {

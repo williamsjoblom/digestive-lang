@@ -45,8 +45,7 @@ int main(int argc, char* argv[]) {
     std::clock_t compile_t0 = std::clock();
 
     bool loaded = jit.load(path);
-    
-    
+
     std::clock_t compile_t1 = std::clock();
     double compile_dt = double(compile_t1 - compile_t0) / (CLOCKS_PER_SEC / 1000);
     

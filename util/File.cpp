@@ -21,5 +21,5 @@ std::string readSourceFile(std::string path) {
 
     buffer << t.rdbuf();
 
-     return buffer.str();
- }
+    return buffer.str();
+}

@@ -358,7 +358,7 @@ GENERATE(salloc, e) {
     unsigned int sz = e._s0.data.immValue;
     const int align = 4;
     X86Mem stackMem = e.c.newStack(sz, align);
-
+    
     e.c.emit(X86Inst::kIdLea, d, stackMem);
 }
 

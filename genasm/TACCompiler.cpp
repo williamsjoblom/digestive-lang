@@ -61,6 +61,7 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     logger.setIndentation("    ");
     logger.addOptions(StringLogger::kOptionHexImmediate);
     logger.addOptions(StringLogger::kOptionImmExtended);
+    logger.addOptions(StringLogger::kOptionHexDisplacement);
     
     code.init(runtime.getCodeInfo());
     code.setLogger(&logger);
