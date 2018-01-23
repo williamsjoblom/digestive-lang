@@ -119,8 +119,8 @@ GENERATE(cmpEQ, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-    	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSete, d);
     }
 }
@@ -155,8 +155,8 @@ GENERATE(cmpG, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-    	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+    	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSetg, d);
     }
 }
@@ -173,8 +173,8 @@ GENERATE(cmpL, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-    	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSetl, d);
     }
 }
@@ -191,8 +191,8 @@ GENERATE(cmpGE, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSetge, d);
     }
 }
@@ -209,8 +209,8 @@ GENERATE(cmpLE, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSetle, d);
     }
 }
