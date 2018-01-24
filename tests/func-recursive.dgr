@@ -1,0 +1,16 @@
+# Test header: 
+#@ name: Recursion
+#@ description: 
+
+fun fib(n : i32) -> i32 {
+    if (n <= 1) return n;
+    if (n == 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+
+pln fib(2);
+#$ 1
+pln fib(3);
+#$ 2
+pln fib(7);
+#$ 13
