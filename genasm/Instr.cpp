@@ -120,7 +120,7 @@ GENERATE(cmpEQ, e) {
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
 	e.c.emit(X86Inst::kIdXor, d, d);
-    	nativeCmp(e);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSete, d);
     }
 }
@@ -173,8 +173,8 @@ GENERATE(cmpL, e) {
 	else
 	    e.c.emit(X86Inst::kIdMov, d, Imm(0));
     } else {
-    	nativeCmp(e);
 	e.c.emit(X86Inst::kIdXor, d, d);
+	nativeCmp(e);
 	e.c.emit(X86Inst::kIdSetl, d);
     }
 }
