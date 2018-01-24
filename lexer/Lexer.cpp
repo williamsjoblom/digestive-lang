@@ -35,8 +35,10 @@ TokenQueue Lexer::lex(std::string source) {
             readAlpha(t);
         else if(isdigit(c))
             readNum(t);
-        else
-            readSymbol(t);
+	else if (c == '"')
+	    readString(t);
+	else
+	    readSymbol(t);
 
         tokens.push_back(t);
 
@@ -106,6 +108,26 @@ void Lexer::readNum(Token &token) {
     token.value = source.substr(oldIndex, index - oldIndex);
 }
 
+void Lexer::readString(Token& token) {
+    token.type = NUMBER;
+
+    unsigned int oldIndex = index;
+
+    index++;
+    col++;
+    
+    char c = source[index];
+    while (c != '"') {
+	col++;
+        c = source[++index];
+    }
+
+    index++;
+    col++;
+    
+    token.value = source.substr(oldIndex, index - oldIndex);
+}
+
 void Lexer::readSymbol(Token &token) {
     unsigned int oldIndex = index;
 
@@ -113,23 +135,23 @@ void Lexer::readSymbol(Token &token) {
     std::string current = "";
 
     do {
-        if (index > source.size()) break;
-        longest = current;
-        index++;
-        col++;
+	if (index > source.size()) break;
+	longest = current;
+	index++;
+	col++;
 
-        current = source.substr(oldIndex, index - oldIndex);
-    } while (symbolToTokenType.find(current) != symbolToTokenType.end());
+	current = source.substr(oldIndex, index - oldIndex);
+    } while (valueToTokenType.find(current) != valueToTokenType.end());
     index--;
 
     if (index == oldIndex) { // FIXME: will assert if unknown symbol is found. Replace with suitable error-code/exception.
-        std::cout << "[" << token.row << ":" << token.col << "] Unknown symbol " << "'" << source[index] << "':" << (int)source[index] << std::endl;
-        std::cout << index << " of " << source.size() - 1 << std::endl;
-        assert(false);
+	std::cout << "[" << token.row << ":" << token.col << "] Unknown symbol " << "'" << source[index] << "':" << (int)source[index] << std::endl;
+	std::cout << index << " of " << source.size() - 1 << std::endl;
+	assert(false);
     }
 
     token.value = longest;
-    token.type = symbolToTokenType.at(token.value);
+    token.type = valueToTokenType.at(token.value);
 }
 
 

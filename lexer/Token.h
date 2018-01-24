@@ -11,7 +11,8 @@
 enum TokenType {
     IDENTIFIER,
     NUMBER,
-
+    STRING,
+    
     // Symbols
     PLUS,
     MINUS,
@@ -31,6 +32,8 @@ enum TokenType {
     // Replaces regular paranthesis during infix to postfix parsing.
     LARGPAR,
     RARGPAR,
+    
+    PIPE,
 
     EQ,
     NOTEQ,
@@ -44,8 +47,54 @@ enum TokenType {
 
     AT,
 
+    UNKNOWN,
     END_OF_FILE,
 };
+
+
+/**
+ * Token type string representations.
+ */
+static std::string tokenTypeToS[] = {
+    "IDENTIFIER",
+    "NUMBER",
+    "STRING",
+    "PLUS",
+    "MINUS",
+    "MUL",
+    "DIV",
+
+    "ASSIGN",
+
+    "COL",
+    "SEMICOL",
+    "COMMA",
+    "LBRACK",
+    "RBRACK",
+    "LPAR",
+    "RPAR",
+    
+    "LARGPAR",
+    "RARGPAR",
+
+    "PIPE",
+
+    "EQ",
+    "NOTEQ",
+    "LESSEQ",
+    "GREATEREQ",
+    "LESS",
+    "GREATER",
+
+    "RIGHTARROW",
+    "DOT",
+
+    "AT",
+    
+    "UNKNOWN",
+    "EOF",
+};
+
 
 struct Token {
     TokenType type;
@@ -56,34 +105,39 @@ struct Token {
     void dump() { std::cout << "[" << row << ":" << col << "]" << value << std::endl; }
 };
 
-static std::map<std::string, TokenType> symbolToTokenType =
-        {
-                {"+", PLUS},
-                {"-", MINUS},
-                {"*", MUL},
-                {"/", DIV},
 
-                {"=", ASSIGN},
+static std::map<std::string, TokenType> valueToTokenType =
+{
+    {"+", PLUS},
+    {"-", MINUS},
+    {"*", MUL},
+    {"/", DIV},
 
-                {":", COL},
-                {";", SEMICOL},
-                {",", COMMA},
-                {"{", LBRACK},
-                {"}", RBRACK},
-                {"(", LPAR},
-                {")", RPAR},
+    {"=", ASSIGN},
 
-                {"==", EQ},
-                {"!=", NOTEQ},
-                {"<=", LESSEQ},
-                {">=", GREATEREQ},
-                {"<", LESS},
-                {">", GREATER},
+    {":", COL},
+    {";", SEMICOL},
+    {",", COMMA},
+    {"{", LBRACK},
+    {"}", RBRACK},
+    {"(", LPAR},
+    {")", RPAR},
 
-                {"->", RIGHTARROW},
-		{".", DOT},
+    {"|", PIPE},
+    
+    {"==", EQ},
+    {"!=", NOTEQ},
+    {"<=", LESSEQ},
+    {">=", GREATEREQ},
+    {"<", LESS},
+    {">", GREATER},
 
-		{"@", AT},
-        };
+    {"->", RIGHTARROW},
+    {".", DOT},
+
+    {"@", AT},
+};
+
+
 
 #endif //DIG_TOKEN_H

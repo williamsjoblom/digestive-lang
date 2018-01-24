@@ -25,6 +25,7 @@ private:
     void readComment();
     void readAlpha(Token& token);
     void readNum(Token& token);
+    void readString(Token& token);
     void readSymbol(Token& token);
 };
 
