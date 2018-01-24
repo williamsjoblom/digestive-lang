@@ -3,19 +3,20 @@
 //
 
 #include "Parse.h"
-#include "ParseError.h"
 
 #include <vector>
 #include <stack>
-#include <ast/Operator.h>
-#include <ast/Literal.h>
-#include <ast/BinaryExpr.h>
 #include <assert.h>
-#include <ast/VariableExpr.h>
-#include <ast/FunctionCall.h>
-#include <ast/UnaryExpr.h>
-#include <ast/IntegerLiteral.h>
-#include <ast/TupleExpr.h>
+
+#include "ParseError.h"
+#include "ast/Operator.h"
+#include "ast/Literal.h"
+#include "ast/BinaryExpr.h"
+#include "ast/VariableExpr.h"
+#include "ast/FunctionCall.h"
+#include "ast/UnaryExpr.h"
+#include "ast/IntegerLiteral.h"
+#include "ast/TupleExpr.h"
 
 
 std::vector<Token> shuntingYard(TokenQueue& tokens);
