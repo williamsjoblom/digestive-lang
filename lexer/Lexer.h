@@ -14,8 +14,18 @@
 
 class Lexer {
 public:
-    Lexer();
-    TokenQueue lex(std::string source);
+    Lexer(std::string source);
+    
+    /**
+     * Read all tokens.
+     */
+    TokenQueue readAll();
+    
+    /**
+     * Read token.
+     */
+    Token read();
+    
 private:
     std::string source;
     unsigned int index;

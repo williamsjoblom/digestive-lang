@@ -6,60 +6,63 @@
 #include "Lexer.h"
 #include "Token.h"
 
-Lexer::Lexer() {
+Lexer::Lexer(std::string source) {
+    this->source = source;
     this->index = 0;
     this->row = 0;
     this->col = 0;
 }
 
 
-TokenQueue Lexer::lex(std::string source) {
-    this->source = source;
-    this->index = 0;
-    this->row = 0;
-    this->col = 0;
-
-
+TokenQueue Lexer::readAll() {
     int tokenIndex = 0;
     std::vector<Token> tokens = std::vector<Token>();
 
     readComment();
     while (index < source.size()) {
-        Token t;
-        t.row = row;
-        t.col = col;
-        t.index = tokenIndex++;
-	
-        char c = source[index];
-        if (isalpha(c))
-            readAlpha(t);
-        else if(isdigit(c))
-            readNum(t);
-	else if (c == '"')
-	    readString(t);
-	else
-	    readSymbol(t);
-
-        tokens.push_back(t);
-
-	readComment();
+	Token t = read();
+	t.index = tokenIndex++;
+	tokens.push_back(t);
     }
 
 
     return TokenQueue(tokens);
 }
 
+
+Token Lexer::read() {
+    Token t;
+    t.row = row;
+    t.col = col;
+    t.index = 0;
+	
+    char c = source[index];
+    if (isalpha(c))
+	readAlpha(t);
+    else if(isdigit(c))
+	readNum(t);
+    else if (c == '"')
+	readString(t);
+    else
+	readSymbol(t);
+
+    readComment();
+
+    return t;
+}
+
+
 void Lexer::readWhitespace() {
     char c = source[index];
     while (isspace(c)) {
-        if (c == '\n') {
-            row++;
-            col = 0;
-        } else if(isprint(c)) {
-            col++;
-        }
+	if (c == '\n') {
+	    row++;
+	    col = 0;
+	} else if(isprint(c)) {
+	    col++;
+	}
 	
-        c = source[++index];
+	c = source[++index];
     }
 }
 
@@ -87,8 +90,8 @@ void Lexer::readAlpha(Token &token) {
 
     char c = source[index];
     while (isalpha(c) || (startIndex != index && (isdigit(c) || c == '_'))) {
-        col++;
-        c = source[++index];
+	col++;
+	c = source[++index];
     }
 
     token.value = source.substr(startIndex, index - startIndex);
@@ -101,8 +104,8 @@ void Lexer::readNum(Token &token) {
 
     char c = source[index];
     while (isdigit(c)) {
-        col++;
-        c = source[++index];
+	col++;
+	c = source[++index];
     }
 
     token.value = source.substr(oldIndex, index - oldIndex);
@@ -119,7 +122,7 @@ void Lexer::readString(Token& token) {
     char c = source[index];
     while (c != '"') {
 	col++;
-        c = source[++index];
+	c = source[++index];
     }
 
     index++;

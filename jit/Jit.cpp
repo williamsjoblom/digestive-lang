@@ -46,8 +46,8 @@ Jit::~Jit() {
 bool Jit::load(std::string path) {
     std::string source = readSourceFile(path);
 
-    Lexer lexer;
-    TokenQueue tokens = lexer.lex(source);
+    Lexer lexer(source);
+    TokenQueue tokens = lexer.readAll();
     
     try {
 	Unit* root = Parse::unit(tokens);
@@ -79,14 +79,14 @@ bool Jit::reload(std::string path) {
         std::cout << "Reloading '" << path << "'"<< std::endl;
         std::string source = readSourceFile(path);
 
-        Lexer lexer;
-        TokenQueue tokens = lexer.lex(source);
+        Lexer lexer(source);
+	TokenQueue tokens = lexer.readAll();
 
-        Unit* newRoot = Parse::unit(tokens);
-        newRoot->analyze(fileScope);
+	Unit* newRoot = Parse::unit(tokens);
+	newRoot->analyze(fileScope);
 
-        int updated = 0;
-        int added = 0;
+	int updated = 0;
+	int added = 0;
 
 	if (verbose)
 	    std::cout << "Parsed " << newRoot->functions.size() << " function(s)" << std::endl;

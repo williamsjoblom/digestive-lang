@@ -3,7 +3,7 @@
 #include <string>
 
 #include "BNF.h"
-#include "lexler/Lexer.h"
+#include "lexer/Lexer.h"
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
 
