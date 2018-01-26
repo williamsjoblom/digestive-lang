@@ -1,0 +1,18 @@
+# Test header: 
+#@ name: Assignment
+#@ description: Test assignment
+
+var x0 := 3; pln x0;
+#$ 3
+x0 = 4; pln x0;
+#$ 4
+
+var x1 := (1, (2, 3)); pln x1.0; pln x1.1.0; pln x1.1.1;
+#$ 1
+#$ 2
+#$ 3
+
+x1 = (4, (5, 6)); pln x1.0; pln x1.1.0; pln x1.1.1;
+#$ 4
+#$ 5
+#$ 6
