@@ -11,14 +11,8 @@
 
 
 
-BNFGrammar buildGrammar() {
-    
-    
-}
-
-
 namespace Earley {
-    Expr* parse(TokenQueue& tokens) {
-	BNFGrammar g = buildGrammar();
+    Expr* parse(BNFGrammar& g, TokenQueue& tokens) {
+	
     }
 }

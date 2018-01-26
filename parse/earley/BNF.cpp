@@ -25,9 +25,11 @@ std::string BNFT::toS() const {
 }
 
 std::string BNFProduction::toS() const {
+    std::stringstream ss;
+    for (BNFSymbol* symbol : symbols)
+	ss << symbol->toS() << " ";
     
-    for (BNFSymbol* symbol : symbols) ;
-	
+    return ss.str();
 }
 
 std::string BNFNT::toS() const {
@@ -37,6 +39,24 @@ std::string BNFNT::toS() const {
 
 std::string BNFRule::toS() const {
     std::stringstream ss;
+
+    ss << symbol << " = ";
+
+    for (int i = 0; i < productions.size(); i++) {
+	const BNFProduction& p = productions[i];
+	if (i > 0) ss << std::endl << "| ";
+	ss << p.toS();
+    }
+    
+    return ss.str();
+}
+
+std::string BNFGrammar::toS() const {
+    std::stringstream ss;
+    for (const BNFRule& rule : rules) {
+	ss << rule.toS() << std::endl;
+    }
+    
     return ss.str();
 }
 

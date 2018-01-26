@@ -112,7 +112,7 @@ void Lexer::readNum(Token &token) {
 }
 
 void Lexer::readString(Token& token) {
-    token.type = NUMBER;
+    token.type = STRING;
 
     unsigned int oldIndex = index;
 

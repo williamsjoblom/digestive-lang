@@ -7,24 +7,71 @@
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
 
+/**
+ * Parse BNF terminal.
+ */
+BNFNT* parseNonTerminal(TokenQueue& tokens) {
+    if (tokens.top().type == TokenType::IDENTIFIER) {
+	std::string value = tokens.pop().value;
+	return new BNFNT(value);
+    } else {
+	return nullptr;
+    }
+}
+
+/**
+ * Parse BNF terminal.
+ */
 BNFT* parseTerminal(TokenQueue& tokens) {
     if (tokens.top().type == TokenType::STRING) {
-	Lexer l;
-	Token t = tokens.pop();
-	return new BNFT(t.);
+	std::string str = tokens.pop().value;
+	std::string content = str.substr(1, str.length() - 2); // Strip quotes.
+	
+	Lexer l(content);
+	Token t = l.read();
+	return new BNFT(t.type, t.value);
+    } else if (tokens.top().type == TokenType::LESS) {
+	tokens.expect(TokenType::LESS);
+
+	std::string type = tokens.expect(TokenType::IDENTIFIER).value;
+	TokenType t;
+	if (type == "id") {
+	    t = TokenType::IDENTIFIER;
+	} else if (type == "num") {
+	    t = TokenType::NUMBER;
+	} else if (type == "str") {
+	    t = TokenType::STRING;
+	} else {
+	    throw 1;
+	}
+	
+	tokens.expect(TokenType::GREATER);
+
+	return new BNFT(t);
+    } else {
+	return nullptr;
     }
 }
 
 
+/**
+ * Parse BNF symbol.
+ */
 BNFSymbol* parseSymbol(TokenQueue& tokens) {
-    BNFT* terminal = parseTerminal(tokens);
-    if (terminal != nullptr) return terminal;
+    BNFSymbol* symbol;
+    if ((symbol = parseTerminal(tokens)) != nullptr) return symbol;
+    if ((symbol = parseNonTerminal(tokens)) != nullptr) return symbol;
+
+    throw 1;
 }
 
 
+/**
+ * Parse BNF production.
+ */
 BNFProduction parseProduction(TokenQueue& tokens) {
     BNFProduction production;
-    
+
     while (tokens.top().type != TokenType::PIPE &&
 	   tokens.top().type != TokenType::SEMICOL) {
 	BNFSymbol* symbol = parseSymbol(tokens);
@@ -34,6 +81,7 @@ BNFProduction parseProduction(TokenQueue& tokens) {
     return production;
 }
 
+
 /**
  * Parse BNF rule.
  */
@@ -41,7 +89,7 @@ BNFRule parseRule(TokenQueue& tokens) {
     BNFRule rule;
     rule.symbol = tokens.expect(TokenType::IDENTIFIER).value;
     
-    tokens.expect(TokenType::EQ);
+    tokens.expect(TokenType::ASSIGN);
     
     do {
 	BNFProduction production = parseProduction(tokens);
@@ -56,6 +104,12 @@ BNFRule parseRule(TokenQueue& tokens) {
 
 namespace Earley {
     BNFGrammar parseGrammar(TokenQueue& tokens) {
-	
+	BNFGrammar g;
+	while (!tokens.empty()) {
+	    BNFRule rule = parseRule(tokens);
+	    g.rules.push_back(rule);
+	}
+
+	return g;
     }
 }

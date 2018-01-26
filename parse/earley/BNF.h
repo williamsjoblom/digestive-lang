@@ -120,10 +120,20 @@ struct BNFProduction {
  * Production rule.
  */
 struct BNFRule {
+    /**
+     * Symbol.
+     */
     std::string symbol;
 
+    /**
+     * Productions.
+     */
     std::vector<BNFProduction> productions;
+
     
+    /**
+     * To string.
+     */
     std::string toS() const;
 };
 
@@ -132,5 +142,14 @@ struct BNFRule {
  * Grammar.
  */
 struct BNFGrammar {
+    /**
+     * Rules.
+     */
     std::vector<BNFRule> rules;
+
+    
+    /**
+     * To string.
+     */
+    std::string toS() const;
 };
