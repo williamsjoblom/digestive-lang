@@ -25,7 +25,9 @@ public:
     Token expect(const TokenType type);
     bool eat(const TokenType type);
     bool eatIdentifier(const std::string value);
+    
     bool empty() const;
+    int size() const;
 
     void dump() const;
 private:

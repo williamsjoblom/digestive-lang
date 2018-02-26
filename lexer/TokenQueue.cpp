@@ -95,6 +95,10 @@ bool TokenQueue::empty() const {
     return index >= tokens.size();
 }
 
+int TokenQueue::size() const {
+    return tokens.size();
+}
+
 
 
 

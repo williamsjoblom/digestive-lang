@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "lexer/Token.h"
 
@@ -17,6 +18,12 @@ struct BNFNT;
  */
 struct BNFSymbol {
 
+    /**
+     * Hash.
+     */
+    virtual size_t hash() const = 0;
+
+    
     /**
      * True if this is a terminal symbol.
      */
@@ -68,6 +75,18 @@ struct BNFT : public BNFSymbol {
      */
     BNFT(TokenType type, std::string value="") : type(type), value(value)  { }
 
+
+    /**
+     * Return true if passed Token is accepted by this symbol.
+     */
+    bool accepts(Token& t);
+    
+
+    /**
+     * Hash.
+     */
+    size_t hash() const override;
+
     
     /**
      * To string.
@@ -93,6 +112,12 @@ struct BNFNT : public BNFSymbol {
 
     
     /**
+     * Hash.
+     */
+    size_t hash() const override;
+
+    
+    /**
      * To string.
      */
     std::string toS() const override;
@@ -108,6 +133,12 @@ struct BNFProduction {
      */
     std::vector<BNFSymbol*> symbols;
 
+    
+    /**
+     * Hash.
+     */
+    size_t hash() const;
+    
     
     /**
      * To string.
@@ -145,7 +176,7 @@ struct BNFGrammar {
     /**
      * Rules.
      */
-    std::vector<BNFRule> rules;
+    std::map<std::string, BNFRule> rules;
 
     
     /**

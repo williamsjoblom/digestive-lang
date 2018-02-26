@@ -16,6 +16,9 @@
 #include "genir/Program.h"
 #include "util/File.h"
 #include "genasm/TACCompiler.h"
+#include "parse/earley/BNFParser.h"
+#include "parse/earley/BNF.h"
+#include "parse/earley/Expr.h"
 
 #include <asmjit/asmjit.h>
 
@@ -38,6 +41,19 @@ int main(int argc, char* argv[]) {
 	std::cout << " digestive " << version
 		  << ", " << buildTimestamp() << std::endl;
     }
+
+    std::string grammar = readSourceFile(path);
+    Lexer gl(grammar);
+    TokenQueue gt = gl.readAll();
+    BNFGrammar g = Earley::parseGrammar(gt);
+
+    std::string source = readSourceFile("/home/wax/test.dg");
+    Lexer sl(source);
+    TokenQueue st = sl.readAll();
+    bool result = Earley::parse(g, "unit", st);
+
+    return 0;
+
     
     Jit jit;
     Interactive::start(&jit);

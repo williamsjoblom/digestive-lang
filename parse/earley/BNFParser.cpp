@@ -62,6 +62,7 @@ BNFSymbol* parseSymbol(TokenQueue& tokens) {
     if ((symbol = parseTerminal(tokens)) != nullptr) return symbol;
     if ((symbol = parseNonTerminal(tokens)) != nullptr) return symbol;
 
+    tokens.top().dump();
     throw 1;
 }
 
@@ -107,7 +108,7 @@ namespace Earley {
 	BNFGrammar g;
 	while (!tokens.empty()) {
 	    BNFRule rule = parseRule(tokens);
-	    g.rules.push_back(rule);
+	    g.rules[rule.symbol] = rule;
 	}
 
 	return g;

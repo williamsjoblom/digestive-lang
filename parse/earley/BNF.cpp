@@ -2,6 +2,8 @@
 
 #include <sstream>
 #include <assert.h>
+#include <functional>
+
 
 BNFT* BNFSymbol::asTerminal() {
     assert(terminal());
@@ -14,6 +16,12 @@ BNFNT* BNFSymbol::asNonTerminal() {
     return dynamic_cast<BNFNT*>(this);
 }
 
+bool BNFT::accepts(Token& t) {
+    if (value.empty())
+	return type == t.type;
+    else
+	return type == t.type && value == t.value;
+}
 
 std::string BNFT::toS() const {
     std::stringstream ss;
@@ -24,6 +32,27 @@ std::string BNFT::toS() const {
     return ss.str();
 }
 
+
+size_t BNFNT::hash() const {
+    return std::hash<std::string>()(symbol);
+}
+
+
+size_t BNFT::hash() const {
+    return std::hash<int>()(type) ^ std::hash<std::string>()(value);
+}
+
+
+size_t BNFProduction::hash() const {
+    size_t h = 0;
+    for (BNFSymbol* symbol : symbols)
+	h ^= symbol->hash();
+
+    return h;
+}
+
+
+
 std::string BNFProduction::toS() const {
     std::stringstream ss;
     for (BNFSymbol* symbol : symbols)
@@ -31,6 +60,7 @@ std::string BNFProduction::toS() const {
     
     return ss.str();
 }
+
 
 std::string BNFNT::toS() const {
     return symbol;
@@ -51,10 +81,11 @@ std::string BNFRule::toS() const {
     return ss.str();
 }
 
+
 std::string BNFGrammar::toS() const {
     std::stringstream ss;
-    for (const BNFRule& rule : rules) {
-	ss << rule.toS() << std::endl;
+    for (const auto& rule : rules) {
+	ss << rule.second.toS() << std::endl;
     }
     
     return ss.str();
