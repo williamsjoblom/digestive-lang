@@ -42,12 +42,13 @@ int main(int argc, char* argv[]) {
 		  << ", " << buildTimestamp() << std::endl;
     }
 
-    std::string grammar = readSourceFile(path);
+    std::string grammarPath = rootPath() + "/lang/dg.bnf";
+    std::string grammar = readSourceFile(grammarPath);
     Lexer gl(grammar);
     TokenQueue gt = gl.readAll();
     BNFGrammar g = Earley::parseGrammar(gt);
 
-    std::string source = readSourceFile("/home/wax/test.dg");
+    std::string source = readSourceFile(path);
     Lexer sl(source);
     TokenQueue st = sl.readAll();
     bool result = Earley::parse(g, "unit", st);

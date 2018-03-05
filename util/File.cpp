@@ -23,3 +23,8 @@ std::string readSourceFile(std::string path) {
 
     return buffer.str();
 }
+
+
+std::string rootPath() {
+    return getenv("DGROOT");
+}
