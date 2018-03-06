@@ -47,6 +47,11 @@ struct EChart {
  */
 struct EState {
     /**
+     * Rule symbol.
+     */
+    std::string symbol;
+    
+    /**
      * Production being matched.
      */
     BNFProduction& production;
@@ -64,8 +69,8 @@ struct EState {
     /**
      * Constructor.
      */
-    EState(BNFProduction& production, int origin)
-	: production(production), origin(origin), position(0) { }
+    EState(std::string symbol, BNFProduction& production, int origin)
+	: symbol(symbol), production(production), origin(origin), position(0) { }
 
     
     /**

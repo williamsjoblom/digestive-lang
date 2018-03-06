@@ -50,7 +50,9 @@ bool EState::complete() const {
 
 
 size_t EState::hash() const {
-    return production.hash() ^ std::hash<int>()(origin) ^ std::hash<int>()(position);
+    return
+	std::hash<std::string>()(symbol) ^ production.hash() ^
+	std::hash<int>()(origin) ^ std::hash<int>()(position);
 }
 
 
@@ -62,6 +64,8 @@ bool EState::operator==(const EState& other) const {
 std::string EState::toS() const {
     std::stringstream ss;
 
+    ss << symbol << " → ";
+    
     for (int i = 0; i < production.symbols.size(); i++) {
 	if (i == position) ss << "• ";
 	ss << production.symbols[i]->toS() << " ";

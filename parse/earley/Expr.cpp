@@ -27,7 +27,7 @@ void predict(BNFGrammar& g, const EState& state, EChart& chart, int k) {
     BNFRule& r = g.rules.at(y->symbol);
 
     for (BNFProduction& production : r.productions) {
-	EState s(production, k);
+	EState s(r.symbol, production, k);
 	chart.add(s, k);
     }
 }
@@ -52,10 +52,17 @@ void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
  * Complete.
  */
 void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
-    for (const EState& s : chart.s[state.origin]) {
-	if (!state.complete() && state.next()->nonTerminal()) {
-	    EState newState(s);
-	    chart.add(newState, k);
+    for (const EState& completeS : chart.s[k]) {
+	if (!completeS.complete()) continue;
+
+	std::string symbol = completeS.symbol;
+	for (const EState& s : chart.s[completeS.origin]) {
+	    if (!s.complete() && s.next()->nonTerminal() &&
+		s.next()->asNonTerminal()->symbol == symbol) {
+		EState newState(s);
+		newState.position++;
+		chart.add(newState, k);
+	    }
 	}
     }
 }
@@ -94,7 +101,7 @@ namespace Earley {
 	// S(0)
 	BNFRule& rootRule = g.rules[rule];
 	for (BNFProduction& p : rootRule.productions) {
-	    EState initial(p, 0);
+	    EState initial(rootRule.symbol, p, 0);
 	    chart.add(initial, 0);
 	}
 	
@@ -112,3 +119,5 @@ namespace Earley {
 	return false;
     }
 }
+
+C++/l finished at Tue Mar  6 12:48:39

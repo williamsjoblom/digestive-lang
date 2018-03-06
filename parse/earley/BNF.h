@@ -139,7 +139,7 @@ struct BNFNT : public BNFSymbol {
 /**
  * Production.
  */
-struct BNFProduction {
+struct BNFProduction {    
     /**
      * Symbols.
      */
