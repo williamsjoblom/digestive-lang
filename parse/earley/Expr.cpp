@@ -52,11 +52,11 @@ void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
  * Complete.
  */
 void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
-    for (const EState& completeS : chart.s[k]) {
-	if (!completeS.complete()) continue;
+    for (const EState& completeState : chart.s[k]) {
+	if (!completeState.complete()) continue;
 
-	std::string symbol = completeS.symbol;
-	for (const EState& s : chart.s[completeS.origin]) {
+	std::string symbol = completeState.symbol;
+	for (const EState& s : chart.s[completeState.origin]) {
 	    if (!s.complete() && s.next()->nonTerminal() &&
 		s.next()->asNonTerminal()->symbol == symbol) {
 		EState newState(s);
@@ -119,5 +119,3 @@ namespace Earley {
 	return false;
     }
 }
-
-C++/l finished at Tue Mar  6 12:48:39
