@@ -1,0 +1,7 @@
+unit = s;
+
+s = s "+" m | m;
+m = m "*" t | t;
+t = <num>;
+
+

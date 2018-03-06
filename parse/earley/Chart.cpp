@@ -10,19 +10,24 @@
 EChart::EChart(TokenQueue& tokens) {
     int stateSize = tokens.size() + 1;
     for (int i = 0; i < stateSize; i++) {
-	s.push_back(std::unordered_set<EState>());
+	s.push_back(std::list<EState>());
+	sh.push_back(std::unordered_set<size_t>());
     }
 	
 }
 
 
 void EChart::add(EState state, int k) {
-    s[k].insert(state);
+    size_t hash = state.hash();
+    if (sh[k].find(hash) == sh[k].end()) {
+	sh[k].insert(hash);
+	s[k].insert(s[k].end(), state);
+    }
 }
 
 
 BNFSymbol* EState::next() const {
-    if (position > 0 &&
+    if (position >= 0 &&
 	position < production.symbols.size())
 	return production.symbols[position];
     else
@@ -31,7 +36,7 @@ BNFSymbol* EState::next() const {
 
 
 BNFSymbol* EState::previous() {
-    if (position - 1 > 0 &&
+    if (position - 1 >= 0 &&
 	position - 1 < production.symbols.size())
 	return production.symbols[position - 1];
     else
@@ -61,6 +66,9 @@ std::string EState::toS() const {
 	if (i == position) ss << "• ";
 	ss << production.symbols[i]->toS() << " ";
     }
+
+    if (position == production.symbols.size())
+	ss << "•";
     
     return ss.str();
 }

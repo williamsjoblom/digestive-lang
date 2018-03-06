@@ -2,6 +2,7 @@
 
 #include <unordered_set>
 #include <vector>
+#include <list>
 
 /**
  * Forward declarations.
@@ -19,8 +20,13 @@ class TokenQueue;
 struct EChart {
     /**
      * Rows.
+     *
+     * Rows are represented both by a linked list and an set to allow iteration
+     * over items while iterating and remove duplicate sets respectively.
+     * The set contains hash values for all states present in the linked list.
      */
-    std::vector<std::unordered_set<EState>> s;
+    std::vector<std::list<EState>> s;
+    std::vector<std::unordered_set<size_t>> sh;
 
     
     /**

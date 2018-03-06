@@ -75,6 +75,12 @@ struct BNFT : public BNFSymbol {
      */
     BNFT(TokenType type, std::string value="") : type(type), value(value)  { }
 
+    
+    /**
+     * This is a terminal symbol.
+     */
+    bool terminal() override { return true; }
+
 
     /**
      * Return true if passed Token is accepted by this symbol.
@@ -109,6 +115,12 @@ struct BNFNT : public BNFSymbol {
      * Constructor.
      */
     BNFNT(std::string symbol) : symbol(symbol) { }
+
+    
+    /**
+     * This is a non-terminal symbol.
+     */
+    bool nonTerminal() override { return true; }
 
     
     /**
