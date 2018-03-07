@@ -1,7 +1,9 @@
-unit = s;
+unit = Sum;
 
-s = s "+" m | m;
-m = m "*" t | t;
-t = <num>;
+Sum = Sum "+" Product | Sum "-" Product | Product;
+Product = Product "*" Factor | Product "/" Factor | Factor;
+Factor = "(" Sum ")" | <num>;
+
+
 
 

@@ -28,6 +28,9 @@ void predict(BNFGrammar& g, const EState& state, EChart& chart, int k) {
 
     for (BNFProduction& production : r.productions) {
 	EState s(r.symbol, production, k);
+	s.previousState = nullptr;
+	s.completedState = nullptr;
+	
 	chart.add(s, k);
     }
 }
@@ -43,6 +46,9 @@ void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
     if (a->accepts(top)) {
 	EState s(state);
 	s.position++;
+	s.previousState = &state;
+	s.completedState = nullptr;
+	
 	chart.add(s, k + 1);
     }
 }
@@ -61,6 +67,9 @@ void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
 		s.next()->asNonTerminal()->symbol == symbol) {
 		EState newState(s);
 		newState.position++;
+		newState.previousState = &s;
+		newState.completedState = &completeState;
+				
 		chart.add(newState, k);
 	    }
 	}
@@ -97,6 +106,18 @@ std::string toS(std::list<EState> states) {
 }
 
 
+void dumpAST(const EState* state, std::string indent="") {
+    while (state->previousState != nullptr) {
+	std::cout << indent << state->symbol << ":" << std::endl;
+	if (state->completedState != nullptr)
+	    dumpAST(state->completedState, indent + "  ");
+	
+	state = state->previousState;
+        indent += "  ";
+    }
+}
+
+
 namespace Earley {
     bool parse(BNFGrammar& g, std::string rule, TokenQueue& tokens) {
 	EChart chart(tokens);
@@ -119,8 +140,15 @@ namespace Earley {
 		      << std::endl << toS(chart.s[k]);
 	}
 
+
 	for (const EState& state : chart.s[chart.s.size() - 1]) 
-	    if (state.origin == 0) return true;
+	    if (state.origin == 0 &&
+		state.symbol == rule) {
+		std::cout << "Recognizing state: " << state.toS() << std::endl;
+		std::cout << "AST:" << std::endl;
+		dumpAST(&state);
+		return true;
+	    }
 	
 	return false;
     }

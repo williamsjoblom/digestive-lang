@@ -60,8 +60,8 @@ int main(int argc, char* argv[]) {
     bool accepted = Earley::parse(g, "unit", st);
 
     std::cout << std::endl;
-    if (accepted) std::cout << "String recognized by grammar";
-    else std::cout << "String not recognized by grammar";
+    if (accepted) std::cout << "Source parsed successfully";
+    else std::cout << "Source not recognized by grammar";
     std::cout << std::endl;
     
     return 0;

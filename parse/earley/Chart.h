@@ -64,6 +64,19 @@ struct EState {
      * Current position.
      */
     int position;
+    
+    /**
+     * Previous.
+     * Points to the state that this state was scanned or completed from.
+     */
+    const EState* previousState = nullptr;
+
+    
+    /**
+     * Completed.
+     * Points to the state that this state was completed from.
+     */
+    const EState* completedState = nullptr;
 
     
     /**
