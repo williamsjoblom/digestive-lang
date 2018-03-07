@@ -42,6 +42,12 @@ int main(int argc, char* argv[]) {
 		  << ", " << buildTimestamp() << std::endl;
     }
 
+    std::string root = rootPath();
+    if (root.empty()) {
+	std::cerr << "'DGROOT' environment variable not set, exiting!" << std::endl;
+	return 1;
+    }
+
     std::string grammarPath = rootPath() + "/lang/dg.bnf";
     std::string grammar = readSourceFile(grammarPath);
     Lexer gl(grammar);
@@ -51,8 +57,11 @@ int main(int argc, char* argv[]) {
     std::string source = readSourceFile(path);
     Lexer sl(source);
     TokenQueue st = sl.readAll();
-    bool result = Earley::parse(g, "unit", st);
+    bool accepted = Earley::parse(g, "unit", st);
 
+    if (accepted) std::cout << "String recognized by grammar" << std::endl;
+    else std::cout << "String not recognized by grammar" << std::endl;
+    
     return 0;
 
     

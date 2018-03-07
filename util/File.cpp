@@ -26,5 +26,9 @@ std::string readSourceFile(std::string path) {
 
 
 std::string rootPath() {
-    return getenv("DGROOT");
+    char* cstr = getenv("DGROOT");
+    if (cstr != nullptr)
+	return std::string(cstr);
+    else
+	return "";
 }
