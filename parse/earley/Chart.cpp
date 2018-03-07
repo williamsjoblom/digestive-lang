@@ -64,7 +64,7 @@ bool EState::operator==(const EState& other) const {
 std::string EState::toS() const {
     std::stringstream ss;
 
-    ss << symbol << " → ";
+    ss << "(" << symbol << " → ";
     
     for (int i = 0; i < production.symbols.size(); i++) {
 	if (i == position) ss << "• ";
@@ -73,6 +73,8 @@ std::string EState::toS() const {
 
     if (position == production.symbols.size())
 	ss << "•";
+
+    ss << ", " << origin << ")";
     
     return ss.str();
 }

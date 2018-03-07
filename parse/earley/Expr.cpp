@@ -69,18 +69,8 @@ void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
 
 
 /**
- * To string.
+ * Process earley state.
  */
-std::string toS(std::list<EState> states) {
-    std::stringstream ss;
-    for (const EState& s : states) {
-	ss << s.toS() << std::endl;
-    }
-    
-    return ss.str();
-}
-
-
 void processState(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart& chart, int k) {
     if (!state.complete()) {
 	if (state.next()->nonTerminal()) {
@@ -91,6 +81,19 @@ void processState(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart
     } else {
 	complete(tokens, state, chart, k);
     }
+}
+
+
+/**
+ * To string.
+ */
+std::string toS(std::list<EState> states) {
+    std::stringstream ss;
+    for (const EState& s : states) {
+	ss << s.toS() << std::endl;
+    }
+    
+    return ss.str();
 }
 
 
@@ -116,6 +119,9 @@ namespace Earley {
 		      << std::endl << toS(chart.s[k]);
 	}
 
+	for (const EState& state : chart.s[chart.s.size() - 1]) 
+	    if (state.origin == 0) return true;
+	
 	return false;
     }
 }
