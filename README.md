@@ -3,7 +3,7 @@
 Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
 
 ### Installation
-Add this line to your `.bashrc` (or equvalent):
+Add this line to your `.bashrc` (or equivalent):
 ```shell
 export DGROOT=<project directory>/dg/
 ```
