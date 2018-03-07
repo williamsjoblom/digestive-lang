@@ -108,12 +108,14 @@ std::string toS(std::list<EState> states) {
 
 void dumpAST(const EState* state, std::string indent="") {
     while (state->previousState != nullptr) {
-	std::cout << indent << state->symbol << ":" << std::endl;
+	if (state->complete())
+	    std::cout << indent << state->symbol << ":" << std::endl;
+	
 	if (state->completedState != nullptr)
 	    dumpAST(state->completedState, indent + "  ");
 	
 	state = state->previousState;
-        indent += "  ";
+	indent += "  ";
     }
 }
 
