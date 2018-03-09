@@ -1,9 +1,13 @@
-unit = Sum;
+#unit = Sum;
 
-Sum = Sum "+" Product | Sum "-" Product | Product;
-Product = Product "*" Factor | Product "/" Factor | Factor;
-Factor = "(" Sum ")" | <num>;
+#Sum = Sum "+" Product | Sum "-" Product | Product;
+#Product = Product "*" Factor | Product "/" Factor | Factor;
+#Factor = "(" Sum ")" | <num>;
 
+unit = expr;
 
-
-
+expr = <num>
+     || expr "*" expr
+      | expr "/" expr
+     || expr "+" expr
+      | expr "-" expr;

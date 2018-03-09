@@ -74,7 +74,7 @@ std::string BNFRule::toS() const {
 
     for (int i = 0; i < productions.size(); i++) {
 	const BNFProduction& p = productions[i];
-	if (i > 0) ss << std::endl << "| ";
+	if (i > 0) ss << "| ";
 	ss << p.toS();
     }
     

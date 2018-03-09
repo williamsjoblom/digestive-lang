@@ -1,6 +1,10 @@
 #include "BNFParser.h"
 
 #include <string>
+#include <stack>
+#include <sstream>
+#include <assert.h>
+#include <cstdlib>
 
 #include "BNF.h"
 #include "lexer/Lexer.h"
@@ -72,7 +76,7 @@ BNFSymbol* parseSymbol(TokenQueue& tokens) {
  */
 BNFProduction parseProduction(TokenQueue& tokens) {
     BNFProduction production;
-
+    
     while (tokens.top().type != TokenType::PIPE &&
 	   tokens.top().type != TokenType::SEMICOL) {
 	BNFSymbol* symbol = parseSymbol(tokens);
@@ -86,20 +90,67 @@ BNFProduction parseProduction(TokenQueue& tokens) {
 /**
  * Parse BNF rule.
  */
-BNFRule parseRule(TokenQueue& tokens) {
+BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
+    std::vector<BNFRule> subrules;
+    std::string symbol = tokens.expect(TokenType::IDENTIFIER).value;
+    
     BNFRule rule;
-    rule.symbol = tokens.expect(TokenType::IDENTIFIER).value;
-    
     tokens.expect(TokenType::ASSIGN);
-    
+
     do {
+	if (!rule.productions.empty() &&
+	    tokens.eat(TokenType::PIPE)) {
+	    
+	    std::stringstream ss;
+	    ss << symbol << "(" << subrules.size() << ")";
+	    rule.symbol = ss.str();
+	    
+	    subrules.push_back(rule);
+	    rule = BNFRule();
+	}
+	
 	BNFProduction production = parseProduction(tokens);
 	rule.productions.push_back(production);
     } while (tokens.eat(TokenType::PIPE));
+
+    subrules.push_back(rule);
     
     tokens.expect(TokenType::SEMICOL);
+
+    BNFRule mainRule = subrules.back();
+    mainRule.symbol = symbol;
     
-    return rule;
+    BNFRule* previous = &mainRule;
+    for (int i = subrules.size() - 2; i >= 0; i--) {
+	BNFRule& top = subrules[i];
+	
+	BNFProduction subruleProduction;
+	subruleProduction.symbols.push_back(new BNFNT(top.symbol));
+	previous->productions.push_back(subruleProduction);
+	
+	std::cout << "Add subrule" << std::endl;
+	
+	previous = &top;
+    }
+
+
+    for (int i = 0; i < subrules.size() - 1; i++) {
+	BNFRule& subrule = subrules[i];
+	for (int i = 1; i < subrule.productions.size(); i++) {
+	    
+	}
+    }
+    
+    
+    for (int i = 0; i < subrules.size() - 1; i++) {
+	BNFRule& subrule = subrules[i];
+
+	std::cout << subrule.toS() << std::endl;
+	
+	g.rules[subrule.symbol] = subrule;
+    }
+
+    return mainRule;
 }
 
 
@@ -107,9 +158,11 @@ namespace Earley {
     BNFGrammar parseGrammar(TokenQueue& tokens) {
 	BNFGrammar g;
 	while (!tokens.empty()) {
-	    BNFRule rule = parseRule(tokens);
+	    BNFRule rule = parseRule(tokens, g);
 	    g.rules[rule.symbol] = rule;
 	}
+
+	std::cout << g.toS() << std::endl;
 
 	return g;
     }
