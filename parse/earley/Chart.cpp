@@ -25,7 +25,6 @@ void EChart::add(EState state, int k) {
     }
 }
 
-
 BNFSymbol* EState::next() const {
     if (position >= 0 &&
 	position < production.symbols.size())
@@ -50,9 +49,15 @@ bool EState::complete() const {
 
 
 size_t EState::hash() const {
+    // TODO: use a better hash function for integers since std::hash for
+    // integers is the identity function. Doing an XOR for the 2 integers
+    // in this context WILL result in collisions.
+    //
+    // Negating 'position' works as of now. If the parser starts behaving
+    // funky again: hash the integers in a more uniform manner.
     return
 	std::hash<std::string>()(symbol) ^ production.hash() ^
-	std::hash<int>()(origin) ^ std::hash<int>()(position);
+	std::hash<int>()(origin) ^ std::hash<int>()(-position);
 }
 
 

@@ -7,7 +7,9 @@
 unit = expr;
 
 expr = <num>
-     || expr "*" expr
-      | expr "/" expr
-     || expr "+" expr
-      | expr "-" expr;
+     || :right "-" expr
+     || :left expr "*" expr
+      | :left expr "/" expr
+     || :left expr "+" expr
+      | :left expr "-" expr
+     || :right expr "=" expr;

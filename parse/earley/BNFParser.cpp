@@ -76,6 +76,13 @@ BNFSymbol* parseSymbol(TokenQueue& tokens) {
  */
 BNFProduction parseProduction(TokenQueue& tokens) {
     BNFProduction production;
+
+    if (tokens.eat(TokenType::COL)) {
+	std::string attr = tokens.expect(TokenType::IDENTIFIER).value;
+	production.attribute = attr;
+    } else {
+	production.attribute = "left";
+    }
     
     while (tokens.top().type != TokenType::PIPE &&
 	   tokens.top().type != TokenType::SEMICOL) {
@@ -84,6 +91,65 @@ BNFProduction parseProduction(TokenQueue& tokens) {
     }
 
     return production;
+}
+
+
+/**
+ * Indexed subrule symbol.
+ */
+std::string subruleSymbol(std::string symbol, int index) {
+    std::stringstream ss;
+    ss << symbol;
+    ss << "(" << index << ")";
+    return ss.str();
+}
+
+
+/**
+ * Make production left associative.
+ */
+void makeLeftAssociative(BNFProduction& production, std::string symbol, int subruleIndex) {
+    bool first = true;
+    for (int i = 0; i < production.symbols.size(); i++) {
+	BNFSymbol* s = production.symbols[i];
+	if (s->nonTerminal()) {
+	    if (first) {
+		first = false;
+		continue;
+	    }
+	    
+	    BNFNT* nt = s->asNonTerminal();
+	    if (nt->symbol == symbol) {
+		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
+		return;
+	    }
+	}
+    }
+}
+
+
+/**
+ * Make production right associative.
+ */
+void makeRightAssociative(BNFProduction& production, std::string symbol, int subruleIndex) {
+    
+    bool first = true;
+    for (int i = production.symbols.size() - 1; i >= 0; i--) {
+	BNFSymbol* s = production.symbols[i];
+	if (s->nonTerminal()) {
+	    if (first) {
+		first = false;
+		continue;
+	    }
+	    
+	    BNFNT* nt = s->asNonTerminal();
+	    if (nt->symbol == symbol) {
+		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
+		return;
+	    }
+	}
+    }
+
 }
 
 
@@ -101,9 +167,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	if (!rule.productions.empty() &&
 	    tokens.eat(TokenType::PIPE)) {
 	    
-	    std::stringstream ss;
-	    ss << symbol << "(" << subrules.size() << ")";
-	    rule.symbol = ss.str();
+	    rule.symbol = subruleSymbol(symbol, subrules.size());
 	    
 	    subrules.push_back(rule);
 	    rule = BNFRule();
@@ -128,25 +192,25 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	subruleProduction.symbols.push_back(new BNFNT(top.symbol));
 	previous->productions.push_back(subruleProduction);
 	
-	std::cout << "Add subrule" << std::endl;
-	
 	previous = &top;
     }
 
 
-    for (int i = 0; i < subrules.size() - 1; i++) {
+    for (int i = 0; i < subrules.size(); i++) {
 	BNFRule& subrule = subrules[i];
-	for (int i = 1; i < subrule.productions.size(); i++) {
-	    
+	for (int j = 0; j < subrule.productions.size(); j++) {
+	    BNFProduction& production = subrule.productions[j];
+
+	    if (production.attribute == "left")
+		makeLeftAssociative(production, symbol, i);
+	    else if (production.attribute == "right")
+		makeRightAssociative(production, symbol, i);
 	}
     }
     
     
     for (int i = 0; i < subrules.size() - 1; i++) {
 	BNFRule& subrule = subrules[i];
-
-	std::cout << subrule.toS() << std::endl;
-	
 	g.rules[subrule.symbol] = subrule;
     }
 

@@ -144,6 +144,11 @@ struct BNFProduction {
      * Symbols.
      */
     std::vector<BNFSymbol*> symbols;
+    
+    /**
+     * Attribute.
+     */
+    std::string attribute;
 
     
     /**

@@ -106,16 +106,15 @@ std::string toS(std::list<EState> states) {
 }
 
 
-void dumpAST(const EState* state, std::string indent="") {
+void dumpAST(const EState* state, TokenQueue& tokens, std::string indent="") {
     while (state->previousState != nullptr) {
 	if (state->complete())
-	    std::cout << indent << state->symbol << ":" << std::endl;
+	    std::cout << indent << state->toS() << std::endl;
 	
 	if (state->completedState != nullptr)
-	    dumpAST(state->completedState, indent + "  ");
+	    dumpAST(state->completedState, tokens, indent + "  ");
 	
 	state = state->previousState;
-	indent += "  ";
     }
 }
 
@@ -134,12 +133,8 @@ namespace Earley {
 
 	for (int k = 0; k <= tokens.size(); k++) {
 	    for (const EState& state : chart.s[k]) {
-		std::vector<EState> added;
 		processState(g, tokens, state, chart, k);
 	    }
-
-	    std::cout << "S[" << k << "]"
-		      << std::endl << toS(chart.s[k]);
 	}
 
 
@@ -148,7 +143,7 @@ namespace Earley {
 		state.symbol == rule) {
 		std::cout << "Recognizing state: " << state.toS() << std::endl;
 		std::cout << "AST:" << std::endl;
-		dumpAST(&state);
+		dumpAST(&state, tokens);
 		return true;
 	    }
 	
