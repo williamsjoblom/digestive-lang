@@ -55,6 +55,7 @@ int main(int argc, char* argv[]) {
     BNFGrammar g = Earley::parseGrammar(gt);
 
     std::string source = readSourceFile(path);
+    if (source.empty()) return 0;
     Lexer sl(source);
     TokenQueue st = sl.readAll();
     bool accepted = Earley::parse(g, "unit", st);
