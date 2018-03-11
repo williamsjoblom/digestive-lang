@@ -2,11 +2,25 @@
 
 Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
 
-### Installation
-Add this line to your `.bashrc` (or equivalent):
+### Build & Setup
+Building and installing the binary:
 ```shell
-export DGROOT=<project directory>/dg/
+git clone --recurse-submodules https://github.com/williamsjoblom/compiler-experiment.git
+cd compiler-experiment
+
+# Build
+mkdir build
+cd build
+cmake ../
+make
+
+# Install
+ln -s $(pwd)/dg /usr/bin/
+cd ..
+echo "export DGROOT=$(pwd)/dg/" > ~/.bashrc # Replace '.bashrc' if using shell different from bash.
 ```
+
+The compiler can now be called using 
 
 ### Examples
 ```swift
