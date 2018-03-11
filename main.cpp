@@ -15,6 +15,7 @@
 #include "ir/TACProgram.h"
 #include "genir/Program.h"
 #include "util/File.h"
+#include "util/Path.h"
 #include "genasm/TACCompiler.h"
 #include "parse/earley/BNFParser.h"
 #include "parse/earley/BNF.h"
@@ -29,7 +30,7 @@ bool verbose = false;
  */
 #ifndef TEST
 int main(int argc, char* argv[]) {
-    std::string path = "/home/wax/test.dg";
+    std::string path = bootFilePath();
     
     for (int i = 1; i < argc; i++) {
 	std::string arg = argv[i];
@@ -42,13 +43,12 @@ int main(int argc, char* argv[]) {
 		  << ", " << buildTimestamp() << std::endl;
     }
 
-    std::string root = rootPath();
-    if (root.empty()) {
+    if (!hasRootDirPath()) {
 	std::cerr << "'DGROOT' environment variable not set, exiting!" << std::endl;
 	return 1;
     }
 
-    std::string grammarPath = rootPath() + "/lang/dg.bnf";
+    std::string grammarPath = coreBNFFilePath();
     std::string grammar = readSourceFile(grammarPath);
     Lexer gl(grammar);
     TokenQueue gt = gl.readAll();

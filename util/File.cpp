@@ -25,10 +25,3 @@ std::string readSourceFile(std::string path) {
 }
 
 
-std::string rootPath() {
-    char* cstr = getenv("DGROOT");
-    if (cstr != nullptr)
-	return std::string(cstr);
-    else
-	return "";
-}
