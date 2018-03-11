@@ -20,7 +20,7 @@ cd ..
 echo "export DGROOT=$(pwd)/dg/" > ~/.bashrc # Replace '.bashrc' if using shell different from bash.
 ```
 
-The compiler can now be called using 
+The compiler can now be called with `dg`.
 
 ### Examples
 ```swift
