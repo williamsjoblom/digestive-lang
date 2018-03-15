@@ -25,7 +25,7 @@ hash_t orderedHash(int num...) {
 
 
 /**
- * Explicit instantiation.
+ * Template instantiation.
  */
 template hash_t orderedHash<2>(int...);
 template hash_t orderedHash<3>(int...);
