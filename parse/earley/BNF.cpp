@@ -2,7 +2,8 @@
 
 #include <sstream>
 #include <assert.h>
-#include <functional>
+
+#include "util/Hash.h"
 
 
 BNFT* BNFSymbol::asTerminal() {
@@ -33,18 +34,18 @@ std::string BNFT::toS() const {
 }
 
 
-size_t BNFNT::hash() const {
+hash_t BNFNT::hash() const {
     return std::hash<std::string>()(symbol);
 }
 
 
-size_t BNFT::hash() const {
+hash_t BNFT::hash() const {
     return std::hash<int>()(type) ^ std::hash<std::string>()(value);
 }
 
 
-size_t BNFProduction::hash() const {
-    size_t h = 0;
+hash_t BNFProduction::hash() const {
+    hash_t h = 0;
     for (BNFSymbol* symbol : symbols)
 	h ^= symbol->hash();
 

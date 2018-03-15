@@ -5,6 +5,7 @@
 
 #include "BNF.h"
 #include "lexer/TokenQueue.h"
+#include "util/Hash.h"
 
 
 EChart::EChart(TokenQueue& tokens) {
@@ -18,10 +19,12 @@ EChart::EChart(TokenQueue& tokens) {
 
 
 void EChart::add(EState state, int k) {
-    size_t hash = state.hash();
+    hash_t hash = state.hash();
     if (sh[k].find(hash) == sh[k].end()) {
 	sh[k].insert(hash);
 	s[k].insert(s[k].end(), state);
+    } else {
+	std::cout << "Duplicate state in 5: " << state.toS() << std::endl;
     }
 }
 
@@ -48,7 +51,7 @@ bool EState::complete() const {
 }
 
 
-size_t EState::hash() const {
+hash_t EState::hash() const {
     // TODO: use a better hash function for integers since std::hash for
     // integers is the identity function. Doing an XOR for the 2 integers
     // in this context WILL result in collisions.
@@ -57,7 +60,7 @@ size_t EState::hash() const {
     // funky again: hash the integers in a more uniform manner.
     return
 	std::hash<std::string>()(symbol) ^ production.hash() ^
-	std::hash<int>()(origin) ^ std::hash<int>()(-position);
+	orderedHash<2>(origin, position);
 }
 
 

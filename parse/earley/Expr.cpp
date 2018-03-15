@@ -144,12 +144,12 @@ namespace Earley {
 	    }
 
 	    if (verbose) {
-		std::cout << "S[" << k << "]:" << std::endl;
+		std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
 		for (const EState& state : chart.s[k]) {
 		    std::cout << state.toS() << std::endl;
 		}
-
-		std::cout << "Top token: " << tokens.at(k).toS() << std::endl;
+		std::cout << std::endl;
+		
 	    }
 	}
 
