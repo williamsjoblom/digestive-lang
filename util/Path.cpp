@@ -20,6 +20,6 @@ std::string coreBNFFilePath() {
 
 
 std::string bootFilePath() {
-    return rootDirPath() + "/boot.dg";
+    return rootDirPath() + "/core/boot.dg";
 }
 
