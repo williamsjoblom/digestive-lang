@@ -205,6 +205,8 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 		makeLeftAssociative(production, symbol, i);
 	    else if (production.attribute == "right")
 		makeRightAssociative(production, symbol, i);
+	    else if (production.attribute == "group")
+		;
 	}
     }
     

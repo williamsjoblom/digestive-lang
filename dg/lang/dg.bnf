@@ -1,9 +1,11 @@
-unit = expr;
+unit = Expr;
 
-expr = <num>
-     || :right "-" expr
-     || :left expr "*" expr
-      | :left expr "/" expr
-     || :left expr "+" expr
-      | :left expr "-" expr
-     || :right expr "=" expr;
+
+Expr = <num>
+     |  :group "(" Expr ")"
+     || :right "-" Expr
+     || :left Expr "*" Expr
+     |  :left Expr "/" Expr
+     || :left Expr "+" Expr
+     |  :left Expr "-" Expr
+     || :right Expr "=" Expr;

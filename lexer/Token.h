@@ -103,6 +103,7 @@ struct Token {
     int index;
 
     void dump() const { std::cout << "[" << row << ":" << col << "]" << value << std::endl; }
+    std::string toS() const { return value; }
     bool eof() const { return type == TokenType::END_OF_FILE; }
 };
 

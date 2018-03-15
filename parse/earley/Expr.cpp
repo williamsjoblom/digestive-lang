@@ -9,6 +9,7 @@
 #include "ast/Expr.h"
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
+#include "globals.h"
 
 using namespace Earley;
 
@@ -60,17 +61,21 @@ void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
 void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
     for (const EState& completeState : chart.s[k]) {
 	if (!completeState.complete()) continue;
-
+	
 	std::string symbol = completeState.symbol;
 	for (const EState& s : chart.s[completeState.origin]) {
 	    if (!s.complete() && s.next()->nonTerminal() &&
 		s.next()->asNonTerminal()->symbol == symbol) {
+		
 		EState newState(s);
 		newState.position++;
 		newState.previousState = &s;
 		newState.completedState = &completeState;
 				
 		chart.add(newState, k);
+
+		//if (k == 6)
+		//std::cout << "  " << completeState.toS() << " => " << newState.toS() << std::endl;
 	    }
 	}
     }
@@ -132,8 +137,19 @@ namespace Earley {
 	
 
 	for (int k = 0; k <= tokens.size(); k++) {
+	    int sz = 0;
 	    for (const EState& state : chart.s[k]) {
 		processState(g, tokens, state, chart, k);
+		sz++;
+	    }
+
+	    if (verbose) {
+		std::cout << "S[" << k << "]:" << std::endl;
+		for (const EState& state : chart.s[k]) {
+		    std::cout << state.toS() << std::endl;
+		}
+
+		std::cout << "Top token: " << tokens.at(k).toS() << std::endl;
 	    }
 	}
 
