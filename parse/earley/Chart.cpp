@@ -23,8 +23,6 @@ void EChart::add(EState state, int k) {
     if (sh[k].find(hash) == sh[k].end()) {
 	sh[k].insert(hash);
 	s[k].insert(s[k].end(), state);
-    } else {
-	std::cout << "Duplicate state in 5: " << state.toS() << std::endl;
     }
 }
 
