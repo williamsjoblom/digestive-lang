@@ -11,6 +11,18 @@
  */
 struct BNFT;
 struct BNFNT;
+struct BNFGrammar;
+
+
+/**
+ * Quantifier.
+ */
+enum class BNFQ {
+    ONE,
+    ZERO_OR_ONE,
+    ZERO_OR_MORE,
+    ONE_OR_MORE,
+};
 
 
 /**
@@ -18,6 +30,27 @@ struct BNFNT;
  */
 struct BNFSymbol {
 
+    /**
+     * Should this symbol create a node in the AST?
+     */
+    bool createsNode;
+    
+    /**
+     * Quantifier.
+     */
+    BNFQ quantifier;
+
+    
+    /**
+     * Nullable.
+     */
+    virtual bool nullable(BNFGrammar& g) {
+	return
+	    quantifier == BNFQ::ZERO_OR_MORE ||
+	    quantifier == BNFQ::ZERO_OR_ONE;
+    }
+    
+    
     /**
      * Hash.
      */
@@ -33,13 +66,13 @@ struct BNFSymbol {
     /**
      * True if this is a non terminal symbol.
      */
-    virtual bool nonTerminal() { return false; }
+	virtual bool nonTerminal() { return false; }
 
     
-    /**
-     * Cast to terminal symbol.
-     */
-    BNFT* asTerminal();
+	/**
+	 * Cast to terminal symbol.
+	 */
+	BNFT* asTerminal();
 
     
     /**
@@ -74,6 +107,12 @@ struct BNFT : public BNFSymbol {
      * Constructor.
      */
     BNFT(TokenType type, std::string value="") : type(type), value(value)  { }
+
+
+    /**
+     * Nullable.
+     */
+    bool nullable(BNFGrammar& g) override;
 
     
     /**
@@ -118,6 +157,12 @@ struct BNFNT : public BNFSymbol {
 
     
     /**
+     * Nullable.
+     */
+    bool nullable(BNFGrammar& g) override;
+    
+    
+    /**
      * This is a non-terminal symbol.
      */
     bool nonTerminal() override { return true; }
@@ -150,6 +195,23 @@ struct BNFProduction {
      */
     std::string attribute;
 
+    /**
+     * Label of node resulting from production.
+     */
+    std::string nodeLabel;
+
+    
+    /**
+     * Does this production result in a AST node?
+     */
+    bool createsNode() const;
+
+    
+    /**
+     * Nullable.
+     */
+    bool nullable(BNFGrammar& g);
+
     
     /**
      * Hash.
@@ -178,6 +240,12 @@ struct BNFRule {
      */
     std::vector<BNFProduction> productions;
 
+
+    /**
+     * Nullable.
+     */
+    bool nullable(BNFGrammar& g);
+    
     
     /**
      * To string.

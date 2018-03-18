@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <stack>
 
 #include "BNF.h"
 #include "Chart.h"
@@ -10,6 +11,7 @@
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
 #include "globals.h"
+#include "ASTNode.h"
 
 using namespace Earley;
 
@@ -34,13 +36,23 @@ void predict(BNFGrammar& g, const EState& state, EChart& chart, int k) {
 	
 	chart.add(s, k);
     }
+
+    // To allow for epsilon symbols:
+    if (state.next()->nullable(g)) {
+	EState s(state);
+	s.position++;
+	s.previousState = nullptr;
+	s.completedState = nullptr;
+	    
+	chart.add(s, k);
+    }
 }
 
 
 /**
  * Scan.
  */
-void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
+void scan(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart& chart, int k) {
     BNFT* a = state.next()->asTerminal();
     Token top = tokens.at(k);
     
@@ -51,6 +63,14 @@ void scan(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
 	s.completedState = nullptr;
 	
 	chart.add(s, k + 1);
+    }
+
+    // To allow for epsilon symbols:
+    if (state.next()->nullable(g)) {
+	EState s(state);
+	s.position++;
+	
+	chart.add(s, k);
     }
 }
 
@@ -73,9 +93,6 @@ void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
 		newState.completedState = &completeState;
 				
 		chart.add(newState, k);
-
-		//if (k == 6)
-		//std::cout << "  " << completeState.toS() << " => " << newState.toS() << std::endl;
 	    }
 	}
     }
@@ -90,11 +107,12 @@ void processState(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart
 	if (state.next()->nonTerminal()) {
 	    predict(g, state, chart, k);
 	} else {
-	    scan(tokens, state, chart, k);
+	    scan(g, tokens, state, chart, k);
 	}
     } else {
 	complete(tokens, state, chart, k);
     }
+
 }
 
 
@@ -115,12 +133,39 @@ void dumpAST(const EState* state, TokenQueue& tokens, std::string indent="") {
     while (state->previousState != nullptr) {
 	if (state->complete())
 	    std::cout << indent << state->toS() << std::endl;
-	
+
 	if (state->completedState != nullptr)
 	    dumpAST(state->completedState, tokens, indent + "  ");
 	
 	state = state->previousState;
     }
+}
+
+
+const EState* nextNonIntermediate(const EState* state) {
+    if (state->complete() &&
+	state->production.createsNode())
+	return state;
+    else
+	return nextNonIntermediate(state->completedState);
+}
+
+
+ASTNode* buildAST(const EState* state) {
+    state = nextNonIntermediate(state);
+    ASTNode* parent = new ASTNode(state->production.nodeLabel);
+    
+    const EState* s = state;
+    while (s->previousState != nullptr) {
+	if (s->completedState != nullptr) {
+	    ASTNode* child = buildAST(s->completedState);
+	    parent->addChild(child);
+	}
+	
+	s = s->previousState;
+    }
+
+    return parent;
 }
 
 
@@ -149,7 +194,6 @@ namespace Earley {
 		    std::cout << state.toS() << std::endl;
 		}
 		std::cout << std::endl;
-		
 	    }
 	}
 
@@ -158,8 +202,12 @@ namespace Earley {
 	    if (state.origin == 0 &&
 		state.symbol == rule) {
 		std::cout << "Recognizing state: " << state.toS() << std::endl;
-		std::cout << "AST:" << std::endl;
+		std::cout << "dumpAST():" << std::endl;
 		dumpAST(&state, tokens);
+
+		ASTNode* ast = buildAST(&state);
+		std::cout << std::endl << ast->toS() << std::endl;
+		    
 		return true;
 	    }
 	

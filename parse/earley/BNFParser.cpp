@@ -62,12 +62,21 @@ BNFT* parseTerminal(TokenQueue& tokens) {
  * Parse BNF symbol.
  */
 BNFSymbol* parseSymbol(TokenQueue& tokens) {
-    BNFSymbol* symbol;
-    if ((symbol = parseTerminal(tokens)) != nullptr) return symbol;
-    if ((symbol = parseNonTerminal(tokens)) != nullptr) return symbol;
+    bool createsNode = tokens.eat(TokenType::DOLLAR);
+        
+    BNFSymbol* symbol = nullptr;
+    if ((symbol = parseTerminal(tokens)) == nullptr &&
+	(symbol = parseNonTerminal(tokens)) == nullptr) {
+	throw 1;
+    }
 
-    tokens.top().dump();
-    throw 1;
+    if (tokens.eat(TokenType::QUESTION))
+	symbol->quantifier = BNFQ::ZERO_OR_ONE;
+    else
+	symbol->quantifier = BNFQ::ONE;
+        
+    symbol->createsNode = createsNode;
+    return symbol;
 }
 
 
@@ -81,14 +90,22 @@ BNFProduction parseProduction(TokenQueue& tokens) {
 	std::string attr = tokens.expect(TokenType::IDENTIFIER).value;
 	production.attribute = attr;
     } else {
-	production.attribute = "left";
+	production.attribute = "group";
     }
     
     while (tokens.top().type != TokenType::PIPE &&
-	   tokens.top().type != TokenType::SEMICOL) {
+	   tokens.top().type != TokenType::SEMICOL &&
+	   tokens.top().type != TokenType::AT) {
 	BNFSymbol* symbol = parseSymbol(tokens);
 	production.symbols.push_back(symbol);
     }
+
+    std::string nodeLabel = "";
+    if (tokens.eat(TokenType::AT)) {
+	nodeLabel = tokens.expect(TokenType::IDENTIFIER).value;
+    }
+
+    production.nodeLabel = nodeLabel;
 
     return production;
 }
@@ -113,15 +130,14 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol, int subr
     for (int i = 0; i < production.symbols.size(); i++) {
 	BNFSymbol* s = production.symbols[i];
 	if (s->nonTerminal()) {
-	    if (first) {
-		first = false;
-		continue;
-	    }
-	    
 	    BNFNT* nt = s->asNonTerminal();
-	    if (nt->symbol == symbol) {
+	    if (nt->symbol != symbol) continue;
+	    
+	    if (first) {
+		nt->symbol = subruleSymbol(symbol, subruleIndex);
+		first = false;
+	    } else {
 		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
-		return;
 	    }
 	}
     }
@@ -132,24 +148,21 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol, int subr
  * Make production right associative.
  */
 void makeRightAssociative(BNFProduction& production, std::string symbol, int subruleIndex) {
-    
     bool first = true;
     for (int i = production.symbols.size() - 1; i >= 0; i--) {
 	BNFSymbol* s = production.symbols[i];
 	if (s->nonTerminal()) {
-	    if (first) {
-		first = false;
-		continue;
-	    }
-	    
 	    BNFNT* nt = s->asNonTerminal();
-	    if (nt->symbol == symbol) {
+	    if (nt->symbol != symbol) continue;
+	    
+	    if (first) {
+		nt->symbol = subruleSymbol(symbol, subruleIndex);
+		first = false;
+	    } else {
 		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
-		return;
 	    }
 	}
     }
-
 }
 
 
@@ -206,7 +219,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	    else if (production.attribute == "right")
 		makeRightAssociative(production, symbol, i);
 	    else if (production.attribute == "group")
-		;
+		continue;
 	}
     }
     

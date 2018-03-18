@@ -44,6 +44,9 @@ enum TokenType {
 
     RIGHTARROW,
     DOT,
+    
+    DOLLAR,
+    QUESTION,
 
     AT,
 
@@ -88,6 +91,8 @@ static std::string tokenTypeToS[] = {
 
     "RIGHTARROW",
     "DOT",
+    "DOLLAR",
+    "QUESTION",
 
     "AT",
     
@@ -136,6 +141,8 @@ static std::map<std::string, TokenType> valueToTokenType =
 
     {"->", RIGHTARROW},
     {".", DOT},
+    {"$", DOLLAR},
+    {"?", QUESTION},
 
     {"@", AT},
 };

@@ -64,17 +64,20 @@ bool EState::operator==(const EState& other) const {
 std::string EState::toS() const {
     std::stringstream ss;
 
-    ss << "(" << symbol << " → ";
+    ss << "(" << symbol << " →";
     
     for (int i = 0; i < production.symbols.size(); i++) {
-	if (i == position) ss << "• ";
-	ss << production.symbols[i]->toS() << " ";
+	if (i == position) ss << " •";
+	ss << ' ' << production.symbols[i]->toS();
     }
 
     if (position == production.symbols.size())
-	ss << "•";
+	ss << " •";
 
     ss << ", " << origin << ")";
+
+    if (!production.nodeLabel.empty())
+	ss << " @" << production.nodeLabel;
     
     return ss.str();
 }
