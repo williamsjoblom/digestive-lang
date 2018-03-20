@@ -38,14 +38,14 @@ void predict(BNFGrammar& g, const EState& state, EChart& chart, int k) {
     }
 
     // To allow for epsilon symbols:
-    if (state.next()->nullable(g)) {
-	EState s(state);
-	s.position++;
-	s.previousState = nullptr;
-	s.completedState = nullptr;
+    // if (state.next()->nullable(g)) {
+    // 	EState s(state);
+    // 	s.position++;
+    // 	s.previousState = nullptr;
+    // 	s.completedState = nullptr;
 	    
-	chart.add(s, k);
-    }
+    // 	chart.add(s, k);
+    // }
 }
 
 
@@ -66,12 +66,12 @@ void scan(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart& chart,
     }
 
     // To allow for epsilon symbols:
-    if (state.next()->nullable(g)) {
-	EState s(state);
-	s.position++;
+    // if (state.next()->nullable(g)) {
+    // 	EState s(state);
+    // 	s.position++;
 	
-	chart.add(s, k);
-    }
+    // 	chart.add(s, k);
+    // }
 }
 
 
@@ -146,25 +146,38 @@ const EState* nextNonIntermediate(const EState* state) {
     if (state->complete() &&
 	state->production.createsNode())
 	return state;
-    else
+    else if (state->completedState != nullptr)
 	return nextNonIntermediate(state->completedState);
+    else
+	return state;
 }
 
 
-ASTNode* buildAST(const EState* state) {
+ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
     state = nextNonIntermediate(state);
-    ASTNode* parent = new ASTNode(state->production.nodeLabel);
     
+    if (state->production.createsNode())
+	parent = new ASTNode(state->production.nodeLabel);
+    else if (parent == nullptr)
+	// TODO: replace with error message.
+	// Happens when the 'unit' rule does not create a node.
+	assert(false);
+
     const EState* s = state;
     while (s->previousState != nullptr) {
 	if (s->completedState != nullptr) {
-	    ASTNode* child = buildAST(s->completedState);
-	    parent->addChild(child);
+	    ASTNode* child = buildAST(s->completedState, parent);
+	    
+	    // Did buildAST() create a new node?
+	    // TODO: returning the parent if no node was created
+	    // is not very pretty. We can do better!!!
+	    if (child != parent)
+		parent->addChild(child);
 	}
 	
 	s = s->previousState;
     }
-
+    
     return parent;
 }
 

@@ -1,13 +1,10 @@
-# unit = Expr			@CompilationUnit;
+unit = Expr			@CompilationUnit;
 
-
-# Expr = $<num>			@Number
-#      |  :group "(" Expr ")"
-#      || :right "-" Expr		@NegExpr
-#      || :left Expr "*" Expr 	@MulExpr
-#      |  :left Expr "/" Expr    	@DivExpr
-#      || :left Expr "+" Expr	@AddExpr
-#      |  :left Expr "-" Expr	@SubExpr
-#      || :right Expr "=" Expr	@AssExpr;
-
-unit = <num> | <num>? "a";
+Expr = <num>			@Number
+     |  :group "(" Expr ")"
+     || :right "-" Expr		@NegExpr
+     || :left Expr "*" Expr 	@MulExpr
+     |  :left Expr "/" Expr    	@DivExpr
+     || :left Expr "+" Expr	@AddExpr
+     |  :left Expr "-" Expr	@SubExpr
+     || :right Expr "=" Expr	@AssExpr;
