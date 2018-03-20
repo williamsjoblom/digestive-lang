@@ -19,7 +19,7 @@ void UnaryExpr::analyze(Scope* scope) {
     expr->analyze(scope);
 
     /*
-     * FIXME: will not work as expected for natural numbers and to be implemented product types.
+     * FIXME will not work as expected for natural numbers and to be implemented product types.
      */
     type = expr->type;
 }

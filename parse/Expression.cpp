@@ -274,7 +274,7 @@ Expr* rpnToExpr(TokenQueue& tokens) {
         }
     }
 
-    // TODO: free memory if expression turns out invalid.
+    // TODO free memory if expression turns out invalid.
     if (stack.empty())
         parseError(first, "Missing operand in expression");
     if (stack.size() > 1)

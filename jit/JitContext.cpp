@@ -28,7 +28,7 @@ namespace JitContext {
         return handleCount - 1;
     }
 
-    // FIXME: Dump all handles, not only the first.
+    // FIXME Dump all handles, not only the first.
     void dumpHandles() {
         std::cout << "Handles: [ ";
         for (int i = 0; i < handleCount; i++) {

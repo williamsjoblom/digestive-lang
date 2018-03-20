@@ -13,7 +13,7 @@ namespace Parse {
         std::vector<FunctionDecl*> functions;
 
         try {
-            while (!tokens.empty()) { // TODO: clean up and make pretty
+            while (!tokens.empty()) { // TODO clean up and make pretty
                 FunctionDecl* func = Parse::function(tokens);
                 if (func != nullptr) {
                     functions.push_back(func);

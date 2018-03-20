@@ -147,7 +147,7 @@ void Lexer::readSymbol(Token &token) {
     } while (valueToTokenType.find(current) != valueToTokenType.end());
     index--;
 
-    if (index == oldIndex) { // FIXME: will assert if unknown symbol is found. Replace with suitable error-code/exception.
+    if (index == oldIndex) { // FIXME will assert if unknown symbol is found. Replace with suitable error-code/exception.
 	std::cout << "[" << token.row << ":" << token.col << "] Unknown symbol " << "'" << source[index] << "':" << (int)source[index] << std::endl;
 	std::cout << index << " of " << source.size() - 1 << std::endl;
 	assert(false);

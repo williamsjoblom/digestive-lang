@@ -416,7 +416,7 @@ GENERATE(trap, e) {
 
 
 void generateInstr(InstrEnv& e, TAC* instr) {    
-    // TODO: turn this (at least soon to be) massive switch
+    // TODO turn this (at least soon to be) massive switch
     // into a function table.
     switch (instr->op) {
     case TACC::add: EMIT(add, e); break;

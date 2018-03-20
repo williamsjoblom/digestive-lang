@@ -91,7 +91,7 @@ bool Jit::reload(std::string path) {
 	if (verbose)
 	    std::cout << "Parsed " << newRoot->functions.size() << " function(s)" << std::endl;
         
-        // TODO: O(N^2), will be slow for large files later on! Also not very pretty!
+        // TODO O(N^2), will be slow for large files later on! Also not very pretty!
         // (Use some neat tree or map structure for storing functions for less expensive lookup)
         for (FunctionDecl* newFunction : newRoot->functions) {
             bool addFunction = true;

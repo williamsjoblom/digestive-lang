@@ -71,7 +71,7 @@ bool VariableDecl::equals(const Node &other) const {
 
 
 int VariableDecl::stackSize() {
-    // FIXME: read actual stack size from type.
+    // FIXME read actual stack size from type.
     return sizeof(int);
 }
 

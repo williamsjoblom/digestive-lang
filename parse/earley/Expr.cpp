@@ -159,7 +159,7 @@ ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
     if (state->production.createsNode())
 	parent = new ASTNode(state->production.nodeLabel);
     else if (parent == nullptr)
-	// TODO: replace with error message.
+	// TODO replace with error message.
 	// Happens when the 'unit' rule does not create a node.
 	assert(false);
 
@@ -169,7 +169,7 @@ ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
 	    ASTNode* child = buildAST(s->completedState, parent);
 	    
 	    // Did buildAST() create a new node?
-	    // TODO: returning the parent if no node was created
+	    // TODO returning the parent if no node was created
 	    // is not very pretty. We can do better!!!
 	    if (child != parent)
 		parent->addChild(child);

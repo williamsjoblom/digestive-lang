@@ -18,7 +18,7 @@
 #include "lexer/TokenQueue.h"
 
 
-// TODO: divide into several headers if compile times gets too slow
+// TODO divide into several headers if compile times gets too slow
 
 namespace Parse {
     BlockStmt* block(TokenQueue& tokens);
