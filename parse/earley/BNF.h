@@ -66,14 +66,14 @@ struct BNFSymbol {
     /**
      * True if this is a non terminal symbol.
      */
-	virtual bool nonTerminal() { return false; }
+    virtual bool nonTerminal() { return false; }
 
     
-	/**
-	 * Cast to terminal symbol.
-	 */
-	BNFT* asTerminal();
-
+    /**
+     * Cast to terminal symbol.
+     */
+    BNFT* asTerminal();
+    
     
     /**
      * Cast to non terminal symbol.
