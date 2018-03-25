@@ -21,7 +21,7 @@ struct EChart {
     /**
      * Rows.
      *
-     * Rows are represented both by a linked list and an set to allow iteration
+     * Rows are represented both by a linked list and a set to allow iteration
      * over items while iterating and remove duplicate sets respectively.
      * The set contains hash values for all states present in the linked list.
      */
