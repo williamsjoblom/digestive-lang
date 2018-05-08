@@ -1,4 +1,5 @@
 # Digestive
+[*\[dɪɡeˈstiːve\]*]
 
 Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
 
