@@ -1,6 +1,6 @@
 include_directories(.)
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
 project(dg)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -14,7 +14,107 @@ include("${ASMJIT_DIR}/CMakeLists.txt")
 
 include_directories("${ASMJIT_DIR}/src/")
 
-set(SOURCE_FILES main.cpp lexer/Lexer.cpp lexer/TokenQueue.cpp ast/BlockStmt.cpp ast/FunctionDecl.cpp ast/Decl.cpp ast/VariableDecl.cpp util/PrettyPrint.cpp parse/ParseError.cpp parse/Block.cpp parse/Function.cpp parse/Statement.cpp parse/File.cpp ast/BinaryExpr.cpp ast/Operator.cpp ast/ReturnStmt.cpp parse/Return.cpp parse/Variable.cpp ast/VariableExpr.cpp ast/FunctionCall.cpp semantic/Scope.cpp semantic/SemanticError.cpp ast/PlnStmt.cpp parse/Pln.cpp ast/IfStmt.cpp parse/If.cpp ast/Unit.cpp parse/Unit.cpp jit/JitContext.cpp interactive/IO.cpp interactive/Interactive.cpp jit/Jit.cpp ast/LoopStmt.cpp jit/BuiltIn.cpp parse/Loop.cpp parse/Trap.cpp ast/UnaryExpr.cpp ast/type/Type.cpp ast/type/PrimitiveType.cpp ast/IntegerLiteral.cpp semantic/TypeUtil.cpp jit/Backtrace.cpp ast/type/TupleType.cpp parse/Type.cpp parse/Expression.cpp ast/TupleExpr.cpp ast/type/DType.cpp ir/TAC.cpp ir/TACOp.cpp ir/TACFun.cpp ir/TACType.cpp genir/Expr.cpp genir/Program.cpp genir/BinaryExpr.cpp genir/IfStmt.cpp genir/VariableDecl.cpp genir/Function.cpp ir/TACProgram.cpp util/File.cpp genir/Return.cpp genir/FunctionCall.cpp genir/BuiltIn.cpp genasm/TACCompiler.cpp genasm/Instr.cpp genasm/Op.cpp genasm/InstrEnv.cpp util/BuildTimestamp.cpp genir/LoopStmt.cpp genir/Trap.cpp genasm/ErrHandler.cpp parse/earley/BNF.cpp parse/earley/Expr.cpp parse/earley/BNFParser.cpp parse/earley/Chart.cpp util/Path.cpp util/Hash.cpp parse/earley/ASTNode.cpp)
+set(
+  SOURCE_FILES
+  main.cpp
+
+  # AST
+  ast/BlockStmt.cpp
+  ast/FunctionDecl.cpp
+  ast/Decl.cpp
+  ast/VariableDecl.cpp
+  ast/BinaryExpr.cpp
+  ast/Operator.cpp
+  ast/ReturnStmt.cpp
+  ast/VariableExpr.cpp
+  ast/FunctionCall.cpp
+  ast/PlnStmt.cpp
+  ast/IfStmt.cpp
+  ast/Unit.cpp
+  ast/LoopStmt.cpp
+  ast/UnaryExpr.cpp
+  ast/type/Type.cpp
+  ast/type/PrimitiveType.cpp
+  ast/IntegerLiteral.cpp
+  ast/type/TupleType.cpp
+  ast/TupleExpr.cpp
+  ast/type/DType.cpp
+
+  # Assembly generator
+  genasm/TACCompiler.cpp
+  genasm/Instr.cpp
+  genasm/Op.cpp
+  genasm/InstrEnv.cpp
+  genasm/ErrHandler.cpp
+
+  # IR generator
+  genir/Expr.cpp
+  genir/Program.cpp
+  genir/BinaryExpr.cpp
+  genir/IfStmt.cpp
+  genir/VariableDecl.cpp
+  genir/Function.cpp
+  genir/Return.cpp
+  genir/FunctionCall.cpp
+  genir/BuiltIn.cpp
+  genir/LoopStmt.cpp
+  genir/Trap.cpp
+
+  
+  # Interactive
+  interactive/IO.cpp
+  interactive/Interactive.cpp
+  
+  # IR
+  ir/TAC.cpp
+  ir/TACOp.cpp
+  ir/TACFun.cpp
+  ir/TACType.cpp
+  ir/TACProgram.cpp
+  
+  # JIT
+  jit/JitContext.cpp    
+  jit/Jit.cpp
+  jit/BuiltIn.cpp
+  jit/Backtrace.cpp
+
+  # Lexer
+  lexer/Lexer.cpp
+  lexer/TokenQueue.cpp
+
+  # Parser
+  parse/ParseError.cpp
+  parse/Block.cpp
+  parse/Function.cpp
+  parse/Statement.cpp
+  parse/File.cpp
+  parse/Return.cpp
+  parse/Variable.cpp
+  parse/Pln.cpp
+  parse/If.cpp
+  parse/Unit.cpp
+  parse/Loop.cpp
+  parse/Trap.cpp
+  parse/Type.cpp
+  parse/Expression.cpp
+  parse/earley/BNF.cpp
+  parse/earley/Expr.cpp
+  parse/earley/BNFParser.cpp
+  parse/earley/Chart.cpp
+  parse/earley/ASTNode.cpp
+
+  # Semantics
+  semantic/Scope.cpp
+  semantic/SemanticError.cpp
+  semantic/TypeUtil.cpp
+
+  # Utilities
+  util/File.cpp
+  util/BuildTimestamp.cpp
+  util/Path.cpp
+  util/Hash.cpp
+  util/PrettyPrint.cpp
+)
 add_executable(dg ${SOURCE_FILES} ${ASMJIT_SRC})
 
 target_link_libraries(dg ${ASMJIT_DEPS})
