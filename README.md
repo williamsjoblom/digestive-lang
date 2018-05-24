@@ -1,7 +1,7 @@
-# Digestive
+# The Digestive Programming Language
 *\[dɪɡeˈstiːve\]*
 
-Work-in-progress implementation of a highly interactive JIT compiler focused on incremental compilation. Currently supporting little of planned functionality.
+Work-in-progress implementation of an interactive just-in-time compiler. Currently supporting little of planned functionality.
 
 ### Build & Setup
 Building and installing the binary:
@@ -21,7 +21,9 @@ cd ..
 echo "export DGROOT=$(pwd)/dg/" > ~/.bashrc # Replace '.bashrc' if using shell different from bash.
 ```
 
-The compiler can now be called with `dg`.
+### Usage
+The compiler is invoked with `dg`.
+
 
 ### Examples
 ```swift
@@ -60,7 +62,7 @@ echo reload ~/test.dg > interact # Tell the compiler VM to apply your source cha
 # The running program will now have the recent source changes applied!
 ```
 
-One limitation is that only function additions and changes will be incorporated in the running program when reloading a source file. This means that top-level changes to the program will not be incorporated when reloading.
+One limitation is that only function additions and changes will be incorporated in the running program when reloading a source file. This means that top-level changes to the program will not be incorporated when reloading.\
 
 
 ## Language
