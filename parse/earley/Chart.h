@@ -37,8 +37,9 @@ struct EChart {
     
     /**
      * Add row.
+     * Returns false if the state was already present in the set.
      */
-    void add(EState row, int k);
+    bool add(BNFGrammar& g, EState row, int k);
 };
 
 
@@ -64,6 +65,11 @@ struct EState {
      * Current position.
      */
     int position;
+    
+    /**
+     * Message saying how state was created.
+     */
+    std::string message;
     
     /**
      * Previous.

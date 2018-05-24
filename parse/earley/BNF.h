@@ -104,7 +104,13 @@ struct BNFT : public BNFSymbol {
 
     
     /**
-     * Constructor.
+     * Epsilon constructor.
+     */
+    BNFT() : type(TokenType::UNKNOWN), value("") { }
+    
+    
+    /**
+     * Terminal constructor.
      */
     BNFT(TokenType type, std::string value="") : type(type), value(value)  { }
 
@@ -160,7 +166,7 @@ struct BNFNT : public BNFSymbol {
      * Nullable.
      */
     bool nullable(BNFGrammar& g) override;
-    
+
     
     /**
      * This is a non-terminal symbol.
@@ -225,6 +231,12 @@ struct BNFProduction {
     std::string toS() const;
 };
 
+
+enum class NullableState {
+    NON_NULLABLE = 0,
+    NULLABLE = 1,
+    UNKNOWN = 2
+};
     
 /**
  * Production rule.
@@ -235,6 +247,12 @@ struct BNFRule {
      */
     std::string symbol;
 
+    /**
+     * Nullable state.
+     */
+    NullableState nullableState = NullableState::UNKNOWN;
+
+    
     /**
      * Productions.
      */

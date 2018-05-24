@@ -2,8 +2,14 @@
 
 #include <sstream>
 #include <assert.h>
+#include <unordered_set>
 
 #include "util/Hash.h"
+
+/**
+ * Epsilon is represented as an unknown token.
+ */
+const TokenType EPSILON = TokenType::UNKNOWN;
 
 
 BNFT* BNFSymbol::asTerminal() {
@@ -29,7 +35,10 @@ bool BNFT::accepts(Token& t) {
 std::string BNFT::toS() const {
     std::stringstream ss;
 	
-    if (!value.empty()) ss << "\"" << value << "\"";
+    if (!value.empty())
+	ss << "\"" << value << "\"";
+    else if(type == EPSILON)
+	ss << "ϵ";
     else ss << tokenTypeToS[type];
 	
     return ss.str();
@@ -39,9 +48,7 @@ std::string BNFT::toS() const {
 bool BNFNT::nullable(BNFGrammar& g) {
     // Method may cause infinite recursion for self
     // referencing rules in its current state.
-    return
-	BNFSymbol::nullable(g) ||
-	g.rules[symbol].nullable(g);
+    return g.rules[symbol].nullable(g);
 }
 
 
@@ -65,7 +72,7 @@ bool BNFProduction::nullable(BNFGrammar& g) {
 	if (!s->nullable(g))
 	    return false;
     }
-
+    
     return true;
 }
 
@@ -92,9 +99,7 @@ std::string BNFProduction::toS() const {
 
 
 bool BNFT::nullable(BNFGrammar& g) {
-    return
-	BNFSymbol::nullable(g) ||
-	value.empty();
+    return this->type == EPSILON;
 }
 
 
@@ -104,12 +109,22 @@ std::string BNFNT::toS() const {
 
 
 bool BNFRule::nullable(BNFGrammar& g) {
+    if (nullableState != NullableState::UNKNOWN)
+	return nullableState == NullableState::NULLABLE;
+    
+    nullableState = NullableState::NULLABLE;
+
+    bool null = false;
     for (BNFProduction& p : productions) {
-	if (p.nullable(g))
-	    return true;
+	if (p.nullable(g)) {
+	    null = true;
+	    break;
+	}
     }
 
-    return false;
+    nullableState =
+	null ? NullableState::NULLABLE : NullableState::NON_NULLABLE;
+    return null;
 }
 
 

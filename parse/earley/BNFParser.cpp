@@ -23,6 +23,7 @@ BNFNT* parseNonTerminal(TokenQueue& tokens) {
     }
 }
 
+
 /**
  * Parse BNF terminal.
  */
@@ -38,6 +39,12 @@ BNFT* parseTerminal(TokenQueue& tokens) {
 	tokens.expect(TokenType::LESS);
 
 	std::string type = tokens.expect(TokenType::IDENTIFIER).value;
+
+	if (type == "epsilon") {
+	    tokens.expect(GREATER);
+	    return new BNFT;
+	}
+	
 	TokenType t;
 	if (type == "id") {
 	    t = TokenType::IDENTIFIER;
@@ -58,10 +65,70 @@ BNFT* parseTerminal(TokenQueue& tokens) {
 }
 
 
+/****************************************************************
+ * Quantifier expansion.
+ ****************************************************************/
+
+/**
+ * Produce rule matching zero or one quantifier of
+ * given symbol in the form:
+ * symbol? = symbol | <epsilon>;
+ *
+ * Returns non terminal refering to produced rule.
+ */
+BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g) {
+    std::string ruleSymbol = symbol->toS() + "?";
+
+    BNFRule rule;
+    rule.symbol = ruleSymbol;
+
+    BNFProduction zero;
+    zero.symbols.push_back(new BNFT);
+    BNFProduction one;
+    one.symbols.push_back(symbol);
+        
+    rule.productions.push_back(zero);
+    rule.productions.push_back(one);
+
+    g.rules[ruleSymbol] = rule;
+    
+    return new BNFNT(ruleSymbol);
+}
+
+
+/**
+ * Produce rule matching zero or one quantifier of
+ * given symbol in the form:
+ * symbol* = symbol symbol* | <epsilon>;
+ *
+ * Returns non terminal refering to produced rule.
+ */
+BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g) {
+    std::string ruleSymbol = symbol->toS() + "*";
+
+    BNFRule rule;
+    rule.symbol = ruleSymbol;
+
+    BNFProduction zero;
+    zero.symbols.push_back(new BNFT);
+    BNFProduction more;
+    more.symbols.push_back(symbol);
+    more.symbols.push_back(new BNFNT(ruleSymbol));
+    
+        
+    rule.productions.push_back(zero);
+    rule.productions.push_back(more);
+
+    g.rules[ruleSymbol] = rule;
+    
+    return new BNFNT(ruleSymbol);
+}
+
+
 /**
  * Parse BNF symbol.
  */
-BNFSymbol* parseSymbol(TokenQueue& tokens) {
+BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
     bool createsNode = tokens.eat(TokenType::DOLLAR);
         
     BNFSymbol* symbol = nullptr;
@@ -70,20 +137,24 @@ BNFSymbol* parseSymbol(TokenQueue& tokens) {
 	throw 1;
     }
 
-    if (tokens.eat(TokenType::QUESTION))
-	symbol->quantifier = BNFQ::ZERO_OR_ONE;
-    else
-	symbol->quantifier = BNFQ::ONE;
-        
     symbol->createsNode = createsNode;
-    return symbol;
+    
+    if (tokens.eat(TokenType::QUESTION)) {
+	return zeroOrOne(symbol, g);
+    } else if (tokens.eat(TokenType::MUL)) {
+	return zeroOrMore(symbol, g);
+    } else if (tokens.eat(TokenType::PLUS)) {
+	assert(false);
+    } else {
+	return symbol;
+    }
 }
 
 
 /**
  * Parse BNF production.
  */
-BNFProduction parseProduction(TokenQueue& tokens) {
+BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
     BNFProduction production;
 
     if (tokens.eat(TokenType::COL)) {
@@ -96,7 +167,7 @@ BNFProduction parseProduction(TokenQueue& tokens) {
     while (tokens.top().type != TokenType::PIPE &&
 	   tokens.top().type != TokenType::SEMICOL &&
 	   tokens.top().type != TokenType::AT) {
-	BNFSymbol* symbol = parseSymbol(tokens);
+	BNFSymbol* symbol = parseSymbol(tokens, g);
 	production.symbols.push_back(symbol);
     }
 
@@ -186,7 +257,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	    rule = BNFRule();
 	}
 	
-	BNFProduction production = parseProduction(tokens);
+	BNFProduction production = parseProduction(tokens, g);
 	rule.productions.push_back(production);
     } while (tokens.eat(TokenType::PIPE));
 

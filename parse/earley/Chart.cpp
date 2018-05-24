@@ -18,13 +18,40 @@ EChart::EChart(TokenQueue& tokens) {
 }
 
 
-void EChart::add(EState state, int k) {
+bool addState(EChart* chart, EState state, int k) {
     hash_t hash = state.hash();
-    if (sh[k].find(hash) == sh[k].end()) {
-	sh[k].insert(hash);
-	s[k].insert(s[k].end(), state);
+    if (chart->sh[k].find(hash) == chart->sh[k].end()) {
+	chart->sh[k].insert(hash);
+	chart->s[k].insert(chart->s[k].end(), state);
+
+	return true;
     }
+    
+    return false;
 }
+
+
+bool EChart::add(BNFGrammar& g, EState state, int k) {
+    // hash_t hash = state.hash();
+    // if (sh[k].find(hash) == sh[k].end()) {
+    // 	sh[k].insert(hash);
+    // 	s[k].insert(s[k].end(), state);
+    // 	return true;
+    // }
+    
+    // return false;
+
+    bool changed = addState(this, state, k);
+    if (!state.complete() &&
+	state.next()->nullable(g)) {
+	EState s(state);
+	s.position++;
+	addState(this, s, k);
+    }
+
+    return changed;
+}
+
 
 BNFSymbol* EState::next() const {
     if (position >= 0 &&
@@ -78,6 +105,8 @@ std::string EState::toS() const {
 
     if (!production.nodeLabel.empty())
 	ss << " @" << production.nodeLabel;
+
+    ss << " (" << message << ")";
     
     return ss.str();
 }

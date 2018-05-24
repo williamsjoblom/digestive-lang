@@ -15,6 +15,11 @@
 
 using namespace Earley;
 
+/**
+ * Forward declarations.
+ */
+std::string toS(std::list<EState> states);
+
 
 /**
  * Prediction.
@@ -23,96 +28,149 @@ using namespace Earley;
  * (where j is the origin position as above), add (Y → • γ, k) to S(k)
  * for every production in the grammar with Y on the left-hand side (Y → γ).
  */
-void predict(BNFGrammar& g, const EState& state, EChart& chart, int k) {
-    assert(state.next()->nonTerminal());
+bool predict(BNFGrammar& g, EChart& chart, int k) {
+    bool changed = false;
 
-    BNFNT* y = state.next()->asNonTerminal();
-    BNFRule& r = g.rules.at(y->symbol);
-
-    for (BNFProduction& production : r.productions) {
-	EState s(r.symbol, production, k);
-	s.previousState = nullptr;
-	s.completedState = nullptr;
+    for (EState& state : chart.s[k]) {
+	if (state.complete()) continue;
+	if (!state.next()->nonTerminal()) continue;
 	
-	chart.add(s, k);
-    }
+	BNFNT* y = state.next()->asNonTerminal();
+	BNFRule& r = g.rules.at(y->symbol);
+	
+	for (BNFProduction& production : r.productions) {
+	    EState s(r.symbol, production, k);
+	    s.previousState = nullptr;
+	    s.completedState = nullptr;
 
-    // To allow for epsilon symbols:
-    // if (state.next()->nullable(g)) {
-    // 	EState s(state);
-    // 	s.position++;
-    // 	s.previousState = nullptr;
-    // 	s.completedState = nullptr;
+	    s.message = "predicted from " + state.symbol;
 	    
-    // 	chart.add(s, k);
-    // }
+	    changed |= chart.add(g, s, k);
+	}
+	
+	if (y->nullable(g)) {
+	    // for (auto it = chart.s[k].begin(); it != chart.s[k].end(); ++it) {
+	    // 	EState& now = *it;
+	    // 	if (now == state) break;
+	    // 	if (now.complete()) continue;
+	    // 	if (now.origin != k) continue;
+	    // 	if (now.symbol != y->symbol) continue;
+		
+	    // 	EState s(state);
+	    // 	s.position++;
+	    // 	s.previousState = &state;
+	    // 	s.completedState = &now;
+		
+	    // 	changed |= chart.add(g, s, k);
+	    // }
+	    
+	    EState s(state);
+	    s.position++;
+
+	    s.message = "predicted from ϵ";
+	    
+	    changed |= chart.add(g, s, k);
+	}
+    }
+    
+    return changed;
 }
 
 
 /**
  * Scan.
  */
-void scan(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart& chart, int k) {
-    BNFT* a = state.next()->asTerminal();
-    Token top = tokens.at(k);
+bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+    bool changed = false;
     
-    if (a->accepts(top)) {
-	EState s(state);
-	s.position++;
-	s.previousState = &state;
-	s.completedState = nullptr;
+    for (const EState& state : chart.s[k]) {
+	if (state.complete()) continue;
+	if (!state.next()->terminal()) continue;
 	
-	chart.add(s, k + 1);
+	BNFT* a = state.next()->asTerminal();
+	Token top = tokens.at(k);
+	
+	if (a->accepts(top)) {
+	    EState s(state);
+	    s.position++;
+	    s.previousState = &state;
+	    s.completedState = nullptr;
+	    
+	    s.message = "scanned from '" + top.value + "'";
+	    
+	    changed |= chart.add(g, s, k + 1);
+	}
     }
 
-    // To allow for epsilon symbols:
-    // if (state.next()->nullable(g)) {
-    // 	EState s(state);
-    // 	s.position++;
-	
-    // 	chart.add(s, k);
-    // }
+    return changed;
 }
 
 
 /**
  * Complete.
  */
-void complete(TokenQueue& tokens, const EState& state, EChart& chart, int k) {
-    for (const EState& completeState : chart.s[k]) {
-	if (!completeState.complete()) continue;
+bool complete(BNFGrammar& g, EChart& chart, int k) {
+    bool changed = false;
+
+    for (const EState& state : chart.s[k]) {
+	if (!state.complete()) continue;
 	
-	std::string symbol = completeState.symbol;
-	for (const EState& s : chart.s[completeState.origin]) {
-	    if (!s.complete() && s.next()->nonTerminal() &&
-		s.next()->asNonTerminal()->symbol == symbol) {
+	for (const EState& completeState : chart.s[k]) {
+	    if (!completeState.complete()) continue;
+	
+	    std::string symbol = completeState.symbol;
+	    for (const EState& s : chart.s[completeState.origin]) {
+		if (!s.complete() && s.next()->nonTerminal() &&
+		    s.next()->asNonTerminal()->symbol == symbol) {
 		
-		EState newState(s);
-		newState.position++;
-		newState.previousState = &s;
-		newState.completedState = &completeState;
+		    EState newState(s);
+		    newState.position++;
+		    newState.previousState = &s;
+		    newState.completedState = &completeState;
+
+		    newState.message = "completed from " + symbol;
 				
-		chart.add(newState, k);
+		    changed |= chart.add(g, newState, k);
+
+		    // Completed from a nullable?
+		    if (state.production.nullable(g)) {
+			EState ns(s);
+			ns.message += "/ϵ-forward";
+			changed |= chart.add(g, ns, k);
+
+			if (verbose) {
+			    std::cout << "ϵ-forward:" << std::endl
+				      << "       state = " << state.toS() << std::endl
+				      << "    complete = " << completeState.toS() << std::endl
+				      << "           s = " << s.toS() << std::endl
+				      << "    newState = " << newState.toS() << std::endl
+				      << "          ns = " << ns.toS() << std::endl << std::endl;
+			}
+		    }
+		}
 	    }
 	}
     }
+    
+    return changed;
 }
 
 
 /**
  * Process earley state.
  */
-void processState(BNFGrammar& g, TokenQueue& tokens, const EState& state, EChart& chart, int k) {
-    if (!state.complete()) {
-	if (state.next()->nonTerminal()) {
-	    predict(g, state, chart, k);
-	} else {
-	    scan(g, tokens, state, chart, k);
-	}
-    } else {
-	complete(tokens, state, chart, k);
-    }
+void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+    bool changed;
 
+    do {
+	changed = false;
+
+	bool p = predict(g, chart, k);
+	bool s = scan(g, tokens, chart, k);
+        bool c = complete(g, chart, k);
+	
+	changed = p | s | c;
+    } while (changed);
 }
 
 
@@ -129,13 +187,13 @@ std::string toS(std::list<EState> states) {
 }
 
 
-void dumpAST(const EState* state, TokenQueue& tokens, std::string indent="") {
+void dumpStateTree(const EState* state, TokenQueue& tokens, std::string indent="") {
     while (state->previousState != nullptr) {
 	if (state->complete())
 	    std::cout << indent << state->toS() << std::endl;
 
 	if (state->completedState != nullptr)
-	    dumpAST(state->completedState, tokens, indent + "  ");
+	    dumpStateTree(state->completedState, tokens, indent + "  ");
 	
 	state = state->previousState;
     }
@@ -153,7 +211,7 @@ const EState* nextNonIntermediate(const EState* state) {
 }
 
 
-ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
+ASTNode* buildIntermediateTree(const EState* state, ASTNode* parent=nullptr) {
     state = nextNonIntermediate(state);
     
     if (state->production.createsNode())
@@ -166,9 +224,9 @@ ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
     const EState* s = state;
     while (s->previousState != nullptr) {
 	if (s->completedState != nullptr) {
-	    ASTNode* child = buildAST(s->completedState, parent);
+	    ASTNode* child = buildIntermediateTree(s->completedState, parent);
 	    
-	    // Did buildAST() create a new node?
+	    // Did buildIntermediateTree() create a new node?
 	    // TODO returning the parent if no node was created
 	    // is not very pretty. We can do better!!!
 	    if (child != parent)
@@ -183,47 +241,42 @@ ASTNode* buildAST(const EState* state, ASTNode* parent=nullptr) {
 
 
 namespace Earley {
-    bool parse(BNFGrammar& g, std::string rule, TokenQueue& tokens) {
+    ASTNode* parse(BNFGrammar& g, std::string rule, TokenQueue& tokens) {
 	EChart chart(tokens);
 	
-	// S(0)
-	BNFRule& rootRule = g.rules[rule];
-	for (BNFProduction& p : rootRule.productions) {
-	    EState initial(rootRule.symbol, p, 0);
-	    chart.add(initial, 0);
-	}
+	 // S(0)
+	 BNFRule& rootRule = g.rules[rule];
+	 for (BNFProduction& p : rootRule.productions) {
+	     EState initial(rootRule.symbol, p, 0);
+	     chart.add(g, initial, 0);
+	 }
 	
-
-	for (int k = 0; k <= tokens.size(); k++) {
-	    int sz = 0;
-	    for (const EState& state : chart.s[k]) {
-		processState(g, tokens, state, chart, k);
-		sz++;
-	    }
-
-	    if (verbose) {
-		std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
-		for (const EState& state : chart.s[k]) {
-		    std::cout << state.toS() << std::endl;
-		}
-		std::cout << std::endl;
-	    }
-	}
+	 for (int k = 0; k <= tokens.size(); k++) {
+	     processState(g, tokens, chart, k);
+		 
+	     if (verbose) {
+		 std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
+		 for (const EState& state : chart.s[k]) {
+		     std::cout << state.toS() << std::endl;
+		 }
+		 std::cout << std::endl;
+	     }
+	 }
 
 
-	for (const EState& state : chart.s[chart.s.size() - 1]) 
+	 for (const EState& state : chart.s[chart.s.size() - 1]) 
 	    if (state.origin == 0 &&
 		state.symbol == rule) {
-		std::cout << "Recognizing state: " << state.toS() << std::endl;
-		std::cout << "dumpAST():" << std::endl;
-		dumpAST(&state, tokens);
+		if (verbose) {
+		    std::cout << "Recognizing state: " << state.toS() << std::endl;
+		    std::cout << "State tree:" << std::endl;
+		    dumpStateTree(&state, tokens);
+		}
 
-		ASTNode* ast = buildAST(&state);
-		std::cout << std::endl << ast->toS() << std::endl;
-		    
-		return true;
+		ASTNode* tree = buildIntermediateTree(&state);
+		return tree;
 	    }
 	
-	return false;
+	return nullptr;
     }
 }

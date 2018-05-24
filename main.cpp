@@ -20,6 +20,7 @@
 #include "parse/earley/BNFParser.h"
 #include "parse/earley/BNF.h"
 #include "parse/earley/Expr.h"
+#include "parse/earley/ASTNode.h"
 
 #include <asmjit/asmjit.h>
 
@@ -58,12 +59,14 @@ int main(int argc, char* argv[]) {
     if (source.empty()) return 0;
     Lexer sl(source);
     TokenQueue st = sl.readAll();
-    bool accepted = Earley::parse(g, "unit", st);
+    ASTNode* tree = Earley::parse(g, "unit", st);
 
     std::cout << std::endl;
-    if (accepted) std::cout << "Source parsed successfully";
-    else std::cout << "Source not recognized by grammar";
-    std::cout << std::endl;
+    if (tree != nullptr)
+	std::cout << "Source parsed successfully:" << std::endl
+		  << tree->toS() << std::endl;
+    else
+	std::cout << "Source not recognized by grammar!" << std::endl;
     
     return 0;
 

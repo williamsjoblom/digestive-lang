@@ -1,4 +1,8 @@
-unit = Expr			@CompilationUnit;
+unit = Num*			@CompilationUnit;
+
+Num = <num>			@Num;
+
+Stmt = Expr ";"			@ExprStmt;
 
 Expr = <num>			@Number
      |  :group "(" Expr ")"
