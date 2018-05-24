@@ -46,7 +46,7 @@ printTriple(triple);
 Example that prints the values of a tuple.
 
 ### Interaction
-One key features is the ability to reload code at runtime. Such interaction with the compiler VM is done by writing commands to a named pipe called `interact` located in the current working directory.
+One key feature is the ability to reload code at runtime. Such interaction with the compiler VM is done by writing commands to a named pipe called `interact` located in the compilers working directory.
 
 #### Example
 ```shell
