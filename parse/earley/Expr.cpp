@@ -15,6 +15,7 @@
 
 using namespace Earley;
 
+
 /**
  * Forward declarations.
  */
@@ -108,6 +109,8 @@ bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
 
 /**
  * Complete.
+ *
+ * TODO Nasty nesting depth, please make me pretty!
  */
 bool complete(BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
@@ -135,10 +138,12 @@ bool complete(BNFGrammar& g, EChart& chart, int k) {
 		    // Completed from a nullable?
 		    if (state.production.nullable(g)) {
 			EState ns(s);
+			ns.previousState = &s;
+			ns.completedState = &completeState;
 			ns.message += "/ϵ-forward";
 			changed |= chart.add(g, ns, k);
 
-			if (verbose) {
+			if (false && verbose) {
 			    std::cout << "ϵ-forward:" << std::endl
 				      << "       state = " << state.toS() << std::endl
 				      << "    complete = " << completeState.toS() << std::endl
@@ -187,13 +192,13 @@ std::string toS(std::list<EState> states) {
 }
 
 
-void dumpStateTree(const EState* state, TokenQueue& tokens, std::string indent="") {
+void dumpStateTree(const EState* state, TokenQueue& tokens, bool verbose=false, std::string indent="") {
     while (state->previousState != nullptr) {
-	if (state->complete())
+	if (verbose || state->complete())
 	    std::cout << indent << state->toS() << std::endl;
 
 	if (state->completedState != nullptr)
-	    dumpStateTree(state->completedState, tokens, indent + "  ");
+	    dumpStateTree(state->completedState, tokens, verbose, indent + "  ");
 	
 	state = state->previousState;
     }
@@ -270,7 +275,7 @@ namespace Earley {
 		if (verbose) {
 		    std::cout << "Recognizing state: " << state.toS() << std::endl;
 		    std::cout << "State tree:" << std::endl;
-		    dumpStateTree(&state, tokens);
+		    dumpStateTree(&state, tokens, false);
 		}
 
 		ASTNode* tree = buildIntermediateTree(&state);

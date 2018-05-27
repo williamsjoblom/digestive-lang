@@ -1,4 +1,4 @@
-unit = Num*			@CompilationUnit;
+unit = Stmt*			@CompilationUnit;
 
 Num = <num>			@Num;
 

@@ -83,8 +83,11 @@ BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g) {
     rule.symbol = ruleSymbol;
 
     BNFProduction zero;
+    zero.nodeLabel = ruleSymbol;
     zero.symbols.push_back(new BNFT);
+    
     BNFProduction one;
+    one.nodeLabel = ruleSymbol;
     one.symbols.push_back(symbol);
         
     rule.productions.push_back(zero);
@@ -110,8 +113,11 @@ BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g) {
     rule.symbol = ruleSymbol;
 
     BNFProduction zero;
+    zero.nodeLabel = ruleSymbol;
     zero.symbols.push_back(new BNFT);
+    
     BNFProduction more;
+    more.nodeLabel = ruleSymbol;
     more.symbols.push_back(symbol);
     more.symbols.push_back(new BNFNT(ruleSymbol));
     
