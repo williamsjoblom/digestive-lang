@@ -1,7 +1,5 @@
 unit = Stmt*			@CompilationUnit;
 
-Num = <num>			@Num;
-
 Stmt = Expr ";"			@ExprStmt;
 
 Expr = <num>			@Number
