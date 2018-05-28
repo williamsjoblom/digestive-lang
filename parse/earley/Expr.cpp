@@ -10,7 +10,7 @@
 #include "ast/Expr.h"
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
-#include "globals.h"
+#include "options.h"
 #include "ASTNode.h"
 
 using namespace Earley;

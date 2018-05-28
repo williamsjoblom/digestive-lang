@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 
-#include "globals.h"
+#include "options.h"
 #include "IO.h"
 
 namespace IO {

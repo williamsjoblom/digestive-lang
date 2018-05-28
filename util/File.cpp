@@ -6,7 +6,8 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "globals.h"
+#include "options.h"
+
 
 std::string readSourceFile(std::string path) {
     std::string expandedPath = realpath(path.c_str(), nullptr);
@@ -25,3 +26,7 @@ std::string readSourceFile(std::string path) {
 }
 
 
+bool isReadableFile(std::string path) {
+    std::ifstream f(path.c_str());
+    return f.good();
+}

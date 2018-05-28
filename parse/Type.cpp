@@ -8,7 +8,7 @@
 #include "ast/type/Types.h"
 #include "ast/type/TupleType.h"
 #include "parse/ParseError.h"
-#include "globals.h"
+#include "options.h"
 
 namespace Parse {
 

@@ -12,7 +12,7 @@
 #include <execinfo.h>
 #include <bits/siginfo.h>
 
-#include "globals.h"
+#include "options.h"
 #include "Interactive.h"
 #include "IO.h"
 #include "util/Colors.h"

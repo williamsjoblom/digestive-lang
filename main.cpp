@@ -6,7 +6,7 @@
  */
 //#define TEST
 
-#include "globals.h"
+#include "options.h"
 #include "util/BuildTimestamp.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
@@ -24,21 +24,24 @@
 
 #include <asmjit/asmjit.h>
 
+/**
+ * Forward declarations.
+ */
+std::string parseArgs(int argc, char* argv[]);
+
+/**
+ * Globals defined as 'extern' in 'options.h'.
+ */
 bool verbose = false;
+
 
 /**
  * Main.
  */
 #ifndef TEST
 int main(int argc, char* argv[]) {
-    std::string path = bootFilePath();
+    std::string pathArg = parseArgs(argc, argv);
     
-    for (int i = 1; i < argc; i++) {
-	std::string arg = argv[i];
-	if (arg == "-v") verbose = true;
-	else if (i == argc - 1) path = arg;
-    }
-
     if (verbose) {
 	std::cout << " digestive " << version
 		  << ", " << buildTimestamp() << std::endl;
@@ -49,6 +52,14 @@ int main(int argc, char* argv[]) {
 	return 1;
     }
 
+    
+    std::string path;
+    if (!pathArg.empty())
+	path = pathArg;
+    else
+	path = bootFilePath();
+    
+        
     std::string grammarPath = coreBNFFilePath();
     std::string grammar = readSourceFile(grammarPath);
     Lexer gl(grammar);
@@ -102,4 +113,26 @@ int main(int argc, char* argv[]) {
     
     return -1;
 }
+
+
+/**
+ * Parse command line arguments.
+ * 
+ * Returns source file path if provided,
+ * otherwise the empty string.
+ */
+std::string parseArgs(int argc, char* argv[]) {
+    std::string sourcePath = "";
+    
+    for (int i = 1; i < argc; i++) {
+	std::string arg = argv[i];
+	if (arg == "-v") verbose = true;
+	
+	if (i == argc - 1 && isReadableFile(arg))
+	    sourcePath = arg;
+    }
+
+    return sourcePath;
+}
+
 #endif

@@ -9,7 +9,7 @@
 #include <bits/siginfo.h>
 #include <sys/ucontext.h>
 
-#include "globals.h"
+#include "options.h"
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
 #include "JitContext.h"
