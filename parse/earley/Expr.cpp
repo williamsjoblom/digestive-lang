@@ -48,30 +48,6 @@ bool predict(BNFGrammar& g, EChart& chart, int k) {
 	    
 	    changed |= chart.add(g, s, k);
 	}
-	
-	if (y->nullable(g)) {
-	    // for (auto it = chart.s[k].begin(); it != chart.s[k].end(); ++it) {
-	    // 	EState& now = *it;
-	    // 	if (now == state) break;
-	    // 	if (now.complete()) continue;
-	    // 	if (now.origin != k) continue;
-	    // 	if (now.symbol != y->symbol) continue;
-		
-	    // 	EState s(state);
-	    // 	s.position++;
-	    // 	s.previousState = &state;
-	    // 	s.completedState = &now;
-		
-	    // 	changed |= chart.add(g, s, k);
-	    // }
-	    
-	    EState s(state);
-	    s.position++;
-
-	    s.message = "predicted from ϵ";
-	    
-	    changed |= chart.add(g, s, k);
-	}
     }
     
     return changed;
