@@ -87,6 +87,8 @@ bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
  * Complete.
  *
  * TODO Nasty nesting depth, please make me pretty!
+ * NOTE In dire need of optimization, both in terms of
+ * complexity and caching.
  */
 bool complete(BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
