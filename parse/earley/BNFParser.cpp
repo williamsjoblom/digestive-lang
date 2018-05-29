@@ -11,6 +11,14 @@
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
 
+
+/**
+ * Forward declarations.
+ */
+std::string parenRuleSymbol();
+BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g);
+
+
 /**
  * Parse BNF terminal.
  */
@@ -144,16 +152,29 @@ BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
     }
 
     symbol->createsNode = createsNode;
+
+    return symbol;
+}
+
+
+/**
+ * Parse parentheses.
+ */
+BNFNT* parseParen(TokenQueue& tokens, BNFGrammar& g) {
+    tokens.expect(TokenType::LPAR);
+    BNFProduction production = parseProduction(tokens, g);
+    tokens.expect(TokenType::RPAR);
     
-    if (tokens.eat(TokenType::QUESTION)) {
-	return zeroOrOne(symbol, g);
-    } else if (tokens.eat(TokenType::MUL)) {
-	return zeroOrMore(symbol, g);
-    } else if (tokens.eat(TokenType::PLUS)) {
-	assert(false);
-    } else {
-	return symbol;
-    }
+    std::string ruleSymbol = parenRuleSymbol();
+
+    
+    BNFRule rule;
+    rule.symbol = ruleSymbol;
+    rule.productions.push_back(production);
+
+    g.rules[ruleSymbol] = rule;
+    
+    return new BNFNT(ruleSymbol);
 }
 
 
@@ -172,8 +193,24 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
     
     while (tokens.top().type != TokenType::PIPE &&
 	   tokens.top().type != TokenType::SEMICOL &&
-	   tokens.top().type != TokenType::AT) {
-	BNFSymbol* symbol = parseSymbol(tokens, g);
+	   tokens.top().type != TokenType::AT &&
+	   tokens.top().type != TokenType::RPAR) {
+
+	BNFSymbol* symbol;
+	if (tokens.top().type == TokenType::LPAR) {
+	    symbol = parseParen(tokens, g);
+	} else {
+	    symbol = parseSymbol(tokens, g);
+	}
+	   
+	if (tokens.eat(TokenType::QUESTION)) {
+	    symbol = zeroOrOne(symbol, g);
+	} else if (tokens.eat(TokenType::MUL)) {
+	    symbol = zeroOrMore(symbol, g);
+	} else if (tokens.eat(TokenType::PLUS)) {
+	    assert(false); // Not implemented.
+	}
+	
 	production.symbols.push_back(symbol);
     }
 
@@ -189,12 +226,27 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
 
 
 /**
+ * Returns a new unique symbol for rule expansion of parentheses.
+ */
+std::string parenRuleSymbol() {
+    static int index = 0;
+
+    std::stringstream ss;
+    ss << "(" << index++ << ")";
+    return ss.str();
+}
+
+
+/**
  * Indexed subrule symbol.
  */
 std::string subruleSymbol(std::string symbol, int index) {
+    // Ensure no symbol collisions with 'parenRuleSymbol()'.
+    assert(!symbol.empty());
+    
     std::stringstream ss;
-    ss << symbol;
-    ss << "(" << index << ")";
+	ss << symbol;
+	ss << "(" << index << ")";
     return ss.str();
 }
 
