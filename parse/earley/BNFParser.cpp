@@ -19,6 +19,10 @@ std::string parenRuleSymbol();
 BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g);
 
 
+/****************************************************************
+ * Symbol parsing.
+ ****************************************************************/
+
 /**
  * Parse BNF terminal.
  */
@@ -70,6 +74,24 @@ BNFT* parseTerminal(TokenQueue& tokens) {
     } else {
 	return nullptr;
     }
+}
+
+
+/**
+ * Parse BNF symbol.
+ */
+BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
+    bool createsNode = tokens.eat(TokenType::DOLLAR);
+        
+    BNFSymbol* symbol = nullptr;
+    if ((symbol = parseTerminal(tokens)) == nullptr &&
+	(symbol = parseNonTerminal(tokens)) == nullptr) {
+	throw 1;
+    }
+
+    symbol->createsNode = createsNode;
+
+    return symbol;
 }
 
 
@@ -139,23 +161,9 @@ BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g) {
 }
 
 
-/**
- * Parse BNF symbol.
- */
-BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
-    bool createsNode = tokens.eat(TokenType::DOLLAR);
-        
-    BNFSymbol* symbol = nullptr;
-    if ((symbol = parseTerminal(tokens)) == nullptr &&
-	(symbol = parseNonTerminal(tokens)) == nullptr) {
-	throw 1;
-    }
-
-    symbol->createsNode = createsNode;
-
-    return symbol;
-}
-
+/****************************************************************
+ * Production parsing.
+ ****************************************************************/
 
 /**
  * Parse parentheses.
@@ -250,6 +258,10 @@ std::string subruleSymbol(std::string symbol, int index) {
     return ss.str();
 }
 
+
+/****************************************************************
+ * Rule parsing.
+ ****************************************************************/
 
 /**
  * Make production left associative.
