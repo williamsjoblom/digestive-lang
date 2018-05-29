@@ -106,19 +106,21 @@ BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
  *
  * Returns non terminal refering to produced rule.
  */
-BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g) {
+BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=true) {
     std::string ruleSymbol = symbol->toS() + "?";
 
     BNFRule rule;
     rule.symbol = ruleSymbol;
 
     BNFProduction zero;
-    zero.nodeLabel = ruleSymbol;
     zero.symbols.push_back(new BNFT);
-    
+    if (createsNode)
+	zero.nodeLabel = ruleSymbol;
+
     BNFProduction one;
-    one.nodeLabel = ruleSymbol;
     one.symbols.push_back(symbol);
+    if (createsNode)
+	one.nodeLabel = ruleSymbol;
         
     rule.productions.push_back(zero);
     rule.productions.push_back(one);
@@ -136,21 +138,22 @@ BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g) {
  *
  * Returns non terminal refering to produced rule.
  */
-BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g) {
+BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=true) {
     std::string ruleSymbol = symbol->toS() + "*";
 
     BNFRule rule;
     rule.symbol = ruleSymbol;
 
     BNFProduction zero;
-    zero.nodeLabel = ruleSymbol;
     zero.symbols.push_back(new BNFT);
+    if (createsNode)
+	zero.nodeLabel = ruleSymbol;
     
     BNFProduction more;
-    more.nodeLabel = ruleSymbol;
     more.symbols.push_back(symbol);
     more.symbols.push_back(new BNFNT(ruleSymbol));
-    
+    if (createsNode)
+	more.nodeLabel = ruleSymbol;
         
     rule.productions.push_back(zero);
     rule.productions.push_back(more);
@@ -204,17 +207,20 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
 	   tokens.top().type != TokenType::AT &&
 	   tokens.top().type != TokenType::RPAR) {
 
+	bool createsNode;
 	BNFSymbol* symbol;
 	if (tokens.top().type == TokenType::LPAR) {
 	    symbol = parseParen(tokens, g);
+	    createsNode = false;
 	} else {
 	    symbol = parseSymbol(tokens, g);
+	    createsNode = true;
 	}
 	   
 	if (tokens.eat(TokenType::QUESTION)) {
-	    symbol = zeroOrOne(symbol, g);
+	    symbol = zeroOrOne(symbol, g, createsNode);
 	} else if (tokens.eat(TokenType::MUL)) {
-	    symbol = zeroOrMore(symbol, g);
+	    symbol = zeroOrMore(symbol, g, createsNode);
 	} else if (tokens.eat(TokenType::PLUS)) {
 	    assert(false); // Not implemented.
 	}
