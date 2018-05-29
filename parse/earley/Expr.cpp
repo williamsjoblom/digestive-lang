@@ -184,40 +184,25 @@ void dumpStateTree(const EState* state, TokenQueue& tokens, bool verbose=false, 
 }
 
 
-const EState* nextNonIntermediate(const EState* state) {
-    if (state->complete() &&
-	state->production.createsNode())
-	return state;
-    else if (state->completedState != nullptr)
-	return nextNonIntermediate(state->completedState);
-    else
-	return state;
-}
-
-
+/**
+ * Build tree from recognizing state.
+ */
 ASTNode* buildIntermediateTree(const EState* state, ASTNode* parent=nullptr) {
-    state = nextNonIntermediate(state);
-    
-    if (state->production.createsNode())
-	parent = new ASTNode(state->production.nodeLabel);
-    else if (parent == nullptr)
-	// TODO replace with error message.
-	// Happens when the 'unit' rule does not create a node.
-	assert(false);
+    while (state->previousState != nullptr) {
+	if (state->complete() && state->production.createsNode())
+	    parent = new ASTNode(state->production.nodeLabel);
 
-    const EState* s = state;
-    while (s->previousState != nullptr) {
-	if (s->completedState != nullptr) {
-	    ASTNode* child = buildIntermediateTree(s->completedState, parent);
-	    
-	    // Did buildIntermediateTree() create a new node?
-	    // TODO returning the parent if no node was created
-	    // is not very pretty. We can do better!!!
+	if (state->completedState != nullptr) {
+	    ASTNode* child = buildIntermediateTree(state->completedState, parent);
+
+	    // NOTE Did 'buildIntermediateTree()' create a new node?
+	    // I.e. did 'parent' change?
 	    if (child != parent)
 		parent->addChild(child);
 	}
 	
-	s = s->previousState;
+	
+	state = state->previousState;
     }
     
     return parent;
