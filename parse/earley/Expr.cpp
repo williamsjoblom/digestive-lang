@@ -12,6 +12,7 @@
 #include "lexer/Token.h"
 #include "options.h"
 #include "ASTNode.h"
+#include "util/Colors.h"
 
 using namespace Earley;
 
@@ -223,43 +224,61 @@ ASTNode* buildIntermediateTree(const EState* state, ASTNode* parent=nullptr) {
 }
 
 
+/**
+ * Ambiguous parse error.
+ */
+void ambiguousParseError() {
+    std::cout << KRED
+	      << "Grammar ambiguoity resulted in multiple parse trees!"
+	      << RST;
+    throw 1;
+}
+
+
 namespace Earley {
     ASTNode* parse(BNFGrammar& g, std::string rule, TokenQueue& tokens) {
 	EChart chart(tokens);
 	
-	 // S(0)
-	 BNFRule& rootRule = g.rules[rule];
-	 for (BNFProduction& p : rootRule.productions) {
-	     EState initial(rootRule.symbol, p, 0);
-	     chart.add(g, initial, 0);
-	 }
+	// S(0)
+	BNFRule& rootRule = g.rules[rule];
+	for (BNFProduction& p : rootRule.productions) {
+	    EState initial(rootRule.symbol, p, 0);
+	    chart.add(g, initial, 0);
+	}
 	
-	 for (int k = 0; k <= tokens.size(); k++) {
-	     processState(g, tokens, chart, k);
+	for (int k = 0; k <= tokens.size(); k++) {
+	    processState(g, tokens, chart, k);
 		 
-	     if (verbose) {
-		 std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
-		 for (const EState& state : chart.s[k]) {
-		     std::cout << state.toS() << std::endl;
-		 }
-		 std::cout << std::endl;
-	     }
-	 }
+	    if (verbose) {
+		std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
+		for (const EState& state : chart.s[k]) {
+		    std::cout << state.toS() << std::endl;
+		}
+		std::cout << std::endl;
+	    }
+	}
 
-
-	 for (const EState& state : chart.s[chart.s.size() - 1]) 
+	 
+	ASTNode* tree = nullptr;
+	for (const EState& state : chart.s[chart.s.size() - 1]) {
 	    if (state.origin == 0 &&
-		state.symbol == rule) {
+		state.symbol == rule &&
+		state.complete()) {
+		 
+		if (tree != nullptr) {
+		    ambiguousParseError();
+		}
+		 
 		if (verbose) {
 		    std::cout << "Recognizing state: " << state.toS() << std::endl;
 		    std::cout << "State tree:" << std::endl;
 		    dumpStateTree(&state, tokens, false);
 		}
 
-		ASTNode* tree = buildIntermediateTree(&state);
-		return tree;
+		tree = buildIntermediateTree(&state);
 	    }
-	
-	return nullptr;
+	}
+
+	return tree;
     }
 }
