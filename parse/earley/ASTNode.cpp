@@ -22,7 +22,11 @@ void ASTNode::addChild(ASTNode* child) {
 std::string ASTNode::toS(std::string indent) {
     std::stringstream ss;
     
-    ss << indent << label << ":" << std::endl;
+    ss << indent << label;
+    if (!children.empty())
+	ss << ":";
+    ss << std::endl;
+    
     for (ASTNode* child : children)
 	ss << child->toS(indent + "  ");
 
