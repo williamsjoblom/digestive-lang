@@ -187,13 +187,26 @@ void dumpStateTree(const EState* state, TokenQueue& tokens, bool verbose=false, 
 /**
  * Build tree from recognizing state.
  */
-ASTNode* buildIntermediateTree(const EState* state, ASTNode* parent=nullptr) {
+ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens, ASTNode* parent=nullptr) {
     while (state->previousState != nullptr) {
-	if (state->complete() && state->production.createsNode())
-	    parent = new ASTNode(state->production.nodeLabel);
+	if (state->complete()) {
+	    if (state->production.createsNode())
+		parent = new ASTNode(state->production.nodeLabel);
+
+	    if (state->production.trivial()) {
+		BNFSymbol* symbol = state->production.symbols[0];
+		BNFT* terminal = symbol->asTerminal();
+
+		if (terminal->inTree()) {
+		    int index = state->origin;
+		    std::string value = tokens.at(index).value;
+		    parent->addSymbol(value);
+		}
+	    }
+	}
 
 	if (state->completedState != nullptr) {
-	    ASTNode* child = buildIntermediateTree(state->completedState, parent);
+	    ASTNode* child = buildIntermediateTree(state->completedState, tokens, parent);
 
 	    // NOTE Did 'buildIntermediateTree()' create a new node?
 	    // I.e. did 'parent' change?
@@ -257,10 +270,10 @@ namespace Earley {
 		if (verbose) {
 		    std::cout << "Recognizing state: " << state.toS() << std::endl;
 		    std::cout << "State tree:" << std::endl;
-		    dumpStateTree(&state, tokens, false);
+		    dumpStateTree(&state, tokens, true);
 		}
 
-		tree = buildIntermediateTree(&state);
+		tree = buildIntermediateTree(&state, tokens);
 	    }
 	}
 

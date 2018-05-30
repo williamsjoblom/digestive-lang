@@ -24,7 +24,7 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g);
  ****************************************************************/
 
 /**
- * Parse BNF terminal.
+ * Parse BNF non-terminal.
  */
 BNFNT* parseNonTerminal(TokenQueue& tokens) {
     if (tokens.top().type == TokenType::IDENTIFIER) {
@@ -47,30 +47,34 @@ BNFT* parseTerminal(TokenQueue& tokens) {
 	Lexer l(content);
 	Token t = l.read();
 	return new BNFT(t.type, t.value);
-    } else if (tokens.top().type == TokenType::LESS) {
+    } else {
+	return nullptr;
+    }
+}
+
+
+/**
+ * Parse built-in symbol.
+ *
+ * NOTE To add more built-ins:
+ * Add them here and in BNFGrammar::initBuiltIns().
+ */
+BNFSymbol* parseBuiltIn(TokenQueue& tokens) {
+    if (tokens.top().type == TokenType::LESS) {
 	tokens.expect(TokenType::LESS);
-
 	std::string type = tokens.expect(TokenType::IDENTIFIER).value;
-
-	if (type == "epsilon") {
-	    tokens.expect(GREATER);
-	    return new BNFT;
-	}
-	
-	TokenType t;
-	if (type == "id") {
-	    t = TokenType::IDENTIFIER;
-	} else if (type == "num") {
-	    t = TokenType::NUMBER;
-	} else if (type == "str") {
-	    t = TokenType::STRING;
-	} else {
-	    throw 1;
-	}
-	
 	tokens.expect(TokenType::GREATER);
 
-	return new BNFT(t);
+	if (type == "epsilon")
+	    return new BNFT;
+	
+	if (type != "id"  &&
+	    type != "num" &&
+	    type != "str")
+	    // Unknown built-in type.
+	    throw 1;
+	
+	return new BNFNT("<" + type + ">");
     } else {
 	return nullptr;
     }
@@ -81,16 +85,13 @@ BNFT* parseTerminal(TokenQueue& tokens) {
  * Parse BNF symbol.
  */
 BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
-    bool createsNode = tokens.eat(TokenType::DOLLAR);
-        
     BNFSymbol* symbol = nullptr;
-    if ((symbol = parseTerminal(tokens)) == nullptr &&
-	(symbol = parseNonTerminal(tokens)) == nullptr) {
-	throw 1;
-    }
-
-    symbol->createsNode = createsNode;
-
+    if ((symbol = parseTerminal(tokens))    == nullptr &&
+	(symbol = parseNonTerminal(tokens)) == nullptr &&
+	(symbol = parseBuiltIn(tokens))     == nullptr)
+	// Unknown symbol.
+	throw 1; 
+    
     return symbol;
 }
 

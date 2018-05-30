@@ -19,10 +19,25 @@ void ASTNode::addChild(ASTNode* child) {
 }
 
 
+void ASTNode::addSymbol(std::string symbol) {
+    symbols.push_front(symbol);
+}
+
+
 std::string ASTNode::toS(std::string indent) {
     std::stringstream ss;
     
     ss << indent << label;
+    if (!symbols.empty()) {
+	ss << " [ ";
+	
+	for (std::string symbol : symbols) {
+	    ss << symbol << " ";
+	}
+	
+	ss << "]";
+    }
+	
     if (!children.empty())
 	ss << ":";
     ss << std::endl;

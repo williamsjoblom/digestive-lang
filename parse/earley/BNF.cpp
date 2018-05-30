@@ -93,7 +93,14 @@ bool BNFProduction::createsNode() const {
 }
 
 
-bool BNFProduction::nullable(BNFGrammar& g) {
+bool BNFProduction::trivial() const {
+    return
+	symbols.size() == 1 &&
+	symbols[0]->terminal();
+}
+
+
+bool BNFProduction::nullable(BNFGrammar& g) const {
     for (BNFSymbol* s : symbols) {
 	if (!s->nullable(g))
 	    return false;
@@ -128,12 +135,19 @@ std::string BNFProduction::toS() const {
  * Rule.
  ****************************************************************/
 
+bool BNFRule::trivial() {
+    return
+	productions.size() == 1 &&
+	productions[0].trivial();
+}
+
+
 bool BNFRule::nullable(BNFGrammar& g) {
     if (nullableState != NullableState::UNKNOWN)
 	return nullableState == NullableState::NULLABLE;
     
     nullableState = NullableState::NULLABLE;
-
+    
     bool null = false;
     for (BNFProduction& p : productions) {
 	if (p.nullable(g)) {
@@ -164,11 +178,28 @@ std::string BNFRule::toS() const {
 
 
 /****************************************************************
- * Grammar
+ * Grammar.
  ****************************************************************/
 
 BNFGrammar::BNFGrammar() {
+    initBuiltIns();
+}
 
+
+void BNFGrammar::addRule(BNFRule& rule) {
+    rules[rule.symbol] = rule;
+}
+
+
+void BNFGrammar::addTrivialRule(std::string ruleSymbol, BNFSymbol* symbol) {
+    BNFRule rule;
+    rule.symbol = ruleSymbol;
+
+    BNFProduction p;
+    p.symbols.push_back(symbol);
+    rule.productions.push_back(p);
+
+    addRule(rule);
 }
 
 
@@ -179,5 +210,21 @@ std::string BNFGrammar::toS() const {
     }
     
     return ss.str();
+}
+
+
+/**
+ * NOTE To add more built-ins:
+ * Add them here and in BNFParser.cpp: parseBuiltIn().
+ */
+void BNFGrammar::initBuiltIns() {
+    BNFSymbol* id = new BNFT(TokenType::IDENTIFIER, "", "<id>");
+    addTrivialRule("<id>", id);
+
+    BNFSymbol* num = new BNFT(TokenType::NUMBER, "", "<num>");
+    addTrivialRule("<num>", num);
+
+    BNFSymbol* str = new BNFT(TokenType::STRING, "", "<str>");
+    addTrivialRule("<str>", str);
 }
 

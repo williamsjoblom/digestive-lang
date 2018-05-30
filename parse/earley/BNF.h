@@ -222,9 +222,15 @@ struct BNFProduction {
 
     
     /**
+     * Does this production contain only one terminal?
+     */
+    bool trivial() const;
+
+    
+    /**
      * Nullable.
      */
-    bool nullable(BNFGrammar& g);
+    bool nullable(BNFGrammar& g) const;
 
     
     /**
@@ -245,7 +251,8 @@ enum class NullableState {
     NULLABLE = 1,
     UNKNOWN = 2
 };
-    
+
+
 /**
  * Production rule.
  */
@@ -268,6 +275,12 @@ struct BNFRule {
 
 
     /**
+     * Does this rule produce onl
+     */
+    bool trivial();
+    
+
+    /**
      * Nullable.
      */
     bool nullable(BNFGrammar& g);
@@ -283,13 +296,7 @@ struct BNFRule {
 /**
  * Grammar.
  */
-struct BNFGrammar {
-
-    /**
-     * Constructor
-     */
-    BNFGrammar();
-    
+struct BNFGrammar {    
     
     /**
      * Rules.
@@ -298,7 +305,33 @@ struct BNFGrammar {
 
     
     /**
+     * Constructor
+     */
+    BNFGrammar();
+
+    
+    /**
+     * Add rule.
+     */
+    void addRule(BNFRule& rule);
+
+    
+    /**
+     * Add rule whos production only consists of a single symbol.
+     */
+    void addTrivialRule(std::string ruleSymbol, BNFSymbol* symbol);
+
+    
+    /**
      * To string.
      */
     std::string toS() const;
+
+    
+private:
+    
+    /**
+     * Initialize built-in rules.
+     */
+    void initBuiltIns();
 };

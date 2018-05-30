@@ -3,6 +3,12 @@
 #include <string>
 #include <list>
 
+#include "BNF.h"
+
+
+/**
+ * AST node.
+ */
 class ASTNode {
 public:
     /**
@@ -14,6 +20,12 @@ public:
      * Children.
      */
     std::list<ASTNode*> children;
+
+
+    /**
+     * Symbols.
+     */
+    std::list<std::string> symbols;
 
     
     /**
@@ -32,6 +44,12 @@ public:
      * Add node.
      */
     void addChild(ASTNode* child);
+
+    
+    /**
+     * Add symbol.
+     */
+    void addSymbol(std::string symbol);
 
 
     /**
