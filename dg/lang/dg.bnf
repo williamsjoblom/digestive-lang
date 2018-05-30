@@ -17,7 +17,7 @@ Block = "{" Stmt* "}"				@Block;
 
 Type = <id>					@Type;
 
-FunDecl = "fun" <id>ParamList
+FunDecl = "fun" <id> ParamList
 	  ("->" Type)? Block			@FunDecl;
 
 ParamList = "(" (Param ("," Param)*)? ")" 	@ParamList;
