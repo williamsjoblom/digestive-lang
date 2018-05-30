@@ -119,7 +119,7 @@ add_executable(dg ${SOURCE_FILES} ${ASMJIT_SRC})
 
 target_link_libraries(dg ${ASMJIT_DEPS})
 
-# Force recompilation of Timestamp.cpp to update __TIME__ and __DATE__ macros.
+# Force recompilation of BuildTimestamp.cpp to update __TIME__ and __DATE__ macros.
 add_custom_target(
     touchTimestamp
     COMMAND touch ${CMAKE_CURRENT_SOURCE_DIR}/util/BuildTimestamp.cpp
