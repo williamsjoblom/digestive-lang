@@ -45,6 +45,11 @@ hash_t BNFT::hash() const {
 }
 
 
+bool BNFT::nullable(BNFGrammar& g) {
+    return this->type == EPSILON;
+}
+
+
 std::string BNFT::toS() const {
     std::stringstream ss;
 	
@@ -74,16 +79,14 @@ hash_t BNFNT::hash() const {
 }
 
 
-bool BNFT::nullable(BNFGrammar& g) {
-    return this->type == EPSILON;
-}
-
-
 std::string BNFNT::toS() const {
     return symbol;
 }
 
 
+/****************************************************************
+ * Production.
+ ****************************************************************/
 
 bool BNFProduction::createsNode() const {
     return !nodeLabel.empty();
@@ -119,8 +122,6 @@ std::string BNFProduction::toS() const {
 
     return ss.str();
 }
-
-
 
 
 /****************************************************************
