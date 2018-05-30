@@ -388,9 +388,7 @@ namespace Earley {
 	    BNFRule rule = parseRule(tokens, g);
 	    g.rules[rule.symbol] = rule;
 	}
-
-	std::cout << g.toS() << std::endl;
-
+	
 	return g;
     }
 }
