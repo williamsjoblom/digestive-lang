@@ -115,6 +115,41 @@ int main(int argc, char* argv[]) {
 }
 
 
+/****************************************************************
+ * Command line argument parsing.
+ ****************************************************************/
+
+/**
+ * Invalid command line option error.
+ */
+void invalidOptionError(std::string& option) {
+    std::cout << "Invalid option -- '" << option.substr(1) << "'"
+	      << std::endl;
+    throw 1;
+}
+
+
+/**
+ * Invalid argument error.
+ */
+void invalidArgError(std::string& arg) {
+    std::cout << "Invalid argument -- '" << arg << "'"
+	      << std::endl;
+    throw 1;
+}
+
+
+/**
+ * Parse command line option.
+ */
+void parseOption(int argc, char* argv[], int index) {
+    std::string arg = argv[index];
+
+    if (arg == "-v") verbose = true;
+    else invalidOptionError(arg);
+}
+
+
 /**
  * Parse command line arguments.
  * 
@@ -126,10 +161,13 @@ std::string parseArgs(int argc, char* argv[]) {
     
     for (int i = 1; i < argc; i++) {
 	std::string arg = argv[i];
-	if (arg == "-v") verbose = true;
-	
-	if (i == argc - 1 && isReadableFile(arg))
+
+	if (arg[0] == '-')
+	    parseOption(argc, argv, i);
+	else if (i == argc - 1)
 	    sourcePath = arg;
+	else
+	    invalidArgError(arg);
     }
 
     return sourcePath;
