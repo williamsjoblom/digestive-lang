@@ -65,6 +65,8 @@ int main(int argc, char* argv[]) {
     Lexer gl(grammar);
     TokenQueue gt = gl.readAll();
     BNFGrammar g = Earley::parseGrammar(gt);
+    if (verbose)
+	std::cout << g.toS() << std::endl;
 
     std::string source = readSourceFile(path);
     if (source.empty()) return 0;
