@@ -12,6 +12,10 @@
 const TokenType EPSILON = TokenType::UNKNOWN;
 
 
+/****************************************************************
+ * Symbol.
+ ****************************************************************/
+
 BNFT* BNFSymbol::asTerminal() {
     assert(terminal());
     return dynamic_cast<BNFT*>(this);
@@ -24,11 +28,20 @@ BNFNT* BNFSymbol::asNonTerminal() {
 }
 
 
+/****************************************************************
+ * Terminal.
+ ****************************************************************/
+
 bool BNFT::accepts(Token& t) {
     if (value.empty())
 	return type == t.type;
     else
 	return type == t.type && value == t.value;
+}
+
+
+hash_t BNFT::hash() const {
+    return std::hash<int>()(type) ^ std::hash<std::string>()(value);
 }
 
 
@@ -45,6 +58,10 @@ std::string BNFT::toS() const {
 }
 
 
+/****************************************************************
+ * Non terminal.
+ ****************************************************************/
+
 bool BNFNT::nullable(BNFGrammar& g) {
     // Method may cause infinite recursion for self
     // referencing rules in its current state.
@@ -57,9 +74,15 @@ hash_t BNFNT::hash() const {
 }
 
 
-hash_t BNFT::hash() const {
-    return std::hash<int>()(type) ^ std::hash<std::string>()(value);
+bool BNFT::nullable(BNFGrammar& g) {
+    return this->type == EPSILON;
 }
+
+
+std::string BNFNT::toS() const {
+    return symbol;
+}
+
 
 
 bool BNFProduction::createsNode() const {
@@ -98,15 +121,11 @@ std::string BNFProduction::toS() const {
 }
 
 
-bool BNFT::nullable(BNFGrammar& g) {
-    return this->type == EPSILON;
-}
 
 
-std::string BNFNT::toS() const {
-    return symbol;
-}
-
+/****************************************************************
+ * Rule.
+ ****************************************************************/
 
 bool BNFRule::nullable(BNFGrammar& g) {
     if (nullableState != NullableState::UNKNOWN)
@@ -140,6 +159,15 @@ std::string BNFRule::toS() const {
     }
     
     return ss.str();
+}
+
+
+/****************************************************************
+ * Grammar
+ ****************************************************************/
+
+BNFGrammar::BNFGrammar() {
+
 }
 
 

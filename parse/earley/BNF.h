@@ -29,11 +29,6 @@ enum class BNFQ {
  * Symbol.
  */
 struct BNFSymbol {
-
-    /**
-     * Should this symbol create a node in the AST?
-     */
-    bool createsNode;
     
     /**
      * Quantifier.
@@ -102,19 +97,32 @@ struct BNFT : public BNFSymbol {
      */
     std::string value;
 
+
+    /**
+     * Identifier.
+     */
+    std::string identifier;
+
     
     /**
      * Epsilon constructor.
      */
-    BNFT() : type(TokenType::UNKNOWN), value("") { }
+    BNFT() : type(TokenType::UNKNOWN), value(""), identifier("") { }
     
     
     /**
      * Terminal constructor.
      */
-    BNFT(TokenType type, std::string value="") : type(type), value(value)  { }
+    BNFT(TokenType type, std::string value="", std::string identifier="") :
+	type(type), value(value), identifier(identifier)  { }
 
 
+    /**
+     * Return true if this symbol is to be included in the AST.
+     */
+    bool inTree() { return !identifier.empty(); }
+
+    
     /**
      * Nullable.
      */
@@ -160,7 +168,7 @@ struct BNFNT : public BNFSymbol {
      * Constructor.
      */
     BNFNT(std::string symbol) : symbol(symbol) { }
-
+    
     
     /**
      * Nullable.
@@ -276,6 +284,13 @@ struct BNFRule {
  * Grammar.
  */
 struct BNFGrammar {
+
+    /**
+     * Constructor
+     */
+    BNFGrammar();
+    
+    
     /**
      * Rules.
      */
