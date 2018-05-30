@@ -15,7 +15,7 @@ ASTNode::~ASTNode() {
 
 
 void ASTNode::addChild(ASTNode* child) {
-    children.push_back(child);
+    children.push_front(child);
 }
 
 

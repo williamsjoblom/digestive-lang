@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <list>
 
 class ASTNode {
 public:
@@ -13,7 +13,7 @@ public:
     /**
      * Children.
      */
-    std::vector<ASTNode*> children;
+    std::list<ASTNode*> children;
 
     
     /**
