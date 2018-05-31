@@ -6,8 +6,8 @@ Work-in-progress implementation of an interactive just-in-time compiler. Current
 ### Build & Setup
 Building and installing the binary:
 ```shell
-git clone --recurse-submodules https://github.com/williamsjoblom/compiler-experiment.git
-cd compiler-experiment
+git clone --recurse-submodules https://github.com/williamsjoblom/digestive-lang.git
+cd digestive-lang
 
 # Build
 mkdir build
