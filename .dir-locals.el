@@ -1,5 +1,5 @@
 ((nil
-  (cmake-ide-build-dir . "/home/wax/workbench/compiler-experiment/build/")))
+  (cmake-ide-build-dir . "/home/wax/workbench/digestive-lang/build/")))
 
 
 
