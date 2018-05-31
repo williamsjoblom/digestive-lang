@@ -1,7 +1,5 @@
 unit = Stmt*						@CompilationUnit;
 
-TopLevel
-
 Stmt = Expr ";"						@ExprStmt
      | FunDecl;
 
