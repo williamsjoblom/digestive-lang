@@ -1,24 +1,27 @@
-unit = Stmt*					@CompilationUnit;
+unit = Stmt*						@CompilationUnit;
 
-Stmt = Expr ";"					@ExprStmt
+TopLevel
+
+Stmt = Expr ";"						@ExprStmt
      | FunDecl;
 
-Expr = <num>					@Number
-     | <id>					@Var
-     |  :group "(" Expr ")"		
-     || :right "-" Expr				@NegExpr
-     || :left Expr "*" Expr 			@MulExpr
-     |  :left Expr "/" Expr    			@DivExpr
-     || :left Expr "+" Expr			@AddExpr
-     |  :left Expr "-" Expr			@SubExpr
-     || :right Expr "=" Expr			@AssExpr;
+## Expression.
+Expr = <num>						@Number
+     | <id>						@Var
+     |  :group "(" Expr ")"					
+     || :right "-" Expr					@NegExpr
+     || :left Expr "*" Expr 				@MulExpr
+     |  :left Expr "/" Expr    				@DivExpr
+     || :left Expr "+" Expr				@AddExpr
+     |  :left Expr "-" Expr				@SubExpr
+     || :right Expr "=" Expr				@AssExpr;
 
-Block = "{" Stmt* "}"				@Block;
+Block = "{" Stmt* "}"					@Block;
 
-Type = <id>					@Type;
+Type = <id>						@Type;
 
 FunDecl = "fun" <id> ParamList
-	  ("->" Type)? Block			@FunDecl;
+	  ("->" Type)? Block				@FunDecl;
 
-ParamList = "(" (Param ("," Param)*)? ")" 	@ParamList;
-Param = <id> ":" Type				@Param;
+ParamList = "(" (Param ("," Param)*)? ")" 		@ParamList;
+Param = <id> ":" Type					@Param;
