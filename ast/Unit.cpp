@@ -57,9 +57,9 @@ unsigned int Unit::functionCount() {
 std::string Unit::symbolFromPtr(void* ptr) {
     for (FunctionDecl* func : functions) {
         void* ptrLower = JitContext::handles[func->bHandleIndex];
-        void* ptrUpper = ptrLower + func->codeSize;
+        void* ptrUpper = (char*)ptrLower + func->codeSize;
 
-        if (ptr >= ptrLower && ptr <= ptrUpper)
+	if (ptr >= ptrLower && ptr <= ptrUpper)
             return func->identifier;
     }
 
