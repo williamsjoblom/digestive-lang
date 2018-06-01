@@ -1,21 +1,10 @@
 #include <iostream>
 #include <ctime>
 
-/**
- * Run unit tests.
- */
-#define TEST
+#include <asmjit/asmjit.h>
+#define CATCH_CONFIG_RUNNER
+#include <catch.hpp>
 
-/**
- * Globals defined as 'extern' in 'options.h'.
- */
-bool verbose = false;
-
-#ifdef TEST
-#define CATCH_CONFIG_MAIN
-#include <catch.h>
-
-#else
 #include "options.h"
 #include "util/BuildTimestamp.h"
 #include "parse/Parse.h"
@@ -32,14 +21,17 @@ bool verbose = false;
 #include "parse/earley/Expr.h"
 #include "parse/earley/ASTNode.h"
 
-#include <asmjit/asmjit.h>
-
+/**
+ * Globals defined as 'extern' in 'options.h'.
+ */
+bool verbose = false;
+bool runTests = false;
 
 /**
  * Forward declarations.
  */
 std::string parseArgs(int argc, char* argv[]);
-
+bool runTestSuite();
 
 /**
  * Main.
@@ -52,12 +44,17 @@ int main(int argc, char* argv[]) {
 		  << ", " << buildTimestamp() << std::endl;
     }
 
+    
     if (!hasRootDirPath()) {
 	std::cerr << "'DGROOT' environment variable not set, exiting!" << std::endl;
 	return 1;
     }
 
-    
+    if (runTests) {
+	bool passed = runTestSuite();
+	if (!passed) return 1;
+    }
+        
     std::string path;
     if (!pathArg.empty())
 	path = pathArg;
@@ -153,6 +150,7 @@ void parseOption(int argc, char* argv[], int index) {
     std::string arg = argv[index];
 
     if (arg == "-v") verbose = true;
+    if (arg == "-t") runTests = true;
     else invalidOptionError(arg);
 }
 
@@ -180,4 +178,16 @@ std::string parseArgs(int argc, char* argv[]) {
     return sourcePath;
 }
 
-#endif
+
+/****************************************************************
+ * Test suite.
+ ****************************************************************/
+
+/**
+ * Run test suite.
+ * Return true if all tests passed.
+ */
+bool runTestSuite() {
+    Catch::Session session;
+    return session.run() == 0;
+}
