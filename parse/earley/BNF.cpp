@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <unordered_set>
 
+#include "catch.h"
 #include "util/Hash.h"
 
 /**
@@ -228,3 +229,58 @@ void BNFGrammar::initBuiltIns() {
     addTrivialRule("<str>", str);
 }
 
+
+/****************************************************************
+ * Unit tests.
+ ****************************************************************/
+
+TEST_CASE("epsilon productions reported as nullable", "[nullable]") {
+    
+    SECTION("non recursive rules reported as nullable") {
+	std::string ruleSymbol = "nullable";
+	BNFGrammar g;
+	BNFRule rule;
+	rule.symbol = ruleSymbol;
+
+	BNFProduction zero;
+	zero.symbols.push_back(new BNFT);
+    
+	BNFProduction one;
+	one.symbols.push_back(new BNFT(TokenType::IDENTIFIER, "non-nullable"));
+            
+	rule.productions.push_back(zero);
+	rule.productions.push_back(one);
+
+	g.rules[ruleSymbol] = rule;
+    
+	BNFNT* nt = new BNFNT(ruleSymbol);
+
+	REQUIRE(rule.nullable(g));
+	REQUIRE(nt->nullable(g));
+    }
+
+    SECTION("recursive rules reported as nullable") {
+	std::string ruleSymbol = "nullable";
+
+	BNFGrammar g;
+	BNFRule rule;
+	rule.symbol = ruleSymbol;
+
+	BNFProduction zero;
+	zero.symbols.push_back(new BNFT);
+	
+	BNFProduction more;
+	more.symbols.push_back(new BNFT(TokenType::IDENTIFIER, "non-nullable"));
+	more.symbols.push_back(new BNFNT(ruleSymbol));
+	        
+	rule.productions.push_back(zero);
+	rule.productions.push_back(more);
+
+	g.rules[ruleSymbol] = rule;
+    
+	BNFNT* nt = new BNFNT(ruleSymbol);
+
+	REQUIRE(rule.nullable(g));
+	REQUIRE(nt->nullable(g));
+    }
+}
