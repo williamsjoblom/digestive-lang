@@ -255,7 +255,7 @@ TEST_CASE("epsilon productions reported as nullable", "[nullable]") {
     
 	BNFNT* nt = new BNFNT(ruleSymbol);
 
-	REQUIRE(!rule.nullable(g));
+	REQUIRE(rule.nullable(g));
 	REQUIRE(nt->nullable(g));
     }
 
