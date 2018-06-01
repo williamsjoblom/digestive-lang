@@ -4,8 +4,19 @@
 /**
  * Run unit tests.
  */
-//#define TEST
+#define TEST
 
+/**
+ * Globals defined as 'extern' in 'options.h'.
+ */
+bool verbose = false;
+
+#ifdef TEST
+#define CATCH_CONFIG_MAIN
+#include "catch.h"
+
+
+#else
 #include "options.h"
 #include "util/BuildTimestamp.h"
 #include "parse/Parse.h"
@@ -24,21 +35,16 @@
 
 #include <asmjit/asmjit.h>
 
+
 /**
  * Forward declarations.
  */
 std::string parseArgs(int argc, char* argv[]);
 
-/**
- * Globals defined as 'extern' in 'options.h'.
- */
-bool verbose = false;
-
 
 /**
  * Main.
  */
-#ifndef TEST
 int main(int argc, char* argv[]) {
     std::string pathArg = parseArgs(argc, argv);
     
