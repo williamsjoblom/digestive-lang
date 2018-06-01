@@ -4,8 +4,9 @@
 Work-in-progress implementation of an interactive just-in-time compiler. Currently supporting little of planned functionality.
 
 ### Build & Setup
-Building and installing the binary:
+Building and installing the binary and its dependencies:
 ```shell
+sudo apt-get install catch
 git clone --recurse-submodules https://github.com/williamsjoblom/digestive-lang.git
 cd digestive-lang
 

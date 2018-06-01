@@ -3,8 +3,8 @@
 #include <sstream>
 #include <assert.h>
 #include <unordered_set>
+#include <catch.h>
 
-#include "catch.h"
 #include "util/Hash.h"
 
 /**

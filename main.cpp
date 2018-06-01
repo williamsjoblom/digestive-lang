@@ -13,8 +13,7 @@ bool verbose = false;
 
 #ifdef TEST
 #define CATCH_CONFIG_MAIN
-#include "catch.h"
-
+#include <catch.h>
 
 #else
 #include "options.h"
