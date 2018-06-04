@@ -383,3 +383,32 @@ TEST_CASE("earley scanning") {
     REQUIRE(chart.set(2).size() == 1);
     REQUIRE(chart.contains(s, 2));
 }
+
+
+TEST_CASE("earley completion") {
+    SECTION("trivial completion") {
+	std::string grammar =
+	    "complete   = \"x\";"
+	    "unit       = complete;";
+	BNFGrammar g;
+	EChart chart = test_createChart(g, grammar, 2);
+
+	// Complete state
+	BNFProduction p0;
+	p0.symbols.push_back(new BNFT(TokenType::IDENTIFIER, "x"));
+	EState completeState("complete", p0, 0);
+	completeState.position = 1;
+
+	// Unit state
+	BNFProduction p1;
+	p1.symbols.push_back(new BNFNT("complete"));
+	EState unitState("unit", p1, 0);
+
+	chart.add(g, unitState, 0);
+	chart.add(g, completeState, 1);
+
+	complete(g, chart, 1);
+	unitState.position = 1;
+	REQUIRE(chart.contains(unitState, 1));
+    }
+}
