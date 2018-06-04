@@ -150,7 +150,7 @@ void parseOption(int argc, char* argv[], int index) {
     std::string arg = argv[index];
 
     if (arg == "-v") verbose = true;
-    if (arg == "-t") runTests = true;
+    else if (arg == "-t") runTests = true;
     else invalidOptionError(arg);
 }
 
