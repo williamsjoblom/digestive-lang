@@ -1,4 +1,4 @@
-#include "Expr.h"
+#include "Parse.h"
 
 #include <string>
 #include <sstream>
@@ -270,7 +270,7 @@ namespace Earley {
 		if (verbose) {
 		    std::cout << "Recognizing state: " << state.toS() << std::endl;
 		    std::cout << "State tree:" << std::endl;
-		    dumpStateTree(&state, tokens, true);
+		    dumpStateTree(&state, tokens, false);
 		}
 
 		tree = buildIntermediateTree(&state, tokens);
