@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <stack>
+#include <catch.hpp>
 
 #include "BNF.h"
 #include "Chart.h"
@@ -13,6 +14,8 @@
 #include "options.h"
 #include "ASTNode.h"
 #include "util/Colors.h"
+#include "BNFParser.h"
+#include "lexer/Lexer.h"
 
 using namespace Earley;
 
@@ -223,6 +226,19 @@ ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens, AS
 
 
 /**
+ * Initialize chart.
+ * Seed S(0) with the top-level rule.
+ */
+void initChart(EChart& chart, BNFGrammar& g, std::string topRule) {
+    BNFRule& rootRule = g.rules[topRule];
+    for (BNFProduction& p : rootRule.productions) {
+	EState initial(rootRule.symbol, p, 0);
+	chart.add(g, initial, 0);
+    }
+}
+
+
+/**
  * Ambiguous parse error.
  */
 void ambiguousParseError() {
@@ -234,15 +250,10 @@ void ambiguousParseError() {
 
 
 namespace Earley {
-    ASTNode* parse(BNFGrammar& g, std::string rule, TokenQueue& tokens) {
+    ASTNode* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens) {
 	EChart chart(tokens);
-	
-	// S(0)
-	BNFRule& rootRule = g.rules[rule];
-	for (BNFProduction& p : rootRule.productions) {
-	    EState initial(rootRule.symbol, p, 0);
-	    chart.add(g, initial, 0);
-	}
+
+	initChart(chart, g, topRule);
 	
 	for (int k = 0; k <= tokens.size(); k++) {
 	    processState(g, tokens, chart, k);
@@ -260,7 +271,7 @@ namespace Earley {
 	ASTNode* tree = nullptr;
 	for (const EState& state : chart.s[chart.s.size() - 1]) {
 	    if (state.origin == 0 &&
-		state.symbol == rule &&
+		state.symbol == topRule &&
 		state.complete()) {
 		 
 		if (tree != nullptr) {
@@ -279,4 +290,44 @@ namespace Earley {
 
 	return tree;
     }
+}
+
+
+/****************************************************************
+ * Unit tests.
+ ****************************************************************/
+
+/**
+ * Helper function creating a chart (and grammar) from grammar string.
+ */
+EChart test_createChart(BNFGrammar& g, std::string grammar) {
+    Lexer l(grammar);
+    TokenQueue tokens = l.readAll();
+    g = parseGrammar(tokens);
+    
+    EChart chart(tokens);
+    initChart(chart, g, "unit");
+    return chart;
+}
+
+
+TEST_CASE("earley operations") {
+    SECTION("predict") {
+	std::string grammar =
+	    "Predicted = \"0\";"
+	    "unit      = Predicted;";
+	BNFGrammar g;
+	EChart chart = test_createChart(g, grammar);
+
+	predict(g, chart, 0);
+	
+	REQUIRE(chart.s[0].size() == 2);
+
+	BNFProduction p;
+	p.symbols.push_back(new BNFT(TokenType::NUMBER, "0"));
+
+	EState s("Predicted", p, 0);
+	REQUIRE(chart.contains(s, 0));
+    }
+    
 }

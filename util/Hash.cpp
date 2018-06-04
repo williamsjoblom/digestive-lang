@@ -1,41 +1,39 @@
 #include "Hash.h"
 
 #include <cstdarg>
-
+#include <catch.hpp>
+#include <initializer_list>
+#include <iostream>
 
 /**
  * Ported from Python's tuple hash implementation.
  */
-template<int n>
-hash_t orderedHash(int num...) {
-    va_list args;
-    va_start(args, num);
-
+hash_t orderedHash(std::initializer_list<int> args) {
     hash_t value = 0x345678;
-    for (int i = 0; i < n; i++)
-	value = (1000003 * value) ^ va_arg(args, int);
-    value ^= n;
+    for (int arg : args)
+	value = (1000003 * value) ^ arg;
+    value ^= args.size();
     if (value == -1)
 	value = -2;
     
-    va_end(args);
-
     return value;
 }
 
 
-/**
- * Template instantiation.
- */
-template hash_t orderedHash<2>(int...);
-template hash_t orderedHash<3>(int...);
-template hash_t orderedHash<4>(int...);
-template hash_t orderedHash<5>(int...);
-template hash_t orderedHash<6>(int...);
-template hash_t orderedHash<7>(int...);
-template hash_t orderedHash<8>(int...);
+/****************************************************************
+ * Unit tests.
+ ****************************************************************/
 
+TEST_CASE("ordered integer hashes") {
+    hash_t h0;
+    hash_t h1;
 
+    h0 = orderedHash({0, 0});
+    h1 = orderedHash({1, 0});
+    std::cout << "h0: " << h0 << ", h1: " << h1 << std::endl;
+    REQUIRE(h0 != h1);
 
-
-
+    h0 = orderedHash({0, 0});
+    h1 = orderedHash({0, 1});
+    REQUIRE(h0 != h1);
+}

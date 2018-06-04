@@ -37,9 +37,21 @@ struct EChart {
     
     /**
      * Add row.
-     * Returns false if the state was already present in the set.
+     * Returns false if the state was already present.
      */
-    bool add(BNFGrammar& g, EState row, int k);
+    bool add(BNFGrammar& g, EState state, int k);
+
+    
+    /**
+     * Get set at index 'k'.
+     */
+    std::list<EState>& set(int k);
+
+    
+    /**
+     * Return true if given state is present in row 'k';
+     */
+    bool contains(EState& state, int k);
 };
 
 

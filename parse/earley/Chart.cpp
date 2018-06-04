@@ -20,36 +20,39 @@ EChart::EChart(TokenQueue& tokens) {
 
 bool addState(EChart* chart, EState state, int k) {
     hash_t hash = state.hash();
-    if (chart->sh[k].find(hash) == chart->sh[k].end()) {
+    if (!chart->contains(state, k)) {
 	chart->sh[k].insert(hash);
 	chart->s[k].insert(chart->s[k].end(), state);
-
 	return true;
     }
-    
+
     return false;
 }
 
 
 bool EChart::add(BNFGrammar& g, EState state, int k) {
-    // hash_t hash = state.hash();
-    // if (sh[k].find(hash) == sh[k].end()) {
-    // 	sh[k].insert(hash);
-    // 	s[k].insert(s[k].end(), state);
-    // 	return true;
-    // }
-    
-    // return false;
-
     bool changed = addState(this, state, k);
+
+    // TODO Move to Parse.cpp:
     if (!state.complete() &&
 	state.next()->nullable(g)) {
 	EState s(state);
 	s.position++;
-	addState(this, s, k);
+	changed |= addState(this, s, k);
     }
 
     return changed;
+}
+
+
+std::list<EState>& EChart::set(int k) {
+    return s[k];
+}
+
+
+bool EChart::contains(EState& state, int k) {
+    hash_t hash = state.hash();
+    return sh[k].find(hash) != sh[k].end();
 }
 
 
@@ -79,7 +82,7 @@ bool EState::complete() const {
 hash_t EState::hash() const {
     return
 	std::hash<std::string>()(symbol) ^ production.hash() ^
-	orderedHash<2>(origin, position);
+	orderedHash({origin, position});
 }
 
 

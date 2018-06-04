@@ -17,5 +17,5 @@ namespace Earley {
     /**
      * Parse.
      */
-    ASTNode* parse(BNFGrammar& g, std::string rule, TokenQueue& tokens);
+    ASTNode* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens);
 }
