@@ -4,14 +4,15 @@
 #include <vector>
 #include <list>
 
+#include "lexer/TokenQueue.h"
+
 /**
  * Forward declarations.
  */
 struct EState;
 class BNFProduction;
 class BNFSymbol;
-class BNFGrammar;
-class TokenQueue;
+class BNFGrammar;;
 
 
 /**
@@ -28,11 +29,17 @@ struct EChart {
     std::vector<std::list<EState>> s;
     std::vector<std::unordered_set<size_t>> sh;
 
+
+    /**
+     * Constructor.
+     */
+    EChart(int length);
+    
     
     /**
      * Constructor.
      */
-    EChart(TokenQueue& tokens);
+    EChart(TokenQueue& tokens) : EChart(tokens.size() + 1) { }
 
     
     /**

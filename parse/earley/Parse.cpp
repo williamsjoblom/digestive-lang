@@ -300,24 +300,24 @@ namespace Earley {
 /**
  * Helper function creating a chart (and grammar) from grammar string.
  */
-EChart test_createChart(BNFGrammar& g, std::string grammar) {
+EChart test_createChart(BNFGrammar& g, std::string grammar, int chartLength) {
     Lexer l(grammar);
     TokenQueue tokens = l.readAll();
     g = parseGrammar(tokens);
     
-    EChart chart(tokens);
+    EChart chart(chartLength);
     initChart(chart, g, "unit");
     return chart;
 }
 
 
 TEST_CASE("earley prediction") {
-    SECTION("trivial") {
+    SECTION("trivial prediction") {
 	std::string grammar =
 	    "Predicted = \"0\";"
 	    "unit      = Predicted;";
 	BNFGrammar g;
-	EChart chart = test_createChart(g, grammar);
+	EChart chart = test_createChart(g, grammar, 1);
 
 	predict(g, chart, 0);
 	
@@ -330,13 +330,13 @@ TEST_CASE("earley prediction") {
 	REQUIRE(chart.contains(s, 0));
     }
 
-    SECTION("chained") {
+    SECTION("chained prediction") {
 	std::string grammar =
 	    "Predicted1 = \"0\";"
 	    "Predicted0 = Predicted1;"
 	    "unit       = Predicted0;";
 	BNFGrammar g;
-	EChart chart = test_createChart(g, grammar);
+	EChart chart = test_createChart(g, grammar, 1);
 
 	predict(g, chart, 0);
 	
@@ -356,4 +356,30 @@ TEST_CASE("earley prediction") {
 	EState s1("Predicted1", p1, 0);
 	REQUIRE(chart.contains(s1, 0));
     }
+}
+
+
+TEST_CASE("earley scanning") {
+    std::string grammar =
+	"unit       = \"x\" \"y\";";
+    BNFGrammar g;
+    EChart chart = test_createChart(g, grammar, 3);
+
+    TokenQueue tokens = Lexer("x y").readAll();
+
+    BNFProduction p;
+    p.symbols.push_back(new BNFT(TokenType::IDENTIFIER, "x"));
+    p.symbols.push_back(new BNFT(TokenType::IDENTIFIER, "y"));
+    
+    EState s("unit", p, 0);
+
+    scan(g, tokens, chart, 0);
+    s.position = 1;
+    REQUIRE(chart.set(1).size() == 1);
+    REQUIRE(chart.contains(s, 1));
+
+    scan(g, tokens, chart, 1);
+    s.position = 2;
+    REQUIRE(chart.set(2).size() == 1);
+    REQUIRE(chart.contains(s, 2));
 }
