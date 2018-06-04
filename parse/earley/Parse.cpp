@@ -311,8 +311,8 @@ EChart test_createChart(BNFGrammar& g, std::string grammar) {
 }
 
 
-TEST_CASE("earley operations") {
-    SECTION("predict") {
+TEST_CASE("earley prediction") {
+    SECTION("trivial") {
 	std::string grammar =
 	    "Predicted = \"0\";"
 	    "unit      = Predicted;";
@@ -329,5 +329,31 @@ TEST_CASE("earley operations") {
 	EState s("Predicted", p, 0);
 	REQUIRE(chart.contains(s, 0));
     }
-    
+
+    SECTION("chained") {
+	std::string grammar =
+	    "Predicted1 = \"0\";"
+	    "Predicted0 = Predicted1;"
+	    "unit       = Predicted0;";
+	BNFGrammar g;
+	EChart chart = test_createChart(g, grammar);
+
+	predict(g, chart, 0);
+	
+	REQUIRE(chart.s[0].size() == 3);
+
+	//Predicted0
+	BNFProduction p0;
+	p0.symbols.push_back(new BNFNT("Predicted1"));
+
+	EState s0("Predicted0", p0, 0);
+	REQUIRE(chart.contains(s0, 0));
+	
+	// Predicted1
+	BNFProduction p1;
+	p1.symbols.push_back(new BNFT(TokenType::NUMBER, "0"));
+
+	EState s1("Predicted1", p1, 0);
+	REQUIRE(chart.contains(s1, 0));
+    }
 }
