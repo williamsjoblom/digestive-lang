@@ -30,7 +30,6 @@ TEST_CASE("ordered integer hashes") {
 
     h0 = orderedHash({0, 0});
     h1 = orderedHash({1, 0});
-    std::cout << "h0: " << h0 << ", h1: " << h1 << std::endl;
     REQUIRE(h0 != h1);
 
     h0 = orderedHash({0, 0});
