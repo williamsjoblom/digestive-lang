@@ -18,7 +18,7 @@
 #include "genasm/TACCompiler.h"
 #include "parse/earley/BNFParser.h"
 #include "parse/earley/BNF.h"
-#include "parse/earley/Expr.h"
+#include "parse/earley/Parse.h"
 #include "parse/earley/ASTNode.h"
 
 /**
