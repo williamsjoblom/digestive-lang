@@ -98,7 +98,7 @@ set(
   parse/Type.cpp
   parse/Expression.cpp
   parse/earley/BNF.cpp
-  parse/earley/Expr.cpp
+  parse/earley/Parse.cpp
   parse/earley/BNFParser.cpp
   parse/earley/Chart.cpp
   parse/earley/ASTNode.cpp
