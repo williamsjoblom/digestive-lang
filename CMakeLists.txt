@@ -114,6 +114,8 @@ set(
   util/Path.cpp
   util/Hash.cpp
   util/PrettyPrint.cpp
+  util/tty/Tree.cpp
+  util/tty/Color.cpp
 )
 add_executable(dg ${SOURCE_FILES} ${ASMJIT_SRC})
 
