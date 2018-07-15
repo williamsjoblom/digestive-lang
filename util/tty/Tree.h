@@ -4,7 +4,10 @@
 #include <vector>
 
 namespace TTY {
-    
+
+    /**
+     * Tree node.
+     */
     struct TreeNode {
 	/**
 	 * Label.
@@ -26,7 +29,14 @@ namespace TTY {
 	 * Constructor.
 	 */
 	TreeNode(std::string label);
+
 	
+	/**
+	 * Label to be dumped.
+	 */
+	virtual std::string ttyLabel() = 0;
+
+
 	/**
 	 * Destructor.
 	 */
