@@ -118,22 +118,22 @@ bool complete(BNFGrammar& g, EChart& chart, int k) {
 		    changed |= chart.add(g, newState, k);
 
 		    // Completed from a nullable?
-		    if (state.production.nullable(g)) {
-			EState ns(s);
-			ns.previousState = &s;
-			ns.completedState = &completeState;
-			ns.message += "/ϵ-forward";
-			changed |= chart.add(g, ns, k);
+		    // if (state.production.nullable(g)) {
+		    // 	EState ns(s);
+		    // 	ns.previousState = &s;
+		    // 	ns.completedState = &completeState;
+		    // 	ns.message += "/ϵ-forward";
+		    // 	changed |= chart.add(g, ns, k);
 
-			if (false && verbose) {
-			    std::cout << "ϵ-forward:" << std::endl
-				      << "       state = " << state.toS() << std::endl
-				      << "    complete = " << completeState.toS() << std::endl
-				      << "           s = " << s.toS() << std::endl
-				      << "    newState = " << newState.toS() << std::endl
-				      << "          ns = " << ns.toS() << std::endl << std::endl;
-			}
-		    }
+		    // 	if (false && verbose) {
+		    // 	    std::cout << "ϵ-forward:" << std::endl
+		    // 		      << "       state = " << state.toS() << std::endl
+		    // 		      << "    complete = " << completeState.toS() << std::endl
+		    // 		      << "           s = " << s.toS() << std::endl
+		    // 		      << "    newState = " << newState.toS() << std::endl
+		    // 		      << "          ns = " << ns.toS() << std::endl << std::endl;
+		    // 	}
+		    // }
 		}
 	    }
 	}

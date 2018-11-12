@@ -10,6 +10,7 @@
 #include "parse/Parse.h"
 #include "lexer/Lexer.h"
 #include "interactive/Interactive.h"
+#include "util/tty/Tree.h"
 
 #include "ir/TACProgram.h"
 #include "genir/Program.h"
@@ -36,9 +37,9 @@ bool runTestSuite();
 /**
  * Main.
  */
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {    
     std::string pathArg = parseArgs(argc, argv);
-    
+
     if (verbose) {
 	std::cout << " digestive " << version
 		  << ", " << buildTimestamp() << std::endl;

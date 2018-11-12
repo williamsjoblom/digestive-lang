@@ -26,7 +26,7 @@ void ASTNode::addSymbol(std::string symbol) {
 
 std::string ASTNode::toS(std::string indent) {
     std::stringstream ss;
-    
+
     ss << indent << label;
     if (!symbols.empty()) {
 	ss << " [ ";

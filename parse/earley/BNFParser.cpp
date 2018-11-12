@@ -10,6 +10,7 @@
 #include "lexer/Lexer.h"
 #include "lexer/TokenQueue.h"
 #include "lexer/Token.h"
+#include "options.h"
 
 
 /**
@@ -107,7 +108,7 @@ BNFSymbol* parseSymbol(TokenQueue& tokens, BNFGrammar& g) {
  *
  * Returns non terminal refering to produced rule.
  */
-BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=true) {
+BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=false) {
     std::string ruleSymbol = symbol->toS() + "?";
 
     BNFRule rule;
@@ -139,7 +140,7 @@ BNFNT* zeroOrOne(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=true) {
  *
  * Returns non terminal refering to produced rule.
  */
-BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=true) {
+BNFNT* zeroOrMore(BNFSymbol* symbol, BNFGrammar& g, bool createsNode=false) {
     std::string ruleSymbol = symbol->toS() + "*";
 
     BNFRule rule;
@@ -219,9 +220,9 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
 	}
 	   
 	if (tokens.eat(TokenType::QUESTION)) {
-	    symbol = zeroOrOne(symbol, g, createsNode);
+	    symbol = zeroOrOne(symbol, g, false);
 	} else if (tokens.eat(TokenType::MUL)) {
-	    symbol = zeroOrMore(symbol, g, createsNode);
+	    symbol = zeroOrMore(symbol, g, false);
 	} else if (tokens.eat(TokenType::PLUS)) {
 	    assert(false); // Not implemented.
 	}
@@ -255,9 +256,11 @@ std::string parenRuleSymbol() {
 /**
  * Indexed subrule symbol.
  */
-std::string subruleSymbol(std::string symbol, int index) {
+std::string subruleSymbol(std::string symbol, int index, int subruleCount) {
     // Ensure no symbol collisions with 'parenRuleSymbol()'.
     assert(!symbol.empty());
+
+    if (index == subruleCount) return symbol;
     
     std::stringstream ss;
 	ss << symbol;
@@ -273,7 +276,8 @@ std::string subruleSymbol(std::string symbol, int index) {
 /**
  * Make production left associative.
  */
-void makeLeftAssociative(BNFProduction& production, std::string symbol, int subruleIndex) {
+void makeLeftAssociative(BNFProduction& production, std::string symbol,
+			 int subruleIndex, int subruleCount) {
     bool first = true;
     for (int i = 0; i < production.symbols.size(); i++) {
 	BNFSymbol* s = production.symbols[i];
@@ -282,10 +286,10 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol, int subr
 	    if (nt->symbol != symbol) continue;
 	    
 	    if (first) {
-		nt->symbol = subruleSymbol(symbol, subruleIndex);
+		nt->symbol = subruleSymbol(symbol, subruleIndex, subruleCount);
 		first = false;
 	    } else {
-		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
+		nt->symbol = subruleSymbol(symbol, subruleIndex - 1, subruleCount);
 	    }
 	}
     }
@@ -295,7 +299,8 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol, int subr
 /**
  * Make production right associative.
  */
-void makeRightAssociative(BNFProduction& production, std::string symbol, int subruleIndex) {
+void makeRightAssociative(BNFProduction& production, std::string symbol,
+			  int subruleIndex, int subruleCount) {
     bool first = true;
     for (int i = production.symbols.size() - 1; i >= 0; i--) {
 	BNFSymbol* s = production.symbols[i];
@@ -304,10 +309,10 @@ void makeRightAssociative(BNFProduction& production, std::string symbol, int sub
 	    if (nt->symbol != symbol) continue;
 	    
 	    if (first) {
-		nt->symbol = subruleSymbol(symbol, subruleIndex);
+		nt->symbol = subruleSymbol(symbol, subruleIndex - 1, subruleCount);
 		first = false;
 	    } else {
-		nt->symbol = subruleSymbol(symbol, subruleIndex - 1);
+		nt->symbol = subruleSymbol(symbol, subruleIndex, subruleCount);
 	    }
 	}
     }
@@ -328,7 +333,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	if (!rule.productions.empty() &&
 	    tokens.eat(TokenType::PIPE)) {
 	    
-	    rule.symbol = subruleSymbol(symbol, subrules.size());
+	    rule.symbol = subruleSymbol(symbol, subrules.size(), subrules.size() + 1);
 	    
 	    subrules.push_back(rule);
 	    rule = BNFRule();
@@ -363,9 +368,9 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
 	    BNFProduction& production = subrule.productions[j];
 
 	    if (production.attribute == "left")
-		makeLeftAssociative(production, symbol, i);
+		makeLeftAssociative(production, symbol, i, subrules.size());
 	    else if (production.attribute == "right")
-		makeRightAssociative(production, symbol, i);
+		makeRightAssociative(production, symbol, i, subrules.size());
 	    else if (production.attribute == "group")
 		continue;
 	}
@@ -388,6 +393,9 @@ namespace Earley {
 	    BNFRule rule = parseRule(tokens, g);
 	    g.rules[rule.symbol] = rule;
 	}
+
+	// Dump expanded grammar.
+	if (verbose) std::cout << g.toS() << std::endl;
 	
 	return g;
     }

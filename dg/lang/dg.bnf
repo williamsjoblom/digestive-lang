@@ -1,12 +1,17 @@
 unit = Stmt*						@CompilationUnit;
 
 Stmt = Expr ";"						@ExprStmt
-     | FunDecl;
+     | FunDecl
+     | VarDecl ";"
+     | Pln ";";
 
 ## Expression.
 Expr = <num>						@Number
      | <id>						@Var
-     |  :group "(" Expr ")"					
+     |  :group "(" Expr ")"
+     || :left "(" Expr ("," Expr)* ")"	 		@TupleExpr
+     || :left Expr "." <num>				@TupleIndexAccess
+     |	:left Expr "." <id>				@TupleNameAccess
      || :right "-" Expr					@NegExpr
      || :left Expr "*" Expr 				@MulExpr
      |  :left Expr "/" Expr    				@DivExpr
@@ -14,12 +19,19 @@ Expr = <num>						@Number
      |  :left Expr "-" Expr				@SubExpr
      || :right Expr "=" Expr				@AssExpr;
 
+
 Block = "{" Stmt* "}"					@Block;
 
-Type = <id>						@Type;
+Type = "(" InnerType ("," InnerType)* ")"		@Type
+     | InnerType					@Type;
+InnerType = <id>					@InnerType;
 
 FunDecl = "fun" <id> ParamList
 	  ("->" Type)? Block				@FunDecl;
 
 ParamList = "(" (Param ("," Param)*)? ")" 		@ParamList;
 Param = <id> ":" Type					@Param;
+
+VarDecl = "var" <id> ":" Type? ("=" Expr)?		@VarDecl;
+
+Pln = "pln" Expr					@Pln;

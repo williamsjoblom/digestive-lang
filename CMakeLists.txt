@@ -127,3 +127,10 @@ add_custom_target(
     COMMAND touch ${CMAKE_CURRENT_SOURCE_DIR}/util/BuildTimestamp.cpp
 )
 add_dependencies(dg touchTimestamp)
+
+# Ugly hack to move compile_commands to the project root
+ADD_CUSTOM_TARGET(
+	moveCompileCommands
+	cp compile_commands.json ..
+)
+add_dependencies(dg moveCompileCommands)
