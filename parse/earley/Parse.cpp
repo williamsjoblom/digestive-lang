@@ -90,33 +90,28 @@ bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
 /**
  * Complete.
  *
- * TODO Nasty nesting depth, please make me pretty!
  * NOTE In dire need of optimization, both in terms of
  * complexity and caching.
  */
 bool complete(BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
 
-    for (const EState& state : chart.s[k]) {
-	if (!state.complete()) continue;
+    for (const EState& completeState : chart.s[k]) {
+	if (!completeState.complete()) continue;
 	
-	for (const EState& completeState : chart.s[k]) {
-	    if (!completeState.complete()) continue;
-	
-	    std::string symbol = completeState.symbol;
-	    for (const EState& s : chart.s[completeState.origin]) {
-		if (!s.complete() && s.next()->nonTerminal() &&
-		    s.next()->asNonTerminal()->symbol == symbol) {
+	std::string symbol = completeState.symbol;
+	for (const EState& s : chart.s[completeState.origin]) {
+	    if (!s.complete() && s.next()->nonTerminal() &&
+		s.next()->asNonTerminal()->symbol == symbol) {
 		
-		    EState newState(s);
-		    newState.position++;
-		    newState.previousState = &s;
-		    newState.completedState = &completeState;
+		EState newState(s);
+		newState.position++;
+		newState.previousState = &s;
+		newState.completedState = &completeState;
 
-		    newState.message = "completed from " + symbol;
+		newState.message = "completed from " + symbol;
 				
-		    changed |= chart.add(g, newState, k);
-		}
+		changed |= chart.add(g, newState, k);
 	    }
 	}
     }
