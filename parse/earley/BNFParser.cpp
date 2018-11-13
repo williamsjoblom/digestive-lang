@@ -254,19 +254,31 @@ std::string parenRuleSymbol() {
 
 
 /**
- * Indexed subrule symbol.
+ * Create new indexed subrule symbol.
  */
-std::string subruleSymbol(std::string symbol, int index, int subruleCount) {
+std::string subruleSymbol(std::string symbol, int index) {
     // Ensure no symbol collisions with 'parenRuleSymbol()'.
     assert(!symbol.empty());
 
-    if (index == subruleCount) return symbol;
-    
     std::stringstream ss;
 	ss << symbol;
 	ss << "(" << index << ")";
     return ss.str();
 }
+
+
+/**
+ * Get already used subrule symbol.
+ *
+ * If given 'index' points to the last subrule the base rule symbol will
+ * be returned.
+ */
+std::string getSubruleSymbol(std::string symbol, int index, int subruleCount) {
+    assert(index <= subruleCount - 1);
+    if (index == subruleCount - 1) return symbol;
+    return subruleSymbol(symbol, index);
+}
+
 
 
 /****************************************************************
@@ -286,10 +298,12 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol,
 	    if (nt->symbol != symbol) continue;
 	    
 	    if (first) {
-		nt->symbol = subruleSymbol(symbol, subruleIndex, subruleCount);
+		nt->symbol = getSubruleSymbol(symbol, subruleIndex,
+					      subruleCount);
 		first = false;
 	    } else {
-		nt->symbol = subruleSymbol(symbol, subruleIndex - 1, subruleCount);
+		nt->symbol = getSubruleSymbol(symbol, subruleIndex - 1,
+					      subruleCount);
 	    }
 	}
     }
@@ -300,7 +314,7 @@ void makeLeftAssociative(BNFProduction& production, std::string symbol,
  * Make production right associative.
  */
 void makeRightAssociative(BNFProduction& production, std::string symbol,
-			  int subruleIndex, int subruleCount) {
+			  int subruleIndex, int subruleCount) {    
     bool first = true;
     for (int i = production.symbols.size() - 1; i >= 0; i--) {
 	BNFSymbol* s = production.symbols[i];
@@ -309,10 +323,12 @@ void makeRightAssociative(BNFProduction& production, std::string symbol,
 	    if (nt->symbol != symbol) continue;
 	    
 	    if (first) {
-		nt->symbol = subruleSymbol(symbol, subruleIndex - 1, subruleCount);
+		nt->symbol = getSubruleSymbol(symbol, subruleIndex,
+					      subruleCount);
 		first = false;
 	    } else {
-		nt->symbol = subruleSymbol(symbol, subruleIndex, subruleCount);
+		nt->symbol = getSubruleSymbol(symbol, subruleIndex - 1,
+					      subruleCount);
 	    }
 	}
     }
@@ -330,10 +346,11 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
     tokens.expect(TokenType::ASSIGN);
 
     do {
+	// Can consume an extra pipe?
 	if (!rule.productions.empty() &&
 	    tokens.eat(TokenType::PIPE)) {
 	    
-	    rule.symbol = subruleSymbol(symbol, subrules.size(), subrules.size() + 1);
+	    rule.symbol = subruleSymbol(symbol, subrules.size());
 	    
 	    subrules.push_back(rule);
 	    rule = BNFRule();
@@ -344,7 +361,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
     } while (tokens.eat(TokenType::PIPE));
 
     subrules.push_back(rule);
-    
+
     tokens.expect(TokenType::SEMICOL);
 
     BNFRule mainRule = subrules.back();
