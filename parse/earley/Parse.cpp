@@ -116,24 +116,6 @@ bool complete(BNFGrammar& g, EChart& chart, int k) {
 		    newState.message = "completed from " + symbol;
 				
 		    changed |= chart.add(g, newState, k);
-
-		    // Completed from a nullable?
-		    // if (state.production.nullable(g)) {
-		    // 	EState ns(s);
-		    // 	ns.previousState = &s;
-		    // 	ns.completedState = &completeState;
-		    // 	ns.message += "/ϵ-forward";
-		    // 	changed |= chart.add(g, ns, k);
-
-		    // 	if (false && verbose) {
-		    // 	    std::cout << "ϵ-forward:" << std::endl
-		    // 		      << "       state = " << state.toS() << std::endl
-		    // 		      << "    complete = " << completeState.toS() << std::endl
-		    // 		      << "           s = " << s.toS() << std::endl
-		    // 		      << "    newState = " << newState.toS() << std::endl
-		    // 		      << "          ns = " << ns.toS() << std::endl << std::endl;
-		    // 	}
-		    // }
 		}
 	    }
 	}
@@ -174,7 +156,8 @@ std::string toS(std::list<EState> states) {
 }
 
 
-void dumpStateTree(const EState* state, TokenQueue& tokens, bool verbose=false, std::string indent="") {
+void dumpStateTree(const EState* state, TokenQueue& tokens,
+		   bool verbose=false, std::string indent="") {
     while (state->previousState != nullptr) {
 	if (verbose || state->complete())
 	    std::cout << indent << state->toS() << std::endl;
@@ -190,7 +173,8 @@ void dumpStateTree(const EState* state, TokenQueue& tokens, bool verbose=false, 
 /**
  * Build tree from recognizing state.
  */
-ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens, ASTNode* parent=nullptr) {
+ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens,
+			       ASTNode* parent=nullptr) {
     while (state->previousState != nullptr) {
 	if (state->complete()) {
 	    if (state->production.createsNode())
@@ -209,7 +193,8 @@ ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens, AS
 	}
 
 	if (state->completedState != nullptr) {
-	    ASTNode* child = buildIntermediateTree(state->completedState, tokens, parent);
+	    ASTNode* child = buildIntermediateTree(state->completedState,
+						   tokens, parent);
 
 	    // NOTE Did 'buildIntermediateTree()' create a new node?
 	    // I.e. did 'parent' change?
@@ -259,7 +244,8 @@ namespace Earley {
 	    processState(g, tokens, chart, k);
 		 
 	    if (verbose) {
-		std::cout << "S[" << k << "]:" << " (top: \"" << tokens.at(k).toS() << "\")" << std::endl;
+		std::cout << "S[" << k << "]:" << " (top: \""
+			  << tokens.at(k).toS() << "\")" << std::endl;
 		for (const EState& state : chart.s[k]) {
 		    std::cout << state.toS() << std::endl;
 		}
@@ -279,7 +265,8 @@ namespace Earley {
 		}
 		 
 		if (verbose) {
-		    std::cout << "Recognizing state: " << state.toS() << std::endl;
+		    std::cout << "Recognizing state: " << state.toS()
+			      << std::endl;
 		    std::cout << "State tree:" << std::endl;
 		    dumpStateTree(&state, tokens, false);
 		}
