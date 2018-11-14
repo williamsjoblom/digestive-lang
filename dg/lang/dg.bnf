@@ -3,11 +3,16 @@ unit = Stmt*						@CompilationUnit;
 Stmt = Expr ";"						@ExprStmt
      | FunDecl
      | VarDecl ";"
-     | Pln ";";
+     | Pln ";"
+     | IfStmt
+     | Block
+     | ReturnStmt;
 
 ## Expression.
+
 Expr = <num>						@Number
      | <id>						@Var
+     || :group <id> ArgList				@FunCall
      |  :group "(" Expr ")"
      || :left "(" Expr ("," Expr)* ")"	 		@TupleExpr
      || :left Expr "." <num>				@TupleIndexAccess
@@ -17,12 +22,23 @@ Expr = <num>						@Number
      |  :left Expr "/" Expr    				@DivExpr
      || :left Expr "+" Expr				@AddExpr
      |  :left Expr "-" Expr				@SubExpr
-     || :right Expr "=" Expr				@AssExpr;
+     || :right Expr "=" Expr				@AssExpr
+     |  :right Expr "==" Expr				@EqExpr
+     |  :right Expr ">=" Expr                           @GeExpr
+     |  :right Expr "<=" Expr                           @LeExpr
+     |  :right Expr ">" Expr                            @GExpr
+     |  :right Expr "<" Expr                            @LExpr;
+     
+ArgList =  "(" (Expr ("," Expr)*)? ")"			@ParamList;
+
+Cond = Expr						@Cond;
+IfStmt = "if" "(" Cond ")" Stmt ("else" Stmt)?		@IfStmt;
 
 
 Block = "{" Stmt* "}"					@Block;
 
-Type = "(" InnerType ("," InnerType)* ")"		@Type
+Type = "(" Type ("," Type)* ")"				@TupleType
+     | "(" <id> ":" Type ("," <id> ":" Type)* ")"	@NamedTupleType
      | InnerType					@Type;
 InnerType = <id>					@InnerType;
 
@@ -35,3 +51,4 @@ Param = <id> ":" Type					@Param;
 VarDecl = "var" <id> ":" Type? ("=" Expr)?		@VarDecl;
 
 Pln = "pln" Expr					@Pln;
+ReturnStmt = "return" Expr?				@ReturnStmt;
