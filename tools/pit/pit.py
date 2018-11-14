@@ -62,12 +62,16 @@ class Test:
         self.expected_lines = expected_lines
 
         
-    def run(self):
+    def run(self, pass_on_successful_exit=False):
         """
         Run test.
         """
         process = subprocess.Popen(["dg", self.path], stdout=subprocess.PIPE)
         output = process.stdout.readlines()
+
+        exit_code = process.wait()
+        if pass_on_successful_exit and exit_code == 0:
+            return TestResult(self, [])
 
         failed_lines = []            
         for i in range(len(self.expected_lines)):
@@ -82,7 +86,7 @@ class Test:
                 failed_lines.append((a, e))
 
         return TestResult(self, failed_lines)
-        
+
         
 def parse_test(path):
     """
@@ -125,14 +129,14 @@ def parse_test(path):
     return Test(path, expected_lines, name, description)
         
 
-def test(tests):
+def test(tests, pass_on_successful_exit=False):
     """
     Run tests.
     """
     passed, failed = [], []
     
     for t in tests:
-        result = t.run();
+        result = t.run(pass_on_successful_exit);
         if result.passed():
             passed.append(result)
         else:
@@ -141,7 +145,7 @@ def test(tests):
     return (passed, failed)
 
 
-def test_files(files):
+def test_files(files, pass_on_successful_exit=False):
     """
     Parse and run test files.
     """
@@ -150,14 +154,18 @@ def test_files(files):
         t = parse_test(f)
         tests.append(t)
 
-    passed, failed = test(tests)
+    passed, failed = test(tests, pass_on_successful_exit)
     return (passed, failed)
 
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("pit")
+    parser.add_argument("--exit", action='store_true',
+                        help="pass tests with exit code 0")
     parser.add_argument("directory", nargs="+")
     args = parser.parse_args()
+
+    pass_on_successful_exit = args.exit
     
     dirs = args.directory
     
@@ -170,7 +178,7 @@ if __name__ == "__main__":
             print("Directory '" + d + "' not found!")
             sys.exit(1)
 
-    passed, failed = test_files(files)
+    passed, failed = test_files(files, pass_on_successful_exit)
 
     
     if not failed and not passed:
