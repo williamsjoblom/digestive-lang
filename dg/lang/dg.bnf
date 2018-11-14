@@ -1,5 +1,8 @@
+## Compilation unit.
 unit = Stmt*						@CompilationUnit;
 
+
+## Statement.
 Stmt = Expr ";"						@ExprStmt
      | FunDecl
      | VarDecl ";"
@@ -8,8 +11,35 @@ Stmt = Expr ";"						@ExprStmt
      | Block
      | ReturnStmt;
 
-## Expression.
+Block = "{" Stmt* "}"					@Block;
 
+
+## Control flow.
+Cond = Expr						@Cond;
+IfStmt = "if" "(" Cond ")" Stmt ("else" Stmt)?		@IfStmt;
+
+
+## Declaration.
+FunDecl = "fun" <id> ParamList
+	  ("->" Type)? Block				@FunDecl;
+
+ParamList = "(" (Param ("," Param)*)? ")" 		@ParamList;
+Param = <id> ":" Type					@Param;
+
+VarDecl = "var" <id> ":" Type? ("=" Expr)?		@VarDecl;
+
+
+## Type.
+Type = "(" Type ("," Type)* ")"				@TupleType
+     | "(" <id> ":" Type ("," <id> ":" Type)* ")"	@NamedTupleType
+     | InnerType					@Type;
+InnerType = <id>					@InnerType;
+
+Pln = "pln" Expr					@Pln;
+ReturnStmt = "return" Expr?				@ReturnStmt;
+
+
+## Expression.
 Expr = <num>						@Number
      | <id>						@Var
      || :group <id> ArgList				@FunCall
@@ -28,27 +58,5 @@ Expr = <num>						@Number
      |  :right Expr "<=" Expr                           @LeExpr
      |  :right Expr ">" Expr                            @GExpr
      |  :right Expr "<" Expr                            @LExpr;
-     
-ArgList =  "(" (Expr ("," Expr)*)? ")"			@ParamList;
 
-Cond = Expr						@Cond;
-IfStmt = "if" "(" Cond ")" Stmt ("else" Stmt)?		@IfStmt;
-
-
-Block = "{" Stmt* "}"					@Block;
-
-Type = "(" Type ("," Type)* ")"				@TupleType
-     | "(" <id> ":" Type ("," <id> ":" Type)* ")"	@NamedTupleType
-     | InnerType					@Type;
-InnerType = <id>					@InnerType;
-
-FunDecl = "fun" <id> ParamList
-	  ("->" Type)? Block				@FunDecl;
-
-ParamList = "(" (Param ("," Param)*)? ")" 		@ParamList;
-Param = <id> ":" Type					@Param;
-
-VarDecl = "var" <id> ":" Type? ("=" Expr)?		@VarDecl;
-
-Pln = "pln" Expr					@Pln;
-ReturnStmt = "return" Expr?				@ReturnStmt;
+ArgList =  "(" (Expr ("," Expr)*)? ")"			@ArgList;
