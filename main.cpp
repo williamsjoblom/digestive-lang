@@ -78,13 +78,15 @@ int main(int argc, char* argv[]) {
     ASTNode* tree = Earley::parse(g, "unit", st);
 
     std::cout << std::endl;
-    if (tree != nullptr)
+    if (tree != nullptr) {
 	std::cout << "Source parsed successfully:" << std::endl
 		  << tree->toS() << std::endl;
-    else
+	return 0;
+    } else {
 	std::cout << "Source not recognized by grammar!" << std::endl;
+	return 1;
+    }
     
-    return 0;
 
     
     Jit jit;
