@@ -9,7 +9,7 @@ Stmt = Expr ";"						@ExprStmt
      | Pln ";"
      | IfStmt
      | Block
-     | ReturnStmt;
+     | ReturnStmt ";";
 
 Block = "{" Stmt* "}"					@Block;
 
@@ -20,8 +20,9 @@ IfStmt = "if" "(" Cond ")" Stmt ("else" Stmt)?		@IfStmt;
 
 
 ## Declaration.
-FunDecl = "fun" <id> ParamList
-	  ("->" Type)? Block				@FunDecl;
+FunDecl = "fun" <id> FunSignature Block			@FunDecl;
+
+FunSignature = ParamList ("->" Type)?			@FunSignature;
 
 ParamList = "(" (Param ("," Param)*)? ")" 		@ParamList;
 Param = <id> ":" Type					@Param;
@@ -32,8 +33,7 @@ VarDecl = "var" <id> ":" Type? ("=" Expr)?		@VarDecl;
 ## Type.
 Type = "(" Type ("," Type)* ")"				@TupleType
      | "(" <id> ":" Type ("," <id> ":" Type)* ")"	@NamedTupleType
-     | InnerType					@Type;
-InnerType = <id>					@InnerType;
+     | <id>						@Type;
 
 Pln = "pln" Expr					@Pln;
 ReturnStmt = "return" Expr?				@ReturnStmt;
