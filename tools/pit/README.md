@@ -1,10 +1,11 @@
-# Pit
+# `pit`
 Tool for conducting regression tests.
 
 #### Usage
-`pit directory [directory ...]`
+`pit directory [--exit] [directory ...]`
 This will run all tests with the `.dgr` extension present in given directories.
 
+By setting the `--exit`-flag `pit` will pass tests that exits with code `0`. This is useful when testing individual compiler features.
 #### Example
 A simple example of a test:
 ```python
