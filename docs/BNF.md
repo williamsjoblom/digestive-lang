@@ -18,7 +18,7 @@ _Example grammar for expression parsing._
 ## `@`-notation
 The `@`-notation specifies that a production creates a node in abstract syntax tree.
 
-The identifier following the `@` is the identifier of the node to be created. After a successfull parse the AST-construction function is called for every production that creates a node.
+The identifier following the `@` is name of the node to be created. After a successful parse the AST-construction function is called for every production that creates a node.
 
 Said AST-construction function has the following signature:
 ```
