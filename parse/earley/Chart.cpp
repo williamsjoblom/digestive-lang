@@ -37,85 +37,85 @@ bool EChart::add(BNFGrammar& g, EState state, int k) {
 	EState s(state);
 	s.position++;
 	changed |= addState(this, s, k);
-	}
-
-	return changed;
     }
 
-
-    std::list<EState>& EChart::set(int k) {
-	return s[k];
-    }
+    return changed;
+}
 
 
-    bool EChart::contains(EState& state, int k) {
-	hash_t hash = state.hash();
-	return sh[k].find(hash) != sh[k].end();
-    }
+std::list<EState>& EChart::set(int k) {
+    return s[k];
+}
 
 
-    BNFSymbol* EState::next() const {
-	if (position >= 0 &&
-	    position < production.symbols.size())
-	    return production.symbols[position];
-	else
-	    return nullptr;
-    }
+bool EChart::contains(EState& state, int k) {
+    hash_t hash = state.hash();
+    return sh[k].find(hash) != sh[k].end();
+}
 
 
-    BNFSymbol* EState::previous() {
-	if (position - 1 >= 0 &&
-	    position - 1 < production.symbols.size())
-	    return production.symbols[position - 1];
-	else
-	    return nullptr;
-    }
+BNFSymbol* EState::next() const {
+    if (position >= 0 &&
+	position < production.symbols.size())
+	return production.symbols[position];
+    else
+	return nullptr;
+}
 
 
-    bool EState::complete() const {
-	return production.symbols.size() == position;
-    }
+BNFSymbol* EState::previous() {
+    if (position - 1 >= 0 &&
+	position - 1 < production.symbols.size())
+	return production.symbols[position - 1];
+    else
+	return nullptr;
+}
 
 
-    hash_t EState::hash() const {
-	return
-	    std::hash<std::string>()(symbol) ^ production.hash() ^
-	    orderedHash({origin, position});
-    }
+bool EState::complete() const {
+    return production.symbols.size() == position;
+}
 
 
-    bool EState::operator==(const EState& other) const {
-	return hash() == other.hash();
-    }
+hash_t EState::hash() const {
+    return
+	std::hash<std::string>()(symbol) ^ production.hash() ^
+	orderedHash({origin, position});
+}
 
 
-    std::string EState::toS() const {
-	std::stringstream ss;
+bool EState::operator==(const EState& other) const {
+    return hash() == other.hash();
+}
 
-	ss << "(" << symbol << " →";
+
+std::string EState::toS() const {
+    std::stringstream ss;
+
+    ss << "(" << symbol << " →";
     
-	for (int i = 0; i < production.symbols.size(); i++) {
-	    if (i == position) ss << " •";
-	    ss << ' ' << production.symbols[i]->toS();
-	}
+    for (int i = 0; i < production.symbols.size(); i++) {
+	if (i == position) ss << " •";
+	ss << ' ' << production.symbols[i]->toS();
+    }
 
-	if (position == production.symbols.size())
-	    ss << " •";
+    if (position == production.symbols.size())
+	ss << " •";
 
-	ss << ", " << origin << ")";
+    ss << ", " << origin << ")";
 
-	if (!production.nodeLabel.empty())
-	    ss << " @" << production.nodeLabel;
+    if (!production.nodeLabel.empty())
+	ss << " @" << production.nodeLabel;
 
-	ss << " (" << message << ")";
+    ss << " (" << message << ")";
     
-	return ss.str();
-    }
+    return ss.str();
+}
 
 
-    namespace std {
-	std::size_t hash<EState>::operator()(const EState& s) const {
-	    return s.hash();
-	}
+namespace std {
+    std::size_t hash<EState>::operator()(const EState& s) const {
+	return s.hash();
     }
+}
 
