@@ -33,7 +33,7 @@ std::string toS(std::list<EState> states);
  * (where j is the origin position as above), add (Y → • γ, k) to S(k)
  * for every production in the grammar with Y on the left-hand side (Y → γ).
  */
-bool predict(BNFGrammar& g, EChart& chart, int k) {
+inline bool predict(BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
 
     for (EState& state : chart.s[k]) {
@@ -61,7 +61,7 @@ bool predict(BNFGrammar& g, EChart& chart, int k) {
 /**
  * Scan.
  */
-bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+inline bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
     bool changed = false;
     
     for (const EState& state : chart.s[k]) {
@@ -93,7 +93,7 @@ bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
  * NOTE In dire need of optimization, both in terms of
  * complexity and caching.
  */
-bool complete(BNFGrammar& g, EChart& chart, int k) {
+inline bool complete(BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
 
     for (const EState& completeState : chart.s[k]) {
@@ -123,7 +123,7 @@ bool complete(BNFGrammar& g, EChart& chart, int k) {
 /**
  * Process earley state.
  */
-void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+inline void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
     bool changed;
 
     do {
@@ -238,7 +238,7 @@ namespace Earley {
 	for (int k = 0; k <= tokens.size(); k++) {
 	    processState(g, tokens, chart, k);
 		 
-	    if (verbose) {
+	    if (false && verbose) {
 		std::cout << "S[" << k << "]:" << " (top: \""
 			  << tokens.at(k).toS() << "\")" << std::endl;
 		for (const EState& state : chart.s[k]) {
@@ -259,7 +259,7 @@ namespace Earley {
 		    ambiguousParseError();
 		}
 		 
-		if (verbose) {
+		if (false && verbose) {
 		    std::cout << "Recognizing state: " << state.toS()
 			      << std::endl;
 		    std::cout << "State tree:" << std::endl;
