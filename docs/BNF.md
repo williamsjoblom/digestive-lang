@@ -1,4 +1,6 @@
 # BNF
+The BNF format is used to describe the language grammar. The compiler ships with a core grammar describing digestive. This grammar can be extended, modified or completely replaced by the user.
+
 ```
 unit = Expr                             @CompilationUnit;
 
@@ -24,6 +26,9 @@ fun construct(ASTNode parseNode) -> Node
 ```
 
 #### `ASTNode` vs. `Node`
-The parse tree returned from the parser will consist of `ASTNode`s. These nodes are "stupid" in the sense that they just hold information about its tokens and child nodes.
+The parse tree returned from the parser will consist of `ASTNode`'s. These nodes are "stupid" in the sense that they just hold information about its tokens and child nodes.
 
-The purpose of the AST-construction functions is to construct a new tree of `Node`s from the `ASTNode`s. 
+The purpose of the AST-construction functions is to construct a new tree of `Node`'s from the `ASTNode`'s.
+
+The `Nodes`'s on the other hand are smarter. Every kind of node (i.e. `Number`, `FunDecl` etc.) has its own class inheriting from `Node` (or one of its subclasses). These classes contain functionality for semantic analysis and IR code generation.
+
