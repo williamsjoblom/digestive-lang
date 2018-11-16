@@ -33,27 +33,33 @@ std::string toS(std::list<EState> states);
  * (where j is the origin position as above), add (Y → • γ, k) to S(k)
  * for every production in the grammar with Y on the left-hand side (Y → γ).
  */
-inline bool predict(BNFGrammar& g, EChart& chart, int k) {
+inline bool predict(EState& state, BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
 
-    for (EState& state : chart.s[k]) {
-	if (state.complete()) continue;
-	if (!state.next()->nonTerminal()) continue;
+    if (state.complete()) return false;
+    if (!state.next()->nonTerminal()) return false;
+    
+    BNFNT* y = state.next()->asNonTerminal();
+    BNFRule& r = g.rules.at(y->symbol);
+    
+    for (BNFProduction& production : r.productions) {
+	EState s(r.symbol, production, k);
+	s.previousState = nullptr;
+	s.completedState = nullptr;
 	
-	BNFNT* y = state.next()->asNonTerminal();
-	BNFRule& r = g.rules.at(y->symbol);
+	s.message = "predicted from " + state.symbol;
 	
-	for (BNFProduction& production : r.productions) {
-	    EState s(r.symbol, production, k);
-	    s.previousState = nullptr;
-	    s.completedState = nullptr;
-
-	    s.message = "predicted from " + state.symbol;
-	    
-	    changed |= chart.add(g, s, k);
-	}
+	changed |= chart.add(g, s, k);
     }
     
+    if (r.nullable(g)) {
+	EState s(state);
+	s.position++;
+	s.message = "eps skip";
+	
+	chart.add(g, s, k);
+    }
+
     return changed;
 }
 
@@ -61,27 +67,26 @@ inline bool predict(BNFGrammar& g, EChart& chart, int k) {
 /**
  * Scan.
  */
-inline bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+inline bool scan(EState& state, BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
     bool changed = false;
     
-    for (const EState& state : chart.s[k]) {
-	if (state.complete()) continue;
-	if (!state.next()->terminal()) continue;
+    if (state.complete()) return false;
+    if (!state.next()->terminal()) return false;
+    
+    BNFT* a = state.next()->asTerminal();
+    Token top = tokens.at(k);
+    
+    if (a->accepts(top)) {
+	EState s(state);
+	s.position++;
+	s.previousState = &state;
+	s.completedState = nullptr;
 	
-	BNFT* a = state.next()->asTerminal();
-	Token top = tokens.at(k);
+	s.message = "scanned from '" + top.value + "'";
 	
-	if (a->accepts(top)) {
-	    EState s(state);
-	    s.position++;
-	    s.previousState = &state;
-	    s.completedState = nullptr;
-	    
-	    s.message = "scanned from '" + top.value + "'";
-	    
-	    changed |= chart.add(g, s, k + 1);
-	}
+	changed |= chart.add(g, s, k + 1);
     }
+
 
     return changed;
 }
@@ -93,26 +98,24 @@ inline bool scan(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
  * NOTE In dire need of optimization, both in terms of
  * complexity and caching.
  */
-inline bool complete(BNFGrammar& g, EChart& chart, int k) {
+inline bool complete(EState& state, BNFGrammar& g, EChart& chart, int k) {
     bool changed = false;
 
-    for (const EState& completeState : chart.s[k]) {
-	if (!completeState.complete()) continue;
-	
-	std::string symbol = completeState.symbol;
-	for (const EState& s : chart.s[completeState.origin]) {
-	    if (!s.complete() && s.next()->nonTerminal() &&
-		s.next()->asNonTerminal()->symbol == symbol) {
-		
-		EState newState(s);
-		newState.position++;
-		newState.previousState = &s;
-		newState.completedState = &completeState;
-
-		newState.message = "completed from " + symbol;
-				
-		changed |= chart.add(g, newState, k);
-	    }
+    if (!state.complete()) return false;
+    
+    std::string symbol = state.symbol;
+    for (const EState& s : chart.s[state.origin]) {
+	if (!s.complete() && s.next()->nonTerminal() &&
+	    s.next()->asNonTerminal()->symbol == symbol) {
+	    
+	    EState newState(s);
+	    newState.position++;
+	    newState.previousState = &s;
+	    newState.completedState = &state;
+	    
+	    newState.message = "completed from " + symbol;
+	    
+	    changed |= chart.add(g, newState, k);
 	}
     }
     
@@ -126,15 +129,27 @@ inline bool complete(BNFGrammar& g, EChart& chart, int k) {
 inline void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
     bool changed;
 
-    do {
-	changed = false;
+    int n = 0;
+    // do {
+    // 	changed = false;
 
-	bool p = predict(g, chart, k);
-	bool s = scan(g, tokens, chart, k);
-        bool c = complete(g, chart, k);
+    // 	bool p = predict(g, chart, k);
+    // 	bool s = scan(g, tokens, chart, k);
+    // 	p |= predict(g, chart, k);
+    //     bool c = complete(g, chart, k);
+    // 	p |= predict(g, chart, k);
 	
+    // 	changed = p | s | c;
+    // 	n++;
+    // } while (false);
+
+    for (EState& state : chart.s[k]) {
+	bool p = predict(state, g, chart, k);
+	bool s = scan(state, g, tokens, chart, k);
+	bool c = complete(state, g, chart, k);
+
 	changed = p | s | c;
-    } while (changed);
+    }
 }
 
 
@@ -301,7 +316,8 @@ TEST_CASE("earley prediction") {
 	BNFGrammar g;
 	EChart chart = test_createChart(g, grammar, 1);
 
-	predict(g, chart, 0);
+	for (EState& state : chart.s[0])
+	    predict(state, g, chart, 0);
 	
 	REQUIRE(chart.s[0].size() == 2);
 
@@ -320,7 +336,8 @@ TEST_CASE("earley prediction") {
 	BNFGrammar g;
 	EChart chart = test_createChart(g, grammar, 1);
 
-	predict(g, chart, 0);
+	for (EState& state : chart.s[0])
+	    predict(state, g, chart, 0);
 	
 	REQUIRE(chart.s[0].size() == 3);
 
@@ -355,12 +372,14 @@ TEST_CASE("earley scanning") {
     
     EState s("unit", p, 0);
 
-    scan(g, tokens, chart, 0);
+    for (EState& state : chart.s[0])
+	scan(state, g, tokens, chart, 0);
     s.position = 1;
     REQUIRE(chart.set(1).size() == 1);
     REQUIRE(chart.contains(s, 1));
 
-    scan(g, tokens, chart, 1);
+    for (EState& state : chart.s[1])
+	scan(state, g, tokens, chart, 1);
     s.position = 2;
     REQUIRE(chart.set(2).size() == 1);
     REQUIRE(chart.contains(s, 2));
@@ -389,8 +408,10 @@ TEST_CASE("earley completion") {
 	chart.add(g, unitState, 0);
 	chart.add(g, completeState, 1);
 
-	complete(g, chart, 1);
+	for (EState& state : chart.s[1])
+	    complete(state, g, chart, 1);
 	unitState.position = 1;
 	REQUIRE(chart.contains(unitState, 1));
     }
 }
+

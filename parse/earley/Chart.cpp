@@ -31,11 +31,14 @@ bool addState(EChart* chart, EState state, int k) {
 bool EChart::add(BNFGrammar& g, EState state, int k) {
     bool changed = addState(this, state, k);
 
+    return changed;
+    
     // TODO Move to Parse.cpp:
     if (!state.complete() &&
 	state.next()->nullable(g)) {
 	EState s(state);
 	s.position++;
+	s.message = "ϵ skip from previous";
 	changed |= addState(this, s, k);
     }
 
