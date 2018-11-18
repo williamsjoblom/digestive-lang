@@ -16,6 +16,7 @@
 #include "util/Colors.h"
 #include "BNFParser.h"
 #include "lexer/Lexer.h"
+#include "ast/construct.h"
 
 using namespace Earley;
 
@@ -67,7 +68,8 @@ inline bool predict(EState& state, BNFGrammar& g, EChart& chart, int k) {
 /**
  * Scan.
  */
-inline bool scan(EState& state, BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+inline bool scan(EState& state, BNFGrammar& g, TokenQueue& tokens,
+		 EChart& chart, int k) {
     bool changed = false;
     
     if (state.complete()) return false;
@@ -104,7 +106,7 @@ inline bool complete(EState& state, BNFGrammar& g, EChart& chart, int k) {
     if (!state.complete()) return false;
     
     std::string symbol = state.symbol;
-    for (const EState& s : chart.s[state.origin]) {
+    for (EState& s : chart.s[state.origin]) {
 	if (!s.complete() && s.next()->nonTerminal() &&
 	    s.next()->asNonTerminal()->symbol == symbol) {
 	    
@@ -112,7 +114,7 @@ inline bool complete(EState& state, BNFGrammar& g, EChart& chart, int k) {
 	    newState.position++;
 	    newState.previousState = &s;
 	    newState.completedState = &state;
-	    
+
 	    newState.message = "completed from " + symbol;
 	    
 	    changed |= chart.add(g, newState, k);
@@ -126,29 +128,14 @@ inline bool complete(EState& state, BNFGrammar& g, EChart& chart, int k) {
 /**
  * Process earley state.
  */
-inline void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k) {
+inline void processState(BNFGrammar& g, TokenQueue& tokens,
+			 EChart& chart, int k) {
     bool changed;
-
-    int n = 0;
-    // do {
-    // 	changed = false;
-
-    // 	bool p = predict(g, chart, k);
-    // 	bool s = scan(g, tokens, chart, k);
-    // 	p |= predict(g, chart, k);
-    //     bool c = complete(g, chart, k);
-    // 	p |= predict(g, chart, k);
-	
-    // 	changed = p | s | c;
-    // 	n++;
-    // } while (false);
 
     for (EState& state : chart.s[k]) {
 	bool p = predict(state, g, chart, k);
 	bool s = scan(state, g, tokens, chart, k);
 	bool c = complete(state, g, chart, k);
-
-	changed = p | s | c;
     }
 }
 
@@ -158,7 +145,7 @@ inline void processState(BNFGrammar& g, TokenQueue& tokens, EChart& chart, int k
  */
 std::string toS(std::list<EState> states) {
     std::stringstream ss;
-    for (const EState& s : states) {
+    for (EState& s : states) {
 	ss << s.toS() << std::endl;
     }
     
@@ -166,7 +153,11 @@ std::string toS(std::list<EState> states) {
 }
 
 
-void dumpStateTree(const EState* state, TokenQueue& tokens,
+/**
+ * Dump states in tree form.
+ * 'state' is a recognizing state.
+ */
+void dumpStateTree(EState* state, TokenQueue& tokens,
 		   bool verbose=false, std::string indent="") {
     while (state->previousState != nullptr) {
 	if (verbose || state->complete())
@@ -181,9 +172,60 @@ void dumpStateTree(const EState* state, TokenQueue& tokens,
 
 
 /**
+ * Collect states completed states creating nodes in stack 'states'.
+ * The 'parent' paramter is a pointer to the last state producing a node
+ * and is used for counting children.
+ */
+int collectStates(std::stack<EState*>& states, EState* s,
+		  EState* parent=nullptr) {
+
+    while (s->previousState != nullptr) {
+	bool createNode = s->complete() && s->production.createsNode();
+	
+	if (createNode) {
+	    states.push(s);
+	    if (parent) parent->childCount++;
+	    parent = s;
+	}
+
+	if (s->completedState != nullptr) {
+	    collectStates(states, s->completedState, parent);
+	}
+			
+	s = s->previousState;
+    }
+}
+
+
+/**
  * Build tree from recognizing state.
  */
-ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens,
+Node* buildTree(std::stack<EState*> stateStack,
+		   const TokenQueue& tokens, ASTNode* parent=nullptr) {
+
+    std::stack<Node*> nodeStack;
+    while (!stateStack.empty()) {
+	const EState* top = stateStack.top(); stateStack.pop();
+	processNode(top->production.nodeLabel, nodeStack,
+		    tokens, top);
+    }
+
+    if (nodeStack.size() == 1) {
+	return nodeStack.top();
+    } else {
+	std::cout << "Unable to build tree for more than one root node"
+		  << std::endl << "Root nodes: " << std::endl;
+
+	assert(false);
+    }
+}
+
+
+/**
+ * Build tree from recognizing state.
+ * TODO remove.
+ */
+ASTNode* buildIntermediateTree(EState* state, const TokenQueue& tokens,
 			       ASTNode* parent=nullptr) {
     while (state->previousState != nullptr) {
 	if (state->complete()) {
@@ -215,6 +257,14 @@ ASTNode* buildIntermediateTree(const EState* state, const TokenQueue& tokens,
 	
 	state = state->previousState;
     }
+
+    if (state->production.createsNode()) {
+	std::cout << "Build AST node: " << parent->label
+		  << " symbols:";
+	for (std::string s : parent->symbols)
+	    std::cout << " " << s;
+	std::cout << std::endl;
+    }
     
     return parent;
 }
@@ -245,7 +295,9 @@ void ambiguousParseError() {
 
 
 namespace Earley {
-    ASTNode* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens) {
+    Node* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens) {
+	initializeConstructTable();
+	
 	EChart chart(tokens);
 
 	initChart(chart, g, topRule);
@@ -256,7 +308,7 @@ namespace Earley {
 	    if (false && verbose) {
 		std::cout << "S[" << k << "]:" << " (top: \""
 			  << tokens.at(k).toS() << "\")" << std::endl;
-		for (const EState& state : chart.s[k]) {
+		for (EState& state : chart.s[k]) {
 		    std::cout << state.toS() << std::endl;
 		}
 		std::cout << std::endl;
@@ -264,8 +316,8 @@ namespace Earley {
 	}
 
 	 
-	ASTNode* tree = nullptr;
-	for (const EState& state : chart.s[chart.s.size() - 1]) {
+	Node* tree = nullptr;
+	for (EState& state : chart.s[chart.s.size() - 1]) {
 	    if (state.origin == 0 &&
 		state.symbol == topRule &&
 		state.complete()) {
@@ -274,14 +326,17 @@ namespace Earley {
 		    ambiguousParseError();
 		}
 		 
-		if (false && verbose) {
+		if (verbose) {
 		    std::cout << "Recognizing state: " << state.toS()
 			      << std::endl;
 		    std::cout << "State tree:" << std::endl;
 		    dumpStateTree(&state, tokens, false);
 		}
 
-		tree = buildIntermediateTree(&state, tokens);
+		std::stack<EState*> stateStack;
+		collectStates(stateStack, &state);
+
+		tree = buildTree(stateStack, tokens);
 	    }
 	}
 

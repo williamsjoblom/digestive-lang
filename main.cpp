@@ -61,34 +61,7 @@ int main(int argc, char* argv[]) {
 	path = pathArg;
     else
 	path = bootFilePath();
-    
         
-    std::string grammarPath = coreBNFFilePath();
-    std::string grammar = readSourceFile(grammarPath);
-    Lexer gl(grammar);
-    TokenQueue gt = gl.readAll();
-    BNFGrammar g = Earley::parseGrammar(gt);
-    if (verbose)
-	std::cout << g.toS() << std::endl;
-
-    std::string source = readSourceFile(path);
-    if (source.empty()) return 0;
-    Lexer sl(source);
-    TokenQueue st = sl.readAll();
-    ASTNode* tree = Earley::parse(g, "unit", st);
-
-    std::cout << std::endl;
-    if (tree != nullptr) {
-	std::cout << "Source parsed successfully:" << std::endl
-		  << tree->toS() << std::endl;
-	return 0;
-    } else {
-	std::cout << "Source not recognized by grammar!" << std::endl;
-	return 1;
-    }
-    
-
-    
     Jit jit;
     Interactive::start(&jit);
 

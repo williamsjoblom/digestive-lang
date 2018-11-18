@@ -1,4 +1,3 @@
-## Compilation unit.
 unit = Stmt*						@CompilationUnit;
 
 
@@ -40,9 +39,9 @@ ReturnStmt = "return" Expr?				@ReturnStmt;
 
 
 ## Expression.
-Expr = <num>						@Number
-     | <id>						@Var
-     || :group <id> ArgList				@FunCall
+Expr = <num>						@IntLiteral
+     | <id>						@VarExpr
+     || :group <id> ArgList				@FunCallExpr
      |  :group "(" Expr ")"
      || :left "(" Expr ("," Expr)* ")"	 		@TupleExpr
      || :left Expr "." <num>				@TupleIndexAccess

@@ -19,6 +19,8 @@ set(
   main.cpp
 
   # AST
+  ast/construct.cpp
+  
   ast/BlockStmt.cpp
   ast/FunctionDecl.cpp
   ast/Decl.cpp

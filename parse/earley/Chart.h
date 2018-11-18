@@ -94,21 +94,28 @@ struct EState {
      * Previous.
      * Points to the state that this state was scanned or completed from.
      */
-    const EState* previousState = nullptr;
+    EState* previousState = nullptr;
 
     
     /**
      * Completed.
      * Points to the state that this state was completed from.
      */
-    const EState* completedState = nullptr;
+    EState* completedState = nullptr;
+
+
+    /**
+     * Number of children in the resulting AST.
+     */
+    int childCount;
 
     
     /**
      * Constructor.
      */
     EState(std::string symbol, BNFProduction& production, int origin)
-	: symbol(symbol), production(production), origin(origin), position(0) { }
+	: symbol(symbol), production(production), origin(origin), position(0),
+	  childCount(0) { }
 
     
     /**

@@ -19,6 +19,10 @@
 #include "genasm/TACCompiler.h"
 #include "genir/Program.h"
 #include "genir/Function.h"
+#include "parse/earley/Parse.h"
+#include "parse/earley/BNF.h"
+#include "parse/earley/BNFParser.h"
+#include "util/Path.h"
 
 
 struct sigaction sa;
@@ -50,18 +54,27 @@ bool Jit::load(std::string path) {
     TokenQueue tokens = lexer.readAll();
     
     try {
-	Unit* root = Parse::unit(tokens);
-	JitContext::root = root;
-	Scope fileScope;
-	root->analyze(&fileScope);
-	
-        allocateHandles(root->functionCount() + 1);
-	
-	Generate::unit(ir, root);
+	// Load grammar.
+	std::string grammarPath = coreBNFFilePath();
+	std::string grammar = readSourceFile(grammarPath);
+	Lexer gl(grammar);
+	TokenQueue gt = gl.readAll();
+	BNFGrammar g = Earley::parseGrammar(gt);
 
+	Node* rootNode = Earley::parse(g, "unit", tokens);
+	Unit* rootUnit = dynamic_cast<Unit*>(rootNode);
+
+	JitContext::root = rootUnit;
+	Scope fileScope;
+	rootUnit->analyze(&fileScope);
+	
+	allocateHandles(rootUnit->functionCount() + 1);
+	
+	Generate::unit(ir, rootUnit);
+	
 	TACCompiler tc;
 	program = tc.compile(runtime, ir);
-     
+	
 	if (verbose) JitContext::dumpHandles();
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
@@ -181,8 +194,3 @@ void signal_handler(int sig, siginfo_t* info, void* ptr) {
     std::cout << "Program received signal " << BOLD(<<sig<<) << ", " << BOLD(<<signal<<) << std::endl;
     Backtrace::ssd(pc, framePtr);
 }
-
-
-
-
-

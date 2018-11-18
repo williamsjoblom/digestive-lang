@@ -11,11 +11,11 @@ class BNFGrammar;
 class TokenQueue;
 class EState;
 class ASTNode;
-
+class Node;
 
 namespace Earley {
     /**
      * Parse.
      */
-    ASTNode* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens);
+    Node* parse(BNFGrammar& g, std::string topRule, TokenQueue& tokens);
 }
