@@ -186,16 +186,19 @@ int parseOption(int argc, char* argv[], int index) {
  */
 std::string parseArgs(int argc, char* argv[]) {
     std::string sourcePath = "";
-    
-    for (int i = 1; i < argc; i++) {
+
+    int i = 1;
+    while (i < argc) {
 	std::string arg = argv[i];
 
-	if (arg[0] == '-')
+	if (arg[0] == '-') {
 	    i += parseOption(argc, argv, i);
-	else if (i == argc - 1)
+	} else if (i == argc - 1) {
 	    sourcePath = arg;
-	else
+	    i++;
+	} else {
 	    invalidArgError(arg);
+	}
     }
 
     return sourcePath;
