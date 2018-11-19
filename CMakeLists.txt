@@ -19,8 +19,6 @@ set(
   main.cpp
 
   # AST
-  ast/construct.cpp
-  
   ast/BlockStmt.cpp
   ast/FunctionDecl.cpp
   ast/Decl.cpp
@@ -104,6 +102,7 @@ set(
   parse/earley/BNFParser.cpp
   parse/earley/Chart.cpp
   parse/earley/ASTNode.cpp
+  parse/earley/construct.cpp
 
   # Semantics
   semantic/Scope.cpp
