@@ -33,8 +33,8 @@ The compiler is invoked with `dg`.
 | Option   | Result                    |
 |----------|---------------------------|
 | `-d bnf` | Dump desugared grammar    |
-| `-d ps`  | Dump earley parse sets    |
-| `-d pst` | Dump earley state tree    |
+| `-d ps`  | Dump Earley parse sets    |
+| `-d pst` | Dump Earley state tree    |
 | `-d h`   | Dump JIT function handles |
 
 
