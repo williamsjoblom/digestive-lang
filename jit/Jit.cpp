@@ -75,7 +75,7 @@ bool Jit::load(std::string path) {
 	TACCompiler tc;
 	program = tc.compile(runtime, ir);
 	
-	if (verbose) JitContext::dumpHandles();
+	if (dumpJitHandles) JitContext::dumpHandles();
     } catch (int i) {
         std::cout << "compilation error " << i << std::endl;
         return false;

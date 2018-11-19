@@ -411,8 +411,9 @@ namespace Earley {
 	    g.rules[rule.symbol] = rule;
 	}
 
-	// Dump expanded grammar.
-	if (verbose) std::cout << g.toS() << std::endl;
+	if (dumpParseDesugaredGrammar) {
+	    std::cout << g.toS() << std::endl;
+	}
 	
 	return g;
     }

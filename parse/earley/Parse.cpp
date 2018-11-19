@@ -16,7 +16,7 @@
 #include "util/Colors.h"
 #include "BNFParser.h"
 #include "lexer/Lexer.h"
-#include "ast/construct.h"
+#include "parse/earley/construct.h"
 
 using namespace Earley;
 
@@ -25,6 +25,14 @@ using namespace Earley;
  * Forward declarations.
  */
 std::string toS(std::list<EState> states);
+
+
+/**
+ * Store debug info in earley states.
+ */
+bool storeDebugInfo() {
+    return dumpParseSets || dumpParseStateTree;
+}
 
 
 /**
@@ -47,8 +55,10 @@ inline bool predict(EState& state, BNFGrammar& g, EChart& chart, int k) {
 	EState s(r.symbol, production, k);
 	s.previousState = nullptr;
 	s.completedState = nullptr;
-	
-	s.message = "predicted from " + state.symbol;
+
+	if (storeDebugInfo()) {
+	    s.message = "predicted from " + state.symbol;
+	}
 	
 	changed |= chart.add(g, s, k);
     }
@@ -56,7 +66,10 @@ inline bool predict(EState& state, BNFGrammar& g, EChart& chart, int k) {
     if (r.nullable(g)) {
 	EState s(state);
 	s.position++;
-	s.message = "eps skip";
+
+	if (storeDebugInfo()) {
+	    s.message = "eps skip";
+	}
 	
 	chart.add(g, s, k);
     }
@@ -84,7 +97,9 @@ inline bool scan(EState& state, BNFGrammar& g, TokenQueue& tokens,
 	s.previousState = &state;
 	s.completedState = nullptr;
 	
-	s.message = "scanned from '" + top.value + "'";
+	if (storeDebugInfo()) {
+	    s.message = "scanned from '" + top.value + "'";
+	}
 	
 	changed |= chart.add(g, s, k + 1);
     }
@@ -115,7 +130,9 @@ inline bool complete(EState& state, BNFGrammar& g, EChart& chart, int k) {
 	    newState.previousState = &s;
 	    newState.completedState = &state;
 
-	    newState.message = "completed from " + symbol;
+	    if (storeDebugInfo()) {
+		newState.message = "completed from " + symbol;
+	    }
 	    
 	    changed |= chart.add(g, newState, k);
 	}
@@ -305,7 +322,7 @@ namespace Earley {
 	for (int k = 0; k <= tokens.size(); k++) {
 	    processState(g, tokens, chart, k);
 		 
-	    if (false && verbose) {
+	    if (dumpParseSets) {
 		std::cout << "S[" << k << "]:" << " (top: \""
 			  << tokens.at(k).toS() << "\")" << std::endl;
 		for (EState& state : chart.s[k]) {
@@ -326,7 +343,7 @@ namespace Earley {
 		    ambiguousParseError();
 		}
 		 
-		if (verbose) {
+		if (dumpParseStateTree) {
 		    std::cout << "Recognizing state: " << state.toS()
 			      << std::endl;
 		    std::cout << "State tree:" << std::endl;

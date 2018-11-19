@@ -22,11 +22,21 @@
 #include "parse/earley/Parse.h"
 #include "parse/earley/ASTNode.h"
 
-/**
+
+/****************************************************************
  * Globals defined as 'extern' in 'options.h'.
- */
+ ****************************************************************/
 bool verbose = false;
 bool runTests = false;
+
+/**
+ * Dump.
+ */
+bool dumpParseDesugaredGrammar = false;
+bool dumpParseSets = false;
+bool dumpParseStateTree = false;
+bool dumpJitHandles = false;
+
 
 /**
  * Forward declarations.
@@ -120,14 +130,48 @@ void invalidArgError(std::string& arg) {
 
 
 /**
+ * Option without argument error.
+ */
+void expectedOptionArgError(std::string& option) {
+    std::cout << "Expected argument for option -- '" << option << "'"
+	      << std::endl;
+    throw 1;
+}
+
+
+/**
  * Parse command line option.
  */
-void parseOption(int argc, char* argv[], int index) {
-    std::string arg = argv[index];
+int parseOption(int argc, char* argv[], int index) {
+    std::string option = argv[index];
 
-    if (arg == "-v") verbose = true;
-    else if (arg == "-t") runTests = true;
-    else invalidOptionError(arg);
+    if (option == "-v") { // Verbose
+	verbose = true;
+	return 1;
+    } else if (option == "-t") { // Run tests
+	runTests = true;
+	return 1;
+    } else if (option == "-d") { // dump
+	int argIndex = index + 1;
+	if (argc <= argIndex)
+	    expectedOptionArgError(option);
+	
+	std::string arg = argv[argIndex];
+	if (arg == "bnf")
+	    dumpParseDesugaredGrammar = true;
+	else if (arg == "ps")
+	    dumpParseSets = true;
+	else if (arg == "pst")
+	    dumpParseStateTree = true;
+	else if (arg == "h")
+	    dumpJitHandles = true;
+	else
+	    invalidArgError(arg);
+	
+	return 2;
+    } else {
+	invalidOptionError(option);
+    }
 }
 
 
@@ -144,7 +188,7 @@ std::string parseArgs(int argc, char* argv[]) {
 	std::string arg = argv[i];
 
 	if (arg[0] == '-')
-	    parseOption(argc, argv, i);
+	    i += parseOption(argc, argv, i);
 	else if (i == argc - 1)
 	    sourcePath = arg;
 	else

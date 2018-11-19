@@ -15,8 +15,7 @@ std::string readSourceFile(std::string path) {
     std::stringstream buffer;
 
     if (!t.is_open()) {
-	if (verbose)
-	    std::cout << "Failed to open file: " << path << std::endl;
+	std::cout << "Failed to open file: " << path << std::endl;
 	throw 1;
     }
 
