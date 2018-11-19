@@ -154,7 +154,7 @@ int parseOption(int argc, char* argv[], int index) {
 	runTests = true;
 	return 1;
     } else if (option == "-d" ||
-	       option == "--debug") {
+	       option == "--dump") {
 	int argIndex = index + 1;
 	if (argc <= argIndex)
 	    expectedOptionArgError(option);
