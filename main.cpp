@@ -145,13 +145,16 @@ void expectedOptionArgError(std::string& option) {
 int parseOption(int argc, char* argv[], int index) {
     std::string option = argv[index];
 
-    if (option == "-v") { // Verbose
+    if (option == "-v" ||
+	option == "--verbose") {
 	verbose = true;
 	return 1;
-    } else if (option == "-t") { // Run tests
+    } else if (option == "-t" ||
+	       option == "--test") {
 	runTests = true;
 	return 1;
-    } else if (option == "-d") { // dump
+    } else if (option == "-d" ||
+	       option == "--debug") {
 	int argIndex = index + 1;
 	if (argc <= argIndex)
 	    expectedOptionArgError(option);
