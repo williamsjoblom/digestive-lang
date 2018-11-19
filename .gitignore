@@ -6,3 +6,4 @@ build/
 dig
 vtune/
 .gdb_history
+compile_commands.json
