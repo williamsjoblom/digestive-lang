@@ -25,6 +25,18 @@ echo "export DGROOT=$(pwd)/dg/" > ~/.bashrc # Replace '.bashrc' if using shell d
 ### Usage
 The compiler is invoked with `dg`.
 
+#### Options
+
+##### **`-v`**, **`--verbose`**: Display additional information about execution
+##### **`-t`**, **`--test`**: Run unit tests
+##### **`-d`**, **`--dump`**: Dump internal data
+| Option   | Result                    |
+|----------|---------------------------|
+| `-d bnf` | Dump desugared grammar    |
+| `-d ps`  | Dump earley parse sets    |
+| `-d pst` | Dump earley state tree    |
+| `-d h`   | Dump JIT function handles |
+
 
 ### Examples
 ```swift
