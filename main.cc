@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 
-#include <asmjit/asmjit.h>
+#include "asmjit/asmjit.h"
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 
