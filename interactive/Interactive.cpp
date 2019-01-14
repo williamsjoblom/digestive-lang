@@ -10,7 +10,6 @@
 #include <jit/JitContext.h>
 #include <signal.h>
 #include <execinfo.h>
-#include <bits/siginfo.h>
 
 #include "options.h"
 #include "Interactive.h"

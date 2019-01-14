@@ -4,9 +4,7 @@
 #include <sstream>
 #include <assert.h>
 #include <execinfo.h>
-#include <bits/signum.h>
 #include <signal.h>
-#include <bits/siginfo.h>
 #include <sys/ucontext.h>
 
 #include "options.h"
