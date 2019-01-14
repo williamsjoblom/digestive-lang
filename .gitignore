@@ -7,3 +7,4 @@ dig
 vtune/
 .gdb_history
 compile_commands.json
+.cquery_cached_index/

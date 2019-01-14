@@ -16,116 +16,116 @@ include_directories("${ASMJIT_DIR}/src/")
 
 set(
   SOURCE_FILES
-  main.cpp
+  main.cc
 
   # AST
-  ast/BlockStmt.cpp
-  ast/FunctionDecl.cpp
-  ast/Decl.cpp
-  ast/VariableDecl.cpp
-  ast/BinaryExpr.cpp
-  ast/Operator.cpp
-  ast/ReturnStmt.cpp
-  ast/VariableExpr.cpp
-  ast/FunctionCall.cpp
-  ast/PlnStmt.cpp
-  ast/IfStmt.cpp
-  ast/Unit.cpp
-  ast/LoopStmt.cpp
-  ast/UnaryExpr.cpp
-  ast/type/Type.cpp
-  ast/type/PrimitiveType.cpp
-  ast/IntegerLiteral.cpp
-  ast/type/TupleType.cpp
-  ast/TupleExpr.cpp
-  ast/type/DType.cpp
+  ast/BlockStmt.cc
+  ast/FunctionDecl.cc
+  ast/Decl.cc
+  ast/VariableDecl.cc
+  ast/BinaryExpr.cc
+  ast/Operator.cc
+  ast/ReturnStmt.cc
+  ast/VariableExpr.cc
+  ast/FunctionCall.cc
+  ast/PlnStmt.cc
+  ast/IfStmt.cc
+  ast/Unit.cc
+  ast/LoopStmt.cc
+  ast/UnaryExpr.cc
+  ast/type/Type.cc
+  ast/type/PrimitiveType.cc
+  ast/IntegerLiteral.cc
+  ast/type/TupleType.cc
+  ast/TupleExpr.cc
+  ast/type/DType.cc
 
   # Assembly generator
-  genasm/TACCompiler.cpp
-  genasm/Instr.cpp
-  genasm/Op.cpp
-  genasm/InstrEnv.cpp
-  genasm/ErrHandler.cpp
+  genasm/TACCompiler.cc
+  genasm/Instr.cc
+  genasm/Op.cc
+  genasm/InstrEnv.cc
+  genasm/ErrHandler.cc
 
   # IR generator
-  genir/Expr.cpp
-  genir/Program.cpp
-  genir/BinaryExpr.cpp
-  genir/IfStmt.cpp
-  genir/VariableDecl.cpp
-  genir/Function.cpp
-  genir/Return.cpp
-  genir/FunctionCall.cpp
-  genir/BuiltIn.cpp
-  genir/LoopStmt.cpp
-  genir/Trap.cpp
+  genir/Expr.cc
+  genir/Program.cc
+  genir/BinaryExpr.cc
+  genir/IfStmt.cc
+  genir/VariableDecl.cc
+  genir/Function.cc
+  genir/Return.cc
+  genir/FunctionCall.cc
+  genir/BuiltIn.cc
+  genir/LoopStmt.cc
+  genir/Trap.cc
 
   
   # Interactive
-  interactive/IO.cpp
-  interactive/Interactive.cpp
+  interactive/IO.cc
+  interactive/Interactive.cc
   
   # IR
-  ir/TAC.cpp
-  ir/TACOp.cpp
-  ir/TACFun.cpp
-  ir/TACType.cpp
-  ir/TACProgram.cpp
+  ir/TAC.cc
+  ir/TACOp.cc
+  ir/TACFun.cc
+  ir/TACType.cc
+  ir/TACProgram.cc
   
   # JIT
-  jit/JitContext.cpp    
-  jit/Jit.cpp
-  jit/BuiltIn.cpp
-  jit/Backtrace.cpp
+  jit/JitContext.cc    
+  jit/Jit.cc
+  jit/BuiltIn.cc
+  jit/Backtrace.cc
 
   # Lexer
-  lexer/Lexer.cpp
-  lexer/TokenQueue.cpp
+  lexer/Lexer.cc
+  lexer/TokenQueue.cc
 
   # Parser
-  parse/ParseError.cpp
-  parse/Block.cpp
-  parse/Function.cpp
-  parse/Statement.cpp
-  parse/File.cpp
-  parse/Return.cpp
-  parse/Variable.cpp
-  parse/Pln.cpp
-  parse/If.cpp
-  parse/Unit.cpp
-  parse/Loop.cpp
-  parse/Trap.cpp
-  parse/Type.cpp
-  parse/Expression.cpp
-  parse/earley/BNF.cpp
-  parse/earley/Parse.cpp
-  parse/earley/BNFParser.cpp
-  parse/earley/Chart.cpp
-  parse/earley/ASTNode.cpp
-  parse/earley/construct.cpp
+  parse/ParseError.cc
+  parse/Block.cc
+  parse/Function.cc
+  parse/Statement.cc
+  parse/File.cc
+  parse/Return.cc
+  parse/Variable.cc
+  parse/Pln.cc
+  parse/If.cc
+  parse/Unit.cc
+  parse/Loop.cc
+  parse/Trap.cc
+  parse/Type.cc
+  parse/Expression.cc
+  parse/earley/BNF.cc
+  parse/earley/Parse.cc
+  parse/earley/BNFParser.cc
+  parse/earley/Chart.cc
+  parse/earley/ASTNode.cc
+  parse/earley/construct.cc
 
   # Semantics
-  semantic/Scope.cpp
-  semantic/SemanticError.cpp
-  semantic/TypeUtil.cpp
+  semantic/Scope.cc
+  semantic/SemanticError.cc
+  semantic/TypeUtil.cc
 
   # Utilities
-  util/File.cpp
-  util/BuildTimestamp.cpp
-  util/Path.cpp
-  util/Hash.cpp
-  util/PrettyPrint.cpp
-  util/tty/Tree.cpp
-  util/tty/Color.cpp
+  util/File.cc
+  util/BuildTimestamp.cc
+  util/Path.cc
+  util/Hash.cc
+  util/PrettyPrint.cc
+  util/tty/Tree.cc
+  util/tty/Color.cc
 )
 add_executable(dg ${SOURCE_FILES} ${ASMJIT_SRC})
 
 target_link_libraries(dg ${ASMJIT_DEPS})
 
-# Force recompilation of BuildTimestamp.cpp to update __TIME__ and __DATE__ macros.
+# Force recompilation of BuildTimestamp.cc to update __TIME__ and __DATE__ macros.
 add_custom_target(
     touchTimestamp
-    COMMAND touch ${CMAKE_CURRENT_SOURCE_DIR}/util/BuildTimestamp.cpp
+    COMMAND touch ${CMAKE_CURRENT_SOURCE_DIR}/util/BuildTimestamp.cc
 )
 add_dependencies(dg touchTimestamp)
 
