@@ -4,37 +4,46 @@
 
 #include "parse/ParseError.hh"
 
+
 TokenQueue::TokenQueue(std::vector<Token> content) {
     index = 0;
     tokens = content;
 }
 
+
 TokenQueue::~TokenQueue() { }
+
 
 Token TokenQueue::pop() {
     return at(index++);
 }
 
+
 Token TokenQueue::peek() const {
     return at(index);
 }
 
+
 Token TokenQueue::lookahead(int distance) const {
     return at(index + distance);
 }
+
 
 void TokenQueue::rewind(int distance) {
     index -= distance;
     assert(index >= 0);
 }
 
+
 void TokenQueue::rewindTo(Token t) {
     index = t.index;
 }
 
+
 Token TokenQueue::top() const {
     return at(index);
 }
+
 
 Token TokenQueue::at(int i) const {
     if (i >= tokens.size()) {
@@ -49,6 +58,7 @@ Token TokenQueue::at(int i) const {
     return tokens.at(i);
 }
 
+
 void TokenQueue::dump() const {
     std::cout << "{";
 
@@ -61,6 +71,7 @@ void TokenQueue::dump() const {
     std::cout << "}" << std::endl;
 }
 
+
 Token TokenQueue::expect(const TokenType type) {
     Token t = top();
     if (t.type != type) unexpectedToken(t);
@@ -68,6 +79,7 @@ Token TokenQueue::expect(const TokenType type) {
     index++;
     return t;
 }
+
 
 bool TokenQueue::eat(const TokenType type) {
     if (at(index).type == type) {
@@ -77,6 +89,7 @@ bool TokenQueue::eat(const TokenType type) {
 
     return false;
 }
+
 
 bool TokenQueue::eatIdentifier(const std::string value) {
     Token t = at(index);
@@ -88,9 +101,11 @@ bool TokenQueue::eatIdentifier(const std::string value) {
     return false;
 }
 
+
 bool TokenQueue::empty() const {
     return index >= tokens.size();
 }
+
 
 int TokenQueue::size() const {
     return tokens.size();

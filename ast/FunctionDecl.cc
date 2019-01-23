@@ -1,21 +1,21 @@
 #include "FunctionDecl.hh"
 
+#include <limits>
+
 #include "genir/Function.hh"
 #include "util/PrettyPrint.hh"
 
 FunctionDecl::FunctionDecl(std::string identifier, std::vector<VariableDecl*>* parameters, BlockStmt* body,
-                           DType returnType, bool dumpAssembly, bool dumpIr) : Decl(identifier) {
-    this->parameters = parameters;
-    this->body = body;
-    this->bHandleIndex = -1;
-    this->codeSize = -1;
-    this->irId = -1;
-    this->returnType = returnType;
-    this->dumpAssembly = dumpAssembly;
-    this->dumpIr = dumpIr;
-
-    this->baPrototype = nullptr;
-}
+                           DType returnType, bool dumpAssembly, bool dumpIr) : Decl(identifier),
+                                                                               parameters{parameters},
+                                                                               body{body},
+                                                                               bHandleIndex{-1},
+                                                                               codeSize{0},
+                                                                               irId{UINT_MAX},
+                                                                               returnType{returnType},
+                                                                               dumpAssembly{dumpAssembly},
+                                                                               dumpIr{dumpIr},
+                                                                               baPrototype{nullptr} { }
 
 
 FunctionDecl::~FunctionDecl() {
@@ -28,7 +28,7 @@ FunctionDecl::~FunctionDecl() {
 
 void FunctionDecl::analyze(Scope* scope) {
     scope->declare(this);
-    Scope* innerScope = new Scope(scope, this);
+    Scope* innerScope { new Scope(scope, this) };
 
     for (VariableDecl* param : *this->parameters) {
         param->analyze(innerScope);
@@ -51,7 +51,7 @@ void FunctionDecl::generate(TACFun* env) {
 
 
 bool FunctionDecl::equals(const Node &other) const {
-    const FunctionDecl* o = dynamic_cast<const FunctionDecl*>(&other);
+    const FunctionDecl* o { dynamic_cast<const FunctionDecl*>(&other) };
     if (o == nullptr) return false;
 
     return matchesSignature(*o) && *body == *o->body;
@@ -61,7 +61,7 @@ bool FunctionDecl::equals(const Node &other) const {
 bool FunctionDecl::matchesSignature(const FunctionDecl &other) const {
     if (other.parameters->size() != parameters->size()) return false;
     
-    for (int i = 0; i < parameters->size(); i++) {
+    for (unsigned int i { 0 }; i < parameters->size(); i++) {
         VariableDecl* parameter = (*parameters)[i];
         VariableDecl* otherParameter = (*other.parameters)[i];
         
@@ -81,13 +81,13 @@ int FunctionDecl::stackSize() {
  * Add single parameter to function prototype.
  */
 int addParamToPrototype(DType type, FuncSignatureX* prototype) {
-    int count = 0;
+    int count { 0 };
     
     if (type.isPrimitive()) {
         prototype->addArg(TypeIdOf<int>::kTypeId);
         count++;
     } else if (type.isTuple()) {
-	for (int i = 0; i < type.type.tuple->size(); i++) {
+	for (unsigned int i { 0 }; i < type.type.tuple->size(); i++) {
 	    addParamToPrototype(type.type.tuple->at(i), prototype);
 	    count++;
 	}
@@ -103,8 +103,8 @@ int addParamToPrototype(DType type, FuncSignatureX* prototype) {
  * Add parameters to function prototype according to calling convention.
  */
 int addParamsToPrototype(std::vector<VariableDecl*>* params, FuncSignatureX* prototype) {
-    int count = 0;
-    for (int i = 0; i < params->size(); i++) {
+    int count { 0 };
+    for (unsigned int i { 0 }; i < params->size(); i++) {
 	count += addParamToPrototype(params->at(i)->type, prototype);
     }
 
@@ -117,7 +117,7 @@ FuncSignatureX FunctionDecl::bCreatePrototype() {
         baPrototype = new FuncSignatureX(CallConv::kIdHostCDecl);
         baPrototype->setRet(TypeIdOf<int>::kTypeId);
 
-	int count = addParamsToPrototype(parameters, baPrototype);
+	addParamsToPrototype(parameters, baPrototype);
     }
 
     return *baPrototype;

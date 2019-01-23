@@ -10,11 +10,11 @@ TACCompiler::TACCompiler() { }
 
 
 ProgramType TACCompiler::compile(JitRuntime& runtime, TACProgram& program) {
-    void* entryPtr = compileFun(runtime, program.entry);
+    void* entryPtr { compileFun(runtime, program.entry) };
 
     std::vector<void*> funPtrs;
     for (TACFun* fun : program.functions) {
-	void* funPtr = compileFun(runtime, fun);
+	void* funPtr { compileFun(runtime, fun) };
 	funPtrs.push_back(funPtr);
     }
     
@@ -46,8 +46,8 @@ FuncSignatureX createSignature(TACFun* fun) {
  */
 void bindLabelAtPoint(TACFun* fun, InstrEnv& e, TAC* instr) {
     if (instr->label != nullptr) {
-	TACLabel* tacLabel = instr->label;
-	Label asmLabel = e.label(tacLabel->id);
+	TACLabel* tacLabel { instr->label };
+	Label asmLabel { e.label(tacLabel->id) };
 	e.c.bind(asmLabel);
     }
 }
@@ -68,15 +68,15 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
     code.setErrorHandler(&handler);
     X86Compiler c(&code);
     
-    FuncSignatureX signature = createSignature(fun);
-    CCFunc* f = c.addFunc(signature);
+    FuncSignatureX signature { createSignature(fun) };
+    CCFunc* f { c.addFunc(signature) };
     f->getFrameInfo().enablePreservedFP();
 
     InstrEnv e(this, c, fun);
 
     for (int i = 0; i < fun->parameters.size(); i++) {
-	TACOp param = fun->parameters[i];
-	X86Gp reg = generateVar(e, param);
+	TACOp param { fun->parameters[i] };
+	X86Gp reg { generateVar(e, param) };
 	c.setArg(i, reg);
     }
 
@@ -91,11 +91,11 @@ void* TACCompiler::compileFun(JitRuntime& runtime, TACFun* fun) {
 
     // Make asm virtreg naming consistent with IR if asm is to be printed.
     if (fun->dumpAssembly) {
-	for (auto it = e.varToReg.begin(); it != e.varToReg.end(); it++) {
-	    int id = it->first;
-	    X86Gp reg = it->second;
+	for (auto it { e.varToReg.begin() }; it != e.varToReg.end(); it++) {
+	    int id { it->first };
+	    X86Gp reg { it->second };
 	
-	    std::string name = fun->var(id)->name;
+	    std::string name { fun->var(id)->name };
 	    c.rename(reg, name.c_str());
 	}
 

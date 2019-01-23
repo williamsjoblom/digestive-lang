@@ -5,10 +5,8 @@
 #include "genir/LoopStmt.hh"
 
 
-LoopStmt::LoopStmt(Expr* condition, Stmt* body) {
-    this->condition = condition;
-    this->body = body;
-
+LoopStmt::LoopStmt(Expr* condition, Stmt* body) : condition{condition},
+                                                  body{body} {
     assert(condition != nullptr);
     assert(body != nullptr);
 }
@@ -26,14 +24,14 @@ void LoopStmt::generate(TACFun* env) {
 
 
 void LoopStmt::analyze(Scope* scope) {
-    Scope* inner = new Scope(scope);
+    Scope* inner { new Scope(scope) };
     condition->analyze(inner);
     body->analyze(inner);
 }
 
 
 bool LoopStmt::equals(const Node& other) const {
-    const LoopStmt* o = dynamic_cast<const LoopStmt*>(&other);
+    const LoopStmt* o { dynamic_cast<const LoopStmt*>(&other) };
     if (o == nullptr) return false;
 
     return *o->body == *body && *o->condition == *condition;
@@ -41,7 +39,7 @@ bool LoopStmt::equals(const Node& other) const {
 
 
 void LoopStmt::dump(size_t indent) {
-
+    // Not implemented.
 }
 
 

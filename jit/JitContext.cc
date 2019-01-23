@@ -28,14 +28,14 @@ namespace JitContext {
     // FIXME Dump all handles, not only the first.
     void dumpHandles() {
         std::cout << "Handles: [ ";
-        for (int i = 0; i < handleCount; i++) {
+        for (unsigned int i { 0 }; i < handleCount; i++) {
             std::cout << handles[i] << " ";
         }
 
         std::cout << "]" << std::endl;
     }
 
-    void setHandle(int index, void *ptr) {
+    void setHandle(unsigned int index, void *ptr) {
         if (index >= handleCount) assert(false); // Outside array bound.
         handles[index] = ptr;
     }

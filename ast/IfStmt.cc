@@ -6,21 +6,16 @@
 #include "genir/IfStmt.hh"
 
 
-IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) {
+IfStmt::IfStmt(Expr* condition, Stmt* ifBlock) : condition{condition}, ifBlock{ifBlock},
+                                                 elseBlock{nullptr} {
     assert(ifBlock != nullptr);
-
-    this->condition = condition;
-    this->ifBlock = ifBlock;
-    this->elseBlock = nullptr;
 }
 
 
-IfStmt::IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock) {
+IfStmt::IfStmt(Expr* condition, Stmt* ifBlock, Stmt* elseBlock) : condition{condition},
+                                                                  ifBlock{ifBlock},
+                                                                  elseBlock{elseBlock} {
     assert(ifBlock != nullptr);
-
-    this->condition = condition;
-    this->ifBlock = ifBlock;
-    this->elseBlock = elseBlock;
 }
 
 
@@ -34,11 +29,11 @@ IfStmt::~IfStmt() {
 void IfStmt::analyze(Scope* scope) {
     condition->analyze(scope);
 
-    Scope* ifScope = new Scope(scope);
+    Scope* ifScope { new Scope(scope) };
     ifBlock->analyze(ifScope);
 
     if (elseBlock != nullptr) {
-        Scope* elseScope = new Scope(scope);
+        Scope* elseScope { new Scope(scope) };
         elseBlock->analyze(elseScope);
     }
 }
@@ -62,7 +57,7 @@ void IfStmt::dump(size_t indent) {
 
 
 bool IfStmt::equals(const Node& other) const {
-    const IfStmt* o = dynamic_cast<const IfStmt*>(&other);
+    const IfStmt* o { dynamic_cast<const IfStmt*>(&other) };
     if (o == nullptr) return false;
 
     if (o->elseBlock == nullptr && elseBlock == nullptr) return false;

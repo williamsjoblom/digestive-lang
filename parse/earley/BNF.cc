@@ -168,7 +168,7 @@ std::string BNFRule::toS() const {
 
     ss << symbol << " = ";
 
-    for (int i = 0; i < productions.size(); i++) {
+    for (unsigned int i = 0; i < productions.size(); i++) {
 	const BNFProduction& p = productions[i];
 	if (i > 0) ss << "| ";
 	ss << p.toS();

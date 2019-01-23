@@ -97,7 +97,7 @@ std::string EState::toS() const {
 
     ss << "(" << symbol << " →";
     
-    for (int i = 0; i < production.symbols.size(); i++) {
+    for (unsigned i { 0 }; i < production.symbols.size(); i++) {
 	if (i == position) ss << " •";
 	ss << ' ' << production.symbols[i]->toS();
     }

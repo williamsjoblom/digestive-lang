@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ast/BlockStmt.h"
+#include "ast/BlockStmt.hh"
 
 class TACFun;
 

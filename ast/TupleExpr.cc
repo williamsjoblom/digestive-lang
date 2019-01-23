@@ -4,9 +4,7 @@
 #include "genir/Expr.hh"
 
 
-TupleExpr::TupleExpr(std::vector<Expr *> values) {
-    this->values = values;
-}
+TupleExpr::TupleExpr(std::vector<Expr *> values) : values{values} { }
 
 
 TupleExpr::~TupleExpr() {
@@ -20,7 +18,7 @@ TACOp TupleExpr::generate(TACFun* fun) {
 
 
 void TupleExpr::analyze(Scope *scope) {
-    std::vector<DType>* types = new std::vector<DType>();
+    std::vector<DType>* types { new std::vector<DType>() };
     
     for (Expr* v : values) {
         v->analyze(scope);

@@ -4,9 +4,7 @@
 #include "genir/Expr.hh"
 #include "ir/TACFun.hh"
 
-VariableExpr::VariableExpr(std::string identifier) {
-    this->identifier = identifier;
-}
+VariableExpr::VariableExpr(std::string identifier) : identifier{identifier} { }
 
 
 void VariableExpr::analyze(Scope* scope) {
@@ -27,7 +25,7 @@ TACOp VariableExpr::generate(TACFun* env) {
 
 
 bool VariableExpr::equals(const Node &other) const {
-    const VariableExpr* o = dynamic_cast<const VariableExpr*>(&other);
+    const VariableExpr* o { dynamic_cast<const VariableExpr*>(&other) };
     if (o == nullptr) return false;
 
     return o->identifier == identifier;

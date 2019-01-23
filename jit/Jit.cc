@@ -107,7 +107,7 @@ bool Jit::reload(std::string path) {
         for (FunctionDecl* newFunction : newRoot->functions) {
             bool addFunction = true;
 
-            for (int i = 0; i < JitContext::root->functions.size(); i++) {
+            for (unsigned int i = 0; i < JitContext::root->functions.size(); i++) {
                 FunctionDecl* oldFunction = JitContext::root->functions[i];
 
                 if (*newFunction == *oldFunction) {                        // Function not updated

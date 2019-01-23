@@ -80,7 +80,7 @@ namespace BuiltIn {
 	    std::cout << "(";
 	
 	    uint64_t offset = 0;
-	    for (int i = 0; i < tupleTypes->size(); i++) {
+	    for (unsigned int i = 0; i < tupleTypes->size(); i++) {
 		DType innerType = tupleTypes->at(i);
 		void* innerPtr = (char*)ptr + offset;
 		if (innerType.ref) {

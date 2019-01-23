@@ -5,8 +5,7 @@
 #include "ir/TACFun.hh"
 
 
-IntegerLiteral::IntegerLiteral(int value) {
-    this->value = value;
+IntegerLiteral::IntegerLiteral(int value) : value{value} {
     this->type = I32_TYPE;
 }
 
@@ -17,7 +16,7 @@ TACOp IntegerLiteral::generate(TACFun* env) {
 
 
 bool IntegerLiteral::equals(const Node& other) const {
-    const IntegerLiteral* o = dynamic_cast<const IntegerLiteral*>(&other);
+    const IntegerLiteral* o { dynamic_cast<const IntegerLiteral*>(&other) };
     if (o == nullptr) return false;
 
     return o->value == value;

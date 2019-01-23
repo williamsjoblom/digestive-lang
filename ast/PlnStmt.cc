@@ -5,9 +5,7 @@
 #include "genir/BuiltIn.hh"
 
 
-PlnStmt::PlnStmt(Expr* expression) {
-    this->expression = expression;
-}
+PlnStmt::PlnStmt(Expr* expression) : expression{expression} { }
 
 
 PlnStmt::~PlnStmt() {
@@ -31,7 +29,7 @@ void PlnStmt::dump(size_t indent) {
 
 
 bool PlnStmt::equals(const Node &other) const {
-    const PlnStmt* o = dynamic_cast<const PlnStmt*>(&other);
+    const PlnStmt* o { dynamic_cast<const PlnStmt*>(&other) };
     if (o == nullptr) return false;
 
     return *o->expression == *expression;

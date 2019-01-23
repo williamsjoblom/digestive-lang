@@ -2,10 +2,7 @@
 #include "ir/TACOp.hh"
 
 
-UnaryExpr::UnaryExpr(Operator* op, Expr* expr) {
-    this->op = op;
-    this->expr = expr;
-}
+UnaryExpr::UnaryExpr(Operator* op, Expr* expr) : op{op}, expr{expr} { }
 
 
 UnaryExpr::~UnaryExpr() {
@@ -17,7 +14,7 @@ UnaryExpr::~UnaryExpr() {
 void UnaryExpr::analyze(Scope* scope) {
     expr->analyze(scope);
 
-    /*
+    /**
      * FIXME will not work as expected for natural numbers and to be implemented product types.
      */
     type = expr->type;
@@ -25,7 +22,7 @@ void UnaryExpr::analyze(Scope* scope) {
 
 
 bool UnaryExpr::equals(const Node& other) const {
-    const UnaryExpr* o = dynamic_cast<const UnaryExpr*>(&other);
+    const UnaryExpr* o { dynamic_cast<const UnaryExpr*>(&other) };
     if (o == nullptr) return false;
     return *o->op == *op && *o->expr == *expr;
 }

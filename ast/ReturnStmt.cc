@@ -5,9 +5,7 @@
 #include "genir/Return.hh"
 
 
-ReturnStmt::ReturnStmt(Expr* expression) {
-    this->expression = expression;
-}
+ReturnStmt::ReturnStmt(Expr* expression) : expression{expression} { }
 
 
 ReturnStmt::~ReturnStmt() {
@@ -39,7 +37,7 @@ void ReturnStmt::generate(TACFun* fun) {
 
 
 bool ReturnStmt::equals(const Node &other) const {
-    const ReturnStmt* o = dynamic_cast<const ReturnStmt*>(&other);
+    const ReturnStmt* o { dynamic_cast<const ReturnStmt*>(&other) };
     if (o == nullptr) return false;
 
     return *o->expression == *expression;

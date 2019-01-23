@@ -25,16 +25,16 @@
 /****************************************************************
  * Globals defined as 'extern' in 'options.h'.
  ****************************************************************/
-bool verbose = false;
-bool runTests = false;
+bool verbose { false };
+bool runTests { false };
 
 /**
  * Dump.
  */
-bool dumpParseDesugaredGrammar = false;
-bool dumpParseSets = false;
-bool dumpParseStateTree = false;
-bool dumpJitHandles = false;
+bool dumpParseDesugaredGrammar { false };
+bool dumpParseSets { false };
+bool dumpParseStateTree { false };
+bool dumpJitHandles { false };
 
 
 /**
@@ -47,7 +47,7 @@ bool runTestSuite();
  * Main.
  */
 int main(int argc, char* argv[]) {    
-    std::string pathArg = parseArgs(argc, argv);
+    std::string pathArg { parseArgs(argc, argv) };
 
     if (verbose) {
 	std::cout << " digestive " << version
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (runTests) {
-	bool passed = runTestSuite();
+	bool passed { runTestSuite() };
 	if (!passed) return 1;
     }
         
@@ -74,12 +74,12 @@ int main(int argc, char* argv[]) {
     Jit jit;
     Interactive::start(&jit);
 
-    std::clock_t compile_t0 = std::clock();
+    std::clock_t compile_t0 { std::clock() };
 
     bool loaded = jit.load(path);
 
-    std::clock_t compile_t1 = std::clock();
-    double compile_dt = double(compile_t1 - compile_t0) / (CLOCKS_PER_SEC / 1000);
+    std::clock_t compile_t1 { std::clock() };
+    double compile_dt { double(compile_t1 - compile_t0) / (CLOCKS_PER_SEC / 1000) };
     
     if (verbose)
 	std::cout << "Compilation in " << compile_dt << " ms" << std::endl;
@@ -88,12 +88,12 @@ int main(int argc, char* argv[]) {
 	if (verbose)
 	    std::cout << "Run " << path << " => " << std::endl;
 
-	std::clock_t run_t0 = std::clock();
+	std::clock_t run_t0 { std::clock() };
 	
-	int result = jit.run();
+	int result { jit.run() };
 	
-	std::clock_t run_t1 = std::clock();
-	double run_dt = double(run_t1 - run_t0) / (CLOCKS_PER_SEC / 1000);
+	std::clock_t run_t1 { std::clock() };
+	double run_dt { double(run_t1 - run_t0) / (CLOCKS_PER_SEC / 1000) };
 	if (verbose)
 	    std::cout << "Completed in " << run_dt << " ms" << std::endl;
 	
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 /**
  * Invalid command line option error.
  */
-void invalidOptionError(std::string& option) {
+[[noreturn]] void invalidOptionError(std::string& option) {
     std::cout << "Invalid option -- '" << option.substr(1) << "'"
 	      << std::endl;
     throw 1;
@@ -121,7 +121,7 @@ void invalidOptionError(std::string& option) {
 /**
  * Invalid argument error.
  */
-void invalidArgError(std::string& arg) {
+[[noreturn]] void invalidArgError(std::string& arg) {
     std::cout << "Invalid argument -- '" << arg << "'"
 	      << std::endl;
     throw 1;
@@ -131,7 +131,7 @@ void invalidArgError(std::string& arg) {
 /**
  * Option without argument error.
  */
-void expectedOptionArgError(std::string& option) {
+[[noreturn]] void expectedOptionArgError(std::string& option) {
     std::cout << "Expected argument for option -- '" << option << "'"
 	      << std::endl;
     throw 1;
@@ -142,7 +142,7 @@ void expectedOptionArgError(std::string& option) {
  * Parse command line option.
  */
 int parseOption(int argc, char* argv[], int index) {
-    std::string option = argv[index];
+    std::string option { argv[index] };
 
     if (option == "-v" ||
 	option == "--verbose") {
@@ -186,7 +186,7 @@ int parseOption(int argc, char* argv[], int index) {
 std::string parseArgs(int argc, char* argv[]) {
     std::string sourcePath = "";
 
-    int i = 1;
+    int i { 1 };
     while (i < argc) {
 	std::string arg = argv[i];
 

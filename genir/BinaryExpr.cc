@@ -11,11 +11,11 @@ TACOp primitiveBinaryExpr(TACFun* fun, BinaryExpr* expr) {
     DType& type = expr->type;
     assert(!type.isNilType());
 
-    TACOp s0 = expr->left->generate(fun);
-    TACOp s1 = expr->right->generate(fun);
+    TACOp s0 { expr->left->generate(fun) };
+    TACOp s1 { expr->right->generate(fun) };
     
-    TACType dT = TACType(type);
-    TACOp d = fun->newVar(dT);
+    TACType dT { TACType(type) };
+    TACOp d { fun->newVar(dT) };
 
     switch(expr->op->symbol) {
     case OperatorSymbol::PLUS:
@@ -60,14 +60,14 @@ TACOp primitiveBinaryExpr(TACFun* fun, BinaryExpr* expr) {
  * Returns actual accessed index from a tuple access.
  */
 int tupleAccessIndex(BinaryExpr* expr) {
-    std::vector<DType> containedTypes = *expr->left->type.type.tuple;
+    std::vector<DType> containedTypes { *expr->left->type.type.tuple };
     
-    IntegerLiteral* literal = dynamic_cast<IntegerLiteral*>(expr->right);
+    IntegerLiteral* literal { dynamic_cast<IntegerLiteral*>(expr->right) };
     if (literal != nullptr) return literal->value;
 
-    VariableExpr* label = dynamic_cast<VariableExpr*>(expr->right);
+    VariableExpr* label { dynamic_cast<VariableExpr*>(expr->right) };
     if (label != nullptr) {
-	for (int i = 0; i < containedTypes.size(); i++) {
+	for (unsigned int i { 0 }; i < containedTypes.size(); i++) {
 	    if (containedTypes[i].label == label->identifier)
 		return i;
 	}
@@ -81,12 +81,12 @@ int tupleAccessIndex(BinaryExpr* expr) {
  * Returns actual memory offset from a tuple access.
  */
 unsigned long tupleAccessOffset(BinaryExpr* expr) {
-    std::vector<DType>* tupleType = expr->left->type.type.tuple;
-    int index = tupleAccessIndex(expr);
+    std::vector<DType>* tupleType { expr->left->type.type.tuple };
+    int index { tupleAccessIndex(expr) };
 
-    unsigned long offset = 0;
-    for (int i = 0; i < index; i++) {
-	TACType t = tupleType->at(i);
+    unsigned long offset { 0 };
+    for (int i { 0 }; i < index; i++) {
+	TACType t { tupleType->at(i) };
 	offset += t.byteSize;
     }
     
@@ -98,20 +98,20 @@ unsigned long tupleAccessOffset(BinaryExpr* expr) {
  * Generate tuple access.
  */
 TACOp tupleAccess(TACFun* fun, BinaryExpr* expr) {
-    std::vector<DType>* tupleType = expr->left->type.type.tuple;
-    int index = tupleAccessIndex(expr);
-    unsigned long offset = tupleAccessOffset(expr);
+    std::vector<DType>* tupleType { expr->left->type.type.tuple };
+    int index { tupleAccessIndex(expr) };
+    unsigned long offset { tupleAccessOffset(expr) };
     
-    TACOp tuplePtr = expr->left->generate(fun);
+    TACOp tuplePtr { expr->left->generate(fun) };
     tuplePtr.offset = offset;
     tuplePtr.type.ref = true;
     
     if (expr->type.ref) { // Nested tuple, calculate new ptr.
-	TACType type(tupleType->at(index));
+	TACType type { tupleType->at(index) };
 	TACOp indirectPtr = fun->newVar(type);
 	indirectPtr.type.ref = false;
 	
-	fun->add(TACC::cast, tuplePtr, TACOp(), indirectPtr);
+	fun->add(TACC::cast, tuplePtr, TACOp{}, indirectPtr);
 	return indirectPtr;
     } else {
 	return tuplePtr;
@@ -123,10 +123,10 @@ TACOp tupleAccess(TACFun* fun, BinaryExpr* expr) {
  * Generate primitive assignment.
  */
 TACOp primitiveAssignment(TACFun* fun, VariableExpr* variable, Expr* value) {
-    TACOp var = variable->generate(fun);
-    TACOp val = value->generate(fun);
+    TACOp var { variable->generate(fun) };
+    TACOp val { value->generate(fun) };
     
-    fun->add(TACC::cast, val, TACOp(), var);
+    fun->add(TACC::cast, val, TACOp{}, var);
     
     return value;
 }
@@ -136,10 +136,10 @@ TACOp primitiveAssignment(TACFun* fun, VariableExpr* variable, Expr* value) {
  * Generate tuple member assignment.
  */
 TACOp memberAssignment(TACFun* fun, BinaryExpr* tupleAccess, Expr* value) {
-    TACOp tuplePtr = tupleAccess->left->generate(fun);
+    TACOp tuplePtr { tupleAccess->left->generate(fun) };
     
-    TACOp val = value->generate(fun);
-    TACOp offset = fun->newImm(tupleAccessOffset(tupleAccess));
+    TACOp val { value->generate(fun) };
+    TACOp offset { fun->newImm(tupleAccessOffset(tupleAccess)) };
     
     fun->add(TACC::tupTo, val, offset, tuplePtr);
 
@@ -151,11 +151,11 @@ TACOp memberAssignment(TACFun* fun, BinaryExpr* tupleAccess, Expr* value) {
  * Generate assignment.
  */
 TACOp assignment(TACFun* fun, BinaryExpr* expr) {
-    VariableExpr* variable = dynamic_cast<VariableExpr*>(expr->left);
+    VariableExpr* variable { dynamic_cast<VariableExpr*>(expr->left) };
     if (variable)
 	return primitiveAssignment(fun, variable, expr->right);
     
-    BinaryExpr* tupleAccess = dynamic_cast<BinaryExpr*>(expr->left);
+    BinaryExpr* tupleAccess { dynamic_cast<BinaryExpr*>(expr->left) };
     if (tupleAccess && tupleAccess->op->symbol == OperatorSymbol::DOT)
 	return memberAssignment(fun, tupleAccess, expr->right);
     

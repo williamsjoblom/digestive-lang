@@ -35,8 +35,6 @@ namespace Interactive {
             return;
         }
 
-        bool status = false;
-
         while (true) {	    
             std::string s;
             std::getline(IO::in, s);

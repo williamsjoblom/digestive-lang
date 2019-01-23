@@ -40,7 +40,7 @@ namespace TTY {
 	/**
 	 * Destructor.
 	 */
-	~TreeNode();	
+	virtual ~TreeNode();	
     };
 
     /**

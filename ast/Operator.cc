@@ -13,22 +13,16 @@ const std::string symbolToString(OperatorSymbol symbol);
 int precedenceOf(OperatorSymbol symbol);
 
 
-Operator::Operator() {
-    this->symbol = OperatorSymbol::NOT_AN_OPERATOR;
-    this->precedence = precedenceOf(this->symbol);
-}
+Operator::Operator() : symbol{OperatorSymbol::NOT_AN_OPERATOR},
+                       precedence{precedenceOf(symbol)} { }
 
 
-Operator::Operator(std::string s) {
-    this->symbol = symbolFromString(s);
-    this->precedence = precedenceOf(symbol);
-}
+Operator::Operator(std::string s) : symbol{symbolFromString(s)},
+                                    precedence{precedenceOf(symbol)} { }
 
 
-Operator::Operator(OperatorSymbol symbol) {
-    this->symbol = symbol;
-    this->precedence = precedenceOf(symbol);
-}
+Operator::Operator(OperatorSymbol symbol) : symbol{symbol},
+                                            precedence{precedenceOf(symbol)} { }
 
 
 void Operator::dump(size_t indent) {
@@ -36,7 +30,7 @@ void Operator::dump(size_t indent) {
 }
 
 
-const std::map<std::string, OperatorSymbol> stringToSymbol =
+const std::map<std::string, OperatorSymbol> stringToSymbol
         {
                 {"+", OperatorSymbol::PLUS},
                 {"-", OperatorSymbol::MINUS},
@@ -62,7 +56,7 @@ bool Operator::isOperator(std::string s) {
 
 
 bool Operator::equals(const Node &other) const {
-    const Operator* o = dynamic_cast<const Operator*>(&other);
+    const Operator* o { dynamic_cast<const Operator*>(&other) };
     if (o == nullptr) return false;
 
     return o->symbol == symbol;

@@ -4,10 +4,8 @@
 #include <assert.h>
 
 
-PrimitiveType::PrimitiveType(PrimitiveKind kind, int size) {
-    this->kind = kind;
-    this->sz = size;
-}
+PrimitiveType::PrimitiveType(PrimitiveKind kind, int size) : kind{kind},
+                                                             sz{size}{ }
 
 
 void PrimitiveType::dump() const {
@@ -37,7 +35,7 @@ bool PrimitiveType::isPrimitive() const {
 
 
 bool PrimitiveType::equals(const Node &other) const {
-    const PrimitiveType* o = dynamic_cast<const PrimitiveType*>(&other);
+    const PrimitiveType* o { dynamic_cast<const PrimitiveType*>(&other) };
     if (o == nullptr) return false;
 
     return sz == o->sz && kind == o->kind;

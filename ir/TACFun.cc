@@ -38,17 +38,17 @@ TACFun::TACFun(TACProgram* parent, int id, FunctionDecl* decl) : TACFun(parent, 
 
 
 TACFun::~TACFun() {
-    for (int i = 0; i < instr.size(); i++)
+    for (unsigned int i { 0 }; i < instr.size(); i++)
 	delete instr[i];
-    for (int i = 0; i < labels.size(); i++)
+    for (unsigned int i { 0 }; i < labels.size(); i++)
 	delete labels[i];
-    for (int i = 0; i < variables.size(); i++)
+    for (unsigned int i { 0 }; i < variables.size(); i++)
 	delete variables[i];
 }
 
 
 TAC* TACFun::add(TACC opcode, TACOp s0, TACOp s1, TACOp d) {
-    TAC* tac = new TAC(opcode, s0, s1, d);
+    TAC* tac { new TAC(opcode, s0, s1, d) };
     instr.push_back(tac);
 
     bindWaitingLabels(tac);

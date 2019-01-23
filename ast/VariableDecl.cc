@@ -4,16 +4,14 @@
 #include "ast/Expr.hh"
 
 
-VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier) {
-    this->value = nullptr;
-    this->type = type;
-}
+VariableDecl::VariableDecl(std::string identifier, const DType type) : Decl(identifier),
+                                                                       value{nullptr},
+                                                                       type{type} { }
 
 
-VariableDecl::VariableDecl(std::string identifier, const DType type, Expr* value) : Decl(identifier) {
-    this->value = value;
-    this->type = type;
-}
+VariableDecl::VariableDecl(std::string identifier, const DType type, Expr* value) : Decl(identifier),
+                                                                                    value{value},
+                                                                                    type{type} { }
 
 
 VariableDecl::~VariableDecl() {
@@ -55,7 +53,7 @@ void VariableDecl::generate(TACFun* fun) {
 
 
 bool VariableDecl::equals(const Node &other) const {
-    const VariableDecl* o = dynamic_cast<const VariableDecl*>(&other);
+    const VariableDecl* o { dynamic_cast<const VariableDecl*>(&other) };
     if (o == nullptr) return false;
 
     if (o->value == nullptr && value != nullptr) return false;

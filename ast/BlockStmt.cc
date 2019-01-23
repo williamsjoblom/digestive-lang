@@ -4,9 +4,7 @@
 #include "util/PrettyPrint.hh"
 
 
-BlockStmt::BlockStmt(std::vector<Stmt*> statements) {
-    this->statements = statements;
-}
+BlockStmt::BlockStmt(std::vector<Stmt*> statements) : statements{statements} { }
 
 
 BlockStmt::~BlockStmt() {
@@ -42,14 +40,14 @@ void BlockStmt::generate(TACFun* env) {
 
 
 bool BlockStmt::equals(const Node &other) const {
-    const BlockStmt* o = dynamic_cast<const BlockStmt*>(&other);
+    const BlockStmt* o { dynamic_cast<const BlockStmt*>(&other) };
     if (o == nullptr) return false;
 
     if (o->statements.size() != statements.size()) return false;
 
-    for (int i = 0; i < statements.size(); i++) {
-	Stmt* statement =  statements[i];
-	Stmt* otherStatement = o->statements[i];
+    for (unsigned int i { 0 }; i < statements.size(); i++) {
+	Stmt* statement { statements[i] };
+	Stmt* otherStatement { o->statements[i] };
 
 	if (*statement != *otherStatement) return false;
     }

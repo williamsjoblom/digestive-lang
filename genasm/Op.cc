@@ -19,9 +19,9 @@ Imm generateImm(InstrEnv& e, TACOp& imm) {
 X86Gp generateVar(InstrEnv& e, TACOp& var) {
     int varId = var.data.varId;
     
-    auto it = e.varToReg.find(varId);
+    auto it { e.varToReg.find(varId) };
     if (it == e.varToReg.end()) {
-	X86Gp reg = e.c.newGpReg(var.type.asmjitId());
+	X86Gp reg { e.c.newGpReg(var.type.asmjitId()) };
 	e.varToReg[varId] = reg;
 	return reg;
     } else {
@@ -62,10 +62,10 @@ X86Mem generateDereference(InstrEnv& e, TACOp& op) {
     if (op.kind == TACOpKind::IMMEDIATE) {
 	return x86::ptr(op.data.immValue + op.offset);
     } else if (op.kind == TACOpKind::VARIABLE) {
-	X86Gp base = generateValue(e, op).as<X86Gp>();
+	X86Gp base { generateValue(e, op).as<X86Gp>() };
 	return x86::ptr(base, op.offset);
     } else if (op.kind == TACOpKind::LABEL) {
-	Label base = generateValue(e, op).as<Label>();
+	Label base { generateValue(e, op).as<Label>() };
 	return x86::ptr(base, op.offset);
     } else {
 	assert(false);

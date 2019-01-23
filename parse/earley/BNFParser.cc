@@ -209,14 +209,14 @@ BNFProduction parseProduction(TokenQueue& tokens, BNFGrammar& g) {
 	   tokens.top().type != TokenType::AT &&
 	   tokens.top().type != TokenType::RPAR) {
 
-	bool createsNode;
+	//bool createsNode;
 	BNFSymbol* symbol;
 	if (tokens.top().type == TokenType::LPAR) {
 	    symbol = parseParen(tokens, g);
-	    createsNode = false;
+	    //createsNode = false;
 	} else {
 	    symbol = parseSymbol(tokens, g);
-	    createsNode = true;
+	    //createsNode = true;
 	}
 	   
 	if (tokens.eat(TokenType::QUESTION)) {
@@ -291,7 +291,7 @@ std::string getSubruleSymbol(std::string symbol, int index, int subruleCount) {
 void makeLeftAssociative(BNFProduction& production, std::string symbol,
 			 int subruleIndex, int subruleCount) {
     bool first = true;
-    for (int i = 0; i < production.symbols.size(); i++) {
+    for (unsigned int i = 0; i < production.symbols.size(); i++) {
 	BNFSymbol* s = production.symbols[i];
 	if (s->nonTerminal()) {
 	    BNFNT* nt = s->asNonTerminal();
@@ -379,9 +379,9 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
     }
 
 
-    for (int i = 0; i < subrules.size(); i++) {
+    for (unsigned int i { 0 }; i < subrules.size(); i++) {
 	BNFRule& subrule = subrules[i];
-	for (int j = 0; j < subrule.productions.size(); j++) {
+	for (unsigned int j { 0 }; j < subrule.productions.size(); j++) {
 	    BNFProduction& production = subrule.productions[j];
 
 	    if (production.attribute == "left")
@@ -394,7 +394,7 @@ BNFRule parseRule(TokenQueue& tokens, BNFGrammar& g) {
     }
     
     
-    for (int i = 0; i < subrules.size() - 1; i++) {
+    for (unsigned int i { 0 }; i < subrules.size() - 1; i++) {
 	BNFRule& subrule = subrules[i];
 	g.rules[subrule.symbol] = subrule;
     }

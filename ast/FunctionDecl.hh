@@ -19,21 +19,6 @@ public:
      * Function body.
      */
     BlockStmt* body;
-    
-    /**
-     * Return type.
-     */
-    DType returnType;
-
-    /**
-     * Print IR after IR generation.
-     */
-    bool dumpIr;
-    
-    /**
-     * Print assembly after code generation.
-     */
-    bool dumpAssembly;
 
     /**
      * Index of function pointer in current JitContext.
@@ -41,19 +26,35 @@ public:
     int bHandleIndex;
 
     /**
-     * Function prototype.
+     * Byte size of code.
      */
-    FuncSignatureX* baPrototype;
+    size_t codeSize;
 
     /**
      * IR id.
      */
-    int irId;
+    unsigned int irId;
 
     /**
-     * Byte size of code.
+     * Return type.
      */
-    size_t codeSize;
+    DType returnType;
+
+    /**
+     * Print assembly after code generation.
+     */
+    bool dumpAssembly;
+    
+    /**
+     * Print IR after IR generation.
+     */
+    bool dumpIr;
+    
+    /**
+     * Function prototype.
+     */
+    FuncSignatureX* baPrototype;
+
 
     /**
      * Constructor.

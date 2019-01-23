@@ -11,13 +11,13 @@
  * Emit tuple pln.
  */
 void emitTuplePln(TACFun* fun, PlnStmt* stmt) {
-    TACOp ptr = fun->newImm<void*>((void*) BuiltIn::plnTuple);
-    TACOp arg = stmt->expression->generate(fun);
-    TACOp typePtr = fun->newImm<void*>(&stmt->expression->type);
+    TACOp ptr { fun->newImm<void*>((void*) BuiltIn::plnTuple) };
+    TACOp arg { stmt->expression->generate(fun) };
+    TACOp typePtr { fun->newImm<void*>(&stmt->expression->type) };
     
-    fun->add(TACC::pushArg, typePtr, TACOp(), TACOp());
-    fun->add(TACC::pushArg, arg, TACOp(), TACOp());
-    fun->add(TACC::call, ptr, TACOp(), TACOp());
+    fun->add(TACC::pushArg, typePtr, TACOp{}, TACOp{});
+    fun->add(TACC::pushArg, arg, TACOp{}, TACOp{});
+    fun->add(TACC::call, ptr, TACOp{}, TACOp{});
 }
 
 
@@ -27,8 +27,8 @@ void emitTuplePln(TACFun* fun, PlnStmt* stmt) {
 void emitPrimitivePln(TACFun* fun, PlnStmt* stmt) {
     void* ptr;
     
-    DPrimitiveKind pk = stmt->expression->type.type.primitive;
-    int sz = stmt->expression->type.sz;
+    DPrimitiveKind pk { stmt->expression->type.type.primitive };
+    int sz { stmt->expression->type.sz };
     if (pk == DPrimitiveKind::INTEGER && sz == 2)
 	ptr = (void*) BuiltIn::plnPrimitive<short>;
     else if (pk == DPrimitiveKind::INTEGER && sz == 4)
@@ -46,17 +46,17 @@ void emitPrimitivePln(TACFun* fun, PlnStmt* stmt) {
     else
 	assert(false);
 
-    TACOp funPtr = fun->newImm<void*>(ptr);
+    TACOp funPtr { fun->newImm<void*>(ptr) };
 
-    Expr* astArg = stmt->expression;
-    TACOp arg = astArg->generate(fun);
+    Expr* astArg { stmt->expression };
+    TACOp arg { astArg->generate(fun) };
     
     if (arg.type.ref) {
 	// Dereference argument before passing.
-	TACType derefType = astArg->type;
+	TACType derefType { astArg->type };
 	derefType.ref = false;
 	    
-	TACVar* derefArg = fun->newVar(derefType);
+	TACVar* derefArg { fun->newVar(derefType) };
 	fun->add(TACC::cast, arg, TACOp(), derefArg);
 	fun->add(TACC::pushArg, derefArg, TACOp(), TACOp());
     } else {

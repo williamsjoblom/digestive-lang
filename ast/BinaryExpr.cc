@@ -3,11 +3,9 @@
 #include "BinaryExpr.hh"
 #include "genir/BinaryExpr.hh"
 
-BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) {
-    this->left = left;
-    this->op = op;
-    this->right = right;
-}
+BinaryExpr::BinaryExpr(Expr* left, Operator* op, Expr* right) : left{left},
+                                                                op{op},
+                                                                right{right} { }
 
 
 BinaryExpr::~BinaryExpr() {
@@ -45,7 +43,7 @@ TACOp BinaryExpr::generate(TACFun* env) {
 
 
 bool BinaryExpr::equals(const Node &other) const {
-    const BinaryExpr* o = dynamic_cast<const BinaryExpr*>(&other);
+    const BinaryExpr* o { dynamic_cast<const BinaryExpr*>(&other) };
     if (o == nullptr) return false;
     return *o->left == *left && *o->op == *op && *o->right == *right;
 }

@@ -3,8 +3,8 @@
 #include "ir/TACFun.hh"
 
 
-InstrEnv::InstrEnv(TACCompiler* tc, X86Compiler& c, TACFun* fun): tc(tc), c(c) {
-    for (int i = 0; i < fun->labels.size(); i++) {
+InstrEnv::InstrEnv(TACCompiler* tc, X86Compiler& c, TACFun* fun) : tc(tc), c(c) {
+    for (unsigned int i { 0 }; i < fun->labels.size(); i++) {
 	labels.push_back(c.newLabel());
     }
 }

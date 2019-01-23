@@ -12,32 +12,28 @@ DType::DType(const DType &o) {
 }
 
 
-DType::DType(DKind kind, int sz, bool ref) {
-    this->kind = kind;
-    this->sz = sz;
-    this->label = "";
-    this->ref = ref;
-}
+DType::DType(DKind kind, int sz, bool ref) : kind{kind},
+                                             sz{sz},
+                                             label{""},
+                                             ref{ref} { }
 
 
-DType::DType(DPrimitiveKind primitiveKind, int sz, bool ref) {
-    this->kind = DKind::PRIMITIVE;
+DType::DType(DPrimitiveKind primitiveKind, int sz, bool ref) : kind{DKind::PRIMITIVE},
+                                                               sz{sz},
+                                                               label{""},
+                                                               ref{ref} {
     this->type.primitive = primitiveKind;
-    this->sz = sz;
-    this->label = "";
-    this->ref = ref;
 }
 
 
-DType::DType(std::vector<DType>* tupleTypes, bool ref) {
-    kind = DKind::TUPLE;
-    type.tuple = tupleTypes;
+DType::DType(std::vector<DType>* tupleTypes, bool ref) : kind{DKind::TUPLE},
+                                                         ref{ref},
+                                                         label{""} {
+    this->type.tuple = tupleTypes;
 
     sz = 0;
     assert(tupleTypes != nullptr);
     for (DType t : *tupleTypes) sz += t.byteSize();
-    this->label = "";
-    this->ref = ref;
 }
 
 
@@ -80,7 +76,7 @@ bool DType::operator==(const DType &o) {
     switch (kind) {
         case DKind::PRIMITIVE: return type.primitive == o.type.primitive;
         case DKind::TUPLE:
-            for (int i = 0; i < type.tuple->size(); i++)
+            for (int i { 0 }; i < type.tuple->size(); i++)
                 if ((*type.tuple)[i] != (*o.type.tuple)[i])
                     return false;
             return true;

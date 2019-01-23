@@ -20,10 +20,10 @@
  * Arithmetics
  */
 GENERATE(add, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);    
-    Operand d  = generateOperand(e, e._d);
-    
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
+    Operand d  { generateOperand(e, e._d) };
+
     assert(d.isRegOrMem());
 
     e.c.emit(X86Inst::kIdMov, d, s0);
@@ -31,10 +31,10 @@ GENERATE(add, e) {
 }
 
 GENERATE(sub, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);    
-    Operand d  = generateOperand(e, e._d);
-    
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
+    Operand d  { generateOperand(e, e._d) };
+
     assert(d.isRegOrMem());
 
     e.c.emit(X86Inst::kIdMov, d, s0);
@@ -42,12 +42,12 @@ GENERATE(sub, e) {
 }
 
 GENERATE(mul, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);    
-    Operand d  = generateOperand(e, e._d);
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
+    Operand d  { generateOperand(e, e._d) };
 
     assert(d.isRegOrMem());
-    
+
     e.c.emit(X86Inst::kIdMov, d, s0);
     if (e._d.type.isSigned())
 	e.c.emit(X86Inst::kIdImul, d, s1);
@@ -56,9 +56,9 @@ GENERATE(mul, e) {
 }
 
 GENERATE(div, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);    
-    Operand d  = generateOperand(e, e._d);
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
+    Operand d  { generateOperand(e, e._d) };
 
     assert(d.isRegOrMem());
 
@@ -69,7 +69,7 @@ GENERATE(div, e) {
     } else {
 	s1RegOrMem = s1;
     }
-    
+
     e.c.emit(X86Inst::kIdMov, d, s0);
     X86Gp remainder = e.c.newInt32();
     e.c.emit(X86Inst::kIdMov, remainder, Imm(0));
@@ -91,8 +91,8 @@ GENERATE(div, e) {
  * out by the caller.
  */
 void nativeCmp(InstrEnv& e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
 
     // Comparisons where the first operand is an immediate value
     // not possible. Thus moving the immediate value to a register
@@ -102,15 +102,15 @@ void nativeCmp(InstrEnv& e) {
 	e.c.emit(X86Inst::kIdMov, s0Reg, s0);
 	s0 = s0Reg;
     }
-    
+
     e.c.emit(X86Inst::kIdCmp, s0, s1);
 }
 
 
-GENERATE(cmpEQ, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpEQ, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -125,10 +125,10 @@ GENERATE(cmpEQ, e) {
     }
 }
 
-GENERATE(cmpNE, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpNE, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -143,10 +143,10 @@ GENERATE(cmpNE, e) {
     }
 }
 
-GENERATE(cmpG, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpG, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -161,10 +161,10 @@ GENERATE(cmpG, e) {
     }
 }
 
-GENERATE(cmpL, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpL, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -179,10 +179,10 @@ GENERATE(cmpL, e) {
     }
 }
 
-GENERATE(cmpGE, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpGE, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -197,10 +197,10 @@ GENERATE(cmpGE, e) {
     }
 }
 
-GENERATE(cmpLE, e) {    
-    Operand d  = generateOperand(e, e._d);
+GENERATE(cmpLE, e) {
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
-    
+
     // Optimize immediate comparison.
     if (e._s0.kind == TACOpKind::IMMEDIATE &&
 	e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -231,24 +231,24 @@ GENERATE(call, e) {
     }
 
     if (!e._d.ignore) {
-	Operand d  = generateOperand(e, e._d);
+	Operand d { generateOperand(e, e._d) };
 	signature.setRet(e._d.type.asmjitId());
     }
 
     // Emit call.
     CCFuncCall* funcCall;
     if (e._s0.type.kind == TACKind::PTR) {
-	Operand s0 = generateOperand(e, e._s0);
-	
+	Operand s0 { generateOperand(e, e._s0) };
+
 	if (s0.isReg()) {
-	    const X86Gp addrReg = s0.as<X86Gp>();
+	    const X86Gp addrReg { s0.as<X86Gp>() };
 	    funcCall = e.c.call(addrReg, signature);
 	} else if (s0.isImm()) {
-	    const Imm addrImm = s0.as<Imm>();
+	    const Imm addrImm { s0.as<Imm>() };
 	    funcCall = e.c.call(addrImm, signature);
 	}
     } else if(e._s0.kind == TACOpKind::FUNCTION) {
-	X86Gp handle = e.c.newGpd();
+	X86Gp handle { e.c.newGpd() };
 	funcCall = e.c.call(x86::ptr((uint64_t)(JitContext::handles + e._s0.data.functionId)), signature);
     } else {
 	assert(false);
@@ -256,16 +256,16 @@ GENERATE(call, e) {
 
     // Add pushed arguments to call.
     for (int i = 0; i < e.tc->pushedArgs.size(); i++) {
-	TACOp tacArg = e.tc->pushedArgs[i];
-	Operand arg = generateOperand(e, tacArg, true);
-	
+	TACOp tacArg { e.tc->pushedArgs[i] };
+	Operand arg { generateOperand(e, tacArg, true) };
+
 	if (arg.isImm()) {
 	    funcCall->setArg(i, arg.as<Imm>());
 	} else if (arg.isReg()) {
 	    funcCall->setArg(i, arg.as<X86Gp>());
 	} else if (arg.isMem()) {
-	    int typeId = e.tc->pushedArgs[i].type.asmjitId();
-	    X86Gp argReg = e.c.newGpReg(typeId);
+	    int typeId { e.tc->pushedArgs[i].type.asmjitId() };
+	    X86Gp argReg { e.c.newGpReg(typeId) };
 	    e.c.mov(argReg, arg.as<X86Mem>());
 	    funcCall->setArg(i, argReg);
 	} else {
@@ -275,7 +275,7 @@ GENERATE(call, e) {
 
     // Set return.
     if (!e._d.ignore) {
-	Operand ret = generateOperand(e, e._d);
+	Operand ret { generateOperand(e, e._d) };
 	assert(ret.isReg());
 	funcCall->setRet(0, ret.as<Reg>());
     }
@@ -285,8 +285,8 @@ GENERATE(call, e) {
 }
 
 GENERATE(ret, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    
+    Operand s0 { generateOperand(e, e._s0) };
+
     X86Gp returnReg;
     if (s0.isImm()) {
 	returnReg = e.c.newGpReg(e._s0.type.asmjitId());
@@ -299,18 +299,18 @@ GENERATE(ret, e) {
     } else {
 	assert(false);
     }
-    
+
     e.c.ret(returnReg);
 }
 
 GENERATE(jmp, e) {
-    Operand s0 = generateOperand(e, e._s0);
+    Operand s0 { generateOperand(e, e._s0) };
     e.c.emit(X86Inst::kIdJmp, s0);
 }
 
 GENERATE(jmpZ, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
 
     // Optimize immediate comparisons.
     if (e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -323,8 +323,8 @@ GENERATE(jmpZ, e) {
 }
 
 GENERATE(jmpNZ, e) {
-    Operand s0 = generateOperand(e, e._s0);
-    Operand s1 = generateOperand(e, e._s1);
+    Operand s0 { generateOperand(e, e._s0) };
+    Operand s1 { generateOperand(e, e._s1) };
 
     // Optimize immediate comparisons.
     if (e._s1.kind == TACOpKind::IMMEDIATE) {
@@ -337,10 +337,10 @@ GENERATE(jmpNZ, e) {
 }
 
 GENERATE(cast, e) {
-    bool dereference = e._s0.type.ref && !e._d.type.ref;
+    bool dereference { e._s0.type.ref && !e._d.type.ref };
 
-    Operand s0 = generateOperand(e, e._s0, dereference);
-    Operand d = generateOperand(e, e._d);
+    Operand s0 { generateOperand(e, e._s0, dereference) };
+    Operand d  { generateOperand(e, e._d) };
 
     // NOTES:
     // Just a regular 'mov' as of now.
@@ -349,8 +349,8 @@ GENERATE(cast, e) {
 }
 
 GENERATE(eaddr, e) {
-    Operand s0 = generateOperand(e, e._s0, true);
-    Operand d = generateOperand(e, e._d);
+    Operand s0 { generateOperand(e, e._s0, true) };
+    Operand d  { generateOperand(e, e._d) };
 
     e.c.emit(X86Inst::kIdLea, d, s0);
 }
@@ -358,26 +358,26 @@ GENERATE(eaddr, e) {
 GENERATE(salloc, e) {
     assert(e._s0.kind == TACOpKind::IMMEDIATE);
 
-    Operand d = generateOperand(e, e._d);
+    Operand d { generateOperand(e, e._d) };
     assert(d.isReg());
-    
-    unsigned int sz = e._s0.data.immValue;
-    const int align = 4;
-    X86Mem stackMem = e.c.newStack(sz, align);
-    
+
+    long unsigned int sz = { e._s0.data.immValue };
+    const int align { 4 };
+    X86Mem stackMem { e.c.newStack(sz, align) };
+
     e.c.emit(X86Inst::kIdLea, d, stackMem);
 }
 
 GENERATE(tupTo, e) {
     assert(e._s1.kind == TACOpKind::IMMEDIATE);
-    Operand base = generateOperand(e, e._d);
-    uint64_t offset = e._s1.data.immValue;
-    Operand value = generateOperand(e, e._s0);
+    Operand base { generateOperand(e, e._d) };
+    uint64_t offset { e._s1.data.immValue };
+    Operand value { generateOperand(e, e._s0) };
     assert(base.isRegOrMem());
 
     X86Mem ptr;
     if (base.isReg()) {
-	X86Gp baseReg = base.as<X86Gp>();
+	X86Gp baseReg { base.as<X86Gp>() };
 	ptr = X86Mem(baseReg, offset, e._s0.type.byteSize);
     } else if (base.isMem()) {
 	ptr = base.as<X86Mem>();
@@ -391,14 +391,14 @@ GENERATE(tupTo, e) {
 
 GENERATE(tupFrom, e) {
     assert(e._s1.kind == TACOpKind::IMMEDIATE);
-    Operand base = generateOperand(e, e._s0);
-    uint64_t offset = e._s1.data.immValue;
-    Operand d = generateOperand(e, e._d);
+    Operand base { generateOperand(e, e._s0) };
+    uint64_t offset { e._s1.data.immValue };
+    Operand d { generateOperand(e, e._d) };
     assert(d.isRegOrMem());
 
     X86Mem ptr;
     if (base.isReg()) {
-	X86Gp baseReg = base.as<X86Gp>();
+	X86Gp baseReg { base.as<X86Gp>() };
 	ptr = X86Mem(baseReg, offset, e._s0.type.byteSize);
     } else if (base.isMem()) {
 	ptr = base.as<X86Mem>();
@@ -415,7 +415,7 @@ GENERATE(trap, e) {
 }
 
 
-void generateInstr(InstrEnv& e, TAC* instr) {    
+void generateInstr(InstrEnv& e, TAC* instr) {
     // TODO turn this (at least soon to be) massive switch
     // into a function table.
     switch (instr->op) {
@@ -423,20 +423,20 @@ void generateInstr(InstrEnv& e, TAC* instr) {
     case TACC::sub: EMIT(sub, e); break;
     case TACC::mul: EMIT(mul, e); break;
     case TACC::div: EMIT(div, e); break;
-    
+
     case TACC::cmpEQ: EMIT(cmpEQ, e); break;
     case TACC::cmpNE: EMIT(cmpNE, e); break;
     case TACC::cmpG:  EMIT(cmpG, e); break;
     case TACC::cmpL:  EMIT(cmpL, e); break;
     case TACC::cmpGE: EMIT(cmpGE, e); break;
     case TACC::cmpLE: EMIT(cmpLE, e); break;
-    
+
     case TACC::call:    EMIT(call, e); break;
     case TACC::pushArg: EMIT(pushArg, e); break;
     case TACC::ret:     EMIT(ret, e); break;
 
     case TACC::jmp:   EMIT(jmp, e); break;
-    case TACC::jmpZ:  EMIT(jmpZ, e); break;	
+    case TACC::jmpZ:  EMIT(jmpZ, e); break;
     case TACC::jmpNZ: EMIT(jmpNZ, e); break;
 
     case TACC::move: assert(false); break;
@@ -447,7 +447,7 @@ void generateInstr(InstrEnv& e, TAC* instr) {
     case TACC::tupFrom: EMIT(tupFrom, e); break;
 
     case TACC::trap: EMIT(trap, e); break;
-	
+
     default: assert(false); // Not implemented.
     }
 }

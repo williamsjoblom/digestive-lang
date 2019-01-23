@@ -1,10 +1,8 @@
 #include "jit/JitContext.hh"
 
 
-Unit::Unit(std::vector<Stmt*> statements, std::vector<FunctionDecl*> functions) {
-    this->statements = new BlockStmt(statements);
-    this->functions = functions;
-}
+Unit::Unit(std::vector<Stmt*> stmts, std::vector<FunctionDecl*> funs) : statements{new BlockStmt(stmts)},
+                                                                        functions{funs} { }
 
 
 Unit::~Unit() {
@@ -14,7 +12,7 @@ Unit::~Unit() {
 
 
 void Unit::analyze(Scope* scope) {
-    Scope* innerScope = new Scope(scope);
+    Scope* innerScope { new Scope(scope) };
 
     for (FunctionDecl* func : functions) {
         func->analyze(innerScope);
@@ -34,7 +32,7 @@ void Unit::dump(size_t indent) {
 
 
 bool Unit::equals(const Node &other) const {
-    const Unit* o = dynamic_cast<const Unit*>(&other);
+    const Unit* o { dynamic_cast<const Unit*>(&other) };
     if (o == nullptr) return false;
 
     if(*o->statements != *statements) return false;
@@ -42,8 +40,8 @@ bool Unit::equals(const Node &other) const {
     if (o->functions.size() != functions.size()) return false;
 
     for (int i = 0; i < functions.size(); i++) {
-        Stmt* function =  functions[i];
-        Stmt* otherFunction = o->functions[i];
+        Stmt* function { functions[i] };
+        Stmt* otherFunction { o->functions[i] };
 
         if (*function != *otherFunction) return false;
     }
@@ -59,8 +57,8 @@ unsigned int Unit::functionCount() {
 
 std::string Unit::symbolFromPtr(void* ptr) {
     for (FunctionDecl* func : functions) {
-        void* ptrLower = JitContext::handles[func->bHandleIndex];
-        void* ptrUpper = (char*)ptrLower + func->codeSize;
+        void* ptrLower { JitContext::handles[func->bHandleIndex] };
+        void* ptrUpper { (char*)ptrLower + func->codeSize };
 
 	if (ptr >= ptrLower && ptr <= ptrUpper)
             return func->identifier;
